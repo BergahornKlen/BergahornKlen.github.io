@@ -1,0 +1,146 @@
+include ../_mixin/breadcrumb.pug
+include ../_mixin/sidebar.pug
+include ../_mixin/widgets.pug
+
+doctype html
+html(lang=page.language?page.language:config.language, style=theme.grayMode ? 'filter: grayscale(1);':'' )
+    head
+        != partial('_partials/head/head.pug', {}, {cache: true})
+        != partial('_partials/head/head_com.pug')
+        != shokax_inject('head')
+        title
+            block title
+                != `${alternate?alternate + " = ":""}${title}${subtitle?" = "+subtitle:""}`
+    body(itemscope itemtype="http://schema.org/WebPage")
+        != partial('_partials/loading.pug', {}, {cache: true})
+        div(id="container")
+            header(id="header" itemscope itemtype="http://schema.org/WPHeader")
+                div(class="inner")
+                    div(id="brand")
+                        div(class="pjax")
+                            block header
+                                a(href=config.root class="logo" rel="start")
+                                    if alternate
+                                        p(class="artboard")
+                                            != alternate
+                                    h1(itemprop="name headline" class="title")
+                                        != title
+                                if subtitle
+                                    p(class="meta" itemprop="description")
+                                        != `= ${subtitle} =`
+
+                    != partial('_partials/header.pug', {}, {cache: true})
+                div(id="imgs" class="pjax")
+                    if theme.experiments.gradient
+                        //- cover不可用时用Bing随机图片代替
+                        - var coverImage = theme?.experiments?.gradientCover || "https://7ed.net/bing/api"
+                        img(src=coverImage)
+                    else
+                        - var covers = _cover(page, 6)
+                        if covers.length === 6
+                            ul
+                                each image in covers
+                                    li(class="item" data-background-image=image)
+                        else
+                            img(src=covers)
+            div(id="waves")
+                svg(class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto")
+                    defs
+                        path(id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z")
+                    g(class="parallax")
+                        use(xlink:href="#gentle-wave" x="48" y="0")
+                        use(xlink:href="#gentle-wave" x="48" y="3")
+                        use(xlink:href="#gentle-wave" x="48" y="5")
+                        use(xlink:href="#gentle-wave" x="48" y="7")
+            main
+                div(class="inner")
+                    div(id="main" class="pjax")
+                        block content
+                    div(id="sidebar")
+                        block sidebar
+                            +sidebarRender
+                    div(class="dimmer")
+            footer(id="footer")
+                div(class="inner")
+                    div(class="widgets")
+                        +WRender
+                    != partial('_partials/footer.pug', {}, {cache: true})
+        - var ccIcon = '<i class="ic i-creative-commons"></i>'
+        - var ccText = theme.creative_commons.license.toUpperCase()
+        <script data-config type="text/javascript" >
+            | var LOCAL = {
+            != `path: \"${_permapath(page.path)}\",`
+            |   favicon: {
+            !=      `show: \'${__('favicon.show')}\',`
+            !=      `hide: \'${__('favicon.hide')}\'`
+            |    },
+            |    search: {
+            !=       `placeholder: \"${__('search.placeholder')}\",`
+            !=       `empty: \"${__('search.empty')}\",`
+            !=       `stats: \"${__('search.stats')}\"`
+            |    },
+            if theme.widgets.recent_comments || page.comment !== false
+                != `valine: ${page.valine ? _safedump(page.valine) : 'true'},`
+            if page.chart
+                | chart: true,
+            if page.math
+                | copy_tex: true,
+                | katex: true,
+            if page.mermaid
+                | mermaid: true,
+            if page.audio
+                != `audio: ${_safedump(page.audio)},`
+            if page.audio === false
+                | audio: {},
+            if page.fancybox !== false
+                | fancybox: true,
+            if page.copyright !== false
+                if page.copyright === true
+                    | nocopy: true,
+                    != `copyright: \'${__("tips.nocopy")}\',`
+                else
+                    != `copyright: \'${__("tips.copyright", ccIcon + ccText)}\',`
+            if page.outime === false
+                | outime: false,
+            else
+                | outime: true,template: `!{ __('outime.template') }`,
+            if page.quiz
+                | quiz: {
+                != `choice: \'${__('quiz.choice')}\',`
+                != `multiple: \'${__('quiz.multiple')}\',`
+                != `true_false: \'${__('quiz.true_false')}\',`
+                != `essay: \'${__('quiz.essay')}\',`
+                != `gap_fill: \'${__('quiz.gap_fill')}\',`
+                != `mistake: \'${__('quiz.mistake')}\'`
+                | },
+            | ignores : [
+            |   function(uri) {
+            |       return uri.includes('#');
+            |   },
+            |   function(uri) {
+            |       return new RegExp(LOCAL.path+"$").test(uri);
+            |   }
+            if theme.quicklink.ignores
+                | ,
+                != _safedump(theme.quicklink.ignores)
+            | ]
+            | };
+        </script>
+        script(src="https://polyfill.alicdn.com/polyfill.min.js")
+        if theme.advVendors.enable
+            each i in _list_vendor_js()
+                != _adv_vendor_js(i)
+        else
+            != _vendor_js()
+        != _js('app.js')
+        != partial('_partials/third-party/baidu-analytics.pug', {}, {cache: true})
+        != partial('_partials/third-party/clarity.pug', {}, {cache: true})
+        if theme.twikoo.enable
+            != _new_comments('twikoo')
+        else if theme.waline.enable
+            != _new_comments('waline')
+
+        != shokax_inject('bodyEnd')
+
+
+

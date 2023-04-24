@@ -1,0 +1,57 @@
+- var msValidate = theme?.seo?.bing,googleValid = theme?.seo?.google
+- var yandexValid = theme?.seo?.yandex,baiduValid = theme?.seo?.baidu
+- var siteTitle = config.title,noBaiduT = theme?.seo?.disable_baidu_transformation
+- var feedLink = full_url_for("/feed.json")
+- var tk= theme?.twikoo?.enable;var jsInjects = theme?.inject?.head?.js,cssInjects = theme?.inject?.head?.css
+- var wl = theme.waline.enable,gt=theme?.gitalk?.enable
+meta(charset="UTF-8")
+meta(name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2")
+meta(name="theme-color" content="#222")
+
+meta(http-equiv="X-UA-COMPATIBLE" content="IE=edge,chrome=1")
+meta(name="renderer" content="webkit")
+link(rel="icon" type="image/ico" sizes="32x32" href=url_for(theme.statics +  theme.assets + theme.icon.favicon))
+if theme.icon.apple_touch_icon
+    link(rel="apple-touch-icon" sizes="180x180" href=url_for(theme.statics +  theme.assets + theme.icon.apple_touch_icon))
+
+if msValidate
+    meta(name="msvalidate.01" content=msValidate)
+if googleValid
+    meta(name="google-site-verification" content=googleValid)
+if yandexValid
+    meta(name="yandex-verification" content=yandexValid)
+if baiduValid
+    meta(name="baidu-site-verification" content=baiduValid)
+if noBaiduT
+    meta(http-equiv="Cache-Control" content="no-transform")
+    meta(http-equiv="Cache-Control" content="no-siteapp")
+
+!= feed_tag('rss.xml')
+!= feed_tag('atom.xml')
+link(rel="alternate" type="application/json" title=siteTitle href=feedLink)
+- var fontConfig = theme?.font?.loadFromGoogle
+if fontConfig
+    != _vendor_font()
+!= _css('app.css')
+
+- var debugVue = theme?.experiments?.debug
+if debugVue
+    script(src="https://cdn.staticfile.org/vue/3.2.45/vue.global.js")
+else
+    script(src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.js")
+include pwa.pug
+if tk
+    != _css("twikoo.css")
+    script(src=theme.twikoo.link)
+else if wl
+    link(rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css")
+else if gt
+    link(rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css")
+    script(src="https://unpkg.com/gitalk/dist/gitalk.min.js")
+
+- var qw = theme.qweather.enable
+if qw
+    style.
+        img[data-v-7d48daab] {
+            max-width: 2em !important;
+        }

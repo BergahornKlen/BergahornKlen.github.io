@@ -1,0 +1,8 @@
+*.ts
+.npmrc
+.eslintrc.js
+.editorconfig
+tsconfig.json
+.idea
+.github
+pnpm-lock.yaml
