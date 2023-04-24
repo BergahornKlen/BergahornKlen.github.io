@@ -1,0 +1,31 @@
+mixin field(item)
+    if item.link
+        - var postTitleIcon = '<i class="ic i-link-alt"></i>'
+    li(class="item")
+        +BCRender(item, false)
+        - var postText = item.title || item.link || __('post.untitled')
+        - var link1 = item.link || item.path
+        span
+            != _url(link1, postText + (postTitleIcon || ''))
+
+mixin WRender(item)
+    - var tk = theme?.twikoo?.enable
+    if theme.widgets.random_posts
+        div(class="rpost pjax")
+            h2
+                != __('index.random_posts')
+            ul
+                - var posts = site.posts.shuffle().limit(10).toArray()
+                each item in posts
+                    +field(item)
+    if theme.widgets.recent_comments
+        div(class="rpost pjax")
+            h2 最新评论
+            ul(class="leancloud-recent-comment" id="new-comment")
+                if tk
+                    li(v-for="com in coms" class="item")
+                        a(v-bind:href="com.href" data-pjax-state="data-pjax-state")
+                            span(class="breadcrumb") {{com.nick}}@{{com.time}}
+                            span {{com.text}}
+                                br
+

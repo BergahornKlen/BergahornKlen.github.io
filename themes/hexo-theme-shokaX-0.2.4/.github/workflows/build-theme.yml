@@ -1,0 +1,74 @@
+name: Build and package theme
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: https://registry.npmjs.org/
+
+      - name: Install dependencies
+        run: npm install pnpm -g
+
+      - name: Build TypeScript files
+        run: pnpm run build
+
+      - name: Create ZIP package
+        run: zip -r shokaX.zip * -x '*.ts' "node_modules/*" ".github/*" "docs/*"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: shokaX-stable
+          path: shokaX.zip
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: https://registry.npmjs.org/
+      - name: Init environment
+        run: |
+          npm install pnpm -g
+          npm install hexo-cli -g
+          hexo init
+          pnpm install
+          pnpm add hexo-renderer-multi-next-markdown-it
+          pnpm add hexo-autoprefixer
+          pnpm add hexo-algoliasearch
+          pnpm add hexo-feed
+
+      - name: Install theme
+        uses: actions/checkout@v3
+        with:
+          path: themes/shokaX
+      - name: Build Typescript files
+        run: |
+          cd themes/shokaX
+          pnpm install
+          pnpm run build
+          cd ..
+          find shokaX -type f -name "*.ts" -delete
+          cd ..
+
+      - name: Test
+        run: |
+          sed -i 's/landscape/shokaX/g' _config.yml
+          hexo g

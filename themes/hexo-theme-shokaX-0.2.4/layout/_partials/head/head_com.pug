@@ -1,0 +1,17 @@
+- var keywords='',tmp=page?.tags?.toArray()
+if tmp
+    each tag,index in tmp
+        -   keywords += tag.name
+        -   index++
+        -   if (index < tmp.length) keywords += ','
+if page.keywords
+    meta(name="keywords" content=page.keywords)
+else if page.tags && page.tags.length
+    meta(name="keywords" content=keywords)
+else if config.keywords
+    meta(name="keywords" content=config.keywords)
+
+!= canonical()
+
+if theme.open_graph
+    != open_graph(theme.open_graph)
