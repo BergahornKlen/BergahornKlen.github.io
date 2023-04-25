@@ -1,4 +1,4 @@
-alternate: testName # 站点大标题
+alternate: Sycamore # 站点大标题
 
 statics: "/" # 静态文件根目录
 assets: "assets"
@@ -47,7 +47,7 @@ visitor:
 darkmode: false
 auto_dark: # 自动亮/暗模式
   enable: true  #是否开启
-  start: 20     #开始时间
+  start: 18     #开始时间
   end: 7        #结束时间
 
 auto_scroll: true
@@ -116,16 +116,12 @@ menu:
   home: / || home
   about:
     default: /about/ || user
-    aboutsite: /about/ || star
-    updata: /updata/ || cloud
-    admiration: /admiration/ || coffee
-    privacy: /privacy/ || list-alt
+    aboutsite: /about/ || cloud
   posts:
     default: / || feather
     archives: /archives/ || list-alt
     categories: /categories/ || th
     tags: /tags/ || tags
-  statistics: /statistics/ || clock
   friends: /friends/ || heart
 
 # https://twikoo.js.org

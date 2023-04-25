@@ -3,12 +3,12 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle: ''
+title: 懸鈴書架
+subtitle: '瑣憶流金'
 description: ''
-keywords:
+keywords: CTF, Electron
 author: Sycamore
-language: en
+language: zh-CN
 timezone: ''
 
 # URL
@@ -40,7 +40,7 @@ external_link:
   exclude: ''
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
@@ -102,4 +102,7 @@ theme: shokaX
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: ''
+  type: git
+  repo: https://github.com/BergahornKlen/BergahornKlen.github.io.git
+  branch: main
+  token: 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

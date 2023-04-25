@@ -40,3 +40,35 @@ highlight:
 
 prismjs:
   enable: false
+
+statics: "/" # //cdn.jsdelivr.net/gh/BergahornKlen/BergahornKlen.github.io@latest/
+assets: "assets" # 图片资源存放目录
+css: "css" # css存放目录(不建议改动)
+js: "js" # js存放目录(不建议改动)
+
+alternate: "Sycamore"
+
+menu:
+  home: / || home
+  about:
+    default: /about/ || user
+    aboutsite: /about/ || cloud
+  posts:
+    default: / || feather
+    archives: /archives/ || list-alt
+    categories: /categories/ || th
+    tags: /tags/ || tags
+  friends: /friends/ || heart
+  开往: /magic/ || paper-plane
+
+social:
+  github: https://github.com/noneSycamore || github || "#191717"
+
+# bgm
+audio:
+  - title: 铃芽之旅
+    list:
+    - https://music.163.com/#/playlist?id=2943811283
+  - title: English
+    list:
+    - https://music.163.com/#/playlist?id=8379011186
