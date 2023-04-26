@@ -3,7 +3,7 @@ title: 免杀捆绑工具 shellter 的安装及使用
 date: 2022-4-16 18:10:24
 tags: [Trojan horse,Linux,Kali,Metasploit,shellter]
 categories: 
- - 木马-Trojan horse
+ - [渗透测试,木马-Trojan horse]
 cover: https://res.cloudinary.com/sycamore/image/upload/v1682443290/Typera/2023/04/d9bcdac19a99f14fe88a3ed9e829d637.png
 ---
 

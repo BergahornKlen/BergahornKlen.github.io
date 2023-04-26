@@ -67,7 +67,9 @@ index_generator:
 
 # Category & Tag
 default_category: uncategorized
-category_map:
+category_map: 
+  CTF-WriteUp: CTF
+  渗透测试-Penetration: 渗透测试
 tag_map:
 
 # Metadata elements

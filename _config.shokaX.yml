@@ -98,3 +98,18 @@ waline:
   wordLimit: 1000 # 评论字数上限(不建议为0)
   pageSize: 10 # 每页显示评论条数
   pageview: true # 页面浏览量显示
+
+algolia:
+  appId: OSL73NZXKJ
+  apiKey: 62dde19a3b9ec3324dcc15afd6395384
+  adminApiKey: b131da8fecaca440dcccede5e1865021
+  chunkSize: 5000
+  indexName: "shokaX"
+  fields:
+    - title
+    - path
+    - categories
+    - content:strip:truncate,0,2000
+    - gallery
+    - photos
+    - tags

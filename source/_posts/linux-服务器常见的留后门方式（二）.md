@@ -3,7 +3,7 @@ title: linux 服务器常见的留后门方式（二）
 date: 2022-4-2 23:36:35
 tags: [Backdoor,Linux,Kali]
 categories: 
- - 后门-Backdoor
+ - [渗透测试,后门-Backdoor]
 cover: https://res.cloudinary.com/sycamore/image/upload/v1682441841/Typera/2023/04/7e00f34b8462535fcbd72b5a18b714e9.png
 ---
 

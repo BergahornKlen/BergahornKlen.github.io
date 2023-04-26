@@ -3,7 +3,7 @@ title: Metasploit 木马编译利用
 date: 2022-4-2 23:29:09
 tags: [Trojan horse,Linux,Kali,Metasploit]
 categories: 
- - 木马-Trojan horse
+ - [渗透测试,木马-Trojan horse]
 cover: https://res.cloudinary.com/sycamore/image/upload/v1682442126/Typera/2023/04/87d91c5d20cc130aa72fe99c74a9e8c2.png
 ---
 
