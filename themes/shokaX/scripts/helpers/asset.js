@@ -10,7 +10,7 @@ hexo.extend.helper.register('_new_comments', function (mode) {
             let comments = []
            twikoo.getRecentComments({
            envId: "${hexo.theme.config?.twikoo?.envId}",
-           pageSize: 10
+           pageSize: 5
            }).then(function (res) {
                 res.forEach(function (item) {
                     let cText = item.commentText
@@ -43,7 +43,7 @@ hexo.extend.helper.register('_new_comments', function (mode) {
         RecentComments({
           el: '#new-comment',
           serverURL: '${hexo.theme.config.waline.serverURL}',
-          count: 10,
+          count: 5,
         });
     </script>
     `

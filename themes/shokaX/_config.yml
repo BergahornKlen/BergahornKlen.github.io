@@ -135,7 +135,7 @@ twikoo:
 # https://waline.js.org/
 waline:
   enable: false
-  serverURL: ''
+  serverURL: 'https://vercel.sycamore.top'
   lang: "zh-CN"
   locale: {} # https://waline.js.org/guide/features/i18n.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E8%AF%AD%E8%A8%80
   emoji: # 表情包
@@ -223,7 +223,7 @@ footer:
     color: "#ffc0cb"
   # Dependencies: https://github.com/theme-next/hexo-symbols-count-time
   count: true
-  powered: true
+  sentences: true
   lantern:
     enable: true  #是否开启
     word1: 中   #第一个字
@@ -274,14 +274,14 @@ creative_commons:
   language: deed.zh
 
 # bgm
-audio:
-  - title: 列表1
-    list:
-      - https://music.163.com/#/playlist?id=2943811283
-      - https://music.163.com/#/playlist?id=2297706586
-  - title: 列表2
-    list:
-      - https://music.163.com/#/playlist?id=2031842656
+# audio:
+#   - title: 列表1
+#     list:
+#       - https://music.163.com/#/playlist?id=2943811283
+#       - https://music.163.com/#/playlist?id=2297706586
+#   - title: 列表2
+#     list:
+#       - https://music.163.com/#/playlist?id=2031842656
 
 # random image api
 image_server: # "https://acg.xydwz.cn/api/api.php"

@@ -65,7 +65,7 @@ post:
     nocopy: "<span class=\"red\">本页内容禁止转载！</span>"
 
 footer:
-  powered: "基于 %s"
+  sentences: "%s"
   total_views: 总访问量
   total_visitors: 总访客量
 

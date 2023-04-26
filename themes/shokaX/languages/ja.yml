@@ -57,7 +57,7 @@ post:
     nocopy: "<span class=\"red\">再印刷は禁止されています。</span>"
 
 footer:
-  powered: "Powered by %s"
+  sentences: "%s"
   total_views: 閲覧合計数
   total_visitors: 合計閲覧者数
 

@@ -68,7 +68,33 @@ social:
 audio:
   - title: 铃芽之旅
     list:
-    - https://music.163.com/#/playlist?id=2943811283
+    - https://music.163.com/#/playlist?id=8379150105
   - title: English
     list:
     - https://music.163.com/#/playlist?id=8379011186
+
+footer:
+  since: 2021
+
+waline:
+  enable: true
+  serverURL: "https://vercel.sycamore.top"
+  lang: "zh-CN"
+  locale: {} # 本地化替换，详见waline文档
+  emoji: # 表情包，默认为waline官方配置
+    - https://unpkg.com/@waline/emojis@1.0.1/weibo
+    - https://unpkg.com/@waline/emojis@1.0.1/alus
+    - https://unpkg.com/@waline/emojis@1.0.1/bilibili
+    - https://unpkg.com/@waline/emojis@1.0.1/qq
+    - https://unpkg.com/@waline/emojis@1.0.1/tieba
+    - https://unpkg.com/@waline/emojis@1.0.1/tw-emoji
+  meta: # 评论可以填写的项目
+    - nick
+    - mail
+    - link
+  requiredMeta: # 评论必须填写的项目
+    - nick
+    - mail
+  wordLimit: 1000 # 评论字数上限(不建议为0)
+  pageSize: 10 # 每页显示评论条数
+  pageview: true # 页面浏览量显示

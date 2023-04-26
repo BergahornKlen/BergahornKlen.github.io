@@ -62,7 +62,7 @@ post:
     nocopy: "<span class=\"red\">This page is prohibited reprint.</span>"
 
 footer:
-  powered: "Powered by %s"
+  sentences: "%s"
   total_views: Total Views
   total_visitors: Total Visitors
 

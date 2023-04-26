@@ -15,7 +15,7 @@ mixin WRender(item)
             h2
                 != __('index.random_posts')
             ul
-                - var posts = site.posts.shuffle().limit(10).toArray()
+                - var posts = site.posts.shuffle().limit(5).toArray()
                 each item in posts
                     +field(item)
     if theme.widgets.recent_comments
@@ -23,7 +23,7 @@ mixin WRender(item)
             h2 最新评论
             ul(class="leancloud-recent-comment" id="new-comment")
                 if tk
-                    li(v-for="com in coms" class="item")
+                    li(v-for="com in coms" class="item" style="border-bottom: 0.0625rem dashed var(--grey-4); padding: 0.5rem 0 0.5rem 0;")
                         a(v-bind:href="com.href" data-pjax-state="data-pjax-state")
                             span(class="breadcrumb") {{com.nick}}@{{com.time}}
                             span {{com.text}}
