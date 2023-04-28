@@ -59,7 +59,7 @@ menu:
     categories: /categories/ || th
     tags: /tags/ || tags
   friends: /friends/ || heart
-  开往: /magic/ || paper-plane
+  travellings: https://www.travellings.cn || subway
 
 social:
   github: https://github.com/noneSycamore || github || "#191717"
@@ -80,7 +80,9 @@ waline:
   enable: true
   serverURL: "https://vercel.sycamore.top"
   lang: "zh-CN"
-  locale: {} # 本地化替换，详见waline文档
+  locale: {
+      placeholder: "1. 提问前请先仔细阅读本文档⚡\n2. 页面显示问题💥，请提供控制台截图📸或者您的测试网址\n3. 其他任何报错💣，请提供详细描述和截图📸，祝食用愉快💪"
+  }
   emoji: # 表情包，默认为waline官方配置
     - https://unpkg.com/@waline/emojis@1.0.1/weibo
     - https://unpkg.com/@waline/emojis@1.0.1/alus
@@ -98,18 +100,3 @@ waline:
   wordLimit: 1000 # 评论字数上限(不建议为0)
   pageSize: 10 # 每页显示评论条数
   pageview: true # 页面浏览量显示
-
-algolia:
-  appId: OSL73NZXKJ
-  apiKey: 62dde19a3b9ec3324dcc15afd6395384
-  adminApiKey: b131da8fecaca440dcccede5e1865021
-  chunkSize: 5000
-  indexName: "shokaX"
-  fields:
-    - title
-    - path
-    - categories
-    - content:strip:truncate,0,2000
-    - gallery
-    - photos
-    - tags

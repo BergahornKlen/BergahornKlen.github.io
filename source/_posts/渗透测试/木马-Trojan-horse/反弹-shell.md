@@ -3,7 +3,7 @@ title: 反弹_shell
 date: 2022-4-23 21:48:27
 tags: [Reverse Shell,Linux,Kali]
 categories: 
- - [渗透测试,木马-Trojan horse]
+ - [渗透测试,木马-Trojan-horse]
 cover: https://res.cloudinary.com/sycamore/image/upload/v1682444171/Typera/2023/04/8396c8e41d46ca6906805f4eb5ef890b.png
 ---
 

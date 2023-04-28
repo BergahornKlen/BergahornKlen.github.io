@@ -18,6 +18,11 @@ if $_iconfont = hexo-config('style.iconfont')
 else
   @import "_iconfont";
 
+if $_iconfont_plus = hexo-config('style.iconfont_plus')
+  @import $_iconfont_plus;
+else
+  @import "_iconfont_plus";
+
 // Scaffolding
 @import "_common/scaffolding";
 
@@ -33,4 +38,7 @@ if $custom = hexo-config('style.custom')
 for $inject_style in hexo-config('injects.style')
   @import $inject_style;
 
-
+.wl-recent-item {
+padding: .5rem 0 .5rem 0;
+border-bottom: .0625rem dashed var(--grey-4);
+}

@@ -111,6 +111,7 @@ font:
 # project of https://www.iconfont.cn/
 # //at.alicdn.com/t/font_1832207_c8i9n1ulxlt.css => 1832207_c8i9n1ulxlt
 iconfont: "1832207_igi8uaupcus"
+iconfont_plus: "4043376_7jz7akgjfbj"
 
 menu:
   home: / || home

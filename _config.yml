@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 懸鈴書架
+title: Sycamore's Blog # 懸鈴書架
 subtitle: '瑣憶流金'
 description: ''
 keywords: CTF, Electron
@@ -14,7 +14,7 @@ timezone: 'Asia/Shanghai'
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
 url: https://www.sycamore.top
-permalink: :year/:month/:day/:title/
+permalink: :title/
 permalink_defaults:
 pretty_urls:
   trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
@@ -40,7 +40,7 @@ external_link:
   exclude: ''
 filename_case: 0
 render_drafts: false
-post_asset_folder: true
+post_asset_folder: false
 relative_link: false
 future: true
 highlight:
@@ -68,8 +68,8 @@ index_generator:
 # Category & Tag
 default_category: uncategorized
 category_map: 
-  CTF-WriteUp: CTF
-  渗透测试-Penetration: 渗透测试
+#   CTF-WriteUp: CTF
+#   渗透测试-Penetration: 渗透测试
 tag_map:
 
 # Metadata elements
@@ -108,3 +108,18 @@ deploy:
   repo: https://github.com/BergahornKlen/BergahornKlen.github.io.git
   branch: main
   token: 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
+
+algolia:
+  appId: 'OSL73NZXKJ'
+  apiKey: '62dde19a3b9ec3324dcc15afd6395384'
+  adminApiKey: 'b131da8fecaca440dcccede5e1865021'
+  chunkSize: 5000
+  indexName: "shokaX"
+  fields:
+    - title
+    - path
+    - categories
+    - content:strip:truncate,0,2000
+    - gallery
+    - photos
+    - tags

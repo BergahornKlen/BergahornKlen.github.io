@@ -45,7 +45,7 @@ hexo.extend.generator.register('script', function (locals) {
     },
     playerAPI: theme.playerAPI
   }
-
+  
   if (config?.algolia) {
     siteConfig.search = {
       appID: config.algolia.appId,
