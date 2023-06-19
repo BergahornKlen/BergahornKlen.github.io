@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>Sycamore&#39;s Blog • Posts by &#34;hitokoto&#34; tag</title>
+        <link>https://www.sycamore.top</link>
+        <description></description>
+        <language>zh-CN</language>
+        <pubDate>Sun, 30 Apr 2023 17:35:33 +0800</pubDate>
+        <lastBuildDate>Sun, 30 Apr 2023 17:35:33 +0800</lastBuildDate>
+        <category>CTF</category>
+        <category>Crypto</category>
+        <category>Python</category>
+        <category>Web</category>
+        <category>Miec</category>
+        <category>Re</category>
+        <category>Pwn</category>
+        <category>Misc</category>
+        <category>计算机视觉</category>
+        <category>深度学习</category>
+        <category>node</category>
+        <category>npm</category>
+        <category>plugs</category>
+        <category>Hexo</category>
+        <category>shokaX</category>
+        <category>博客主题</category>
+        <category>Electron</category>
+        <category>Hitokoto</category>
+        <category>Google Translate</category>
+        <category>Backdoor</category>
+        <category>Linux</category>
+        <category>Kali</category>
+        <category>Trojan horse</category>
+        <category>Metasploit</category>
+        <category>shellter</category>
+        <category>frp</category>
+        <category>Reverse Shell</category>
+        <item>
+            <guid isPermalink="true">https://www.sycamore.top/Node/Electron/Sentences-Desktop%E6%A1%8C%E9%9D%A2%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/</guid>
+            <title>Sentences-Desktop桌面程序开发</title>
+            <link>https://www.sycamore.top/Node/Electron/Sentences-Desktop%E6%A1%8C%E9%9D%A2%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/</link>
+            <category>node</category>
+            <category>Electron</category>
+            <category>Hitokoto</category>
+            <pubDate>Sun, 30 Apr 2023 17:35:33 +0800</pubDate>
+            <description><![CDATA[ &lt;p&gt;项目地址：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL25vbmVTeWNhbW9yZS9TZW50ZW5jZXMtRGVza3RvcA==&#34;&gt;Sentences-Desktop&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;...（具体内容 5.1 结束回去粘贴，写在 Trillium 上，忘记同步了...）&lt;/p&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>

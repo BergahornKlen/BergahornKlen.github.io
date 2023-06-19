@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://www.sycamore.top</id>
+    <title>Sycamore&#39;s Blog • Posts by &#34;electron&#34; category</title>
+    <link href="https://www.sycamore.top" />
+    <updated>2023-05-02T06:46:42.000Z</updated>
+    <category term="CTF" />
+    <category term="Crypto" />
+    <category term="Python" />
+    <category term="Web" />
+    <category term="Miec" />
+    <category term="Re" />
+    <category term="Pwn" />
+    <category term="Misc" />
+    <category term="计算机视觉" />
+    <category term="深度学习" />
+    <category term="node" />
+    <category term="npm" />
+    <category term="plugs" />
+    <category term="Hexo" />
+    <category term="shokaX" />
+    <category term="博客主题" />
+    <category term="Electron" />
+    <category term="Hitokoto" />
+    <category term="Google Translate" />
+    <category term="Backdoor" />
+    <category term="Linux" />
+    <category term="Kali" />
+    <category term="Trojan horse" />
+    <category term="Metasploit" />
+    <category term="shellter" />
+    <category term="frp" />
+    <category term="Reverse Shell" />
+    <entry>
+        <id>https://www.sycamore.top/Node/Electron/Google-Translate-Desktop/</id>
+        <title>Google-Translate-Desktop</title>
+        <link rel="alternate" href="https://www.sycamore.top/Node/Electron/Google-Translate-Desktop/"/>
+        <content type="html">&lt;p&gt;项目地址：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL25vbmVTeWNhbW9yZS9Hb29nbGUtVHJhbnNsYXRlLURlc2t0b3A=&#34;&gt;Google-Translate-Desktop&lt;/span&gt;&lt;/p&gt;
+&lt;h1 id=&#34;准备工作&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#准备工作&#34;&gt;#&lt;/a&gt; 准备工作&lt;/h1&gt;
+&lt;h2 id=&#34;选择环境&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#选择环境&#34;&gt;#&lt;/a&gt; 选择环境&lt;/h2&gt;
+&lt;p&gt;&lt;span class=&#34;label info&#34;&gt;node v16.20.0&lt;/span&gt; / &lt;span class=&#34;label info&#34;&gt;electron v20.3.12&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&#34;基本方案&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#基本方案&#34;&gt;#&lt;/a&gt; 基本方案&lt;/h2&gt;
+&lt;p&gt;利用  &lt;code&gt;npm&lt;/code&gt;  插件: &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cubnBtanMuY29tL3BhY2thZ2UvZ29vZ2xlLXRyYW5zbGF0ZS1hcGk=&#34;&gt;google-translate-api&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;该插件提供了一个 API 接口：translate (text, options)，能实现谷歌翻译的基本功能&lt;/p&gt;
+&lt;p&gt;用 electron 搭建程序的主要页面，用该插件实现简单的翻译&lt;/p&gt;
+&lt;h2 id=&#34;具体功能&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#具体功能&#34;&gt;#&lt;/a&gt; 具体功能&lt;/h2&gt;
+&lt;ul class=&#34;task-list&#34;&gt;
+&lt;li class=&#34;task-list-item&#34;&gt;&lt;input type=&#34;checkbox&#34; id=&#34;cbx_0&#34; disabled=&#34;true&#34; /&gt;&lt;label for=&#34;cbx_0&#34;&gt;  自动检测语言并能选择翻译的目标语言&lt;/label&gt;&lt;/li&gt;
+&lt;li class=&#34;task-list-item&#34;&gt;&lt;input type=&#34;checkbox&#34; id=&#34;cbx_1&#34; disabled=&#34;true&#34; /&gt;&lt;label for=&#34;cbx_1&#34;&gt;  详细释义？&lt;/label&gt;&lt;/li&gt;
+&lt;li class=&#34;task-list-item&#34;&gt;&lt;input type=&#34;checkbox&#34; id=&#34;cbx_2&#34; disabled=&#34;true&#34; /&gt;&lt;label for=&#34;cbx_2&#34;&gt;  划词翻译&lt;/label&gt;
+&lt;ul class=&#34;task-list&#34;&gt;
+&lt;li class=&#34;task-list-item&#34;&gt;&lt;input type=&#34;checkbox&#34; id=&#34;cbx_3&#34; disabled=&#34;true&#34; /&gt;&lt;label for=&#34;cbx_3&#34;&gt;  替换、复制翻译结果&lt;/label&gt;&lt;/li&gt;
+&lt;li class=&#34;task-list-item&#34;&gt;&lt;input type=&#34;checkbox&#34; id=&#34;cbx_4&#34; disabled=&#34;true&#34; /&gt;&lt;label for=&#34;cbx_4&#34;&gt;  快捷键呼出&lt;/label&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;开发实现&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#开发实现&#34;&gt;#&lt;/a&gt; 开发实现&lt;/h1&gt;
+&lt;h2 id=&#34;搭建环境&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#搭建环境&#34;&gt;#&lt;/a&gt; 搭建环境&lt;/h2&gt;
+&lt;figure class=&#34;highlight shell&#34;&gt;&lt;figcaption data-lang=&#34;Bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;nvm &lt;span class=&#34;token function&#34;&gt;install&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;16&lt;/span&gt; lts  &lt;span class=&#34;token comment&#34;&gt;# 安装 v15 的新环境&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;nvm use &lt;span class=&#34;token number&#34;&gt;16.20&lt;/span&gt;.0&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;npm&lt;/span&gt; init  &lt;span class=&#34;token comment&#34;&gt;# 初始化 npm 库&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;npm&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;install&lt;/span&gt; electron@20.3.12 --save-dev  &lt;span class=&#34;token comment&#34;&gt;# 安装 electron&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;npm&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;install&lt;/span&gt; electron-builder  &lt;span class=&#34;token comment&#34;&gt;# 打包插件&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;npm&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;install&lt;/span&gt; electron-store  &lt;span class=&#34;token comment&#34;&gt;# 数据存储插件&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h2 id=&#34;基本页面&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#基本页面&#34;&gt;#&lt;/a&gt; 基本页面&lt;/h2&gt;
+&lt;p&gt;通过 &lt;span class=&#34;label info&#34;&gt;electron&lt;/span&gt; 实现。&lt;/p&gt;
+&lt;p&gt;细化主页面构成：&lt;/p&gt;
+&lt;ul class=&#34;task-list&#34;&gt;
+&lt;li class=&#34;task-list-item&#34;&gt;
+&lt;p&gt;&lt;input type=&#34;checkbox&#34; id=&#34;cbx_5&#34; checked=&#34;true&#34; disabled=&#34;true&#34; /&gt;&lt;label for=&#34;cbx_5&#34;&gt;   +++&lt;strong&gt; 顶部标题栏&lt;/strong&gt;&lt;br /&gt;
+传统地去掉难看的原配 Windows 标题栏&lt;/label&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;图标&lt;/li&gt;
+&lt;li&gt;软件名称&lt;/li&gt;
+&lt;li&gt;最小化 / 最大化 / 关闭&lt;br /&gt;
+ +++&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li class=&#34;task-list-item&#34;&gt;
+&lt;p&gt;&lt;input type=&#34;checkbox&#34; id=&#34;cbx_6&#34; checked=&#34;true&#34; disabled=&#34;true&#34; /&gt;&lt;label for=&#34;cbx_6&#34;&gt;  +++ &lt;strong&gt;菜单栏&lt;/strong&gt;&lt;br /&gt;
+功能切换&lt;/label&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;翻译文本&lt;/li&gt;
+&lt;li&gt;翻译文件？&lt;/li&gt;
+&lt;li&gt;翻译网页？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;设置&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;快捷键&lt;br /&gt;
+ +++&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li class=&#34;task-list-item&#34;&gt;
+&lt;p&gt;&lt;input type=&#34;checkbox&#34; id=&#34;cbx_7&#34; disabled=&#34;true&#34; /&gt;&lt;label for=&#34;cbx_7&#34;&gt;  +++&lt;strong&gt; 具体功能实现页面&lt;/strong&gt;&lt;br /&gt;
+翻译功能栏&lt;/label&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;选择源语言 / 目标语言&lt;/li&gt;
+&lt;li&gt;左右切换&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;翻译内容 / 翻译结果&lt;br /&gt;
+ +++&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;翻译功能&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#翻译功能&#34;&gt;#&lt;/a&gt; 翻译功能&lt;/h2&gt;
+</content>
+        <category term="node" />
+        <category term="Electron" />
+        <category term="Google Translate" />
+        <updated>2023-05-02T06:46:42.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://www.sycamore.top/Node/Electron/electron-addtodesktop%E6%8F%92%E4%BB%B6/</id>
+        <title>electron-addtodesktop插件</title>
+        <link rel="alternate" href="https://www.sycamore.top/Node/Electron/electron-addtodesktop%E6%8F%92%E4%BB%B6/"/>
+        <content type="html">&lt;p&gt;项目地址：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL25vbmVTeWNhbW9yZS9lbGVjdHJvbi1hZGR0b2Rlc2t0b3A=&#34;&gt;electron-addtodesktop&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;...（具体内容 5.1 结束回去粘贴，写在 Trillium 上，忘记同步了...）&lt;/p&gt;
+</content>
+        <category term="node" />
+        <category term="plugs" />
+        <category term="Electron" />
+        <updated>2023-05-02T06:12:13.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://www.sycamore.top/Node/Electron/Sentences-Desktop%E6%A1%8C%E9%9D%A2%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/</id>
+        <title>Sentences-Desktop桌面程序开发</title>
+        <link rel="alternate" href="https://www.sycamore.top/Node/Electron/Sentences-Desktop%E6%A1%8C%E9%9D%A2%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/"/>
+        <content type="html">&lt;p&gt;项目地址：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL25vbmVTeWNhbW9yZS9TZW50ZW5jZXMtRGVza3RvcA==&#34;&gt;Sentences-Desktop&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;...（具体内容 5.1 结束回去粘贴，写在 Trillium 上，忘记同步了...）&lt;/p&gt;
+</content>
+        <category term="node" />
+        <category term="Electron" />
+        <category term="Hitokoto" />
+        <updated>2023-04-30T09:35:33.000Z</updated>
+    </entry>
+</feed>

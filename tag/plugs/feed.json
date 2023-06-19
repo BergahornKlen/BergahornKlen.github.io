@@ -1,0 +1,32 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "Sycamore's Blog • All posts by \"plugs\" tag",
+    "description": "",
+    "home_page_url": "https://www.sycamore.top",
+    "items": [
+        {
+            "id": "https://www.sycamore.top/Node/Electron/electron-addtodesktop%E6%8F%92%E4%BB%B6/",
+            "url": "https://www.sycamore.top/Node/Electron/electron-addtodesktop%E6%8F%92%E4%BB%B6/",
+            "title": "electron-addtodesktop插件",
+            "date_published": "2023-05-02T06:12:13.000Z",
+            "content_html": "<p>项目地址：<span class=\"exturl\" data-url=\"aHR0cHM6Ly9naXRodWIuY29tL25vbmVTeWNhbW9yZS9lbGVjdHJvbi1hZGR0b2Rlc2t0b3A=\">electron-addtodesktop</span></p>\n<p>...（具体内容 5.1 结束回去粘贴，写在 Trillium 上，忘记同步了...）</p>\n",
+            "tags": [
+                "node",
+                "plugs",
+                "Electron"
+            ]
+        },
+        {
+            "id": "https://www.sycamore.top/Node/node%E7%9B%B8%E5%85%B3/",
+            "url": "https://www.sycamore.top/Node/node%E7%9B%B8%E5%85%B3/",
+            "title": "Node相关",
+            "date_published": "2023-04-30T09:42:04.000Z",
+            "content_html": "<h2 id=\"node版本控制\"><a class=\"anchor\" href=\"#node版本控制\">#</a> node 版本控制</h2>\n<p>大部分时候，并不是版本越新越好，开发过程中经常会遇到某些好用的插件只支持较低版本的 <code>Nodejs</code> ，这时候就需要用到版本控制。</p>\n<p>使用<span class=\"label success\"> nvm</span>，可以轻松管理版本。实用命令如下：</p>\n<figure class=\"highlight shell\"><figcaption data-lang=\"Bash\"></figcaption><table><tr><td data-num=\"1\"></td><td><pre>nvm <span class=\"token function\">install</span> <span class=\"token punctuation\">[</span>版本号<span class=\"token punctuation\">]</span> <span class=\"token punctuation\">[</span>lts<span class=\"token punctuation\">]</span>  <span class=\"token comment\"># 安装特定版本的 node</span></pre></td></tr><tr><td data-num=\"2\"></td><td><pre>nvm use <span class=\"token punctuation\">[</span>版本号<span class=\"token punctuation\">]</span>  <span class=\"token comment\"># 切换特定版本的 node</span></pre></td></tr><tr><td data-num=\"3\"></td><td><pre>nvm list  <span class=\"token comment\"># 列出已安装的 node 版本，星号标注当前使用的版本</span></pre></td></tr></table></figure><h2 id=\"项目仓库\"><a class=\"anchor\" href=\"#项目仓库\">#</a> 项目仓库</h2>\n<p><code>package.json</code>  是非常重要的文件，其中记录了项目的配置信息。</p>\n<p>最好加一个 <code>.gitignore</code>  文件，其中记录 <code>git</code>  上传时忽略更改的目录和文件，基本上需要包含 <code>*.log</code>  以及 <code>node_modules/</code> ，其中前者是可能存在的日志文件，后者是项目本地安装的插件</p>\n<p>这也体现了 <code>package.json</code>  文件的重要性，因为通常插件安装目录是不会上传的，所以每次 <code>clone</code>   <code>GitHub</code>  项目的时候，都是没有安装插件的状态，在执行任何更改之前都要执行命令： <code>npm install --force</code></p>\n<p>而 <code>package.json</code>  文件中有部分就记录了项目中应该安装的插件，上述命令也正是根据该文件中的这一部分来安装插件的。</p>\n<h2 id=\"git大文件管理\"><a class=\"anchor\" href=\"#git大文件管理\">#</a> git 大文件管理</h2>\n<p>也许有时你的项目中出现了大文件，即大于 100MB 的文件，这时候用 <code>git</code>  是上传不上去的，这就需要用到  <code>Git LFS</code></p>\n<figure class=\"highlight shell\"><figcaption data-lang=\"Bash\"></figcaption><table><tr><td data-num=\"1\"></td><td><pre><span class=\"token function\">git</span> lfs <span class=\"token function\">install</span>  <span class=\"token comment\"># 安装 Git LFS</span></pre></td></tr><tr><td data-num=\"2\"></td><td><pre><span class=\"token function\">git</span> lfs track <span class=\"token string\">\"...\"</span>  <span class=\"token comment\"># 要追踪的大文件名，可为 *.exe 的格式</span></pre></td></tr><tr><td data-num=\"3\"></td><td><pre><span class=\"token function\">git</span> <span class=\"token function\">add</span> .gitattributes  <span class=\"token comment\"># 配置文件</span></pre></td></tr></table></figure><p>然后就是 <code>add/commit/push</code>  的常规操作了</p>\n<h2 id=\"npm插件编写\"><a class=\"anchor\" href=\"#npm插件编写\">#</a> npm 插件编写</h2>\n<p>...（5.1 结束回去粘贴）</p>\n",
+            "tags": [
+                "node",
+                "npm",
+                "plugs"
+            ]
+        }
+    ]
+}
