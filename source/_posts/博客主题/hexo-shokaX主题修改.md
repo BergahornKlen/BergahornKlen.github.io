@@ -50,7 +50,7 @@ menu:
     categories: /categories/ || th
     tags: /tags/ || tags
   friends: /friends/ || heart
-  travellings: https://www.travellings.cn || subway
+  travellings: https://www.travellings.cn/go.html  || subway
 ```
 
 :::default
