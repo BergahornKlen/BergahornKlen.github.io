@@ -3,7 +3,7 @@ title: electron-addtodesktop插件
 date: 2023-05-02 14:12:13
 tags: [Electron,node,plugs]
 categories: 
- - [Node,Electron]
+ - [Electron]
 ---
 
 项目地址：[electron-addtodesktop](https://github.com/noneSycamore/electron-addtodesktop)

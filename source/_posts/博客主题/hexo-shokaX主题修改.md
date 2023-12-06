@@ -36,7 +36,7 @@ SXC install -r=github shokaX
 
 如果想和`shoka`主题站点的顶栏配置一样的，可以参考我的配置：
 
-!!shokaX配置文档中说得也够详细了，但某些话读起来总有点谜语人的感觉，比如超链接，我不知道为啥他要这么说...!!
+!!shokaX配置文档中说得也够详细了，但某些话读起来总有点谜语人的感觉，比如超链接的部分，文档的说法实在是令人迷惑...!!
 
 ```yaml
 menu:
@@ -54,7 +54,7 @@ menu:
 ```
 
 :::default
-关于自定义icon的添加，`shoka`的配置文档中有提供一种解决方法，但建议参考我后面的解决方案
+关于自定义icon的添加，`shoka`的配置文档中有提供一种解决方法，但建议参考我后面的解决方案 [[这里]](https://sycamore.top/%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98/hexo-shokaX%E4%B8%BB%E9%A2%98%E4%BF%AE%E6%94%B9/#iconfont%E5%9B%BE%E6%A0%87%E5%BA%93%E6%B7%BB%E5%8A%A0)
 :::
 
 ### 评论系统
@@ -189,8 +189,9 @@ shoka主题下，离开和进入博客页面时，浏览器TAB标签的内容会
        @import "_iconfont_plus";
      ```
 7. 最后修改`source/css/_common/scaffolding/base.styl`文件中，
+
 	添加代码：
-	
+
    ```css
     @font-face {
       font-family: 'ic';

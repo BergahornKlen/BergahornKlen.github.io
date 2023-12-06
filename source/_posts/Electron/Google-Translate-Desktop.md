@@ -3,7 +3,7 @@ title: Google-Translate-Desktop
 date: 2023-05-02 14:46:42
 tags: [Electron,Google Translate,node]
 categories: 
- - [Node,Electron]
+ - [Electron]
 ---
 
 项目地址：[Google-Translate-Desktop](https://github.com/noneSycamore/Google-Translate-Desktop)

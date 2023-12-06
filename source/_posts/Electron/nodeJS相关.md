@@ -1,9 +1,9 @@
 ---
-title: Node相关
+title: nodeJS相关
 date: 2023-04-30 17:42:04
 tags: [node,npm,plugs]
 categories: 
- - [Node]
+ - [Electron]
 cover: https://res.cloudinary.com/sycamore/image/upload/v1682849816/Typera/2023/04/d39197fd00b4e17f12ac1a852c12fd7e.png
 ---
 
