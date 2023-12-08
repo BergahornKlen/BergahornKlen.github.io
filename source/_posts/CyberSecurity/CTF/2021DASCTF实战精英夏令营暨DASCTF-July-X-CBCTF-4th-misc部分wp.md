@@ -3,7 +3,7 @@ title: 2021DASCTF实战精英夏令营暨DASCTF July X CBCTF 4th misc部分wp
 date: 2021-11-26 18:20:21
 tags: [CTF,Misc,Python]
 categories: 
- - CTF
+ - [Cyber Security,CTF]
 cover: https://res.cloudinary.com/sycamore/image/upload/v1682434776/Typera/2023/04/e4f4c5ecbc0fc45c6bbe9fd3ced0996e.png
 ---
 

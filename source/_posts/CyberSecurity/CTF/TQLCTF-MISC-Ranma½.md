@@ -3,7 +3,7 @@ title: TQLCTF-MISC-Ranma½
 date: 2022-2-22 22:36:41
 tags: [CTF,Misc,Python]
 categories: 
- - CTF
+ - [Cyber Security,CTF]
 cover: https://res.cloudinary.com/sycamore/image/upload/v1682438327/Typera/2023/04/33bcab1c0fc91bd552a41c8dc39d23ac.png
 ---
 

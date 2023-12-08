@@ -3,7 +3,7 @@ title: 西湖论剑_YUSA的小秘密
 date: 2021-11-29 23:02:55
 tags: [CTF,Misc,Python]
 categories: 
- - CTF
+ - [Cyber Security,CTF]
 cover: https://res.cloudinary.com/sycamore/image/upload/v1682437178/Typera/2023/04/c5a9db9e102c912faba686513f8d522c.png
 ---
 

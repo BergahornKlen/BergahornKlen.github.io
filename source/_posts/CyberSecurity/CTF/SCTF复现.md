@@ -3,7 +3,7 @@ title: SCTF复现
 date: 2022-1-30 00:18:22
 tags: [CTF,Pwn,Misc,Python]
 categories: 
- - CTF
+ - [Cyber Security,CTF]
 cover: https://res.cloudinary.com/sycamore/image/upload/v1682437447/Typera/2023/04/cc5ef5d743e36e64258472e8363cede3.png
 ---
 
