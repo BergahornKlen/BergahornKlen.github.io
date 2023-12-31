@@ -107,7 +107,7 @@ deploy:
   type: git
   repo: https://github.com/BergahornKlen/BergahornKlen.github.io.git
   branch: main
-  token: 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
+  token: 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
 
 markdown:
   render: # 渲染器设置
