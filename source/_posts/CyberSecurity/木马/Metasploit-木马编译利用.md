@@ -105,7 +105,7 @@ Kali 中默认安装了 **Metasploit** 框架。
 输入命令：`use exploit/multi/handler`，选择exploit模块
 
 然后，可以输入命令 `show options` 查看**设置的参数**（查看还要设置哪些）
-![](https://cdn.jsdelivr.net/gh/noneSycamore/blog_pic_url/trojan-horse10.png)
+![trojan-horse10](https://res.cloudinary.com/sycamore/image/upload/v1704010005/Typera/2023/12/4a6d04ee3788a771e9fe642e64fa8104.png)
 
 
 
