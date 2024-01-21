@@ -108,6 +108,7 @@ deploy:
   repo: https://github.com/BergahornKlen/BergahornKlen.github.io.git
   branch: main
   token: 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
+  message: "Site updated"
 
 markdown:
   render: # 渲染器设置
