@@ -3,7 +3,7 @@ title: CUMTCTF-2022出题部分wp
 date: 2022-6-8 12:04:04
 tags: [CTF,Pwn,Crypto,Misc,Python]
 categories: 
- - [Cyber Security,CTF]
+ - [CyberSecurity,CTF]
 cover: https://res.cloudinary.com/sycamore/image/upload/v1682435935/Typera/2023/04/54a2923a541fe0c86555a91b264f4221.png
 ---
 

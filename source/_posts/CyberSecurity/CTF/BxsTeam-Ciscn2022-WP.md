@@ -3,7 +3,7 @@ title: BxsTeam Ciscn2022 WP
 date: 2022-6-20 19:23:14
 tags: [CTF,Web,Miec,Crypto,Re,Pwn]
 categories: 
- - [Cyber Security,CTF]
+ - [CyberSecurity,CTF]
 cover: https://res.cloudinary.com/sycamore/image/upload/v1682445189/Typera/2023/04/3cefa989c163e2c70c942cacb0d2b9a5.png
 ---
 

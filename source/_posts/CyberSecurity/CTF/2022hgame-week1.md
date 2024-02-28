@@ -3,7 +3,7 @@ title: 2022hgame week1
 date: 2022-2-5 12:46:27
 tags: [CTF,Crypto,Misc,Python]
 categories: 
- - [Cyber Security,CTF]
+ - [CyberSecurity,CTF]
 cover: https://res.cloudinary.com/sycamore/image/upload/v1682438101/Typera/2023/04/8798b063d769d1c7172303ddd222745a.png
 ---
 

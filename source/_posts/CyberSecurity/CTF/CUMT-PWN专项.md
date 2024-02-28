@@ -3,7 +3,7 @@ title: CUMT PWN专项
 date: 2021-11-25 23:24:22
 tags: [CTF,Pwn,Python]
 categories: 
- - [Cyber Security,CTF]
+ - [CyberSecurity,CTF]
 cover: https://res.cloudinary.com/sycamore/image/upload/v1682435935/Typera/2023/04/54a2923a541fe0c86555a91b264f4221.png
 ---
 

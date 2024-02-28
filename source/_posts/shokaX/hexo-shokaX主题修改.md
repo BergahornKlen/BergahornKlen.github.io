@@ -3,7 +3,7 @@ title: hexo-shokaX主题修改
 date: 2023-04-30 14:05:53
 tags: [Hexo,shokaX,博客主题]
 categories: 
- - 博客主题
+ - shokaX
 cover: https://res.cloudinary.com/sycamore/image/upload/v1682846617/Typera/2023/04/577e6e5d3f3fdf4d5af4e71de5c13847.png
 ---
 

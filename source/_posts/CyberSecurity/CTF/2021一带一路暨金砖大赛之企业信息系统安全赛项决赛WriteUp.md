@@ -3,7 +3,7 @@ title: 2021一带一路暨金砖大赛之企业信息系统安全赛项决赛Wri
 date: 2022-6-20 19:21:28
 tags: [CTF,Web,Miec,Crypto,Re,Pwn]
 categories: 
- - [Cyber Security,CTF]
+ - [CyberSecurity,CTF]
 cover: https://res.cloudinary.com/sycamore/image/upload/v1682445106/Typera/2023/04/81bd849f0c69ea614831384a2cb8e277.png
 ---
 

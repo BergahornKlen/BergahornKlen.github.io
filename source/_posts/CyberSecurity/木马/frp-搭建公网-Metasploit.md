@@ -3,7 +3,7 @@ title: frp 搭建公网 Metasploit
 date: 2022-4-18 20:18:36
 tags: [Trojan horse,Linux,Kali,Metasploit,frp]
 categories: 
- - [Cyber Security,木马]
+ - [CyberSecurity,木马]
 cover: https://res.cloudinary.com/sycamore/image/upload/v1682442126/Typera/2023/04/87d91c5d20cc130aa72fe99c74a9e8c2.png
 ---
 
