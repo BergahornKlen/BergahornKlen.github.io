@@ -5,8 +5,8 @@
         <link>https://www.sycamore.top</link>
         <description></description>
         <language>zh-CN</language>
-        <pubDate>Sat, 23 Apr 2022 21:48:27 +0800</pubDate>
-        <lastBuildDate>Sat, 23 Apr 2022 21:48:27 +0800</lastBuildDate>
+        <pubDate>Sat, 23 Apr 2022 23:48:27 +1000</pubDate>
+        <lastBuildDate>Sat, 23 Apr 2022 23:48:27 +1000</lastBuildDate>
         <category>Python</category>
         <category>计算机视觉</category>
         <category>深度学习</category>
@@ -47,7 +47,7 @@
             <category>Linux</category>
             <category>Kali</category>
             <category>Reverse Shell</category>
-            <pubDate>Sat, 23 Apr 2022 21:48:27 +0800</pubDate>
+            <pubDate>Sat, 23 Apr 2022 23:48:27 +1000</pubDate>
             <description><![CDATA[ &lt;h1 id=&#34;什么是反弹shell&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#什么是反弹shell&#34;&gt;#&lt;/a&gt; 什么是反弹 shell？&lt;/h1&gt;
 &lt;p&gt;&lt;strong&gt;正向连接&lt;/strong&gt;，就是攻击者用自己的&lt;strong&gt;攻击机&lt;/strong&gt;连接到&lt;strong&gt;目标主机&lt;/strong&gt;的某一端口，&lt;strong&gt;常见&lt;/strong&gt;的有 web 服务、ssh、远程桌面等等。&lt;/p&gt;
 &lt;p&gt;在&lt;strong&gt;实际情况&lt;/strong&gt;下，总会有很多时候，我们&lt;strong&gt;不能&lt;/strong&gt;通过正向连接访问到目标主机，这个时候就可以利用&lt;strong&gt;反向连接&lt;/strong&gt;来实现。&lt;/p&gt;

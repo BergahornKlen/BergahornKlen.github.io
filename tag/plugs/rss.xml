@@ -5,8 +5,8 @@
         <link>https://www.sycamore.top</link>
         <description></description>
         <language>zh-CN</language>
-        <pubDate>Sun, 30 Apr 2023 17:42:04 +0800</pubDate>
-        <lastBuildDate>Sun, 30 Apr 2023 17:42:04 +0800</lastBuildDate>
+        <pubDate>Sun, 30 Apr 2023 19:42:04 +1000</pubDate>
+        <lastBuildDate>Sun, 30 Apr 2023 19:42:04 +1000</lastBuildDate>
         <category>Python</category>
         <category>计算机视觉</category>
         <category>深度学习</category>
@@ -48,7 +48,7 @@
             <category>node</category>
             <category>npm</category>
             <category>plugs</category>
-            <pubDate>Sun, 30 Apr 2023 17:42:04 +0800</pubDate>
+            <pubDate>Sun, 30 Apr 2023 19:42:04 +1000</pubDate>
             <description><![CDATA[ &lt;h2 id=&#34;node版本控制&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#node版本控制&#34;&gt;#&lt;/a&gt; node 版本控制&lt;/h2&gt;
 &lt;p&gt;大部分时候，并不是版本越新越好，开发过程中经常会遇到某些好用的插件只支持较低版本的 &lt;code&gt;Nodejs&lt;/code&gt; ，这时候就需要用到版本控制。&lt;/p&gt;
 &lt;p&gt;使用&lt;span class=&#34;label success&#34;&gt; nvm&lt;/span&gt;，可以轻松管理版本。实用命令如下：&lt;/p&gt;

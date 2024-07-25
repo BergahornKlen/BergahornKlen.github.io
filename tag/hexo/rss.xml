@@ -5,8 +5,8 @@
         <link>https://www.sycamore.top</link>
         <description></description>
         <language>zh-CN</language>
-        <pubDate>Sun, 30 Apr 2023 14:05:53 +0800</pubDate>
-        <lastBuildDate>Sun, 30 Apr 2023 14:05:53 +0800</lastBuildDate>
+        <pubDate>Sun, 30 Apr 2023 16:05:53 +1000</pubDate>
+        <lastBuildDate>Sun, 30 Apr 2023 16:05:53 +1000</lastBuildDate>
         <category>Python</category>
         <category>计算机视觉</category>
         <category>深度学习</category>
@@ -47,7 +47,7 @@
             <category>Hexo</category>
             <category>shokaX</category>
             <category>博客主题</category>
-            <pubDate>Sun, 30 Apr 2023 14:05:53 +0800</pubDate>
+            <pubDate>Sun, 30 Apr 2023 16:05:53 +1000</pubDate>
             <description><![CDATA[ &lt;p&gt;&lt;span class=&#34;label&#34;&gt;shokaX&lt;/span&gt; 主题基于&lt;span class=&#34;label&#34;&gt; shoka&lt;/span&gt; 主题进行二次开发，据说是因为原主题停止更新...&lt;/p&gt;
 &lt;p&gt;因为各种原因吧，若按照 &lt;code&gt;shokaX&lt;/code&gt;  作者写的文档更改配置的话，还需要一定程度上参考一下 &lt;code&gt;shoka&lt;/code&gt;  主题的配置文档，&lt;/p&gt;
 &lt;p&gt;所以，我决定记录一下这次博客迁移中对 &lt;code&gt;shokaX&lt;/code&gt;  主题进行的更改。&lt;/p&gt;
