@@ -25,40 +25,43 @@ date: 2023-04-27 00:20:43
 ```
 
 # 友链 :sparkling_heart:
-	
+
 {% links %}
+
+- site: 咖啡豆子coffee的小站
+  owner: 咖啡豆子coffee
+  url: https://kfdzcoffee.cn/
+  desc: 所有奇迹的始发点
+  image: https://kfdzcoffee.cn/upload/mmexport1715001096100.png
+  color: "#af9bc0"
 - site: Lightu
   owner: Lightu
   url: http://lu1u.bxsteam.tk/
   desc: My re bro@BXS
   image: https://res.cloudinary.com/sycamore/image/upload/v1682586603/Typera/2023/04/fa188169bd124c67e7abe36996ed15d4.jpg
   color: "#EC896E"
-
 - site: Nightu
   owner: Nightu
   url: https://nightu.darkflow.top/
   desc: My pwn bro@BXS
   image: https://res.cloudinary.com/sycamore/image/upload/v1682586545/Typera/2023/04/a7e67d5941dabfdb06eb093f9d1ecdd0.jpg
   color: "#EC896E"
-
 - site: h0cksr
   owner: h0cksr
   url: http://h0cksr.xyz/
   desc: My web bro@BXS
   image: https://res.cloudinary.com/sycamore/image/upload/v1682586585/Typera/2023/04/f6446c83670f58beb11fd9b2f4e27109.jpg
   color: "#EC896E"
-
 - site: Jlan
   owner: Jlan
   url: https://jlan.darkflow.top/
   desc: My web bro@BXS
   image: https://res.cloudinary.com/sycamore/image/upload/v1682586705/Typera/2023/04/94d6febc1d62e18839744a838e99ce60.png
   color: "#EC896E"
-
 - site: Sycamore的折腾记录
   owner: Sycamore
   url: https://blog.sycamore.top
-  desc: 您配环境吗？
+  desc: 其他
   image: https://res.cloudinary.com/sycamore/image/upload/v1638117170/sycamore.top/favicon.png
   color: "#5daddc"
 
