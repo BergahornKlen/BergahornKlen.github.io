@@ -46,9 +46,9 @@
         <category>CP2077</category>
         <category>archive</category>
         <item>
-            <guid isPermalink="true">https://www.sycamore.top/Mod%20Develop/Cyberpunk%202077/Ciri%20Main%20Menu%20Background/</guid>
+            <guid isPermalink="true">https://www.sycamore.top/Mod-Develop/Cyberpunk-2077/Ciri%20Main%20Menu%20Background/</guid>
             <title>希里的 CP2077 主菜单背景</title>
-            <link>https://www.sycamore.top/Mod%20Develop/Cyberpunk%202077/Ciri%20Main%20Menu%20Background/</link>
+            <link>https://www.sycamore.top/Mod-Develop/Cyberpunk-2077/Ciri%20Main%20Menu%20Background/</link>
             <category>Develop</category>
             <category>Mod</category>
             <category>CP2077</category>
@@ -74,7 +74,7 @@
 &lt;p&gt;效果如下，成功补上往日之影的 Logo：&lt;/p&gt;
 &lt;p&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1730822474/Typera/2024/11/fbc6ffdfb07adb1f77abc0edd380520e.png&#34; alt=&#34;image-20241106030106133&#34; /&gt;&lt;/p&gt;
 &lt;h1 id=&#34;分析原-mod&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#分析原-mod&#34;&gt;#&lt;/a&gt; 分析原 Mod&lt;/h1&gt;
-&lt;p&gt;先阅读：关于 archive 中的文件介绍&lt;/p&gt;
+&lt;p&gt;最好先阅读：[archive 内容解析](&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9zeWNhbW9yZS50b3AvTW9k&#34;&gt;https://sycamore.top/Mod&lt;/span&gt; Develop/Cyberpunk 2077/archive 内容解析 /)&lt;/p&gt;
 &lt;p&gt;我的分析过程其实绕了很大的弯子，有兴趣可以看一下，其实蛮有意思的。&lt;/p&gt;
 &lt;p&gt;或者你可以直接跳到：真正的修复点分析&lt;/p&gt;
 &lt;h2 id=&#34;定位背景图片的位置&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#定位背景图片的位置&#34;&gt;#&lt;/a&gt; 定位背景图片的位置&lt;/h2&gt;
@@ -127,9 +127,9 @@
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://www.sycamore.top/Mod%20Develop/Cyberpunk%202077/archive%E5%86%85%E5%AE%B9%E8%A7%A3%E6%9E%90/</guid>
+            <guid isPermalink="true">https://www.sycamore.top/Mod-Develop/Cyberpunk-2077/archive%E5%86%85%E5%AE%B9%E8%A7%A3%E6%9E%90/</guid>
             <title>archive 内容解析</title>
-            <link>https://www.sycamore.top/Mod%20Develop/Cyberpunk%202077/archive%E5%86%85%E5%AE%B9%E8%A7%A3%E6%9E%90/</link>
+            <link>https://www.sycamore.top/Mod-Develop/Cyberpunk-2077/archive%E5%86%85%E5%AE%B9%E8%A7%A3%E6%9E%90/</link>
             <category>Develop</category>
             <category>Mod</category>
             <category>CP2077</category>
@@ -166,13 +166,13 @@
 &lt;p&gt;可以在主菜单看到同样的图片：&lt;/p&gt;
 &lt;p&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1730809840/Typera/2024/11/a4e7e61df94dc872b29a72dd4b9fe6ba.png&#34; alt=&#34;image-20241105233029146&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;因此，如果我要更换这个主菜单的背景图片，需要更改对应的 inkwidget 中的内容。&lt;/p&gt;
-&lt;p&gt;（后续分析：）&lt;/p&gt;
+&lt;p&gt;（后续分析：[希里的 CP2077 主菜单背景](&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9zeWNhbW9yZS50b3AvTW9k&#34;&gt;https://sycamore.top/Mod&lt;/span&gt; Develop/Cyberpunk 2077/Ciri Main Menu Background/)）&lt;/p&gt;
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://www.sycamore.top/Mod%20Develop/Cyberpunk%202077/Weapon%20Inspection/</guid>
+            <guid isPermalink="true">https://www.sycamore.top/Mod-Develop/Cyberpunk-2077/Weapon%20Inspection/</guid>
             <title>武器验视 Mod</title>
-            <link>https://www.sycamore.top/Mod%20Develop/Cyberpunk%202077/Weapon%20Inspection/</link>
+            <link>https://www.sycamore.top/Mod-Develop/Cyberpunk-2077/Weapon%20Inspection/</link>
             <category>Develop</category>
             <category>Mod</category>
             <category>CP2077</category>
@@ -1004,9 +1004,9 @@ M834 80h400000v40h-400000z&#39;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;/span&gt;&lt;/s
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://www.sycamore.top/HomeWork/%E5%9F%BA%E4%BA%8E%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%9A%84%E5%9B%BE%E5%83%8F%E7%AF%A1%E6%94%B9%E6%A3%80%E6%B5%8B/</guid>
+            <guid isPermalink="true">https://www.sycamore.top/Homework/%E5%9F%BA%E4%BA%8E%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%9A%84%E5%9B%BE%E5%83%8F%E7%AF%A1%E6%94%B9%E6%A3%80%E6%B5%8B/</guid>
             <title>基于卷积神经网络的图像篡改检测</title>
-            <link>https://www.sycamore.top/HomeWork/%E5%9F%BA%E4%BA%8E%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%9A%84%E5%9B%BE%E5%83%8F%E7%AF%A1%E6%94%B9%E6%A3%80%E6%B5%8B/</link>
+            <link>https://www.sycamore.top/Homework/%E5%9F%BA%E4%BA%8E%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%9A%84%E5%9B%BE%E5%83%8F%E7%AF%A1%E6%94%B9%E6%A3%80%E6%B5%8B/</link>
             <category>Python</category>
             <category>计算机视觉</category>
             <category>深度学习</category>
@@ -2928,9 +2928,9 @@ PAM 使用目录 **/etc/pam.d/&lt;strong&gt; 下的配置文件，即对应着�
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://www.sycamore.top/HomeWork/%E6%95%B0%E5%AD%A6%E6%80%9D%E7%BB%B4%E5%9C%A8%E5%AF%86%E7%A0%81%E5%AD%A6%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/</guid>
+            <guid isPermalink="true">https://www.sycamore.top/Homework/%E6%95%B0%E5%AD%A6%E6%80%9D%E7%BB%B4%E5%9C%A8%E5%AF%86%E7%A0%81%E5%AD%A6%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/</guid>
             <title>数学思维在密码学中的应用</title>
-            <link>https://www.sycamore.top/HomeWork/%E6%95%B0%E5%AD%A6%E6%80%9D%E7%BB%B4%E5%9C%A8%E5%AF%86%E7%A0%81%E5%AD%A6%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/</link>
+            <link>https://www.sycamore.top/Homework/%E6%95%B0%E5%AD%A6%E6%80%9D%E7%BB%B4%E5%9C%A8%E5%AF%86%E7%A0%81%E5%AD%A6%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/</link>
             <category>Python</category>
             <category>Crypto</category>
             <pubDate>Fri, 04 Mar 2022 02:15:28 +1100</pubDate>

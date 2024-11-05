@@ -43,9 +43,9 @@
     <category term="CP2077" />
     <category term="archive" />
     <entry>
-        <id>https://www.sycamore.top/Mod%20Develop/Cyberpunk%202077/Ciri%20Main%20Menu%20Background/</id>
+        <id>https://www.sycamore.top/Mod-Develop/Cyberpunk-2077/Ciri%20Main%20Menu%20Background/</id>
         <title>希里的 CP2077 主菜单背景</title>
-        <link rel="alternate" href="https://www.sycamore.top/Mod%20Develop/Cyberpunk%202077/Ciri%20Main%20Menu%20Background/"/>
+        <link rel="alternate" href="https://www.sycamore.top/Mod-Develop/Cyberpunk-2077/Ciri%20Main%20Menu%20Background/"/>
         <content type="html">&lt;p&gt;我试图在 2.0+ 版本中修复 mod: &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cubmV4dXNtb2RzLmNvbS9jeWJlcnB1bmsyMDc3L21vZHMvMjU0MQ==&#34;&gt;Ciri in Night City - Main Menu Background Replacer&lt;/span&gt;，添加对往日之影 Logo 的支持。&lt;/p&gt;
 &lt;hr /&gt;
 &lt;p&gt;原 Mod 启动效果图，可以看到没有往日之影的 logo：&lt;/p&gt;
@@ -66,7 +66,7 @@
 &lt;p&gt;效果如下，成功补上往日之影的 Logo：&lt;/p&gt;
 &lt;p&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1730822474/Typera/2024/11/fbc6ffdfb07adb1f77abc0edd380520e.png&#34; alt=&#34;image-20241106030106133&#34; /&gt;&lt;/p&gt;
 &lt;h1 id=&#34;分析原-mod&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#分析原-mod&#34;&gt;#&lt;/a&gt; 分析原 Mod&lt;/h1&gt;
-&lt;p&gt;先阅读：关于 archive 中的文件介绍&lt;/p&gt;
+&lt;p&gt;最好先阅读：[archive 内容解析](&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9zeWNhbW9yZS50b3AvTW9k&#34;&gt;https://sycamore.top/Mod&lt;/span&gt; Develop/Cyberpunk 2077/archive 内容解析 /)&lt;/p&gt;
 &lt;p&gt;我的分析过程其实绕了很大的弯子，有兴趣可以看一下，其实蛮有意思的。&lt;/p&gt;
 &lt;p&gt;或者你可以直接跳到：真正的修复点分析&lt;/p&gt;
 &lt;h2 id=&#34;定位背景图片的位置&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#定位背景图片的位置&#34;&gt;#&lt;/a&gt; 定位背景图片的位置&lt;/h2&gt;
@@ -124,9 +124,9 @@
         <updated>2024-11-05T14:56:23.000Z</updated>
     </entry>
     <entry>
-        <id>https://www.sycamore.top/Mod%20Develop/Cyberpunk%202077/archive%E5%86%85%E5%AE%B9%E8%A7%A3%E6%9E%90/</id>
+        <id>https://www.sycamore.top/Mod-Develop/Cyberpunk-2077/archive%E5%86%85%E5%AE%B9%E8%A7%A3%E6%9E%90/</id>
         <title>archive 内容解析</title>
-        <link rel="alternate" href="https://www.sycamore.top/Mod%20Develop/Cyberpunk%202077/archive%E5%86%85%E5%AE%B9%E8%A7%A3%E6%9E%90/"/>
+        <link rel="alternate" href="https://www.sycamore.top/Mod-Develop/Cyberpunk-2077/archive%E5%86%85%E5%AE%B9%E8%A7%A3%E6%9E%90/"/>
         <content type="html">&lt;p&gt;本文内容会有些许凌乱，因为是 Mod 开发过程中，我对 archive 的一些文件代表的内容的想法。&lt;/p&gt;
 &lt;p&gt;而且本人没有接触过 3D 动画、游戏制作这方面的内容，描述会存在很多不专业的地方。&lt;/p&gt;
 &lt;hr /&gt;
@@ -158,7 +158,7 @@
 &lt;p&gt;可以在主菜单看到同样的图片：&lt;/p&gt;
 &lt;p&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1730809840/Typera/2024/11/a4e7e61df94dc872b29a72dd4b9fe6ba.png&#34; alt=&#34;image-20241105233029146&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;因此，如果我要更换这个主菜单的背景图片，需要更改对应的 inkwidget 中的内容。&lt;/p&gt;
-&lt;p&gt;（后续分析：）&lt;/p&gt;
+&lt;p&gt;（后续分析：[希里的 CP2077 主菜单背景](&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9zeWNhbW9yZS50b3AvTW9k&#34;&gt;https://sycamore.top/Mod&lt;/span&gt; Develop/Cyberpunk 2077/Ciri Main Menu Background/)）&lt;/p&gt;
 </content>
         <category term="Develop" />
         <category term="Mod" />
@@ -167,9 +167,9 @@
         <updated>2024-11-05T14:56:23.000Z</updated>
     </entry>
     <entry>
-        <id>https://www.sycamore.top/Mod%20Develop/Cyberpunk%202077/Weapon%20Inspection/</id>
+        <id>https://www.sycamore.top/Mod-Develop/Cyberpunk-2077/Weapon%20Inspection/</id>
         <title>武器验视 Mod</title>
-        <link rel="alternate" href="https://www.sycamore.top/Mod%20Develop/Cyberpunk%202077/Weapon%20Inspection/"/>
+        <link rel="alternate" href="https://www.sycamore.top/Mod-Develop/Cyberpunk-2077/Weapon%20Inspection/"/>
         <content type="html">&lt;p&gt;开发中：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL25vbmVTeWNhbW9yZS9XZWFwb24tSW5zcGVjdGlvbi1DUDIwNzc=&#34;&gt;noneSycamore/Weapon-Inspection-CP2077&lt;/span&gt;&lt;/p&gt;
 </content>
         <category term="Develop" />
