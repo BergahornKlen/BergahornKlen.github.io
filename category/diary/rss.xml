@@ -1,0 +1,152 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>Sycamore&#39;s Blog • Posts by &#34;diary&#34; category</title>
+        <link>https://www.sycamore.top</link>
+        <description></description>
+        <language>zh-CN</language>
+        <pubDate>Tue, 05 Nov 2024 14:05:53 +1100</pubDate>
+        <lastBuildDate>Tue, 05 Nov 2024 14:05:53 +1100</lastBuildDate>
+        <category>Python</category>
+        <category>计算机视觉</category>
+        <category>深度学习</category>
+        <category>Crypto</category>
+        <category>Hexo</category>
+        <category>shokaX</category>
+        <category>博客主题</category>
+        <category>实习</category>
+        <category>springboot</category>
+        <category>CTF</category>
+        <category>Misc</category>
+        <category>Web</category>
+        <category>Miec</category>
+        <category>Re</category>
+        <category>Pwn</category>
+        <category>Backdoor</category>
+        <category>Linux</category>
+        <category>Kali</category>
+        <category>Trojan horse</category>
+        <category>Metasploit</category>
+        <category>frp</category>
+        <category>shellter</category>
+        <category>Reverse Shell</category>
+        <category>Develop</category>
+        <category>Electron</category>
+        <category>Google Translate</category>
+        <category>node</category>
+        <category>Hitokoto</category>
+        <category>npm</category>
+        <category>plugs</category>
+        <category>RCE，loophole</category>
+        <category>毕业设计</category>
+        <category>机器学习</category>
+        <category>Diary</category>
+        <category>Australia</category>
+        <category>Mod</category>
+        <category>CP2077</category>
+        <item>
+            <guid isPermalink="true">https://www.sycamore.top/Diary/2024-11-05/</guid>
+            <title>留学近况</title>
+            <link>https://www.sycamore.top/Diary/2024-11-05/</link>
+            <category>Diary</category>
+            <category>Australia</category>
+            <pubDate>Tue, 05 Nov 2024 14:05:53 +1100</pubDate>
+            <description><![CDATA[ &lt;p&gt;简单说一下吧，USYD，Master of Computer Science (adv.)，目前是 24S2 末尾，临近考试。&lt;/p&gt;
+&lt;h1 id=&#34;学习&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#学习&#34;&gt;#&lt;/a&gt; 学习&lt;/h1&gt;
+&lt;p&gt;学习时间很紧张，这边注重实践，虽然 report 也不少。&lt;/p&gt;
+&lt;p&gt;平时课程分为 Lecture 和 Tutorial，Lec 可以理解为大课，一个教授对很多学生讲，Tut 可以理解为组织很小的偏实践课，一般是一个 tutor 对 十来个学生。&lt;/p&gt;
+&lt;p&gt;作业很多，assignment 一个接一个，通常让我很头疼，尤其是有些课每周还有固定的任务，平时闲不下来，双休日还得余出一天写作业。&lt;/p&gt;
+&lt;p&gt;但收获也很多，虽然有不少对提升学识毫无意义的 report，但也起码提升了我的英语写作技巧。何况 report 终究是少数，不少 assignment 还是非常有趣，又有相当的指导作用的。&lt;/p&gt;
+&lt;h1 id=&#34;生活&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#生活&#34;&gt;#&lt;/a&gt; 生活&lt;/h1&gt;
+&lt;p&gt;和国内相比，物价基本 × 5，虽然有些东西价格差不多，但大部分都是如此。&lt;/p&gt;
+&lt;p&gt;普通的一天，如果只考虑吃，核算下来大概花费 150+ 人民币，也不是不能接受。&lt;/p&gt;
+&lt;p&gt;就是房租过于离谱，一周 2100，一个月 8400，这基本是悉尼这边的最低价了，再低就得抢为数不多的学校宿舍，但也要一周 1600 左右，还是太贵了。&lt;/p&gt;
+&lt;h1 id=&#34;娱乐&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#娱乐&#34;&gt;#&lt;/a&gt; 娱乐&lt;/h1&gt;
+&lt;p&gt;巫师三打完本体和石之心就电子阳痿了，甚至黑神话买了都还没玩...&lt;/p&gt;
+&lt;p&gt;但巫师三真的是一款好游戏，虽然是十年前的，画质材质比不上现在的游戏，但无论是剧情还是机制，或者战斗系统，都非常有趣。尤其是剧情，不同的选择会带来很多的可能性，头一回，我体会到了什么是网状的剧情结构，而且每个小支线，小委托都很有意思。&lt;/p&gt;
+&lt;p&gt;哦，当然还有不得不提一嘴的昆特牌🐶。&lt;/p&gt;
+&lt;p&gt;难怪赛博朋克 2077 一直被吐槽有失蠢驴的水准，虽然也有发售时 bug 满天飞的缘故，但有一说一，即使现在的 bug 情况已经很不错了，剧情上真的和巫师三比不了一点。&lt;br /&gt;
+（往日之影还不错）&lt;/p&gt;
+&lt;h1 id=&#34;暑期的计划&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#暑期的计划&#34;&gt;#&lt;/a&gt; 暑期的计划&lt;/h1&gt;
+&lt;p&gt;主体计划是跟一个学校的项目，但应该还是轻松的（相比现在来说）&lt;/p&gt;
+&lt;p&gt;所以我还准备利用其他时间，写一些我想写的代码。&lt;/p&gt;
+&lt;p&gt;列在这里的，主要是学习或是生活中，突然蹦出来的一些想法，且经过简单的研究，大概是存在实现可能性的。按兴趣从高到低排序：&lt;/p&gt;
+&lt;ul class=&#34;task-list&#34;&gt;
+&lt;li class=&#34;task-list-item&#34;&gt;&lt;input type=&#34;checkbox&#34; id=&#34;cbx_0&#34; disabled=&#34;true&#34; /&gt;&lt;label for=&#34;cbx_0&#34;&gt; &lt;strong&gt;赛博朋克 2077 的 Mod 开发&lt;/strong&gt;&lt;br /&gt;
+巫师三中的希里，曾经穿越到过 CP2077 的世界，我的想法是结合一些已有的 mod，整合出一个希里的 cosplay 集合&lt;/label&gt;
+&lt;ul class=&#34;task-list&#34;&gt;
+&lt;li class=&#34;task-list-item&#34;&gt;&lt;input type=&#34;checkbox&#34; id=&#34;cbx_1&#34; disabled=&#34;true&#34; /&gt;&lt;label for=&#34;cbx_1&#34;&gt; Always First Equip 改进：&lt;br /&gt;
+这个 mod 虽然高度可定制化，但还是不符合我的设想，最好是能实现类似 VALORANT 里的武器验视动作的效果&lt;/label&gt;&lt;/li&gt;
+&lt;li class=&#34;task-list-item&#34;&gt;&lt;input type=&#34;checkbox&#34; id=&#34;cbx_2&#34; disabled=&#34;true&#34; /&gt;&lt;label for=&#34;cbx_2&#34;&gt; 主页菜单背景替换。&lt;br /&gt;
+之前有个 mod，但因为进入了 2.0 版本，加入了往日之影，现在已经几乎失效了，我会尝试修复。&lt;/label&gt;&lt;/li&gt;
+&lt;li class=&#34;task-list-item&#34;&gt;&lt;input type=&#34;checkbox&#34; id=&#34;cbx_3&#34; disabled=&#34;true&#34; /&gt;&lt;label for=&#34;cbx_3&#34;&gt; 希里的服饰&lt;br /&gt;
+已经存在类似的 mod，但是第一人称视角下，手部的附着存在相当大的问题，尝试修复。&lt;/label&gt;&lt;/li&gt;
+&lt;li class=&#34;task-list-item&#34;&gt;&lt;input type=&#34;checkbox&#34; id=&#34;cbx_4&#34; disabled=&#34;true&#34; /&gt;&lt;label for=&#34;cbx_4&#34;&gt; 希里的剑&lt;br /&gt;
+在已有的 mod 下改进武器参数。想要在困难难度下依旧能玩得爽一点，还是需要一些加成的🐶。&lt;/label&gt;&lt;/li&gt;
+&lt;li class=&#34;task-list-item&#34;&gt;&lt;input type=&#34;checkbox&#34; id=&#34;cbx_5&#34; disabled=&#34;true&#34; /&gt;&lt;label for=&#34;cbx_5&#34;&gt; 希里有个标志性的技能，就是按空格突进，在 2077 中有类似的技能。但过场 CG 里其实还可以实现空间转移（这个功能仅仅还只是设想，感觉难度太大）&lt;/label&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li class=&#34;task-list-item&#34;&gt;&lt;input type=&#34;checkbox&#34; id=&#34;cbx_6&#34; disabled=&#34;true&#34; /&gt;&lt;label for=&#34;cbx_6&#34;&gt; &lt;strong&gt;游戏存档管理&lt;/strong&gt; -&amp;gt; &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL21jdGhlc3cvZ2FtZS1zYXZlLW1hbmFnZXI=&#34;&gt;mcthesw/game-save-manager&lt;/span&gt;&lt;br /&gt;
+ 之前在该项目早期，我提交过几个功能，现在它已经有 600+ 的 star 了。但看 Issue 里还是有不少人提出改进和新功能，我想看看能不能继续做 Contribution。&lt;/label&gt;&lt;/li&gt;
+&lt;li class=&#34;task-list-item&#34;&gt;&lt;input type=&#34;checkbox&#34; id=&#34;cbx_7&#34; disabled=&#34;true&#34; /&gt;&lt;label for=&#34;cbx_7&#34;&gt; &lt;strong&gt;小说 OCR&lt;/strong&gt;&lt;br /&gt;
+（其实是不能公开说的）起点小说付费，好像改进了算法。网上的大部分网站，使用爬虫已经爬不太到了，但终究没办法阻止 OCR。&lt;br /&gt;
+本机截屏付费章节是不被 App 允许的，但可以用安卓模拟器。用脚本实现模拟点击翻页，然后 Windows 截取固定大小的屏幕，进行 OCR。这样只要有一个人订阅了章节，就可以让别人获得盗版。&lt;/label&gt;&lt;/li&gt;
+&lt;li class=&#34;task-list-item&#34;&gt;&lt;input type=&#34;checkbox&#34; id=&#34;cbx_8&#34; disabled=&#34;true&#34; /&gt;&lt;label for=&#34;cbx_8&#34;&gt; &lt;strong&gt;字幕翻译&lt;/strong&gt;：&lt;br /&gt;
+可以和 Windows 自带的 Live Caption 功能集成，需要调用 Windows API，还有翻译源的 API。&lt;br /&gt;
+GitHub 上找到了类似功能的项目：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL1Nha2lSaW5uL0xpdmVDYXB0aW9ucy1UcmFuc2xhdG9y&#34;&gt;SakiRinn/LiveCaptions-Translator&lt;/span&gt;，但实际测试中功能很不完善，可以研究然后改进。&lt;/label&gt;&lt;/li&gt;
+&lt;/ul&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://www.sycamore.top/Diary/2023-12-4/</guid>
+            <title>实习半月总结</title>
+            <link>https://www.sycamore.top/Diary/2023-12-4/</link>
+            <category>springboot</category>
+            <category>Diary</category>
+            <pubDate>Wed, 06 Dec 2023 14:05:53 +1100</pubDate>
+            <description><![CDATA[ &lt;p&gt;在杭州某公司 &lt;code&gt;springboot&lt;/code&gt;  后端开发岗干了半个月，发现了很多不足，以及一些值得记录的地方。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;我在入职的时候，其实在 &lt;code&gt;springboot&lt;/code&gt;  方面是算是个小白，只懂一点基础知识，甚至 mybatis 框架都没有上手用过...&lt;/p&gt;
+&lt;p&gt;先是尝试自己照着模板写，然后看同事的代码修改，现在勉强算是熟练掌握基本的增删改查的接口编写了。&lt;/p&gt;
+&lt;p&gt;但是，我总是能发现一些新的写法，更加方便更加灵活，但应该对应不同的应用场景，也应该相互结合使用。&lt;/p&gt;
+&lt;h2 id=&#34;最开始&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#最开始&#34;&gt;#&lt;/a&gt; 最开始&lt;/h2&gt;
+&lt;p&gt;最开始，我学会使用 &lt;code&gt;Mybatis&lt;/code&gt;  写增删改查，&lt;/p&gt;
+&lt;p&gt;在 &lt;code&gt;.xml&lt;/code&gt;  文件中写 &lt;code&gt;sql&lt;/code&gt;  语句：&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&#34;highlight xml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;tag&#34;&gt;&amp;lt;&lt;span class=&#34;name&#34;&gt;select&lt;/span&gt; &lt;span class=&#34;attr&#34;&gt;id&lt;/span&gt;=&lt;span class=&#34;string&#34;&gt;&amp;quot;function_name&amp;quot;&lt;/span&gt; &lt;span class=&#34;attr&#34;&gt;resultType&lt;/span&gt;=&lt;span class=&#34;string&#34;&gt;&amp;quot;java.util.Map&amp;quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    select * from table_name&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;tag&#34;&gt;&amp;lt;/&lt;span class=&#34;name&#34;&gt;select&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;或者直接在 &lt;code&gt;DAO&lt;/code&gt;  层在函数名上方用 &lt;code&gt;@...&lt;/code&gt;  注解：&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&#34;highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;meta&#34;&gt;@Select(&amp;quot;select * from table_name&amp;quot;)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;// or&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;meta&#34;&gt;@Insert(&amp;quot;insert into table_name (id, field_name) values (#&amp;#123;id&amp;#125;, #&amp;#123;function_variable_name&amp;#125;)&amp;quot;)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&#34;然后&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#然后&#34;&gt;#&lt;/a&gt; 然后&lt;/h2&gt;
+&lt;p&gt;然后，我知道了 &lt;code&gt;MyBatis-Plus&lt;/code&gt; ，&lt;/p&gt;
+&lt;p&gt;可以继承通用 Service 层 &lt;code&gt;IService&lt;/code&gt;  和通用 Mapper 层 &lt;code&gt;BaseMapper&lt;/code&gt; ，它们集成了相当一部分可用的增删改查函数，直接调用就行，不用写 &lt;code&gt;sql&lt;/code&gt;  语句：&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&#34;highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;interface&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;ServiceName&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;extends&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;IService&lt;/span&gt;&amp;lt;EntityName&amp;gt; &amp;#123;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;ServiceImplName&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;extends&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;ServiceImpl&lt;/span&gt;&amp;lt;DaoName, EntityName&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;implements&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;ServiceName&lt;/span&gt; &amp;#123;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;// and&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;meta&#34;&gt;@Mapper&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;interface&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;DaoName&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;extends&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;BaseMapper&lt;/span&gt;&amp;lt;EntityName&amp;gt; &amp;#123;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;当然，查询中还是要用 &lt;code&gt;QueryWrapper&lt;/code&gt;  构建查询语句的：&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&#34;highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;QueryWrapper&amp;lt;EntityName&amp;gt; queryWrapper = &lt;span class=&#34;keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;QueryWrapper&lt;/span&gt;&amp;lt;&amp;gt;();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;queryWrapper.eq(String column, Object val);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&#34;现在&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#现在&#34;&gt;#&lt;/a&gt; 现在&lt;/h2&gt;
+&lt;p&gt;现在，我知道可以将二者结合使用。&lt;/p&gt;
+&lt;p&gt;业务逻辑极其简单的时候（比如只需要对多个表查询数据），直接用 xml 或者注解写。&lt;/p&gt;
+&lt;p&gt;需要实现增删改查的时候，继承 &lt;code&gt;MyBatis-Plus&lt;/code&gt;  的通用类。&lt;/p&gt;
+&lt;p&gt;如果有其他需要实现的函数，在通用类的基础上增加：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在 &lt;code&gt;Service&lt;/code&gt;  层增加对应的函数&lt;/li&gt;
+&lt;li&gt;涉及到与数据库的交互时，在 &lt;code&gt;Dao&lt;/code&gt;  层增加函数&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;p&gt;除此之外，还学了些零碎的东西：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;常量、公共函数，在 &lt;code&gt;Common...&lt;/code&gt;  的函数里面写好，然后在用到的时候调用&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;utils&lt;/code&gt;  下的函数要仔细看看，里面肯定有开发中要用到的工具包。&lt;/p&gt;
+&lt;p&gt;比如：接口的返回值类型 &lt;code&gt;Result&lt;/code&gt; ，文件上传工具类 &lt;code&gt;FileUpload&lt;/code&gt; ，分页工具类 &lt;code&gt;PageUtils&lt;/code&gt; ，获取 &lt;code&gt;UserId&lt;/code&gt;  的 &lt;code&gt;UserInfoUtil&lt;/code&gt; ...&lt;/p&gt;
+&lt;p&gt;名字可能有所差别，但功能类似，也不用我们自己实现。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;...&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;之后，继续学习吧，希望有一天能写出干净简洁的代码。&lt;/p&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>

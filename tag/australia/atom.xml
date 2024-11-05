@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://www.sycamore.top</id>
+    <title>Sycamore&#39;s Blog • Posts by &#34;australia&#34; tag</title>
+    <link href="https://www.sycamore.top" />
+    <updated>2024-11-05T03:05:53.000Z</updated>
+    <category term="Python" />
+    <category term="计算机视觉" />
+    <category term="深度学习" />
+    <category term="Crypto" />
+    <category term="Hexo" />
+    <category term="shokaX" />
+    <category term="博客主题" />
+    <category term="实习" />
+    <category term="springboot" />
+    <category term="CTF" />
+    <category term="Misc" />
+    <category term="Web" />
+    <category term="Miec" />
+    <category term="Re" />
+    <category term="Pwn" />
+    <category term="Backdoor" />
+    <category term="Linux" />
+    <category term="Kali" />
+    <category term="Trojan horse" />
+    <category term="Metasploit" />
+    <category term="frp" />
+    <category term="shellter" />
+    <category term="Reverse Shell" />
+    <category term="Develop" />
+    <category term="Electron" />
+    <category term="Google Translate" />
+    <category term="node" />
+    <category term="Hitokoto" />
+    <category term="npm" />
+    <category term="plugs" />
+    <category term="RCE，loophole" />
+    <category term="毕业设计" />
+    <category term="机器学习" />
+    <category term="Diary" />
+    <category term="Australia" />
+    <category term="Mod" />
+    <category term="CP2077" />
+    <entry>
+        <id>https://www.sycamore.top/Diary/2024-11-05/</id>
+        <title>留学近况</title>
+        <link rel="alternate" href="https://www.sycamore.top/Diary/2024-11-05/"/>
+        <content type="html">&lt;p&gt;简单说一下吧，USYD，Master of Computer Science (adv.)，目前是 24S2 末尾，临近考试。&lt;/p&gt;
+&lt;h1 id=&#34;学习&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#学习&#34;&gt;#&lt;/a&gt; 学习&lt;/h1&gt;
+&lt;p&gt;学习时间很紧张，这边注重实践，虽然 report 也不少。&lt;/p&gt;
+&lt;p&gt;平时课程分为 Lecture 和 Tutorial，Lec 可以理解为大课，一个教授对很多学生讲，Tut 可以理解为组织很小的偏实践课，一般是一个 tutor 对 十来个学生。&lt;/p&gt;
+&lt;p&gt;作业很多，assignment 一个接一个，通常让我很头疼，尤其是有些课每周还有固定的任务，平时闲不下来，双休日还得余出一天写作业。&lt;/p&gt;
+&lt;p&gt;但收获也很多，虽然有不少对提升学识毫无意义的 report，但也起码提升了我的英语写作技巧。何况 report 终究是少数，不少 assignment 还是非常有趣，又有相当的指导作用的。&lt;/p&gt;
+&lt;h1 id=&#34;生活&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#生活&#34;&gt;#&lt;/a&gt; 生活&lt;/h1&gt;
+&lt;p&gt;和国内相比，物价基本 × 5，虽然有些东西价格差不多，但大部分都是如此。&lt;/p&gt;
+&lt;p&gt;普通的一天，如果只考虑吃，核算下来大概花费 150+ 人民币，也不是不能接受。&lt;/p&gt;
+&lt;p&gt;就是房租过于离谱，一周 2100，一个月 8400，这基本是悉尼这边的最低价了，再低就得抢为数不多的学校宿舍，但也要一周 1600 左右，还是太贵了。&lt;/p&gt;
+&lt;h1 id=&#34;娱乐&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#娱乐&#34;&gt;#&lt;/a&gt; 娱乐&lt;/h1&gt;
+&lt;p&gt;巫师三打完本体和石之心就电子阳痿了，甚至黑神话买了都还没玩...&lt;/p&gt;
+&lt;p&gt;但巫师三真的是一款好游戏，虽然是十年前的，画质材质比不上现在的游戏，但无论是剧情还是机制，或者战斗系统，都非常有趣。尤其是剧情，不同的选择会带来很多的可能性，头一回，我体会到了什么是网状的剧情结构，而且每个小支线，小委托都很有意思。&lt;/p&gt;
+&lt;p&gt;哦，当然还有不得不提一嘴的昆特牌🐶。&lt;/p&gt;
+&lt;p&gt;难怪赛博朋克 2077 一直被吐槽有失蠢驴的水准，虽然也有发售时 bug 满天飞的缘故，但有一说一，即使现在的 bug 情况已经很不错了，剧情上真的和巫师三比不了一点。&lt;br /&gt;
+（往日之影还不错）&lt;/p&gt;
+&lt;h1 id=&#34;暑期的计划&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#暑期的计划&#34;&gt;#&lt;/a&gt; 暑期的计划&lt;/h1&gt;
+&lt;p&gt;主体计划是跟一个学校的项目，但应该还是轻松的（相比现在来说）&lt;/p&gt;
+&lt;p&gt;所以我还准备利用其他时间，写一些我想写的代码。&lt;/p&gt;
+&lt;p&gt;列在这里的，主要是学习或是生活中，突然蹦出来的一些想法，且经过简单的研究，大概是存在实现可能性的。按兴趣从高到低排序：&lt;/p&gt;
+&lt;ul class=&#34;task-list&#34;&gt;
+&lt;li class=&#34;task-list-item&#34;&gt;&lt;input type=&#34;checkbox&#34; id=&#34;cbx_0&#34; disabled=&#34;true&#34; /&gt;&lt;label for=&#34;cbx_0&#34;&gt; &lt;strong&gt;赛博朋克 2077 的 Mod 开发&lt;/strong&gt;&lt;br /&gt;
+巫师三中的希里，曾经穿越到过 CP2077 的世界，我的想法是结合一些已有的 mod，整合出一个希里的 cosplay 集合&lt;/label&gt;
+&lt;ul class=&#34;task-list&#34;&gt;
+&lt;li class=&#34;task-list-item&#34;&gt;&lt;input type=&#34;checkbox&#34; id=&#34;cbx_1&#34; disabled=&#34;true&#34; /&gt;&lt;label for=&#34;cbx_1&#34;&gt; Always First Equip 改进：&lt;br /&gt;
+这个 mod 虽然高度可定制化，但还是不符合我的设想，最好是能实现类似 VALORANT 里的武器验视动作的效果&lt;/label&gt;&lt;/li&gt;
+&lt;li class=&#34;task-list-item&#34;&gt;&lt;input type=&#34;checkbox&#34; id=&#34;cbx_2&#34; disabled=&#34;true&#34; /&gt;&lt;label for=&#34;cbx_2&#34;&gt; 主页菜单背景替换。&lt;br /&gt;
+之前有个 mod，但因为进入了 2.0 版本，加入了往日之影，现在已经几乎失效了，我会尝试修复。&lt;/label&gt;&lt;/li&gt;
+&lt;li class=&#34;task-list-item&#34;&gt;&lt;input type=&#34;checkbox&#34; id=&#34;cbx_3&#34; disabled=&#34;true&#34; /&gt;&lt;label for=&#34;cbx_3&#34;&gt; 希里的服饰&lt;br /&gt;
+已经存在类似的 mod，但是第一人称视角下，手部的附着存在相当大的问题，尝试修复。&lt;/label&gt;&lt;/li&gt;
+&lt;li class=&#34;task-list-item&#34;&gt;&lt;input type=&#34;checkbox&#34; id=&#34;cbx_4&#34; disabled=&#34;true&#34; /&gt;&lt;label for=&#34;cbx_4&#34;&gt; 希里的剑&lt;br /&gt;
+在已有的 mod 下改进武器参数。想要在困难难度下依旧能玩得爽一点，还是需要一些加成的🐶。&lt;/label&gt;&lt;/li&gt;
+&lt;li class=&#34;task-list-item&#34;&gt;&lt;input type=&#34;checkbox&#34; id=&#34;cbx_5&#34; disabled=&#34;true&#34; /&gt;&lt;label for=&#34;cbx_5&#34;&gt; 希里有个标志性的技能，就是按空格突进，在 2077 中有类似的技能。但过场 CG 里其实还可以实现空间转移（这个功能仅仅还只是设想，感觉难度太大）&lt;/label&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li class=&#34;task-list-item&#34;&gt;&lt;input type=&#34;checkbox&#34; id=&#34;cbx_6&#34; disabled=&#34;true&#34; /&gt;&lt;label for=&#34;cbx_6&#34;&gt; &lt;strong&gt;游戏存档管理&lt;/strong&gt; -&amp;gt; &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL21jdGhlc3cvZ2FtZS1zYXZlLW1hbmFnZXI=&#34;&gt;mcthesw/game-save-manager&lt;/span&gt;&lt;br /&gt;
+ 之前在该项目早期，我提交过几个功能，现在它已经有 600+ 的 star 了。但看 Issue 里还是有不少人提出改进和新功能，我想看看能不能继续做 Contribution。&lt;/label&gt;&lt;/li&gt;
+&lt;li class=&#34;task-list-item&#34;&gt;&lt;input type=&#34;checkbox&#34; id=&#34;cbx_7&#34; disabled=&#34;true&#34; /&gt;&lt;label for=&#34;cbx_7&#34;&gt; &lt;strong&gt;小说 OCR&lt;/strong&gt;&lt;br /&gt;
+（其实是不能公开说的）起点小说付费，好像改进了算法。网上的大部分网站，使用爬虫已经爬不太到了，但终究没办法阻止 OCR。&lt;br /&gt;
+本机截屏付费章节是不被 App 允许的，但可以用安卓模拟器。用脚本实现模拟点击翻页，然后 Windows 截取固定大小的屏幕，进行 OCR。这样只要有一个人订阅了章节，就可以让别人获得盗版。&lt;/label&gt;&lt;/li&gt;
+&lt;li class=&#34;task-list-item&#34;&gt;&lt;input type=&#34;checkbox&#34; id=&#34;cbx_8&#34; disabled=&#34;true&#34; /&gt;&lt;label for=&#34;cbx_8&#34;&gt; &lt;strong&gt;字幕翻译&lt;/strong&gt;：&lt;br /&gt;
+可以和 Windows 自带的 Live Caption 功能集成，需要调用 Windows API，还有翻译源的 API。&lt;br /&gt;
+GitHub 上找到了类似功能的项目：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL1Nha2lSaW5uL0xpdmVDYXB0aW9ucy1UcmFuc2xhdG9y&#34;&gt;SakiRinn/LiveCaptions-Translator&lt;/span&gt;，但实际测试中功能很不完善，可以研究然后改进。&lt;/label&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+        <category term="Diary" />
+        <category term="Australia" />
+        <updated>2024-11-05T03:05:53.000Z</updated>
+    </entry>
+</feed>

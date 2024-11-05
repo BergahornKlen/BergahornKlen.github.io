@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>Sycamore&#39;s Blog • Posts by &#34;npm&#34; tag</title>
+        <link>https://www.sycamore.top</link>
+        <description></description>
+        <language>zh-CN</language>
+        <pubDate>Sun, 30 Apr 2023 19:42:04 +1000</pubDate>
+        <lastBuildDate>Sun, 30 Apr 2023 19:42:04 +1000</lastBuildDate>
+        <category>Python</category>
+        <category>计算机视觉</category>
+        <category>深度学习</category>
+        <category>Crypto</category>
+        <category>Hexo</category>
+        <category>shokaX</category>
+        <category>博客主题</category>
+        <category>实习</category>
+        <category>springboot</category>
+        <category>CTF</category>
+        <category>Misc</category>
+        <category>Web</category>
+        <category>Miec</category>
+        <category>Re</category>
+        <category>Pwn</category>
+        <category>Backdoor</category>
+        <category>Linux</category>
+        <category>Kali</category>
+        <category>Trojan horse</category>
+        <category>Metasploit</category>
+        <category>frp</category>
+        <category>shellter</category>
+        <category>Reverse Shell</category>
+        <category>Develop</category>
+        <category>Electron</category>
+        <category>Google Translate</category>
+        <category>node</category>
+        <category>Hitokoto</category>
+        <category>npm</category>
+        <category>plugs</category>
+        <category>RCE，loophole</category>
+        <category>毕业设计</category>
+        <category>机器学习</category>
+        <category>Diary</category>
+        <category>Australia</category>
+        <category>Mod</category>
+        <category>CP2077</category>
+        <item>
+            <guid isPermalink="true">https://www.sycamore.top/Develop/Electron/nodeJS%E7%9B%B8%E5%85%B3/</guid>
+            <title>nodeJS相关</title>
+            <link>https://www.sycamore.top/Develop/Electron/nodeJS%E7%9B%B8%E5%85%B3/</link>
+            <category>Develop</category>
+            <category>node</category>
+            <category>npm</category>
+            <category>plugs</category>
+            <pubDate>Sun, 30 Apr 2023 19:42:04 +1000</pubDate>
+            <description><![CDATA[ &lt;h2 id=&#34;node版本控制&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#node版本控制&#34;&gt;#&lt;/a&gt; node 版本控制&lt;/h2&gt;
+&lt;p&gt;大部分时候，并不是版本越新越好，开发过程中经常会遇到某些好用的插件只支持较低版本的 &lt;code&gt;Nodejs&lt;/code&gt; ，这时候就需要用到版本控制。&lt;/p&gt;
+&lt;p&gt;使用&lt;span class=&#34;label success&#34;&gt; nvm&lt;/span&gt;，可以轻松管理版本。实用命令如下：&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&#34;highlight shell&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;nvm install [版本号] [lts]  # 安装特定版本的node&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;nvm use [版本号]  # 切换特定版本的node&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;nvm list  # 列出已安装的node版本，星号标注当前使用的版本&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&#34;项目仓库&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#项目仓库&#34;&gt;#&lt;/a&gt; 项目仓库&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;package.json&lt;/code&gt;  是非常重要的文件，其中记录了项目的配置信息。&lt;/p&gt;
+&lt;p&gt;最好加一个 &lt;code&gt;.gitignore&lt;/code&gt;  文件，其中记录 &lt;code&gt;git&lt;/code&gt;  上传时忽略更改的目录和文件，基本上需要包含 &lt;code&gt;*.log&lt;/code&gt;  以及 &lt;code&gt;node_modules/&lt;/code&gt; ，其中前者是可能存在的日志文件，后者是项目本地安装的插件&lt;/p&gt;
+&lt;p&gt;这也体现了 &lt;code&gt;package.json&lt;/code&gt;  文件的重要性，因为通常插件安装目录是不会上传的，所以每次 &lt;code&gt;clone&lt;/code&gt;   &lt;code&gt;GitHub&lt;/code&gt;  项目的时候，都是没有安装插件的状态，在执行任何更改之前都要执行命令： &lt;code&gt;npm install --force&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;而 &lt;code&gt;package.json&lt;/code&gt;  文件中有部分就记录了项目中应该安装的插件，上述命令也正是根据该文件中的这一部分来安装插件的。&lt;/p&gt;
+&lt;h2 id=&#34;git大文件管理&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#git大文件管理&#34;&gt;#&lt;/a&gt; git 大文件管理&lt;/h2&gt;
+&lt;p&gt;也许有时你的项目中出现了大文件，即大于 100MB 的文件，这时候用 &lt;code&gt;git&lt;/code&gt;  是上传不上去的，这就需要用到  &lt;code&gt;Git LFS&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&#34;highlight shell&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;git lfs install  # 安装Git LFS&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;git lfs track &amp;quot;...&amp;quot;  # 要追踪的大文件名，可为 *.exe 的格式&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;git add .gitattributes  # 配置文件&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;然后就是 &lt;code&gt;add/commit/push&lt;/code&gt;  的常规操作了&lt;/p&gt;
+&lt;h2 id=&#34;npm-插件编写&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#npm-插件编写&#34;&gt;#&lt;/a&gt; npm 插件编写&lt;/h2&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>

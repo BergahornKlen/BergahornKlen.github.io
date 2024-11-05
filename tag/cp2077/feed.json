@@ -1,0 +1,20 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "Sycamore's Blog • All posts by \"cp2077\" tag",
+    "description": "",
+    "home_page_url": "https://www.sycamore.top",
+    "items": [
+        {
+            "id": "https://www.sycamore.top/Mod%20Develop/Cyberpunk%202077/Weapon%20Inspection/",
+            "url": "https://www.sycamore.top/Mod%20Develop/Cyberpunk%202077/Weapon%20Inspection/",
+            "title": "武器验视 Mod",
+            "date_published": "2024-11-05T06:05:53.000Z",
+            "content_html": "",
+            "tags": [
+                "Develop",
+                "Mod",
+                "CP2077"
+            ]
+        }
+    ]
+}

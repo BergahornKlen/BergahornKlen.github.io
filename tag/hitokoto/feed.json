@@ -1,0 +1,21 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "Sycamore's Blog • All posts by \"hitokoto\" tag",
+    "description": "",
+    "home_page_url": "https://www.sycamore.top",
+    "items": [
+        {
+            "id": "https://www.sycamore.top/Develop/Electron/Sentences-Desktop%E6%A1%8C%E9%9D%A2%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/",
+            "url": "https://www.sycamore.top/Develop/Electron/Sentences-Desktop%E6%A1%8C%E9%9D%A2%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/",
+            "title": "Sentences-Desktop桌面程序开发",
+            "date_published": "2023-04-30T09:35:33.000Z",
+            "content_html": "<p>项目地址：<span class=\"exturl\" data-url=\"aHR0cHM6Ly9naXRodWIuY29tL25vbmVTeWNhbW9yZS9TZW50ZW5jZXMtRGVza3RvcA==\">Sentences-Desktop</span></p>\n<p>算是一个已完成的个人项目，虽然依旧不是很满意，而且我本人也没有在使用，</p>\n<p>但效果看起来还是很不错的，使用了 Hitokoto，具体在上述链接中，有空会更新以下开发中遇到的事情。</p>\n<hr />\n",
+            "tags": [
+                "Develop",
+                "Electron",
+                "node",
+                "Hitokoto"
+            ]
+        }
+    ]
+}

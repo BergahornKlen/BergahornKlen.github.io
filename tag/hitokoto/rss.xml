@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>Sycamore&#39;s Blog • Posts by &#34;hitokoto&#34; tag</title>
+        <link>https://www.sycamore.top</link>
+        <description></description>
+        <language>zh-CN</language>
+        <pubDate>Sun, 30 Apr 2023 19:35:33 +1000</pubDate>
+        <lastBuildDate>Sun, 30 Apr 2023 19:35:33 +1000</lastBuildDate>
+        <category>Python</category>
+        <category>计算机视觉</category>
+        <category>深度学习</category>
+        <category>Crypto</category>
+        <category>Hexo</category>
+        <category>shokaX</category>
+        <category>博客主题</category>
+        <category>实习</category>
+        <category>springboot</category>
+        <category>CTF</category>
+        <category>Misc</category>
+        <category>Web</category>
+        <category>Miec</category>
+        <category>Re</category>
+        <category>Pwn</category>
+        <category>Backdoor</category>
+        <category>Linux</category>
+        <category>Kali</category>
+        <category>Trojan horse</category>
+        <category>Metasploit</category>
+        <category>frp</category>
+        <category>shellter</category>
+        <category>Reverse Shell</category>
+        <category>Develop</category>
+        <category>Electron</category>
+        <category>Google Translate</category>
+        <category>node</category>
+        <category>Hitokoto</category>
+        <category>npm</category>
+        <category>plugs</category>
+        <category>RCE，loophole</category>
+        <category>毕业设计</category>
+        <category>机器学习</category>
+        <category>Diary</category>
+        <category>Australia</category>
+        <category>Mod</category>
+        <category>CP2077</category>
+        <item>
+            <guid isPermalink="true">https://www.sycamore.top/Develop/Electron/Sentences-Desktop%E6%A1%8C%E9%9D%A2%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/</guid>
+            <title>Sentences-Desktop桌面程序开发</title>
+            <link>https://www.sycamore.top/Develop/Electron/Sentences-Desktop%E6%A1%8C%E9%9D%A2%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/</link>
+            <category>Develop</category>
+            <category>Electron</category>
+            <category>node</category>
+            <category>Hitokoto</category>
+            <pubDate>Sun, 30 Apr 2023 19:35:33 +1000</pubDate>
+            <description><![CDATA[ &lt;p&gt;项目地址：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL25vbmVTeWNhbW9yZS9TZW50ZW5jZXMtRGVza3RvcA==&#34;&gt;Sentences-Desktop&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;算是一个已完成的个人项目，虽然依旧不是很满意，而且我本人也没有在使用，&lt;/p&gt;
+&lt;p&gt;但效果看起来还是很不错的，使用了 Hitokoto，具体在上述链接中，有空会更新以下开发中遇到的事情。&lt;/p&gt;
+&lt;hr /&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>

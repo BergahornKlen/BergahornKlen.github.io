@@ -1,0 +1,47 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "Sycamore's Blog • All posts by \"node\" tag",
+    "description": "",
+    "home_page_url": "https://www.sycamore.top",
+    "items": [
+        {
+            "id": "https://www.sycamore.top/Develop/Electron/Google-Translate-Desktop/",
+            "url": "https://www.sycamore.top/Develop/Electron/Google-Translate-Desktop/",
+            "title": "Google-Translate-Desktop",
+            "date_published": "2023-05-02T06:46:42.000Z",
+            "content_html": "<p>项目地址：<span class=\"exturl\" data-url=\"aHR0cHM6Ly9naXRodWIuY29tL25vbmVTeWNhbW9yZS9Hb29nbGUtVHJhbnNsYXRlLURlc2t0b3A=\">Google-Translate-Desktop</span> (private repo)</p>\n<p>腰斩了，因为我发现已经有很好用的了，推荐：[Pot](<span class=\"exturl\" data-url=\"aHR0cHM6Ly9wb3QtYXBwLmNvbS8=\">Pot | 跨平台划词翻译和 OCR</span>)</p>\n<p>因此以下内容仅作一个 idea 记录。</p>\n<hr />\n<h1 id=\"准备工作\"><a class=\"anchor\" href=\"#准备工作\">#</a> 准备工作</h1>\n<h2 id=\"选择环境\"><a class=\"anchor\" href=\"#选择环境\">#</a> 选择环境</h2>\n<p><span class=\"label info\">node v16.20.0</span> / <span class=\"label info\">electron v20.3.12</span></p>\n<h2 id=\"基本方案\"><a class=\"anchor\" href=\"#基本方案\">#</a> 基本方案</h2>\n<p>利用  <code>npm</code>  插件: <span class=\"exturl\" data-url=\"aHR0cHM6Ly93d3cubnBtanMuY29tL3BhY2thZ2UvZ29vZ2xlLXRyYW5zbGF0ZS1hcGk=\">google-translate-api</span></p>\n<p>该插件提供了一个 API 接口：translate (text, options)，能实现谷歌翻译的基本功能</p>\n<p>用 electron 搭建程序的主要页面，用该插件实现简单的翻译</p>\n<h2 id=\"具体功能\"><a class=\"anchor\" href=\"#具体功能\">#</a> 具体功能</h2>\n<ul class=\"task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"cbx_0\" disabled=\"true\" /><label for=\"cbx_0\">  自动检测语言并能选择翻译的目标语言</label></li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"cbx_1\" disabled=\"true\" /><label for=\"cbx_1\">  详细释义？</label></li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"cbx_2\" disabled=\"true\" /><label for=\"cbx_2\">  划词翻译</label>\n<ul class=\"task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"cbx_3\" disabled=\"true\" /><label for=\"cbx_3\">  替换、复制翻译结果</label></li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"cbx_4\" disabled=\"true\" /><label for=\"cbx_4\">  快捷键呼出</label></li>\n</ul>\n</li>\n</ul>\n<h1 id=\"开发实现\"><a class=\"anchor\" href=\"#开发实现\">#</a> 开发实现</h1>\n<h2 id=\"搭建环境\"><a class=\"anchor\" href=\"#搭建环境\">#</a> 搭建环境</h2>\n<p><figure class=\"highlight shell\"><table><tr><td class=\"gutter\"><pre><span class=\"line\">1</span><br><span class=\"line\">2</span><br><span class=\"line\">3</span><br><span class=\"line\">4</span><br><span class=\"line\">5</span><br><span class=\"line\">6</span><br><span class=\"line\">7</span><br><span class=\"line\">8</span><br></pre></td><td class=\"code\"><pre><span class=\"line\">nvm install 16 lts  # 安装v15的新环境</span><br><span class=\"line\">nvm use 16.20.0</span><br><span class=\"line\"></span><br><span class=\"line\">npm init  # 初始化npm库</span><br><span class=\"line\">npm install electron@20.3.12 --save-dev  # 安装electron</span><br><span class=\"line\">npm install electron-builder  # 打包插件</span><br><span class=\"line\">npm install electron-store  # 数据存储插件</span><br><span class=\"line\"></span><br></pre></td></tr></table></figure></p>\n<h2 id=\"基本页面\"><a class=\"anchor\" href=\"#基本页面\">#</a> 基本页面</h2>\n<p>通过 <span class=\"label info\">electron</span> 实现。</p>\n<p>细化主页面构成：</p>\n<ul class=\"task-list\">\n<li class=\"task-list-item\">\n<p><input type=\"checkbox\" id=\"cbx_5\" checked=\"true\" disabled=\"true\" /><label for=\"cbx_5\">   +++<strong> 顶部标题栏</strong><br />\n传统地去掉难看的原配 Windows 标题栏</label></p>\n<ul>\n<li>图标</li>\n<li>软件名称</li>\n<li>最小化 / 最大化 / 关闭<br />\n +++</li>\n</ul>\n</li>\n<li class=\"task-list-item\">\n<p><input type=\"checkbox\" id=\"cbx_6\" checked=\"true\" disabled=\"true\" /><label for=\"cbx_6\">  +++ <strong>菜单栏</strong><br />\n功能切换</label></p>\n<ul>\n<li>翻译文本</li>\n<li>翻译文件？</li>\n<li>翻译网页？</li>\n</ul>\n<p>设置</p>\n<ul>\n<li>快捷键<br />\n +++</li>\n</ul>\n</li>\n<li class=\"task-list-item\">\n<p><input type=\"checkbox\" id=\"cbx_7\" disabled=\"true\" /><label for=\"cbx_7\">  +++<strong> 具体功能实现页面</strong><br />\n翻译功能栏</label></p>\n<ul>\n<li>选择源语言 / 目标语言</li>\n<li>左右切换</li>\n</ul>\n<p>翻译内容 / 翻译结果<br />\n +++</p>\n</li>\n</ul>\n<h2 id=\"翻译功能\"><a class=\"anchor\" href=\"#翻译功能\">#</a> 翻译功能</h2>\n<p>调用 Google 的 API...</p>\n",
+            "tags": [
+                "Develop",
+                "Electron",
+                "Google Translate",
+                "node"
+            ]
+        },
+        {
+            "id": "https://www.sycamore.top/Develop/Electron/nodeJS%E7%9B%B8%E5%85%B3/",
+            "url": "https://www.sycamore.top/Develop/Electron/nodeJS%E7%9B%B8%E5%85%B3/",
+            "title": "nodeJS相关",
+            "date_published": "2023-04-30T09:42:04.000Z",
+            "content_html": "<h2 id=\"node版本控制\"><a class=\"anchor\" href=\"#node版本控制\">#</a> node 版本控制</h2>\n<p>大部分时候，并不是版本越新越好，开发过程中经常会遇到某些好用的插件只支持较低版本的 <code>Nodejs</code> ，这时候就需要用到版本控制。</p>\n<p>使用<span class=\"label success\"> nvm</span>，可以轻松管理版本。实用命令如下：</p>\n<p><figure class=\"highlight shell\"><table><tr><td class=\"gutter\"><pre><span class=\"line\">1</span><br><span class=\"line\">2</span><br><span class=\"line\">3</span><br></pre></td><td class=\"code\"><pre><span class=\"line\">nvm install [版本号] [lts]  # 安装特定版本的node</span><br><span class=\"line\">nvm use [版本号]  # 切换特定版本的node</span><br><span class=\"line\">nvm list  # 列出已安装的node版本，星号标注当前使用的版本</span><br></pre></td></tr></table></figure></p>\n<h2 id=\"项目仓库\"><a class=\"anchor\" href=\"#项目仓库\">#</a> 项目仓库</h2>\n<p><code>package.json</code>  是非常重要的文件，其中记录了项目的配置信息。</p>\n<p>最好加一个 <code>.gitignore</code>  文件，其中记录 <code>git</code>  上传时忽略更改的目录和文件，基本上需要包含 <code>*.log</code>  以及 <code>node_modules/</code> ，其中前者是可能存在的日志文件，后者是项目本地安装的插件</p>\n<p>这也体现了 <code>package.json</code>  文件的重要性，因为通常插件安装目录是不会上传的，所以每次 <code>clone</code>   <code>GitHub</code>  项目的时候，都是没有安装插件的状态，在执行任何更改之前都要执行命令： <code>npm install --force</code></p>\n<p>而 <code>package.json</code>  文件中有部分就记录了项目中应该安装的插件，上述命令也正是根据该文件中的这一部分来安装插件的。</p>\n<h2 id=\"git大文件管理\"><a class=\"anchor\" href=\"#git大文件管理\">#</a> git 大文件管理</h2>\n<p>也许有时你的项目中出现了大文件，即大于 100MB 的文件，这时候用 <code>git</code>  是上传不上去的，这就需要用到  <code>Git LFS</code></p>\n<p><figure class=\"highlight shell\"><table><tr><td class=\"gutter\"><pre><span class=\"line\">1</span><br><span class=\"line\">2</span><br><span class=\"line\">3</span><br></pre></td><td class=\"code\"><pre><span class=\"line\">git lfs install  # 安装Git LFS</span><br><span class=\"line\">git lfs track &quot;...&quot;  # 要追踪的大文件名，可为 *.exe 的格式</span><br><span class=\"line\">git add .gitattributes  # 配置文件</span><br></pre></td></tr></table></figure></p>\n<p>然后就是 <code>add/commit/push</code>  的常规操作了</p>\n<h2 id=\"npm-插件编写\"><a class=\"anchor\" href=\"#npm-插件编写\">#</a> npm 插件编写</h2>\n",
+            "tags": [
+                "Develop",
+                "node",
+                "npm",
+                "plugs"
+            ]
+        },
+        {
+            "id": "https://www.sycamore.top/Develop/Electron/Sentences-Desktop%E6%A1%8C%E9%9D%A2%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/",
+            "url": "https://www.sycamore.top/Develop/Electron/Sentences-Desktop%E6%A1%8C%E9%9D%A2%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/",
+            "title": "Sentences-Desktop桌面程序开发",
+            "date_published": "2023-04-30T09:35:33.000Z",
+            "content_html": "<p>项目地址：<span class=\"exturl\" data-url=\"aHR0cHM6Ly9naXRodWIuY29tL25vbmVTeWNhbW9yZS9TZW50ZW5jZXMtRGVza3RvcA==\">Sentences-Desktop</span></p>\n<p>算是一个已完成的个人项目，虽然依旧不是很满意，而且我本人也没有在使用，</p>\n<p>但效果看起来还是很不错的，使用了 Hitokoto，具体在上述链接中，有空会更新以下开发中遇到的事情。</p>\n<hr />\n",
+            "tags": [
+                "Develop",
+                "Electron",
+                "node",
+                "Hitokoto"
+            ]
+        }
+    ]
+}

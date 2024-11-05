@@ -1,0 +1,282 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>Sycamore&#39;s Blog • Posts by &#34;develop&#34; category</title>
+        <link>https://www.sycamore.top</link>
+        <description></description>
+        <language>zh-CN</language>
+        <pubDate>Tue, 02 May 2023 16:46:42 +1000</pubDate>
+        <lastBuildDate>Tue, 02 May 2023 16:46:42 +1000</lastBuildDate>
+        <category>Python</category>
+        <category>计算机视觉</category>
+        <category>深度学习</category>
+        <category>Crypto</category>
+        <category>Hexo</category>
+        <category>shokaX</category>
+        <category>博客主题</category>
+        <category>实习</category>
+        <category>springboot</category>
+        <category>CTF</category>
+        <category>Misc</category>
+        <category>Web</category>
+        <category>Miec</category>
+        <category>Re</category>
+        <category>Pwn</category>
+        <category>Backdoor</category>
+        <category>Linux</category>
+        <category>Kali</category>
+        <category>Trojan horse</category>
+        <category>Metasploit</category>
+        <category>frp</category>
+        <category>shellter</category>
+        <category>Reverse Shell</category>
+        <category>Develop</category>
+        <category>Electron</category>
+        <category>Google Translate</category>
+        <category>node</category>
+        <category>Hitokoto</category>
+        <category>npm</category>
+        <category>plugs</category>
+        <category>RCE，loophole</category>
+        <category>毕业设计</category>
+        <category>机器学习</category>
+        <category>Diary</category>
+        <category>Australia</category>
+        <category>Mod</category>
+        <category>CP2077</category>
+        <item>
+            <guid isPermalink="true">https://www.sycamore.top/Develop/Electron/Google-Translate-Desktop/</guid>
+            <title>Google-Translate-Desktop</title>
+            <link>https://www.sycamore.top/Develop/Electron/Google-Translate-Desktop/</link>
+            <category>Develop</category>
+            <category>Electron</category>
+            <category>Google Translate</category>
+            <category>node</category>
+            <pubDate>Tue, 02 May 2023 16:46:42 +1000</pubDate>
+            <description><![CDATA[ &lt;p&gt;项目地址：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL25vbmVTeWNhbW9yZS9Hb29nbGUtVHJhbnNsYXRlLURlc2t0b3A=&#34;&gt;Google-Translate-Desktop&lt;/span&gt; (private repo)&lt;/p&gt;
+&lt;p&gt;腰斩了，因为我发现已经有很好用的了，推荐：[Pot](&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9wb3QtYXBwLmNvbS8=&#34;&gt;Pot | 跨平台划词翻译和 OCR&lt;/span&gt;)&lt;/p&gt;
+&lt;p&gt;因此以下内容仅作一个 idea 记录。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h1 id=&#34;准备工作&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#准备工作&#34;&gt;#&lt;/a&gt; 准备工作&lt;/h1&gt;
+&lt;h2 id=&#34;选择环境&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#选择环境&#34;&gt;#&lt;/a&gt; 选择环境&lt;/h2&gt;
+&lt;p&gt;&lt;span class=&#34;label info&#34;&gt;node v16.20.0&lt;/span&gt; / &lt;span class=&#34;label info&#34;&gt;electron v20.3.12&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&#34;基本方案&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#基本方案&#34;&gt;#&lt;/a&gt; 基本方案&lt;/h2&gt;
+&lt;p&gt;利用  &lt;code&gt;npm&lt;/code&gt;  插件: &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cubnBtanMuY29tL3BhY2thZ2UvZ29vZ2xlLXRyYW5zbGF0ZS1hcGk=&#34;&gt;google-translate-api&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;该插件提供了一个 API 接口：translate (text, options)，能实现谷歌翻译的基本功能&lt;/p&gt;
+&lt;p&gt;用 electron 搭建程序的主要页面，用该插件实现简单的翻译&lt;/p&gt;
+&lt;h2 id=&#34;具体功能&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#具体功能&#34;&gt;#&lt;/a&gt; 具体功能&lt;/h2&gt;
+&lt;ul class=&#34;task-list&#34;&gt;
+&lt;li class=&#34;task-list-item&#34;&gt;&lt;input type=&#34;checkbox&#34; id=&#34;cbx_0&#34; disabled=&#34;true&#34; /&gt;&lt;label for=&#34;cbx_0&#34;&gt;  自动检测语言并能选择翻译的目标语言&lt;/label&gt;&lt;/li&gt;
+&lt;li class=&#34;task-list-item&#34;&gt;&lt;input type=&#34;checkbox&#34; id=&#34;cbx_1&#34; disabled=&#34;true&#34; /&gt;&lt;label for=&#34;cbx_1&#34;&gt;  详细释义？&lt;/label&gt;&lt;/li&gt;
+&lt;li class=&#34;task-list-item&#34;&gt;&lt;input type=&#34;checkbox&#34; id=&#34;cbx_2&#34; disabled=&#34;true&#34; /&gt;&lt;label for=&#34;cbx_2&#34;&gt;  划词翻译&lt;/label&gt;
+&lt;ul class=&#34;task-list&#34;&gt;
+&lt;li class=&#34;task-list-item&#34;&gt;&lt;input type=&#34;checkbox&#34; id=&#34;cbx_3&#34; disabled=&#34;true&#34; /&gt;&lt;label for=&#34;cbx_3&#34;&gt;  替换、复制翻译结果&lt;/label&gt;&lt;/li&gt;
+&lt;li class=&#34;task-list-item&#34;&gt;&lt;input type=&#34;checkbox&#34; id=&#34;cbx_4&#34; disabled=&#34;true&#34; /&gt;&lt;label for=&#34;cbx_4&#34;&gt;  快捷键呼出&lt;/label&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;开发实现&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#开发实现&#34;&gt;#&lt;/a&gt; 开发实现&lt;/h1&gt;
+&lt;h2 id=&#34;搭建环境&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#搭建环境&#34;&gt;#&lt;/a&gt; 搭建环境&lt;/h2&gt;
+&lt;p&gt;&lt;figure class=&#34;highlight shell&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;nvm install 16 lts  # 安装v15的新环境&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;nvm use 16.20.0&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;npm init  # 初始化npm库&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;npm install electron@20.3.12 --save-dev  # 安装electron&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;npm install electron-builder  # 打包插件&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;npm install electron-store  # 数据存储插件&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&#34;基本页面&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#基本页面&#34;&gt;#&lt;/a&gt; 基本页面&lt;/h2&gt;
+&lt;p&gt;通过 &lt;span class=&#34;label info&#34;&gt;electron&lt;/span&gt; 实现。&lt;/p&gt;
+&lt;p&gt;细化主页面构成：&lt;/p&gt;
+&lt;ul class=&#34;task-list&#34;&gt;
+&lt;li class=&#34;task-list-item&#34;&gt;
+&lt;p&gt;&lt;input type=&#34;checkbox&#34; id=&#34;cbx_5&#34; checked=&#34;true&#34; disabled=&#34;true&#34; /&gt;&lt;label for=&#34;cbx_5&#34;&gt;   +++&lt;strong&gt; 顶部标题栏&lt;/strong&gt;&lt;br /&gt;
+传统地去掉难看的原配 Windows 标题栏&lt;/label&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;图标&lt;/li&gt;
+&lt;li&gt;软件名称&lt;/li&gt;
+&lt;li&gt;最小化 / 最大化 / 关闭&lt;br /&gt;
+ +++&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li class=&#34;task-list-item&#34;&gt;
+&lt;p&gt;&lt;input type=&#34;checkbox&#34; id=&#34;cbx_6&#34; checked=&#34;true&#34; disabled=&#34;true&#34; /&gt;&lt;label for=&#34;cbx_6&#34;&gt;  +++ &lt;strong&gt;菜单栏&lt;/strong&gt;&lt;br /&gt;
+功能切换&lt;/label&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;翻译文本&lt;/li&gt;
+&lt;li&gt;翻译文件？&lt;/li&gt;
+&lt;li&gt;翻译网页？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;设置&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;快捷键&lt;br /&gt;
+ +++&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li class=&#34;task-list-item&#34;&gt;
+&lt;p&gt;&lt;input type=&#34;checkbox&#34; id=&#34;cbx_7&#34; disabled=&#34;true&#34; /&gt;&lt;label for=&#34;cbx_7&#34;&gt;  +++&lt;strong&gt; 具体功能实现页面&lt;/strong&gt;&lt;br /&gt;
+翻译功能栏&lt;/label&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;选择源语言 / 目标语言&lt;/li&gt;
+&lt;li&gt;左右切换&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;翻译内容 / 翻译结果&lt;br /&gt;
+ +++&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;翻译功能&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#翻译功能&#34;&gt;#&lt;/a&gt; 翻译功能&lt;/h2&gt;
+&lt;p&gt;调用 Google 的 API...&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://www.sycamore.top/Develop/Electron/nodeJS%E7%9B%B8%E5%85%B3/</guid>
+            <title>nodeJS相关</title>
+            <link>https://www.sycamore.top/Develop/Electron/nodeJS%E7%9B%B8%E5%85%B3/</link>
+            <category>Develop</category>
+            <category>node</category>
+            <category>npm</category>
+            <category>plugs</category>
+            <pubDate>Sun, 30 Apr 2023 19:42:04 +1000</pubDate>
+            <description><![CDATA[ &lt;h2 id=&#34;node版本控制&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#node版本控制&#34;&gt;#&lt;/a&gt; node 版本控制&lt;/h2&gt;
+&lt;p&gt;大部分时候，并不是版本越新越好，开发过程中经常会遇到某些好用的插件只支持较低版本的 &lt;code&gt;Nodejs&lt;/code&gt; ，这时候就需要用到版本控制。&lt;/p&gt;
+&lt;p&gt;使用&lt;span class=&#34;label success&#34;&gt; nvm&lt;/span&gt;，可以轻松管理版本。实用命令如下：&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&#34;highlight shell&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;nvm install [版本号] [lts]  # 安装特定版本的node&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;nvm use [版本号]  # 切换特定版本的node&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;nvm list  # 列出已安装的node版本，星号标注当前使用的版本&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&#34;项目仓库&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#项目仓库&#34;&gt;#&lt;/a&gt; 项目仓库&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;package.json&lt;/code&gt;  是非常重要的文件，其中记录了项目的配置信息。&lt;/p&gt;
+&lt;p&gt;最好加一个 &lt;code&gt;.gitignore&lt;/code&gt;  文件，其中记录 &lt;code&gt;git&lt;/code&gt;  上传时忽略更改的目录和文件，基本上需要包含 &lt;code&gt;*.log&lt;/code&gt;  以及 &lt;code&gt;node_modules/&lt;/code&gt; ，其中前者是可能存在的日志文件，后者是项目本地安装的插件&lt;/p&gt;
+&lt;p&gt;这也体现了 &lt;code&gt;package.json&lt;/code&gt;  文件的重要性，因为通常插件安装目录是不会上传的，所以每次 &lt;code&gt;clone&lt;/code&gt;   &lt;code&gt;GitHub&lt;/code&gt;  项目的时候，都是没有安装插件的状态，在执行任何更改之前都要执行命令： &lt;code&gt;npm install --force&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;而 &lt;code&gt;package.json&lt;/code&gt;  文件中有部分就记录了项目中应该安装的插件，上述命令也正是根据该文件中的这一部分来安装插件的。&lt;/p&gt;
+&lt;h2 id=&#34;git大文件管理&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#git大文件管理&#34;&gt;#&lt;/a&gt; git 大文件管理&lt;/h2&gt;
+&lt;p&gt;也许有时你的项目中出现了大文件，即大于 100MB 的文件，这时候用 &lt;code&gt;git&lt;/code&gt;  是上传不上去的，这就需要用到  &lt;code&gt;Git LFS&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&#34;highlight shell&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;git lfs install  # 安装Git LFS&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;git lfs track &amp;quot;...&amp;quot;  # 要追踪的大文件名，可为 *.exe 的格式&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;git add .gitattributes  # 配置文件&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;然后就是 &lt;code&gt;add/commit/push&lt;/code&gt;  的常规操作了&lt;/p&gt;
+&lt;h2 id=&#34;npm-插件编写&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#npm-插件编写&#34;&gt;#&lt;/a&gt; npm 插件编写&lt;/h2&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://www.sycamore.top/Develop/Electron/Sentences-Desktop%E6%A1%8C%E9%9D%A2%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/</guid>
+            <title>Sentences-Desktop桌面程序开发</title>
+            <link>https://www.sycamore.top/Develop/Electron/Sentences-Desktop%E6%A1%8C%E9%9D%A2%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/</link>
+            <category>Develop</category>
+            <category>Electron</category>
+            <category>node</category>
+            <category>Hitokoto</category>
+            <pubDate>Sun, 30 Apr 2023 19:35:33 +1000</pubDate>
+            <description><![CDATA[ &lt;p&gt;项目地址：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL25vbmVTeWNhbW9yZS9TZW50ZW5jZXMtRGVza3RvcA==&#34;&gt;Sentences-Desktop&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;算是一个已完成的个人项目，虽然依旧不是很满意，而且我本人也没有在使用，&lt;/p&gt;
+&lt;p&gt;但效果看起来还是很不错的，使用了 Hitokoto，具体在上述链接中，有空会更新以下开发中遇到的事情。&lt;/p&gt;
+&lt;hr /&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://www.sycamore.top/Develop/shokaX/hexo-shokaX%E4%B8%BB%E9%A2%98%E4%BF%AE%E6%94%B9/</guid>
+            <title>hexo-shokaX主题修改</title>
+            <link>https://www.sycamore.top/Develop/shokaX/hexo-shokaX%E4%B8%BB%E9%A2%98%E4%BF%AE%E6%94%B9/</link>
+            <category>Hexo</category>
+            <category>shokaX</category>
+            <category>博客主题</category>
+            <category>Develop</category>
+            <pubDate>Sun, 30 Apr 2023 16:05:53 +1000</pubDate>
+            <description><![CDATA[ &lt;p&gt;&lt;span class=&#34;label&#34;&gt;shokaX&lt;/span&gt; 主题基于&lt;span class=&#34;label&#34;&gt; shoka&lt;/span&gt; 主题进行二次开发，据说是因为原主题停止更新...&lt;/p&gt;
+&lt;p&gt;因为各种原因吧，若按照 &lt;code&gt;shokaX&lt;/code&gt;  作者写的文档更改配置的话，还需要一定程度上参考一下 &lt;code&gt;shoka&lt;/code&gt;  主题的配置文档，&lt;/p&gt;
+&lt;p&gt;所以，我决定记录一下这次博客迁移中对 &lt;code&gt;shokaX&lt;/code&gt;  主题进行的更改。&lt;/p&gt;
+&lt;h1 id=&#34;主题安装&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#主题安装&#34;&gt;#&lt;/a&gt; 主题安装&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;shokaX&lt;/code&gt;  主题配置文档中，使用主题作者自己搭的工具 &lt;code&gt;SXC&lt;/code&gt;  进行安装，&lt;/p&gt;
+&lt;div class=&#34;note info&#34;&gt;
+&lt;p&gt;注意：因为自定义内容较多，所以选择从 &lt;code&gt;github&lt;/code&gt;  安装。&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;figure class=&#34;highlight shell&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;meta prompt_&#34;&gt;# &lt;/span&gt;&lt;span class=&#34;language-bash&#34;&gt;hexo init&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;npm install shokax-cli --location=global&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;meta prompt_&#34;&gt;# &lt;/span&gt;&lt;span class=&#34;language-bash&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;cd&lt;/span&gt; your_blog&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;SXC install -r=github shokaX&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h1 id=&#34;主题修改&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#主题修改&#34;&gt;#&lt;/a&gt; 主题修改&lt;/h1&gt;
+&lt;h2 id=&#34;值得一说的基础配置&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#值得一说的基础配置&#34;&gt;#&lt;/a&gt; 值得一说的基础配置&lt;/h2&gt;
+&lt;h3 id=&#34;顶栏&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#顶栏&#34;&gt;#&lt;/a&gt; 顶栏&lt;/h3&gt;
+&lt;p&gt;如果想和 &lt;code&gt;shoka&lt;/code&gt;  主题站点的顶栏配置一样的，可以参考我的配置：&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;spoiler&#34; title=&#34;你知道得太多了&#34;&gt;shokaX 配置文档中说得也够详细了，但某些话读起来总有点谜语人的感觉，比如超链接的部分，文档的说法实在是令人迷惑...&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&#34;highlight yaml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;attr&#34;&gt;menu:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;attr&#34;&gt;home:&lt;/span&gt; &lt;span class=&#34;string&#34;&gt;/&lt;/span&gt; &lt;span class=&#34;string&#34;&gt;||&lt;/span&gt; &lt;span class=&#34;string&#34;&gt;home&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;attr&#34;&gt;about:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;attr&#34;&gt;default:&lt;/span&gt; &lt;span class=&#34;string&#34;&gt;/about/&lt;/span&gt; &lt;span class=&#34;string&#34;&gt;||&lt;/span&gt; &lt;span class=&#34;string&#34;&gt;user&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;attr&#34;&gt;aboutsite:&lt;/span&gt; &lt;span class=&#34;string&#34;&gt;/about/&lt;/span&gt; &lt;span class=&#34;string&#34;&gt;||&lt;/span&gt; &lt;span class=&#34;string&#34;&gt;cloud&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;attr&#34;&gt;posts:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;attr&#34;&gt;default:&lt;/span&gt; &lt;span class=&#34;string&#34;&gt;/&lt;/span&gt; &lt;span class=&#34;string&#34;&gt;||&lt;/span&gt; &lt;span class=&#34;string&#34;&gt;feather&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;attr&#34;&gt;archives:&lt;/span&gt; &lt;span class=&#34;string&#34;&gt;/archives/&lt;/span&gt; &lt;span class=&#34;string&#34;&gt;||&lt;/span&gt; &lt;span class=&#34;string&#34;&gt;list-alt&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;attr&#34;&gt;categories:&lt;/span&gt; &lt;span class=&#34;string&#34;&gt;/categories/&lt;/span&gt; &lt;span class=&#34;string&#34;&gt;||&lt;/span&gt; &lt;span class=&#34;string&#34;&gt;th&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;attr&#34;&gt;tags:&lt;/span&gt; &lt;span class=&#34;string&#34;&gt;/tags/&lt;/span&gt; &lt;span class=&#34;string&#34;&gt;||&lt;/span&gt; &lt;span class=&#34;string&#34;&gt;tags&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;attr&#34;&gt;friends:&lt;/span&gt; &lt;span class=&#34;string&#34;&gt;/friends/&lt;/span&gt; &lt;span class=&#34;string&#34;&gt;||&lt;/span&gt; &lt;span class=&#34;string&#34;&gt;heart&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;attr&#34;&gt;travellings:&lt;/span&gt; &lt;span class=&#34;string&#34;&gt;https://www.travellings.cn/go.html&lt;/span&gt;  &lt;span class=&#34;string&#34;&gt;||&lt;/span&gt; &lt;span class=&#34;string&#34;&gt;subway&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;div class=&#34;note default&#34;&gt;
+&lt;p&gt;关于自定义 icon 的添加， &lt;code&gt;shoka&lt;/code&gt;  的配置文档中有提供一种解决方法，但建议参考我后面的解决方案 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9zeWNhbW9yZS50b3AvJUU1JThEJTlBJUU1JUFFJUEyJUU0JUI4JUJCJUU5JUEyJTk4L2hleG8tc2hva2FYJUU0JUI4JUJCJUU5JUEyJTk4JUU0JUJGJUFFJUU2JTk0JUI5LyNpY29uZm9udCVFNSU5QiVCRSVFNiVBMCU4NyVFNSVCQSU5MyVFNiVCNyVCQiVFNSU4QSVBMA==&#34;&gt;[这里]&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;h3 id=&#34;评论系统&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#评论系统&#34;&gt;#&lt;/a&gt; 评论系统&lt;/h3&gt;
+&lt;p&gt;因为 &lt;code&gt;minivaline&lt;/code&gt;  停止维护且 &lt;code&gt;valine&lt;/code&gt;  评论系统存在严重的安全问题， &lt;code&gt;shokaX&lt;/code&gt;  推荐使用 &lt;code&gt;valine&lt;/code&gt;  系其他评论系统代替。&lt;/p&gt;
+&lt;p&gt;这里提供我的 &lt;code&gt;waline&lt;/code&gt;  的配置方案（只放了与 &lt;code&gt;shokaX&lt;/code&gt;  配置文档中不一样的部分）：&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&#34;highlight yaml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;attr&#34;&gt;waline:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;attr&#34;&gt;enable:&lt;/span&gt; &lt;span class=&#34;literal&#34;&gt;true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;attr&#34;&gt;serverURL:&lt;/span&gt; &lt;span class=&#34;string&#34;&gt;&amp;quot;https://vercel.sycamore.top&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;attr&#34;&gt;locale:&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;      &lt;span class=&#34;attr&#34;&gt;placeholder:&lt;/span&gt; &lt;span class=&#34;string&#34;&gt;&amp;quot;1. 提问前请先仔细阅读本文档⚡\n2. 页面显示问题💥，请提供控制台截图📸或者您的测试网址\n3. 其他任何报错💣，请提供详细描述和截图📸，祝食用愉快💪&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;div class=&#34;note default&#34;&gt;
+&lt;p&gt;其中， &lt;code&gt;serverURL&lt;/code&gt;  按照 &lt;code&gt;waline&lt;/code&gt;  官方文档绑定了域名， &lt;code&gt;local.placeholder&lt;/code&gt;  为评论框中默认显示的文字&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;placeholder 与 valine 系统配置不同，我是在 waline 官方文档 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93YWxpbmUuanMub3JnL21pZ3JhdGlvbi92YWxpbmUuaHRtbA==&#34;&gt;从 Valine 迁移&lt;/span&gt; 中找到的&lt;/p&gt;
+&lt;h3 id=&#34;搜索系统&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#搜索系统&#34;&gt;#&lt;/a&gt; 搜索系统&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;algolia&lt;/code&gt;  必须参考官方文档进行配置，需要&lt;strong&gt;注意&lt;/strong&gt;的是：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;algolia&lt;/code&gt;  的配置应该是在 &lt;code&gt;_config.yml&lt;/code&gt;  文件中的，我也不知道为啥要在 &lt;code&gt;config&lt;/code&gt;  里：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682840599/Typera/2023/04/c825437e5c42bd869ff137173c375d20.png&#34; alt=&#34;image-20230430151055652&#34; /&gt;&lt;br /&gt;
+ 也许是一定得这样？&lt;/li&gt;
+&lt;li&gt;记得要运行 &lt;code&gt;hexo algolia&lt;/code&gt;  将数据更新到 index 中&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;默认图片更改&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#默认图片更改&#34;&gt;#&lt;/a&gt; 默认图片更改&lt;/h3&gt;
+&lt;p&gt;博客根目录下创建 &lt;code&gt;source/_data/assets&lt;/code&gt;  文件夹，要改哪张图，直接将你的图片名称更改为对应的即可。原图片在主题目录的 &lt;code&gt;source/assets&lt;/code&gt;  文件夹下。&lt;/p&gt;
+&lt;p&gt;比如你要替换 &lt;code&gt;favicon.ico&lt;/code&gt;  文件（站点图标），就把你的图标文件重命名为 &lt;code&gt;favicon.ico&lt;/code&gt; ，然后放到 &lt;code&gt;source/_data/assets&lt;/code&gt;  文件夹下。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;div class=&#34;note info&#34;&gt;
+&lt;p&gt;基础的部分不再赘述，配置可参考&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9kb2NzLmthaXRha3UueHl6Lw==&#34;&gt; shokaX&lt;/span&gt; 和&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9zaG9rYS5sb3N0eXUubWUvY29tcHV0ZXItc2NpZW5jZS9ub3RlL3RoZW1lLXNob2thLWRvYy8=&#34;&gt; shoka&lt;/span&gt; 主题的配置文档。&lt;/p&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;主题文件的修改和配置&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#主题文件的修改和配置&#34;&gt;#&lt;/a&gt; 主题文件的修改和配置&lt;/h2&gt;
+&lt;h3 id=&#34;音乐播放器&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#音乐播放器&#34;&gt;#&lt;/a&gt; 音乐播放器&lt;/h3&gt;
+&lt;p&gt;配置格式参考 &lt;code&gt;shoka&lt;/code&gt;  的配置文档，记得改的链接必须是有效的、公开的歌单，&lt;/p&gt;
+&lt;p&gt;有效指的是：歌单中至少有一首歌不是 VIP 专享、能播放。否则会加载默认歌单。&lt;/p&gt;
+&lt;p&gt;此外，如果你的播放器根本加载不出来，请检查主题目录下的 &lt;code&gt;source/js/_app/player.js&lt;/code&gt;  和 &lt;code&gt;player.ts&lt;/code&gt; ，&lt;/p&gt;
+&lt;p&gt;全局搜索 &lt;code&gt;meting&lt;/code&gt;  应该就能看到（因为是基于 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL2luamFob3cvbWV0aW5nLWFwaQ==&#34;&gt;meting-api&lt;/span&gt; 这个项目的）&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682841729/Typera/2023/04/f4f07901036b72746edf40bb804de698.png&#34; alt=&#34;image-20230430160205536&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;上图中的代码是经过更改的，原来有问题的地方是在： &lt;code&gt;/meting/api?server=&lt;/code&gt; ，把 &lt;code&gt;api&lt;/code&gt;  删掉就行了&lt;/p&gt;
+&lt;h3 id=&#34;tab标签favicon内容修改&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#tab标签favicon内容修改&#34;&gt;#&lt;/a&gt; TAB 标签 favicon 内容修改&lt;/h3&gt;
+&lt;p&gt;shoka 主题下，离开和进入博客页面时，浏览器 TAB 标签的内容会做出更改，&lt;/p&gt;
+&lt;p&gt;修改这些内容的方式是更改主题目录的 &lt;code&gt;language&lt;/code&gt;  文件夹下的文件，以 &lt;code&gt;en.yml&lt;/code&gt;  为例：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682843117/Typera/2023/04/d75d58621c39e3eec92653408e01f7fa.png&#34; alt=&#34;image-20230430162513720&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;修改这两行文字就行。&lt;/p&gt;
+&lt;h3 id=&#34;底部foot内容删改&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#底部foot内容删改&#34;&gt;#&lt;/a&gt; 底部 foot 内容删改&lt;/h3&gt;
+&lt;p&gt;不是有意要删掉 &lt;code&gt;shokaX&lt;/code&gt;  的链接，页脚再加上一行实在是有点丑陋，看在我写了这篇文章的份上就放过我吧  &lt;code&gt;&amp;lt;(＿　＿)&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;更改位置在主题目录下， &lt;code&gt;layout/_partials/footer.pug&lt;/code&gt;  文件中&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;pug&lt;/code&gt;  文件还是简单易懂的，主要还是说一下增加的&lt;span class=&#34;label success&#34;&gt;一言&lt;/span&gt;功能：&lt;/p&gt;
+&lt;p&gt;（API 链接来自 &lt;span class=&#34;label primary&#34;&gt;hitokoto&lt;/span&gt;）&lt;/p&gt;
+&lt;p&gt;主要代码如下：&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;if theme.footer.sentences&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    div(class=&amp;quot;sentences-content&amp;quot; id=&amp;quot;sentences-content&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        = &amp;#x27;一言...&amp;#x27;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    div(class=&amp;quot;sentences-from&amp;quot; id=&amp;quot;sentences-from&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        = &amp;#x27;來源...&amp;#x27;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    script(type=&amp;quot;text/javascript&amp;quot;).&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        fetch(`https://v1.hitokoto.cn/`)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        .then(response =&amp;gt; response.json())&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        .then(data =&amp;gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            var content = document.getElementById(&amp;#x27;sentences-content&amp;#x27;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            content.innerText = data.hitokoto&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            var from = document.getElementById(&amp;#x27;sentences-from&amp;#x27;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            from.innerText = data.from + (data.from_who ? &amp;#x27; · &amp;#x27; + data.from_who : &amp;#x27;&amp;#x27;)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &amp;#125;)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        .catch(console.error)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;简单来说就是加了两个 &lt;code&gt;div&lt;/code&gt; ，一个是一眼主体，一个是来源，分别给上  &lt;code&gt;id&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;然后添加一个 &lt;code&gt;script&lt;/code&gt; ，脚本中 &lt;code&gt;fetch&lt;/code&gt;   &lt;code&gt;hitokoto&lt;/code&gt;  的 API 地址，然后根据 &lt;code&gt;id&lt;/code&gt;  找到对应的块，并使用 &lt;code&gt;innerText&lt;/code&gt;  覆盖内容。&lt;/p&gt;
+&lt;h3 id=&#34;iconfont图标库添加&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#iconfont图标库添加&#34;&gt;#&lt;/a&gt; iconfont 图标库添加&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;shoka&lt;/code&gt;  原作者给的方法是评论留言，等他看到之后，把你的用户加到他的项目里。&lt;/p&gt;
+&lt;p&gt;因为是只读权限，所以你可以任意复制项目里的 &lt;code&gt;icon&lt;/code&gt; ，再添加到你自己的项目中使用，最后再把配置文件中的 &lt;code&gt;iconfont&lt;/code&gt;  一项改为自己项目的就行。&lt;/p&gt;
+&lt;p&gt;但是这要建立在作者看到你的评论留言的基础上，鉴于他现在已经停止更新了...&lt;/p&gt;
+&lt;p&gt;所以建议按照我的方法直接改改主题文件更合适一点，而且我的方法也简单粗暴。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;首先，先配好 &lt;code&gt;iconfont&lt;/code&gt;  的项目设置： &lt;code&gt;FontClass/Symbol 前缀&lt;/code&gt; 改为 &lt;code&gt;i-&lt;/code&gt; ， &lt;code&gt;Font Family&lt;/code&gt;  改为 &lt;code&gt;ic&lt;/code&gt; ，&lt;br /&gt;
+记得重新生成一下在线链接。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;然后回到 hexo 中，配置文件中的 &lt;code&gt;iconfont&lt;/code&gt;  下面加一个 &lt;code&gt;iconfont_plus&lt;/code&gt;  的配置，名字随意，看着改就行&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;然后找到主题目录下的 &lt;code&gt;source/css/&lt;/code&gt;  文件夹，创建一个叫做 &lt;code&gt;_iconfont_plus.styl&lt;/code&gt;  的文件，文件的内容就是你的 &lt;code&gt;iconfont&lt;/code&gt;  项目在线链接的最后部分：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682844808/Typera/2023/04/8cc09958217b38bce3b8f9affe55f60e.png&#34; alt=&#34;image-20230430165324891&#34; /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;找到主题目录下的 &lt;code&gt;scripts/generaters/config.js&lt;/code&gt;  文件，如下位置添加一个 &lt;code&gt;&#39;iconfont_plus&#39;&lt;/code&gt; ：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682844981/Typera/2023/04/338e079adcf6f44d6edfc2c6ae9b54d4.png&#34; alt=&#34;image-20230430165616689&#34; /&gt;&lt;br /&gt;
+（加了这个之后，就可以在主题目录之外修改了，根目录下增加文件 &lt;code&gt;source/_data/iconfont_plus.styl&lt;/code&gt; ，但&lt;strong&gt;也可以不加&lt;/strong&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;找到主题目录下的 &lt;code&gt;source/css/_variables.styl&lt;/code&gt;  文件，增加：&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682845300/Typera/2023/04/0c5218d4823d0c93f8b4d04589599140.png&#34; alt=&#34;image-20230430170136594&#34; /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;接下来修改同文件夹下的 &lt;code&gt;app.styl&lt;/code&gt;  文件，这一步将 &lt;code&gt;iconfont&lt;/code&gt;  项目的 &lt;code&gt;css&lt;/code&gt;  文件 &lt;code&gt;import&lt;/code&gt;  进了主文件&lt;br /&gt;
+添加代码：&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&#34;highlight css&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;if $_iconfont_plus = hexo-config(&amp;#x27;style&lt;span class=&#34;selector-class&#34;&gt;.iconfont_plus&lt;/span&gt;&amp;#x27;)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;keyword&#34;&gt;@import&lt;/span&gt; $_iconfont_plus;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;else&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;keyword&#34;&gt;@import&lt;/span&gt; &lt;span class=&#34;string&#34;&gt;&amp;quot;_iconfont_plus&amp;quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;最后修改 &lt;code&gt;source/css/_common/scaffolding/base.styl&lt;/code&gt;  文件中，&lt;/p&gt;
+&lt;p&gt;添加代码：&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&#34;highlight css&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;@font-face&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;attribute&#34;&gt;font-family&lt;/span&gt;: &lt;span class=&#34;string&#34;&gt;&amp;#x27;ic&amp;#x27;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;attribute&#34;&gt;src&lt;/span&gt;: &lt;span class=&#34;built_in&#34;&gt;url&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;#x27;//at.alicdn.com/t/c/font_&amp;#x27;&lt;/span&gt;&lt;span class=&#34;string&#34;&gt; + $iconfont_plus + &amp;#x27;.eot&amp;#x27;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;attribute&#34;&gt;src&lt;/span&gt;: &lt;span class=&#34;built_in&#34;&gt;url&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;#x27;//at.alicdn.com/t/c/font_&amp;#x27;&lt;/span&gt;&lt;span class=&#34;string&#34;&gt; + $iconfont_plus + &amp;#x27;.eot?#iefix&amp;#x27;&lt;/span&gt;) &lt;span class=&#34;built_in&#34;&gt;format&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;#x27;embedded-opentype&amp;#x27;&lt;/span&gt;),&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;built_in&#34;&gt;url&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;#x27;//at.alicdn.com/t/c/font_&amp;#x27;&lt;/span&gt;&lt;span class=&#34;string&#34;&gt; + $iconfont_plus + &amp;#x27;.woff2&amp;#x27;&lt;/span&gt;) &lt;span class=&#34;built_in&#34;&gt;format&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;#x27;woff2&amp;#x27;&lt;/span&gt;),&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;built_in&#34;&gt;url&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;#x27;//at.alicdn.com/t/c/font_&amp;#x27;&lt;/span&gt;&lt;span class=&#34;string&#34;&gt; + $iconfont_plus + &amp;#x27;.woff&amp;#x27;&lt;/span&gt;) &lt;span class=&#34;built_in&#34;&gt;format&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;#x27;woff&amp;#x27;&lt;/span&gt;),&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;built_in&#34;&gt;url&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;#x27;//at.alicdn.com/t/c/font_&amp;#x27;&lt;/span&gt;&lt;span class=&#34;string&#34;&gt; + $iconfont_plus + &amp;#x27;.ttf&amp;#x27;&lt;/span&gt;) &lt;span class=&#34;built_in&#34;&gt;format&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;#x27;truetype&amp;#x27;&lt;/span&gt;),&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;built_in&#34;&gt;url&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;#x27;//at.alicdn.com/t/c/font_&amp;#x27;&lt;/span&gt;&lt;span class=&#34;string&#34;&gt; + $iconfont_plus + &amp;#x27;.svg#ic&amp;#x27;&lt;/span&gt;) &lt;span class=&#34;built_in&#34;&gt;format&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;#x27;svg&amp;#x27;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;br /&gt;
+ 注意，这一步中要检查你的 &lt;code&gt;iconfont&lt;/code&gt;  项目在线链接是否和此处的匹配，若不匹配需要修改。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;现在可以自由添加 icon 了，格式为： &lt;code&gt;&amp;lt;i class=&amp;quot;ic i-subway&amp;quot;&amp;gt; &amp;lt;/i&amp;gt;&lt;/code&gt; 。&lt;/p&gt;
+&lt;p&gt;我们只需要将新增的 icon 添加到自己的项目，然后更新一下在线链接，最后修改一下配置文件中 &lt;code&gt;iconfont_plus&lt;/code&gt;  的内容。&lt;/p&gt;
+&lt;div class=&#34;note success&#34;&gt;
+&lt;p&gt;祝：食用愉快&lt;/p&gt;
+&lt;/div&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>

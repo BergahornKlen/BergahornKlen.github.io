@@ -1,0 +1,229 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>Sycamore&#39;s Blog • Posts by &#34;homework&#34; category</title>
+        <link>https://www.sycamore.top</link>
+        <description></description>
+        <language>zh-CN</language>
+        <pubDate>Mon, 19 Jun 2023 20:13:25 +1000</pubDate>
+        <lastBuildDate>Mon, 19 Jun 2023 20:13:25 +1000</lastBuildDate>
+        <category>Python</category>
+        <category>计算机视觉</category>
+        <category>深度学习</category>
+        <category>Crypto</category>
+        <category>Hexo</category>
+        <category>shokaX</category>
+        <category>博客主题</category>
+        <category>实习</category>
+        <category>springboot</category>
+        <category>CTF</category>
+        <category>Misc</category>
+        <category>Web</category>
+        <category>Miec</category>
+        <category>Re</category>
+        <category>Pwn</category>
+        <category>Backdoor</category>
+        <category>Linux</category>
+        <category>Kali</category>
+        <category>Trojan horse</category>
+        <category>Metasploit</category>
+        <category>frp</category>
+        <category>shellter</category>
+        <category>Reverse Shell</category>
+        <category>Develop</category>
+        <category>Electron</category>
+        <category>Google Translate</category>
+        <category>node</category>
+        <category>Hitokoto</category>
+        <category>npm</category>
+        <category>plugs</category>
+        <category>RCE，loophole</category>
+        <category>毕业设计</category>
+        <category>机器学习</category>
+        <category>Diary</category>
+        <category>Australia</category>
+        <category>Mod</category>
+        <category>CP2077</category>
+        <item>
+            <guid isPermalink="true">https://www.sycamore.top/HomeWork/%E5%9F%BA%E4%BA%8E%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%9A%84%E5%9B%BE%E5%83%8F%E7%AF%A1%E6%94%B9%E6%A3%80%E6%B5%8B/</guid>
+            <title>基于卷积神经网络的图像篡改检测</title>
+            <link>https://www.sycamore.top/HomeWork/%E5%9F%BA%E4%BA%8E%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%9A%84%E5%9B%BE%E5%83%8F%E7%AF%A1%E6%94%B9%E6%A3%80%E6%B5%8B/</link>
+            <category>Python</category>
+            <category>计算机视觉</category>
+            <category>深度学习</category>
+            <pubDate>Mon, 19 Jun 2023 20:13:25 +1000</pubDate>
+            <description><![CDATA[ &lt;div class=&#34;note info&#34;&gt;
+&lt;p&gt;作业 (o′┏▽┓｀o)&lt;/p&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;图像篡改的类型&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#图像篡改的类型&#34;&gt;#&lt;/a&gt; 图像篡改的类型&lt;/h2&gt;
+&lt;p&gt;实践中，图像篡改至少有以下几种类型：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;图像内容的修改（Tampering），比如通过 PS 实现换脸或者修改合同文字。其中大部分都可以归类到截取、复制、删除。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;能够间接表达第一类篡改嫌疑的操作（Manipulation）。比如为了遮掩第一类篡改痕迹而做的中值滤波、高斯模糊、高斯噪音以及再次保存图像而产生的二次 JPEG 压缩。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;一般而言，图像篡改的最终目的是识别第一类篡改，但是难度很大，需要很深厚的司法、摄影和图像专业知识，比如在传统的图像篡改识别领域，需要使用噪声一致性、几何一致性、光照一致性等方式来进行判断。在实际操作时，需要遍历可疑区域，且每一个可疑区域都需要遍历各种方法进行检验，所以非常地费时费力。&lt;/p&gt;
+&lt;p&gt;如果使用机器学习的方法，可以利用图像分割的方式直接将篡改区域分割出来，然而实际训练没有这么简单。&lt;/p&gt;
+&lt;p&gt;因为如果使用算法随意地进行图像拼接。这种方式可以生成无限多的数据，但用这些粗糙的训练数据训练出的模型往往无法应对经过精细 PS 的图像，若用同样粗糙的数据做检测，即便获得了好的结果也不能验证模型的有效性。而假如我们一张一张人工 PS，效率太低，完全无法满足训练模型的需要，因此我们的工作主要在识别第二类篡改。&lt;/p&gt;
+&lt;p&gt;实验中，我们首先需要通过原始图片生成经过第二类篡改的图片，再生成这些数据对应的标签（已篡改 / 未篡改），然后投入卷积神经网络进行有监督的学习，并在每一轮 epoch 后对当前模型做检测，输出测试的精准度。&lt;/p&gt;
+&lt;h2 id=&#34;卷积神经网络cnn&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#卷积神经网络cnn&#34;&gt;#&lt;/a&gt; 卷积神经网络（CNN）&lt;/h2&gt;
+&lt;h3 id=&#34;为什么使用卷积神经网络&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#为什么使用卷积神经网络&#34;&gt;#&lt;/a&gt; 为什么使用卷积神经网络&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;CNN 和深度神经网络（DNN）&lt;/p&gt;
+&lt;p&gt;这里的 DNN 指的是直接用全连接的深度神经网络。&lt;/p&gt;
+&lt;p&gt;对于图像而言，如果直接采用全连接的方法，巨大的参数量会造成很多问题，比如巨大的资源消耗、过拟合、局部最优，&lt;/p&gt;
+&lt;p&gt;因为图片基本是 1000×1000 像素，再加上 RGB 颜色信息的 3 个参数，就会出现三百万的参数量，这是全连接神经网络绝对无法处理的，所以需要用 CNN 减少参数量级。&lt;/p&gt;
+&lt;p&gt;CNN 用卷积层提取图像中的局部特征，用池化层大幅降低参数量级（降维）&lt;/p&gt;
+&lt;p&gt;卷积层：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1686727431/Typera/2023/06/4d21c7e3db7073a15d12d724f59dc984.gif&#34; alt=&#34;卷积层&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;用卷积核来过滤图像的各个小区域，从而得到这些小区域的特征值&lt;/p&gt;
+&lt;p&gt;池化层：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1687175841/Typera/2023/06/7e967b5220d5377df9e2c47844537eab.gif&#34; alt=&#34;image2&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;即使做完了卷积，图像仍然很大（因为卷积核比较小），所以为了降低数据维度，就进行下采样，&lt;/p&gt;
+&lt;p&gt;如上图，20×20 的原始图片，采样窗口为 10×10，最终池化结果为一张 2×2 的特征图&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;CNN 和基于特征提取的传统篡改检测&lt;/p&gt;
+&lt;p&gt;传统篡改检测方法基于图像统计信息和物理特征检测图像篡改操作，主要针对对复制黏贴和拼接组合两种篡改手段，&lt;/p&gt;
+&lt;p&gt;特征提取的方法多种多样，不再赘述，其计算过程大多过于繁琐，运用的函数复杂性远高于 CNN。&lt;/p&gt;
+&lt;p&gt;而且对于大数据量的处理，CNN 更有优势：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1686731027/Typera/2023/06/fe4c339cd26fdaa558292c2a0bbe298b.png&#34; alt=&#34;CNN&#34; /&gt;&lt;/p&gt;
+&lt;h2 id=&#34;对第二类图像篡改的检测&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#对第二类图像篡改的检测&#34;&gt;#&lt;/a&gt; 对第二类图像篡改的检测&lt;/h2&gt;
+&lt;h3 id=&#34;实验数据&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#实验数据&#34;&gt;#&lt;/a&gt; 实验数据&lt;/h3&gt;
+&lt;p&gt;使用的原始数据集括训练集的 40 张图片和测试集的 20 张图片，均来自以往使用手机拍摄得到（无美颜）。&lt;/p&gt;
+&lt;p&gt;首先，我们制作训练数据，用 python 的 cv2 库和 numpy 库实现高斯模糊、高斯噪声、中值模糊、二次 JPEG 压缩、亮度对比度修改等操作，然后篡改原始图片，保存原始图片和篡改后的图片，并保留各自的标签（1/0）。&lt;/p&gt;
+&lt;p&gt;训练使用的图像块大小为 28×28，所以训练集截取了约 20 万个图像块，测试集截取了约 10 万个图像块。&lt;/p&gt;
+&lt;p&gt;然后定义模型，完成训练后测试数据的准确率。&lt;/p&gt;
+&lt;p&gt;我们总共选取了 60 张由手机拍摄的照片，其中 40 张作为训练集，20 张作为测试集。照片的选取需要遵从一定的标准，首先务必保证照片拍摄时没有开启美颜等模式，这会导致模型的训练和测试出现偏差（因为美颜本身也可以视作一种图片篡改）；其次拍摄模糊、歪斜的照片也需要出现在数据集中，这是为了保证数据集的多样性，让我们训练出来的模型面对多样的图片的时候能保持更高的准确性。&lt;/p&gt;
+&lt;p&gt;然后我们需要对原始图片进行篡改，生成篡改后的数据集。我们一共实现了高斯模糊、高斯噪声、中值模糊、二次 JPEG 压缩、亮度 / 对比度修改 5 种篡改方法。其中，我们特意加入了亮度 / 对比度修改这种篡改方法，我们认为卷积神经网络在应对这种篡改方面无能为力，但需要经过实验验证。高斯模糊、中值模糊分别通过 cv2 库的 GaussianBlur () 和 medianBlur () 函数实现，其余篡改方法均通过自编写的函数实现。&lt;/p&gt;
+&lt;p&gt;最后将篡改后的数据集和原始数据集进行乱序的合并，同时对应的标签（已篡改 / 未篡改）也要一一对应地合并。&lt;/p&gt;
+&lt;p&gt;超参数如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;网络结构：6 层卷积，简单的 VGG 风格，每 2 层一个 pooling&lt;/li&gt;
+&lt;li&gt;优化器：Adam&lt;/li&gt;
+&lt;li&gt;epoch 数量：10&lt;/li&gt;
+&lt;li&gt;学习率：前 5 个 epoch 学习率 1e-4，后 5 个是 1e-5&lt;/li&gt;
+&lt;li&gt;batch_size：一次抓取 50 个样本训练&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1687175862/Typera/2023/06/7040e9af89e49b6fddf3e0620c2f7916.png&#34; alt=&#34;image44&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;实验结果&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#实验结果&#34;&gt;#&lt;/a&gt; 实验结果&lt;/h3&gt;
+&lt;p&gt;高斯模糊、高斯噪声、中值模糊、二次 JPEG 压缩的检测结果都很不错，经过 10 轮 epoch 后，最终的精准度均稳定在 90% 以上。其中高斯噪声达到了 99%，我们认为应该是篡改图本身与原图对比明显的原因，通过对大量篡改图的学习，模型能很轻易地抽象出篡改的特征，从而进行更加精准的判断。&lt;/p&gt;
+&lt;p&gt;亮度 / 对比度的精准度只有 50% 左右，这个结果表明，卷积神经网络对图像进行亮度 / 对比度的篡改检测无能为力。我们猜测这也许是因为这种篡改后的图片与原始图片没有本质上的区别，卷积神经网络抽象出的特征是类似于原图的，但这种想法的正确性还有待验证。&lt;/p&gt;
+&lt;p&gt;高斯模糊：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1686734917/Typera/2023/06/65359b472aa28e64f839e965bce97108.png&#34; alt=&#34;2&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;高斯噪声：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1686742374/Typera/2023/06/e9e97cf8a1bd777db7afc55d9db4b480.png&#34; alt=&#34;image-20230614193251237&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;中值模糊：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1687179264/Typera/2023/06/48ff4fc5e8acecfe8d9a492ca6d8ea11.png&#34; alt=&#34;image-20230614205309782&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;二次 JPEG 压缩：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1686752710/Typera/2023/06/72c6c4569175987c83df64a5f748b19d.png&#34; alt=&#34;image-20230614222506299&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;亮度修改：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1686759533/Typera/2023/06/42b9386be2989de4375eb726319b3c13.png&#34; alt=&#34;image-20230615001847275&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;对比度修改：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1687179256/Typera/2023/06/5a4fa62d82228b6bc12025547582efe4.png&#34; alt=&#34;image-20230615083039860&#34; /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://www.sycamore.top/HomeWork/%E6%95%B0%E5%AD%A6%E6%80%9D%E7%BB%B4%E5%9C%A8%E5%AF%86%E7%A0%81%E5%AD%A6%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/</guid>
+            <title>数学思维在密码学中的应用</title>
+            <link>https://www.sycamore.top/HomeWork/%E6%95%B0%E5%AD%A6%E6%80%9D%E7%BB%B4%E5%9C%A8%E5%AF%86%E7%A0%81%E5%AD%A6%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/</link>
+            <category>Python</category>
+            <category>Crypto</category>
+            <pubDate>Fri, 04 Mar 2022 02:15:28 +1100</pubDate>
+            <description><![CDATA[ &lt;div class=&#34;note info&#34;&gt;
+&lt;p&gt;作业 (o′┏▽┓｀o)&lt;/p&gt;
+&lt;/div&gt;
+&lt;h1 id=&#34;数学思维在密码学中的应用&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#数学思维在密码学中的应用&#34;&gt;#&lt;/a&gt; 数学思维在密码学中的应用&lt;/h1&gt;
+&lt;p&gt;在进行具体阐述之前，我认为有必要初步介绍一下密码学&lt;/p&gt;
+&lt;h2 id=&#34;密码学介绍&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#密码学介绍&#34;&gt;#&lt;/a&gt; 密码学介绍&lt;/h2&gt;
+&lt;p&gt;我认为密码学要探讨的问题，就是如何&lt;strong&gt;更好地进行信息加密&lt;/strong&gt;、防止信息泄露。&lt;br /&gt;
+密码学有数千年的历史。最开始为了防止信息泄露，会采取诸如，将信息用特殊的化学墨水写在纸上加以隐藏的手段，&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682440953/Typera/2023/04/d03e7e1cc30ada4331e61a76e994adc3.png&#34; alt=&#34;image-20230426000837810&#34; /&gt;&lt;br /&gt;
+ 但是这样的保密措施非常容易破解，但凡知道这个方法，就能轻易地读取隐藏地信息。&lt;br /&gt;
+所以就诞生了&lt;strong&gt;密码&lt;/strong&gt; —— 一种通过&lt;strong&gt;密钥&lt;/strong&gt;加密信息的手段&lt;/p&gt;
+&lt;h2 id=&#34;古典密码&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#古典密码&#34;&gt;#&lt;/a&gt; 古典密码&lt;/h2&gt;
+&lt;p&gt;1976 年以前的密码都属于古典密码，&lt;br /&gt;
+古典密码有很多种，基本地可以大致分为两种，&lt;strong&gt;换位密码&lt;/strong&gt;和&lt;strong&gt;替换密码&lt;/strong&gt;。&lt;br /&gt;
+简单来说，换位密码就是把&lt;strong&gt;明文&lt;/strong&gt;（需加密的信息）打乱顺序重新排列，而替换密码就是用一张&lt;strong&gt;密码表&lt;/strong&gt;替换明文中的特定字符&lt;/p&gt;
+&lt;h3 id=&#34;凯撒密码&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#凯撒密码&#34;&gt;#&lt;/a&gt; 凯撒密码&lt;/h3&gt;
+&lt;p&gt;以替换密码为例，最简单的替换密码就是&lt;strong&gt;移位密码&lt;/strong&gt;。移位密码，顾名思义就是把 &lt;em&gt;某种字符表&lt;/em&gt; 按顺序后移 n 位。这个 n 就是所谓的&lt;strong&gt;密钥&lt;/strong&gt;，而后移之后生成的 &lt;em&gt;新的字符表&lt;/em&gt; 就是之前所说的&lt;strong&gt;密码表&lt;/strong&gt;。其中，若是使用以 26 个英文字母（以及 10 个阿拉伯数字）构成的字符表，那么这种密码也被称为&lt;strong&gt;凯撒加密&lt;/strong&gt;。&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682440961/Typera/2023/04/48cfe8124c9d3306a048a7112bec67fd.png&#34; alt=&#34;image-20230426000350453&#34; /&gt;&lt;br /&gt;
+ 如上图所示，当 &lt;strong&gt;n = 3&lt;/strong&gt; 的时候，即&lt;strong&gt;密钥 key = 3&lt;/strong&gt;，&lt;br /&gt;
+原字符表为：ABCDE...WXYZ&lt;br /&gt;
+ 而&lt;strong&gt;密码表&lt;/strong&gt;为：DEFGH...ZABC&lt;/p&gt;
+&lt;p&gt;凯撒密码的原理非常简单，对应&lt;strong&gt;破解&lt;/strong&gt;的方式也就非常容易，我们只需要列举出 在所有可能的密码表（共 26 种）下&lt;strong&gt;解密&lt;/strong&gt; 得到的答案就行了，&lt;br /&gt;
+毕竟我们能够很清楚地知道，26 种答案里肯定有我们需要的那一个，再要做的，只是读读哪个更加通顺罢了。&lt;/p&gt;
+&lt;h3 id=&#34;维吉尼亚密码&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#维吉尼亚密码&#34;&gt;#&lt;/a&gt; 维吉尼亚密码&lt;/h3&gt;
+&lt;p&gt;因为凯撒密码的破解实在是过于简单，所以在凯撒密码的基础上，诞生了一种新的密码，即&lt;strong&gt;维吉尼亚密码&lt;/strong&gt;，它蕴含的一个思想就是&lt;strong&gt;多表替换&lt;/strong&gt;。&lt;br /&gt;
+所谓多表替换，就是准备&lt;strong&gt;多张密码表&lt;/strong&gt;，明文的前 n 位选用第 i 张密码表，再后 m 位选用第 j 张... 以此类推，用完所有的密码表之后，就从第 i 张再来过&lt;/p&gt;
+&lt;p&gt;而&lt;strong&gt;维吉尼亚加密&lt;/strong&gt;，就是准备了 26 张密码表，分别对应&lt;strong&gt;凯撒加密&lt;/strong&gt;的 26 种可能的密码表，依次标记为 ABC...XYZ 。上文的 n 和 m ，在&lt;strong&gt;维吉尼亚加密&lt;/strong&gt;中都是 1，而所有的 i 和 j 对应密码表的标记，组合起来就是&lt;strong&gt;密钥&lt;/strong&gt;。&lt;br /&gt;
+下表即为维吉尼亚加密的密码表（总）&lt;br /&gt;
+&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1682440964/Typera/2023/04/92b5e30160b6461906f1c86ecd48e578.png&#34; alt=&#34;image-20230426000421243&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;举个例子，假设明文为 &lt;strong&gt;GREAT&lt;/strong&gt; ，密钥为 &lt;strong&gt;GOOD&lt;/strong&gt;&lt;br /&gt;
+ 首先填充密钥 使其长度与明文一致，即 &lt;strong&gt;GOODG&lt;/strong&gt;&lt;br /&gt;
+ 那么，由 G 对应的密码表（列），找到它的第 G 行，得到第一个密文为 M&lt;br /&gt;
+ 然后，由 O 对应的密码表，找到第 R 行，得到第二个密文为 F&lt;br /&gt;
+ 同理，我们能获得剩下三个密文为 SDZ，&lt;br /&gt;
+即，明文 GREAT ，密钥 GOOD 下的维吉尼亚加密结果为 &lt;strong&gt;MFSDZ&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;这样一来，在凯撒密码基础上 通过&lt;strong&gt;多表替换思想&lt;/strong&gt;进阶的维吉尼亚密码，对于计算机尚未问世的时代来说，要在&lt;strong&gt;未知密钥&lt;/strong&gt;的情况下强行&lt;strong&gt;破解&lt;/strong&gt;维吉尼亚密码，绝对是一个大工程。&lt;/p&gt;
+&lt;h2 id=&#34;对称密码体制和非对称密码体制&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#对称密码体制和非对称密码体制&#34;&gt;#&lt;/a&gt; 对称密码体制和非对称密码体制&lt;/h2&gt;
+&lt;h3 id=&#34;一对称加密&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一对称加密&#34;&gt;#&lt;/a&gt; 一。对称加密&lt;/h3&gt;
+&lt;p&gt;对称加密是最快速、最简单的一种加密方式，加密（encryption）与解密（decryption）用的是同样的密钥（secret key）。对称加密有很多种算法，由于它效率很高，所以被广泛使用在很多加密协议的核心当中。自 1977 年美国颁布 DES（Data Encryption Standard）密码算法作为美国数据加密标准以来，对称密码体制迅速发展，得到了世界各国的关注和普遍应用。对称密码体制从工作方式上可以分为分组加密和序列密码两大类。&lt;/p&gt;
+&lt;p&gt;对称加密算法的优点：算法公开、计算量小、加密速度快、加密效率高。&lt;/p&gt;
+&lt;p&gt;对称加密算法的缺点：交易双方都使用同样钥匙，安全性得不到保证。此外，每对用户每次使用对称加密算法时，都需要使用其他人不知道的惟一钥匙，这会使得发收信双方所拥有的钥匙数量呈几何级数增长，密钥管理成为用户的负担。对称加密算法在分布式网络系统上使用较为困难，主要是因为密钥管理困难，使用成本较高。而与公开密钥加密算法比起来，对称加密算法能够提供加密和认证却缺乏了签名功能，使得使用范围有所缩小。&lt;/p&gt;
+&lt;p&gt;对称加密通常使用的是相对较小的密钥，一般小于 256 bit。因为密钥越大，加密越强，但加密与解密的过程越慢。如果你只用 1 bit 来做这个密钥，那黑客们可以先试着用 0 来解密，不行的话就再用 1 解；但如果你的密钥有 1 MB 大，黑客们可能永远也无法破解，但加密和解密的过程要花费很长的时间。密钥的大小既要照顾到安全性，也要照顾到效率，是一个 trade-off。&lt;/p&gt;
+&lt;p&gt;分组密码：也叫块加密 (block cyphers)，一次加密明文中的一个块。是将明文按一定的位长分组，明文组经过加密运算得到密文组，密文组经过解密运算（加密运算的逆运算），还原成明文组，有 ECB、CBC、CFB、OFB 四种工作模式。&lt;/p&gt;
+&lt;p&gt;序列密码：也叫流加密 (stream cyphers)，一次加密明文中的一个位。是指利用少量的密钥（制乱元素）通过某种复杂的运算（密码算法）产生大量的伪随机位流，用于对明文位流的加密。解密是指用同样的密钥和密码算法及与加密相同的伪随机位流，用以还原明文位流。&lt;/p&gt;
+&lt;p&gt;常用对称加密算法包括 DES、3DES、AES&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;DES（Data Encryption Standard）：数据加密标准，速度较快，适用于加密大量数据的场合。&lt;/li&gt;
+&lt;li&gt;3DES（Triple DES）：是基于 DES，对一块数据用三个不同的密钥进行三次加密，强度更高。&lt;/li&gt;
+&lt;li&gt;AES（Advanced Encryption Standard）：高级加密标准，是下一代的加密算法标准，速度快，安全级别高，支持 128、192、256、512 位密钥的加密。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;算法特征&lt;/p&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;加密方和解密方使用同一个密钥。&lt;/li&gt;
+&lt;li&gt;加密解密的速度比较快，适合数据比较长时的使用。&lt;/li&gt;
+&lt;li&gt;密钥传输的过程不安全，且容易被破解，密钥管理也比较麻烦。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;二非对称加密&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#二非对称加密&#34;&gt;#&lt;/a&gt; 二。非对称加密&lt;/h3&gt;
+&lt;p&gt;非对称加密为数据的加密与解密提供了一个非常安全的方法，它使用了一对密钥，公钥（public key）和私钥（private key）。私钥只能由一方安全保管，不能外泄，而公钥则可以发给任何请求它的人。非对称加密使用这对密钥中的一个进行加密，而解密则需要另一个密钥。比如，你向银行请求公钥，银行将公钥发给你，你使用公钥对消息加密，那么只有私钥的持有人 -- 银行才能对你的消息解密。与对称加密不同的是，银行不需要将私钥通过网络发送出去，因此安全性大大提高。&lt;/p&gt;
+&lt;p&gt;非对称加密算法的优点：安全性更高，公钥是公开的，秘钥是自己保存的，不需要将私钥给别人。&lt;/p&gt;
+&lt;p&gt;非对称加密算法的缺点：加密和解密花费时间长、速度慢，只适合对少量数据进行加密。&lt;/p&gt;
+&lt;p&gt;对称加密算法相比非对称加密算法来说，加解密的效率要高得多。但是缺陷在于对于秘钥的管理上，以及在非安全信道中通讯时，密钥交换的安全性不能保障。所以在实际的网络环境中，会将两者混合使用。&lt;/p&gt;
+&lt;p&gt;非对称加密算法包括 RSA、Elgamal、背包算法、Rabin、D-H、ECC（椭圆曲线加密算法），常见的有 RSA、ECC。&lt;/p&gt;
+&lt;h3 id=&#34;三分组加密的四种工作模式&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#三分组加密的四种工作模式&#34;&gt;#&lt;/a&gt; 三。分组加密的四种工作模式&lt;/h3&gt;
+&lt;h4 id=&#34;1ecb&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#1ecb&#34;&gt;#&lt;/a&gt; 1.ECB&lt;/h4&gt;
+&lt;p&gt;ECB 模式是最简单的加密模式，明文消息被分成固定大小的块（分组），并且每个块被单独加密。每个块的加密和解密都是独立的，且使用相同的方法进行加密，所以可以进行并行计算，但是这种方法一旦有一个块被破解，使用相同的方法可以解密所有的明文数据，安全性比较差。适用于数据较少的情形，加密前需要把明文数据填充到块大小的整倍数。&lt;/p&gt;
+&lt;p&gt;ECB 算法优点：&lt;br /&gt;
+简单、孤立，每个块单独运算。适合并行运算。传输错误一般只影响当前块。&lt;br /&gt;
+ECB 算法缺点：&lt;br /&gt;
+同明文输出同密文，可能导致明文攻击。&lt;/p&gt;
+&lt;h4 id=&#34;2cbc&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#2cbc&#34;&gt;#&lt;/a&gt; 2.CBC&lt;/h4&gt;
+&lt;p&gt;CBC 模式中每一个分组要先和前一个分组加密后的数据进行 XOR 异或操作，然后再进行加密。这样每个密文块依赖该块之前的所有明文块，为了保持每条消息都具有唯一性，第一个数据块进行加密之前需要用初始化向量 IV 进行异或操作。CBC 模式是一种最常用的加密模式，它主要缺点是加密是连续的，不能并行处理，并且与 ECB 一样消息块必须填充到块大小的整倍数。&lt;/p&gt;
+&lt;p&gt;CBC 算法优点：&lt;br /&gt;
+串行化运算，相同明文不同密文。&lt;br /&gt;
+CBC 算法缺点：&lt;br /&gt;
+需要初始向量。&lt;/p&gt;
+&lt;h4 id=&#34;3cfb&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#3cfb&#34;&gt;#&lt;/a&gt; 3.CFB&lt;/h4&gt;
+&lt;p&gt;CFB 模式和 CBC 模式比较相似，前一个分组的密文加密后和当前分组的明文 XOR 异或操作生成当前分组的密文。CFB 模式的解密和 CBC 模式的加密在流程上其实是非常相似的。&lt;/p&gt;
+&lt;p&gt;CFB 算法优点：&lt;br /&gt;
+同明文不同密文，分组密钥转换为流密码。&lt;br /&gt;
+CFB 算法缺点：&lt;br /&gt;
+串行运算不利并行，传输错误可能导致后续传输块错误。&lt;/p&gt;
+&lt;h4 id=&#34;4ofb&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#4ofb&#34;&gt;#&lt;/a&gt; 4.OFB&lt;/h4&gt;
+&lt;p&gt;OFB 模式将分组密码转换为同步流密码，也就是说可以根据明文长度先独立生成相应长度的流密码。通过流程图可以看出，OFB 和 CFB 非常相似，CFB 是前一个分组的密文加密后 XOR 当前分组明文，OFB 是前一个分组与前一个明文块异或之前的流密码 XOR 当前分组明文。由于异或操作的对称性，OFB 模式的解密和加密完全一样的流程。&lt;/p&gt;
+&lt;p&gt;OFB 算法优点：&lt;br /&gt;
+同明文不同密文，分组密钥转换为流密码。&lt;br /&gt;
+OFB 算法缺点：&lt;br /&gt;
+串行运算不利并行，传输错误可能导致后续传输块错误。&lt;/p&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>
