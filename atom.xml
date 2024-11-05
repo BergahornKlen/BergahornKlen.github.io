@@ -3,7 +3,7 @@
     <id>https://www.sycamore.top</id>
     <title>Sycamore&#39;s Blog</title>
     <link href="https://www.sycamore.top" />
-    <updated>2024-11-05T06:05:53.000Z</updated>
+    <updated>2024-11-05T14:56:23.000Z</updated>
     <category term="Python" />
     <category term="计算机视觉" />
     <category term="深度学习" />
@@ -41,6 +41,131 @@
     <category term="Australia" />
     <category term="Mod" />
     <category term="CP2077" />
+    <category term="archive" />
+    <entry>
+        <id>https://www.sycamore.top/Mod%20Develop/Cyberpunk%202077/Ciri%20Main%20Menu%20Background/</id>
+        <title>希里的 CP2077 主菜单背景</title>
+        <link rel="alternate" href="https://www.sycamore.top/Mod%20Develop/Cyberpunk%202077/Ciri%20Main%20Menu%20Background/"/>
+        <content type="html">&lt;p&gt;我试图在 2.0+ 版本中修复 mod: &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cubmV4dXNtb2RzLmNvbS9jeWJlcnB1bmsyMDc3L21vZHMvMjU0MQ==&#34;&gt;Ciri in Night City - Main Menu Background Replacer&lt;/span&gt;，添加对往日之影 Logo 的支持。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;原 Mod 启动效果图，可以看到没有往日之影的 logo：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1730815548/Typera/2024/11/c42fe5caab097e56ca6115aa25028bde.png&#34; alt=&#34;image-20241106010540801&#34; /&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h1 id=&#34;修改方法&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#修改方法&#34;&gt;#&lt;/a&gt; 修改方法&lt;/h1&gt;
+&lt;p&gt;修改工具：WolvenKit&lt;/p&gt;
+&lt;p&gt;打开 Mod Browser，找到安装好的原 Mod&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1730821582/Typera/2024/11/9c57c99a1327bca7356920876bd1a430.png&#34; alt=&#34;image-20241106024620104&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;全选，然后鼠标右键 Add selected items to project&lt;/p&gt;
+&lt;p&gt;左侧 Project Explorer 中找到 menu_background.xbm 和  menu_background_1080p.xbm，这是出问题的文件（要替换），如下：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1730821953/Typera/2024/11/b37f85839b86492728ac7dab74071424.png&#34; alt=&#34;image-20241106025230378&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;然后关闭 Mod Browser，根据 Project Explorer 中的路径（base\gameplay\gui\fullscreen\main_menu\）找到游戏原文件中的 menu_background.xbm，如下：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1730822090/Typera/2024/11/b58931a7d22c4213d44d924bd9586303.png&#34; alt=&#34;image-20241106025448022&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;选中，右键 Add selected items to project。弹窗问是否 Override，选择 Yes。替换成功。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Buid -&amp;gt; Pack Project，会在项目文件夹下打包为 zip 压缩包，这就是修复好的 Mod，安装到 CP2077，并卸载掉原 Mod。&lt;/p&gt;
+&lt;p&gt;效果如下，成功补上往日之影的 Logo：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1730822474/Typera/2024/11/fbc6ffdfb07adb1f77abc0edd380520e.png&#34; alt=&#34;image-20241106030106133&#34; /&gt;&lt;/p&gt;
+&lt;h1 id=&#34;分析原-mod&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#分析原-mod&#34;&gt;#&lt;/a&gt; 分析原 Mod&lt;/h1&gt;
+&lt;p&gt;先阅读：关于 archive 中的文件介绍&lt;/p&gt;
+&lt;p&gt;我的分析过程其实绕了很大的弯子，有兴趣可以看一下，其实蛮有意思的。&lt;/p&gt;
+&lt;p&gt;或者你可以直接跳到：真正的修复点分析&lt;/p&gt;
+&lt;h2 id=&#34;定位背景图片的位置&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#定位背景图片的位置&#34;&gt;#&lt;/a&gt; 定位背景图片的位置&lt;/h2&gt;
+&lt;p&gt;原 Mod 修改的文件还是有很多的，为了找到正确的思路，我选择先定位被修改的背景图片。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;根据游戏主线进度不同，赛博朋克的主菜单背景会更换图片。&lt;/p&gt;
+&lt;p&gt;寻找后，我发现对应的目录： &lt;code&gt;base\gameplay\gui\world\loading_screens\&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;该目录下所谓 loading_screen_5_after_q101、loading_screen_10_after_q112，应该对应了主线中某些事件的发生，比如图片 loading_screen_10_after_q112\loading_screen_10_shot_01.xbm：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1730812872/Typera/2024/11/3609b16ee976bb030b37db1649a51d31.png&#34; alt=&#34;image-20241106002108908&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;这显然是在潜入山车安装病毒之后会出现的那个背景图。&lt;/p&gt;
+&lt;p&gt;再比如图片 loading_screen_5_after_q101\loading_screen_5_shot_01.xbm：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1730809719/Typera/2024/11/ffbe63923183b7d8602c1046d1bc2b84.png&#34; alt=&#34;image-20241105232833312&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;这对应目前我的主菜单图片：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1730809840/Typera/2024/11/a4e7e61df94dc872b29a72dd4b9fe6ba.png&#34; alt=&#34;image-20241105233029146&#34; /&gt;&lt;/p&gt;
+&lt;h2 id=&#34;进一步分析-inkwidget&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#进一步分析-inkwidget&#34;&gt;#&lt;/a&gt; 进一步分析 inkwidget&lt;/h2&gt;
+&lt;p&gt;如果我要更换这个主菜单的背景图片，应该需要更改对应的 inkwidget 中的内容。&lt;/p&gt;
+&lt;p&gt;原 mod 虽然不能显示往日之影的 logo，但是背景替换功能还是正常的，因此可以做一定的参考。&lt;/p&gt;
+&lt;p&gt;着重分析：loading_screen_5_after_q101.inkwidget，因为这对应目前我主菜单的背景图片，方便我进行分析。这里面应该包括构成当前主菜单界面的资源。&lt;/p&gt;
+&lt;p&gt;左：原文件；右：原 Mod 中修改后的文件&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1730813070/Typera/2024/11/a23b9f1dc9b8ff26b6639b55bb702376.png&#34; alt=&#34;image-20241106002427225&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;先看右侧的原 Mod 文件，主要是文件 cp_bq_alphafaded.bk2，这就是被替换的希里背景动画。&lt;/p&gt;
+&lt;p&gt;然后看左侧的游戏原文件，因为目前我的主菜单背景是 short01 的图片，所以不看 short02、short03 的内容：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;smoke_loop.bk2&lt;/strong&gt;：一个冒烟的动画视频&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;shot_01_assets.inkatlas&lt;/strong&gt;：对文件 short_01_assets.xbm 进行了分割，提取出图片后面的三个光柱（ad）以及闪烁的灯光（antenna_lights）&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1730814251/Typera/2024/11/28b987b84f447477c8c464cf7621f2cc.png&#34; alt=&#34;image-20241106004409120&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;short_01_assets.xbm 如下，应该能理解我的意思：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1730814533/Typera/2024/11/01b0e79632d94fc3339833106b191ccf.png&#34; alt=&#34;image-20241106004850267&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;loading_screen_5_shot_01.inkatlas&lt;/strong&gt;：对应为主体背景，因为分割的那 4 个参数 Bottom、Left...，分别设置为了 0 和 1，也就是顶格分割，取了图片整体。&lt;/p&gt;
+&lt;p&gt;如下是对主页面要素的标注，①对应 smoke_loop.bk2，②对应 shot_01_assets.inkatlas：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1730814934/Typera/2024/11/48590ddd97bd03ba9d708ed367fa1ef8.png&#34; alt=&#34;image-20241106005529451&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;因此，如果只是要更换当前的背景图片，把 loading_screen_5_shot_01.xbm 换掉就行。&lt;/p&gt;
+&lt;h2 id=&#34;原-mod-思路分析&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#原-mod-思路分析&#34;&gt;#&lt;/a&gt; 原 Mod 思路分析&lt;/h2&gt;
+&lt;p&gt;上一节说换 loading_screen_5_shot_01.xbm，其实是不够的。因为背景图片是会跟着主线剧情切换的。&lt;/p&gt;
+&lt;p&gt;仔细对比可以发现，Mod 中更改的 loading_screen_5_after_q101.inkwidget，其内容和游戏原文件： base\gameplay\gui\world\loading_screens\initial_loading_screen\initial_loading_screen.inkwidget 完全一致。&lt;/p&gt;
+&lt;p&gt;左：Mod 中的文件；右：initial_loading_screen.inkwidget&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1730820048/Typera/2024/11/99b267900fa56628ce107626801cda75.png&#34; alt=&#34;image-20241106022045941&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;而我们知道，initial_loading_screen.inkwidget 中的 cp_bq_alphafaded.bk2，已经被替换为希里的背景动画了。&lt;/p&gt;
+&lt;p&gt;因此 loading_screen_5_after_q101 对应的背景就会被替换为希里。&lt;/p&gt;
+&lt;p&gt;再看原 Mod，每一个对应文件夹下的 inkwidget，其内容都被改成了 initial_loading_screen.inkwidget&lt;/p&gt;
+&lt;p&gt;所以说原 Mod 的思路很绝：既然背景图片会换，那就把它们都改了！&lt;/p&gt;
+&lt;h2 id=&#34;真正的修复点分析&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#真正的修复点分析&#34;&gt;#&lt;/a&gt; 真正的修复点分析&lt;/h2&gt;
+&lt;p&gt;上面分析了这么多其实对修复往日之影的 Logo 完全没用，因为在游戏原文件 loading_screen_5_after_q101.inkwidget 中，我并没有找到 Logo 的部分，上述内容都是原 Mod 更改背景图片的思路。&lt;/p&gt;
+&lt;p&gt;但是把已经分析出作用的文件去掉，原 Mod 的结构就简单多了。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;我马上就发现了：base\gameplay\gui\fullscreen\main_menu\menu_background.xbm，以及 menu_background_1080p.xbm&lt;/p&gt;
+&lt;p&gt;左：原 Mod 中的 menu_background.xbm；右：游戏原目录中的 menu_background.xbm&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1730821292/Typera/2024/11/e99ca6d089324954b2dfb1f94b502241.png&#34; alt=&#34;image-20241106024128469&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;少了什么一目了然，就是往日之影的 Logo。&lt;/p&gt;
+&lt;p&gt;因此只要把正确的文件替换掉就行了。&lt;/p&gt;
+</content>
+        <category term="Develop" />
+        <category term="Mod" />
+        <category term="CP2077" />
+        <category term="archive" />
+        <updated>2024-11-05T14:56:23.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://www.sycamore.top/Mod%20Develop/Cyberpunk%202077/archive%E5%86%85%E5%AE%B9%E8%A7%A3%E6%9E%90/</id>
+        <title>archive 内容解析</title>
+        <link rel="alternate" href="https://www.sycamore.top/Mod%20Develop/Cyberpunk%202077/archive%E5%86%85%E5%AE%B9%E8%A7%A3%E6%9E%90/"/>
+        <content type="html">&lt;p&gt;本文内容会有些许凌乱，因为是 Mod 开发过程中，我对 archive 的一些文件代表的内容的想法。&lt;/p&gt;
+&lt;p&gt;而且本人没有接触过 3D 动画、游戏制作这方面的内容，描述会存在很多不专业的地方。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h1 id=&#34;文件类型和作用&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#文件类型和作用&#34;&gt;#&lt;/a&gt; 文件类型和作用&lt;/h1&gt;
+&lt;h2 id=&#34;xbm&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#xbm&#34;&gt;#&lt;/a&gt; xbm&lt;/h2&gt;
+&lt;p&gt;这是一种图片类型的文件，对应游戏中出现的一些贴图的资源。&lt;/p&gt;
+&lt;p&gt;通过 WolvenKit 可以查看图片的内容，比如 expansion_logo.xbm，如下所示：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1730808788/Typera/2024/11/2c0934a8e3cdb50eaedad5bc5a2c17f0.png&#34; alt=&#34;image-20241105231302174&#34; /&gt;&lt;/p&gt;
+&lt;h2 id=&#34;inkatlas&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#inkatlas&#34;&gt;#&lt;/a&gt; inkatlas&lt;/h2&gt;
+&lt;p&gt;这是某种代表了对 xbm 图片进行具体 ” 分割 “ 利用的文件。&lt;/p&gt;
+&lt;p&gt;比如 expansion_logo.xbm 对应的 expansion_logo.inkatlas，内容如下：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1730808890/Typera/2024/11/90a3c1b209806070d39ecdf04f3cd021.png&#34; alt=&#34;image-20241105231444965&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;再次展开这个 3：logo，并和 4：logo_EN 的数据进行对比，如下：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1730808968/Typera/2024/11/4c4d7b17e1126d72bd67023217ae420f.png&#34; alt=&#34;image-20241105231603201&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;可以看到，其中包括的 Bottom、Left、Right、Top，对应的应该是 xbm 图片中 ” 被分割 “ 出来的具体图片的位置数据，这些数据被框定在 0~1 中。&lt;/p&gt;
+&lt;p&gt;以下是我根据这些数据判断他们所对应图片的思路：&lt;/p&gt;
+&lt;p&gt;3：logo 的 Bottom 和 4：logo_EN 的 Top 数值接近，几乎可以认为其就是上下相邻的两个图形。&lt;br /&gt;
+他们的 Bottom 和 Top 数值接近于 1，因此应当位于 xbm 图片的下侧。&lt;br /&gt;
+他们的 Left 数值相等且接近于 0，因此应当位于 xbm 图片的最左侧。&lt;/p&gt;
+&lt;p&gt;所以，3：logo 和 4：logo_EN 应当分别对应 xbm 图片左下方的两个英文 logo: PHANTOM LIBERTY&lt;/p&gt;
+&lt;h2 id=&#34;inkwidget&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#inkwidget&#34;&gt;#&lt;/a&gt; inkwidget&lt;/h2&gt;
+&lt;p&gt;这应该是说明了，组成某个界面需要用到的资源。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h1 id=&#34;目录对应的功能&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#目录对应的功能&#34;&gt;#&lt;/a&gt; 目录对应的功能&lt;/h1&gt;
+&lt;h2 id=&#34;basegameplayguiworldloading_screens&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#basegameplayguiworldloading_screens&#34;&gt;#&lt;/a&gt;  &lt;code&gt;base\gameplay\gui\world\loading_screens\&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;根据游戏主线进度不同，赛博朋克的主菜单背景会更换图片；加载存档时，会出现多张图片轮换播放。&lt;/p&gt;
+&lt;p&gt;比如图片：loading_screen_5_after_q101\loading_screen_5_shot_01.xbm&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1730809719/Typera/2024/11/ffbe63923183b7d8602c1046d1bc2b84.png&#34; alt=&#34;image-20241105232833312&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;可以在主菜单看到同样的图片：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://res.cloudinary.com/sycamore/image/upload/v1730809840/Typera/2024/11/a4e7e61df94dc872b29a72dd4b9fe6ba.png&#34; alt=&#34;image-20241105233029146&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;因此，如果我要更换这个主菜单的背景图片，需要更改对应的 inkwidget 中的内容。&lt;/p&gt;
+&lt;p&gt;（后续分析：）&lt;/p&gt;
+</content>
+        <category term="Develop" />
+        <category term="Mod" />
+        <category term="CP2077" />
+        <category term="archive" />
+        <updated>2024-11-05T14:56:23.000Z</updated>
+    </entry>
     <entry>
         <id>https://www.sycamore.top/Mod%20Develop/Cyberpunk%202077/Weapon%20Inspection/</id>
         <title>武器验视 Mod</title>
